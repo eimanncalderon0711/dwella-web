@@ -1,3 +1,10 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
 .custom-bg{
     background-color: #000957 !important;
 }
@@ -21,7 +28,7 @@
 /* custom.css */
 .nav-pills .nav-link.active {
   width: 100% !important; /* Makes the active tab full width */
-  background-color: green !important; /* Changes the background color to green */
+  background-color: #344CB7 !important; /* Changes the background color to green */
   color: white !important; /* Changes the text color to white, if you want it to stand out */
 }
   
