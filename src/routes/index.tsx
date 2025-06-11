@@ -1,5 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router'
-import Login from '../pages/authentication/Login'
 
 export const Route = createFileRoute('/')({
   component: Index,
@@ -8,6 +7,7 @@ export const Route = createFileRoute('/')({
 function Index() {
   return (
     <>
+
     </>
   )
 }

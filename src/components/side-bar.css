@@ -1,0 +1,30 @@
+#side-bar{
+    width: 300px !important; /* 70px width on small screens */
+    min-width: 70px;
+}
+
+.nav-item{
+  padding: 2rem;
+  background-color: aliceblue;
+}
+  
+  @media (max-width: 576px) {
+    #side-bar{
+      /* width: 70px !important; */
+      transition: 300ms ease-in-out;
+    }
+
+    .nav-item{
+      padding: 0.4rem;
+      background-color: aliceblue;
+    }
+
+    span{
+        display: none;
+    }
+
+    .nav-link{
+        justify-content: center;
+    }
+    
+}
