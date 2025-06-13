@@ -25,22 +25,6 @@
     font-size: 14px !important;
 }
 
-/* custom.css */
-.nav-pills .nav-link.active {
-  width: 100% !important; /* Makes the active tab full width */
-  background-color: #344CB7 !important; /* Changes the background color to green */
-  color: white !important; /* Changes the text color to white, if you want it to stand out */
-}
-  
-  /* Medium Screens and larger (>=768px) */
-@media (min-width: 768px ) {
-  .custom-form {
-    width: 500px !important; /* 50% width on medium and larger screens */
-    padding: 3rem 4rem !important;
-  }
-  
-}
-
 @media (min-width: 992px ) {
     .custom-form {
       width: 500px !important; /* 50% width on medium and larger screens */
