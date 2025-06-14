@@ -12,7 +12,12 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as AboutImport } from './routes/about'
+import { Route as ResidentRouteImport } from './routes/resident/route'
 import { Route as IndexImport } from './routes/index'
+import { Route as ResidentNoticesImport } from './routes/resident/notices'
+import { Route as ResidentInquiriesImport } from './routes/resident/inquiries'
+import { Route as ResidentFinancialImport } from './routes/resident/financial'
+import { Route as ResidentDashboardImport } from './routes/resident/dashboard'
 
 // Create/Update Routes
 
@@ -22,10 +27,40 @@ const AboutRoute = AboutImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const ResidentRouteRoute = ResidentRouteImport.update({
+  id: '/resident',
+  path: '/resident',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRoute,
+} as any)
+
+const ResidentNoticesRoute = ResidentNoticesImport.update({
+  id: '/notices',
+  path: '/notices',
+  getParentRoute: () => ResidentRouteRoute,
+} as any)
+
+const ResidentInquiriesRoute = ResidentInquiriesImport.update({
+  id: '/inquiries',
+  path: '/inquiries',
+  getParentRoute: () => ResidentRouteRoute,
+} as any)
+
+const ResidentFinancialRoute = ResidentFinancialImport.update({
+  id: '/financial',
+  path: '/financial',
+  getParentRoute: () => ResidentRouteRoute,
+} as any)
+
+const ResidentDashboardRoute = ResidentDashboardImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => ResidentRouteRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -39,6 +74,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/resident': {
+      id: '/resident'
+      path: '/resident'
+      fullPath: '/resident'
+      preLoaderRoute: typeof ResidentRouteImport
+      parentRoute: typeof rootRoute
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -46,43 +88,128 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutImport
       parentRoute: typeof rootRoute
     }
+    '/resident/dashboard': {
+      id: '/resident/dashboard'
+      path: '/dashboard'
+      fullPath: '/resident/dashboard'
+      preLoaderRoute: typeof ResidentDashboardImport
+      parentRoute: typeof ResidentRouteImport
+    }
+    '/resident/financial': {
+      id: '/resident/financial'
+      path: '/financial'
+      fullPath: '/resident/financial'
+      preLoaderRoute: typeof ResidentFinancialImport
+      parentRoute: typeof ResidentRouteImport
+    }
+    '/resident/inquiries': {
+      id: '/resident/inquiries'
+      path: '/inquiries'
+      fullPath: '/resident/inquiries'
+      preLoaderRoute: typeof ResidentInquiriesImport
+      parentRoute: typeof ResidentRouteImport
+    }
+    '/resident/notices': {
+      id: '/resident/notices'
+      path: '/notices'
+      fullPath: '/resident/notices'
+      preLoaderRoute: typeof ResidentNoticesImport
+      parentRoute: typeof ResidentRouteImport
+    }
   }
 }
 
 // Create and export the route tree
 
+interface ResidentRouteRouteChildren {
+  ResidentDashboardRoute: typeof ResidentDashboardRoute
+  ResidentFinancialRoute: typeof ResidentFinancialRoute
+  ResidentInquiriesRoute: typeof ResidentInquiriesRoute
+  ResidentNoticesRoute: typeof ResidentNoticesRoute
+}
+
+const ResidentRouteRouteChildren: ResidentRouteRouteChildren = {
+  ResidentDashboardRoute: ResidentDashboardRoute,
+  ResidentFinancialRoute: ResidentFinancialRoute,
+  ResidentInquiriesRoute: ResidentInquiriesRoute,
+  ResidentNoticesRoute: ResidentNoticesRoute,
+}
+
+const ResidentRouteRouteWithChildren = ResidentRouteRoute._addFileChildren(
+  ResidentRouteRouteChildren,
+)
+
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/resident': typeof ResidentRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/resident/dashboard': typeof ResidentDashboardRoute
+  '/resident/financial': typeof ResidentFinancialRoute
+  '/resident/inquiries': typeof ResidentInquiriesRoute
+  '/resident/notices': typeof ResidentNoticesRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/resident': typeof ResidentRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/resident/dashboard': typeof ResidentDashboardRoute
+  '/resident/financial': typeof ResidentFinancialRoute
+  '/resident/inquiries': typeof ResidentInquiriesRoute
+  '/resident/notices': typeof ResidentNoticesRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/resident': typeof ResidentRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/resident/dashboard': typeof ResidentDashboardRoute
+  '/resident/financial': typeof ResidentFinancialRoute
+  '/resident/inquiries': typeof ResidentInquiriesRoute
+  '/resident/notices': typeof ResidentNoticesRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths:
+    | '/'
+    | '/resident'
+    | '/about'
+    | '/resident/dashboard'
+    | '/resident/financial'
+    | '/resident/inquiries'
+    | '/resident/notices'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to:
+    | '/'
+    | '/resident'
+    | '/about'
+    | '/resident/dashboard'
+    | '/resident/financial'
+    | '/resident/inquiries'
+    | '/resident/notices'
+  id:
+    | '__root__'
+    | '/'
+    | '/resident'
+    | '/about'
+    | '/resident/dashboard'
+    | '/resident/financial'
+    | '/resident/inquiries'
+    | '/resident/notices'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ResidentRouteRoute: typeof ResidentRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ResidentRouteRoute: ResidentRouteRouteWithChildren,
   AboutRoute: AboutRoute,
 }
 
@@ -97,14 +224,40 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/resident",
         "/about"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
+    "/resident": {
+      "filePath": "resident/route.tsx",
+      "children": [
+        "/resident/dashboard",
+        "/resident/financial",
+        "/resident/inquiries",
+        "/resident/notices"
+      ]
+    },
     "/about": {
       "filePath": "about.tsx"
+    },
+    "/resident/dashboard": {
+      "filePath": "resident/dashboard.tsx",
+      "parent": "/resident"
+    },
+    "/resident/financial": {
+      "filePath": "resident/financial.tsx",
+      "parent": "/resident"
+    },
+    "/resident/inquiries": {
+      "filePath": "resident/inquiries.tsx",
+      "parent": "/resident"
+    },
+    "/resident/notices": {
+      "filePath": "resident/notices.tsx",
+      "parent": "/resident"
     }
   }
 }
