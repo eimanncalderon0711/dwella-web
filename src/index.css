@@ -4,6 +4,9 @@
     box-sizing: border-box;
 }
 
+body{
+    overflow: hidden;
+}
 
 .custom-bg{
     background-color: #000957 !important;
@@ -23,6 +26,10 @@
 
 .custom-font-size{
     font-size: 14px !important;
+}
+
+#dropdown-profile::after {
+  display: none !important;
 }
 
 @media (min-width: 992px ) {
