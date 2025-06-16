@@ -1,7 +1,19 @@
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import "../../index.css";
+import { useAuth } from "../../contexts/auth/AuthContext";
+import { useNavigate } from "@tanstack/react-router";
 
 function Login() {
+
+  const {login} = useAuth();
+  const navigate = useNavigate()
+
+    const handleLogin = () => {
+    login('User123')
+    navigate({ to: '/resident/dashboard' })
+  }
+
+
   return (
     <Container className="vh-100">
       <Row style={{height: "10%"}}>
@@ -38,7 +50,7 @@ function Login() {
             </Form.Group>
             
             {/* Button to login credential  */}
-            <Button className="mb-3 d-block w-100 border-0" style={{backgroundColor: "#344CB7"}} type="submit">
+            <Button className="mb-3 d-block w-100 border-0" style={{backgroundColor: "#344CB7"}} type="submit" onClick={handleLogin}>
                 Login
             </Button>
             
