@@ -7,9 +7,11 @@ export const Route = createFileRoute('/resident')({
 
 function RouteComponent() {
   return <>
-        <div className="d-flex vh-100 overflow-hidden">
+        <div className="d-flex vh-100 overflow-hidden flex-column flex-column-reverse flex-sm-row">
           <SideBar/>
-          <Outlet/>
+          <div className='w-100 overflow-auto'>
+            <Outlet/>
+          </div>
         </div>
       </>
 }

@@ -1,6 +1,4 @@
 import { Dropdown } from 'react-bootstrap'
-import { FaPhone } from 'react-icons/fa6'
-import { MdOutlineAccountBalanceWallet } from 'react-icons/md'
 import  logo from "../assets/_ 1.png"
 import type { ReactNode } from 'react'
 
@@ -11,7 +9,7 @@ interface HeaderProps {
 
 function Header({children} : HeaderProps) {
   return (
-    <div className="d-flex justify-content-center justify-content-sm-between align-items-center gap-3 flex-wrap-reverse">
+    <div className="d-flex justify-content-start flex-column-reverse flex-sm-row justify-content-sm-between align-items-center gap-5 gap-md-3 flex-wrap-reverse">
         {children}
         
         {/* Profile avatar */}
@@ -23,7 +21,7 @@ function Header({children} : HeaderProps) {
             >
             <img src={logo} alt="Profile" width={50} height={50} style={{ borderRadius: "50%" }} />
             <div className="d-flex flex-column text-start">
-                <span className="fw-semibold">Eimann Joshua Calderon</span>
+                <span className="fw-semibold">Julia Barrets</span>
                 <span className="text-muted" style={{ fontSize: "0.85rem" }}>Project Manager</span>
             </div>
             </Dropdown.Toggle>

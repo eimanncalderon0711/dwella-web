@@ -14,6 +14,8 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as LoginImport } from './routes/login'
 import { Route as ResidentRouteImport } from './routes/resident/route'
 import { Route as AuthRouteImport } from './routes/_auth/route'
+import { Route as IndexImport } from './routes/index'
+import { Route as ResidentPaynowImport } from './routes/resident/paynow'
 import { Route as ResidentNoticesImport } from './routes/resident/notices'
 import { Route as ResidentInquiriesImport } from './routes/resident/inquiries'
 import { Route as ResidentFinancialImport } from './routes/resident/financial'
@@ -37,6 +39,18 @@ const ResidentRouteRoute = ResidentRouteImport.update({
 const AuthRouteRoute = AuthRouteImport.update({
   id: '/_auth',
   getParentRoute: () => rootRoute,
+} as any)
+
+const IndexRoute = IndexImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ResidentPaynowRoute = ResidentPaynowImport.update({
+  id: '/paynow',
+  path: '/paynow',
+  getParentRoute: () => ResidentRouteRoute,
 } as any)
 
 const ResidentNoticesRoute = ResidentNoticesImport.update({
@@ -73,6 +87,13 @@ const AuthDashboardRoute = AuthDashboardImport.update({
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
     '/_auth': {
       id: '/_auth'
       path: ''
@@ -129,6 +150,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResidentNoticesImport
       parentRoute: typeof ResidentRouteImport
     }
+    '/resident/paynow': {
+      id: '/resident/paynow'
+      path: '/paynow'
+      fullPath: '/resident/paynow'
+      preLoaderRoute: typeof ResidentPaynowImport
+      parentRoute: typeof ResidentRouteImport
+    }
   }
 }
 
@@ -151,6 +179,7 @@ interface ResidentRouteRouteChildren {
   ResidentFinancialRoute: typeof ResidentFinancialRoute
   ResidentInquiriesRoute: typeof ResidentInquiriesRoute
   ResidentNoticesRoute: typeof ResidentNoticesRoute
+  ResidentPaynowRoute: typeof ResidentPaynowRoute
 }
 
 const ResidentRouteRouteChildren: ResidentRouteRouteChildren = {
@@ -158,6 +187,7 @@ const ResidentRouteRouteChildren: ResidentRouteRouteChildren = {
   ResidentFinancialRoute: ResidentFinancialRoute,
   ResidentInquiriesRoute: ResidentInquiriesRoute,
   ResidentNoticesRoute: ResidentNoticesRoute,
+  ResidentPaynowRoute: ResidentPaynowRoute,
 }
 
 const ResidentRouteRouteWithChildren = ResidentRouteRoute._addFileChildren(
@@ -165,6 +195,7 @@ const ResidentRouteRouteWithChildren = ResidentRouteRoute._addFileChildren(
 )
 
 export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute
   '': typeof AuthRouteRouteWithChildren
   '/resident': typeof ResidentRouteRouteWithChildren
   '/login': typeof LoginRoute
@@ -173,9 +204,11 @@ export interface FileRoutesByFullPath {
   '/resident/financial': typeof ResidentFinancialRoute
   '/resident/inquiries': typeof ResidentInquiriesRoute
   '/resident/notices': typeof ResidentNoticesRoute
+  '/resident/paynow': typeof ResidentPaynowRoute
 }
 
 export interface FileRoutesByTo {
+  '/': typeof IndexRoute
   '': typeof AuthRouteRouteWithChildren
   '/resident': typeof ResidentRouteRouteWithChildren
   '/login': typeof LoginRoute
@@ -184,10 +217,12 @@ export interface FileRoutesByTo {
   '/resident/financial': typeof ResidentFinancialRoute
   '/resident/inquiries': typeof ResidentInquiriesRoute
   '/resident/notices': typeof ResidentNoticesRoute
+  '/resident/paynow': typeof ResidentPaynowRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
+  '/': typeof IndexRoute
   '/_auth': typeof AuthRouteRouteWithChildren
   '/resident': typeof ResidentRouteRouteWithChildren
   '/login': typeof LoginRoute
@@ -196,11 +231,13 @@ export interface FileRoutesById {
   '/resident/financial': typeof ResidentFinancialRoute
   '/resident/inquiries': typeof ResidentInquiriesRoute
   '/resident/notices': typeof ResidentNoticesRoute
+  '/resident/paynow': typeof ResidentPaynowRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
+    | '/'
     | ''
     | '/resident'
     | '/login'
@@ -209,8 +246,10 @@ export interface FileRouteTypes {
     | '/resident/financial'
     | '/resident/inquiries'
     | '/resident/notices'
+    | '/resident/paynow'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/'
     | ''
     | '/resident'
     | '/login'
@@ -219,8 +258,10 @@ export interface FileRouteTypes {
     | '/resident/financial'
     | '/resident/inquiries'
     | '/resident/notices'
+    | '/resident/paynow'
   id:
     | '__root__'
+    | '/'
     | '/_auth'
     | '/resident'
     | '/login'
@@ -229,16 +270,19 @@ export interface FileRouteTypes {
     | '/resident/financial'
     | '/resident/inquiries'
     | '/resident/notices'
+    | '/resident/paynow'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
   AuthRouteRoute: typeof AuthRouteRouteWithChildren
   ResidentRouteRoute: typeof ResidentRouteRouteWithChildren
   LoginRoute: typeof LoginRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
   AuthRouteRoute: AuthRouteRouteWithChildren,
   ResidentRouteRoute: ResidentRouteRouteWithChildren,
   LoginRoute: LoginRoute,
@@ -254,10 +298,14 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
+        "/",
         "/_auth",
         "/resident",
         "/login"
       ]
+    },
+    "/": {
+      "filePath": "index.tsx"
     },
     "/_auth": {
       "filePath": "_auth/route.tsx",
@@ -271,7 +319,8 @@ export const routeTree = rootRoute
         "/resident/dashboard",
         "/resident/financial",
         "/resident/inquiries",
-        "/resident/notices"
+        "/resident/notices",
+        "/resident/paynow"
       ]
     },
     "/login": {
@@ -295,6 +344,10 @@ export const routeTree = rootRoute
     },
     "/resident/notices": {
       "filePath": "resident/notices.tsx",
+      "parent": "/resident"
+    },
+    "/resident/paynow": {
+      "filePath": "resident/paynow.tsx",
       "parent": "/resident"
     }
   }

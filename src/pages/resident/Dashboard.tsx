@@ -4,22 +4,25 @@ import Header from "../../components/Header";
 import AnnouncementsTable from "../../components/resident/tables/AnnouncementsTable";
 import { MdOutlineAccountBalanceWallet } from "react-icons/md";
 import { FaPhone } from "react-icons/fa6";
+import { Link } from "@tanstack/react-router";
 
 
 
 function Dashboard() {
   return (
-    <Container className="pt-5 d-flex overflow-auto flex-column gap-5" style={{width:"90%"}}>
+    <Container className="pt-5 d-flex overflow-auto flex-column gap-5">
+
+      {/* Header page */}
       <Header>
         <div className="d-flex gap-3">
             <div className="d-flex align-items-center gap-2 p-3 rounded-3" style={{backgroundColor: "#CED4F5",}}>
                 <FaPhone/>
-                <a href="#" className="text-decoration-none text-black fw-bold">Contact Admin</a>
+                <Link to="/dashboard" className="text-decoration-none text-black fw-bold">Contact Admin</Link>
             </div>
 
             <div className="d-flex align-items-center gap-2 p-3 rounded-3" style={{backgroundColor: "#344CB7"}}>
                 <MdOutlineAccountBalanceWallet size={25} color="white"/>
-                <a href="#" className="text-decoration-none text-light fw-bold">Pay Now</a>
+                <Link to="/resident/paynow" className="text-decoration-none text-light fw-bold">Pay Now</Link>
             </div>
         </div>
       </Header>

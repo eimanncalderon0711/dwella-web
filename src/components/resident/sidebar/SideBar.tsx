@@ -1,7 +1,7 @@
 
 import Nav from "react-bootstrap/Nav";
 import { FaCircleInfo } from "react-icons/fa6";
-import { MdDashboard } from "react-icons/md";
+import { MdDashboard, MdMenuOpen } from "react-icons/md";
 import { AiOutlineLineChart } from "react-icons/ai";
 import { RiMenu5Fill } from "react-icons/ri";
 import { TbUserQuestion } from "react-icons/tb";
@@ -19,10 +19,8 @@ function SideBar() {
 
   return (
       
-          <Nav variant="pills" className="flex-column gap-3 shadow show-sidebar overflow-hidden">
-            <div className={`show-sidebar-menu ${isMenuOpen ? "text-start":"text-center"} d-block d-md-none`}>
-              <RiMenu5Fill onClick={() => setIsMenuOpen(!isMenuOpen)}/>
-            </div>
+          <Nav variant="pills" className={`flex-sm-column justify-content-center justify-content-sm-start gap-3 shadow show-sidebar`}>
+           
 
             <a href="#" className={`my-5 fw-bold ${isMenuOpen ? "d-block" : "d-none "} d-md-block fs-2`}>
               <img height={30} src={logo} alt="" />
