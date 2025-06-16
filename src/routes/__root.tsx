@@ -1,11 +1,8 @@
-import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+import {createRootRouteWithContext,Outlet} from "@tanstack/react-router";
+import { useAuth } from "../contexts/auth/AuthContext";
 
-export const Route = createRootRoute({
-  component: () => (
-    <>
-      <Outlet/>
-      <TanStackRouterDevtools />
-    </>
-  ),
-})
+export const Route = createRootRouteWithContext<{
+  auth: ReturnType<typeof useAuth>;
+}>()({
+  component: () => <Outlet />,
+});

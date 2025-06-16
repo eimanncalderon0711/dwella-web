@@ -11,19 +11,20 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as AboutImport } from './routes/about'
+import { Route as LoginImport } from './routes/login'
 import { Route as ResidentRouteImport } from './routes/resident/route'
-import { Route as IndexImport } from './routes/index'
+import { Route as AuthRouteImport } from './routes/_auth/route'
 import { Route as ResidentNoticesImport } from './routes/resident/notices'
 import { Route as ResidentInquiriesImport } from './routes/resident/inquiries'
 import { Route as ResidentFinancialImport } from './routes/resident/financial'
 import { Route as ResidentDashboardImport } from './routes/resident/dashboard'
+import { Route as AuthDashboardImport } from './routes/_auth/dashboard'
 
 // Create/Update Routes
 
-const AboutRoute = AboutImport.update({
-  id: '/about',
-  path: '/about',
+const LoginRoute = LoginImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -33,9 +34,8 @@ const ResidentRouteRoute = ResidentRouteImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const IndexRoute = IndexImport.update({
-  id: '/',
-  path: '/',
+const AuthRouteRoute = AuthRouteImport.update({
+  id: '/_auth',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -63,15 +63,21 @@ const ResidentDashboardRoute = ResidentDashboardImport.update({
   getParentRoute: () => ResidentRouteRoute,
 } as any)
 
+const AuthDashboardRoute = AuthDashboardImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthRouteRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
+    '/_auth': {
+      id: '/_auth'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRoute
     }
     '/resident': {
@@ -81,12 +87,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResidentRouteImport
       parentRoute: typeof rootRoute
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutImport
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginImport
       parentRoute: typeof rootRoute
+    }
+    '/_auth/dashboard': {
+      id: '/_auth/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthDashboardImport
+      parentRoute: typeof AuthRouteImport
     }
     '/resident/dashboard': {
       id: '/resident/dashboard'
@@ -121,6 +134,18 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
+interface AuthRouteRouteChildren {
+  AuthDashboardRoute: typeof AuthDashboardRoute
+}
+
+const AuthRouteRouteChildren: AuthRouteRouteChildren = {
+  AuthDashboardRoute: AuthDashboardRoute,
+}
+
+const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
+  AuthRouteRouteChildren,
+)
+
 interface ResidentRouteRouteChildren {
   ResidentDashboardRoute: typeof ResidentDashboardRoute
   ResidentFinancialRoute: typeof ResidentFinancialRoute
@@ -140,9 +165,10 @@ const ResidentRouteRouteWithChildren = ResidentRouteRoute._addFileChildren(
 )
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  '': typeof AuthRouteRouteWithChildren
   '/resident': typeof ResidentRouteRouteWithChildren
-  '/about': typeof AboutRoute
+  '/login': typeof LoginRoute
+  '/dashboard': typeof AuthDashboardRoute
   '/resident/dashboard': typeof ResidentDashboardRoute
   '/resident/financial': typeof ResidentFinancialRoute
   '/resident/inquiries': typeof ResidentInquiriesRoute
@@ -150,9 +176,10 @@ export interface FileRoutesByFullPath {
 }
 
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
+  '': typeof AuthRouteRouteWithChildren
   '/resident': typeof ResidentRouteRouteWithChildren
-  '/about': typeof AboutRoute
+  '/login': typeof LoginRoute
+  '/dashboard': typeof AuthDashboardRoute
   '/resident/dashboard': typeof ResidentDashboardRoute
   '/resident/financial': typeof ResidentFinancialRoute
   '/resident/inquiries': typeof ResidentInquiriesRoute
@@ -161,9 +188,10 @@ export interface FileRoutesByTo {
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
-  '/': typeof IndexRoute
+  '/_auth': typeof AuthRouteRouteWithChildren
   '/resident': typeof ResidentRouteRouteWithChildren
-  '/about': typeof AboutRoute
+  '/login': typeof LoginRoute
+  '/_auth/dashboard': typeof AuthDashboardRoute
   '/resident/dashboard': typeof ResidentDashboardRoute
   '/resident/financial': typeof ResidentFinancialRoute
   '/resident/inquiries': typeof ResidentInquiriesRoute
@@ -173,27 +201,30 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
+    | ''
     | '/resident'
-    | '/about'
+    | '/login'
+    | '/dashboard'
     | '/resident/dashboard'
     | '/resident/financial'
     | '/resident/inquiries'
     | '/resident/notices'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
+    | ''
     | '/resident'
-    | '/about'
+    | '/login'
+    | '/dashboard'
     | '/resident/dashboard'
     | '/resident/financial'
     | '/resident/inquiries'
     | '/resident/notices'
   id:
     | '__root__'
-    | '/'
+    | '/_auth'
     | '/resident'
-    | '/about'
+    | '/login'
+    | '/_auth/dashboard'
     | '/resident/dashboard'
     | '/resident/financial'
     | '/resident/inquiries'
@@ -202,15 +233,15 @@ export interface FileRouteTypes {
 }
 
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
+  AuthRouteRoute: typeof AuthRouteRouteWithChildren
   ResidentRouteRoute: typeof ResidentRouteRouteWithChildren
-  AboutRoute: typeof AboutRoute
+  LoginRoute: typeof LoginRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+  AuthRouteRoute: AuthRouteRouteWithChildren,
   ResidentRouteRoute: ResidentRouteRouteWithChildren,
-  AboutRoute: AboutRoute,
+  LoginRoute: LoginRoute,
 }
 
 export const routeTree = rootRoute
@@ -223,13 +254,16 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/",
+        "/_auth",
         "/resident",
-        "/about"
+        "/login"
       ]
     },
-    "/": {
-      "filePath": "index.tsx"
+    "/_auth": {
+      "filePath": "_auth/route.tsx",
+      "children": [
+        "/_auth/dashboard"
+      ]
     },
     "/resident": {
       "filePath": "resident/route.tsx",
@@ -240,8 +274,12 @@ export const routeTree = rootRoute
         "/resident/notices"
       ]
     },
-    "/about": {
-      "filePath": "about.tsx"
+    "/login": {
+      "filePath": "login.tsx"
+    },
+    "/_auth/dashboard": {
+      "filePath": "_auth/dashboard.tsx",
+      "parent": "/_auth"
     },
     "/resident/dashboard": {
       "filePath": "resident/dashboard.tsx",
