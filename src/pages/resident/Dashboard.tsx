@@ -5,6 +5,7 @@ import AnnouncementsTable from "../../components/resident/tables/AnnouncementsTa
 import { MdOutlineAccountBalanceWallet } from "react-icons/md";
 import { FaPhone } from "react-icons/fa6";
 import { useNavigate } from "@tanstack/react-router";
+import PaymentHistoryTable from "../../components/resident/tables/PaymentHistoryTable";
 
 
 
@@ -38,6 +39,7 @@ function Dashboard() {
 
       {/* List of announcements */}
       <AnnouncementsTable/>
+      <PaymentHistoryTable/>
     </Container>
   )
 }
