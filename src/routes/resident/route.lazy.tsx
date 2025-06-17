@@ -1,11 +1,12 @@
-import { createFileRoute, Outlet } from '@tanstack/react-router'
+import { createLazyFileRoute, Outlet } from '@tanstack/react-router'
 import SideBar from '../../components/resident/sidebar/SideBar'
 
-export const Route = createFileRoute('/resident')({
+export const Route = createLazyFileRoute('/resident')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
+  console.log("render")
   return <>
         <div className="d-flex vh-100 overflow-hidden flex-column flex-column-reverse flex-sm-row">
           <SideBar/>

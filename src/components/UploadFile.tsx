@@ -46,7 +46,7 @@ function UploadFile() {
 
 
   return (
-    <Form.Group className="mb-3" controlId="exampleForm.ControlInput4">
+    <Form.Group className="mb-3" controlId="formUploadFile">
         <Form.Label>Upload proof of payment</Form.Label>
         <Container 
             onDrop={handleDrop}
@@ -64,7 +64,7 @@ function UploadFile() {
             <Row>
                 <Col xs='12' className='text-center'><IoMdCloudUpload color='#344CB7' size={40}/></Col>
                 
-                <input ref={fileInputRef} type="file" multiple onChange={handleFileChange} className='d-none'/>
+                <input id='formUploadFile' ref={fileInputRef} type="file" multiple onChange={handleFileChange} className='d-none'/>
                 
                 <Col xs='12' className='text-center'>
                     <p>Drag and drop files or {" "} 

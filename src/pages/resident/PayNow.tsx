@@ -26,16 +26,16 @@ function PayNow() {
             <h3>Details</h3>
             <Row className='pt-3'>
                 <Col xs={12} md={6}>
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Amount to pay</Form.Label>
+                    <Form.Group className="mb-3" controlId="formPayment">
+                        <Form.Label >Amount to pay</Form.Label>
                         <Form.Control type="text" placeholder="Amount" />
                     </Form.Group>
                 </Col>
 
                 {/* Payment option */}
                 <Col xs={12} md={6}>
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Payment method</Form.Label>
+                    <Form.Group className="mb-3" controlId="formPaymentOption">
+                        <Form.Label  >Payment method</Form.Label>
                         <Form.Select aria-label="Default select example">
                             <option disabled>{"Select"}</option>
                             <option value="1">Gcash</option>
@@ -45,7 +45,7 @@ function PayNow() {
                     </Form.Group>
                 </Col>
                 <Col>
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Group className="mb-3" controlId="formReferenceNumber">
                         <Form.Label>Reference Number</Form.Label>
                         <Form.Control type="text" placeholder="Reference number" />
                     </Form.Group>
@@ -58,8 +58,8 @@ function PayNow() {
 
                 {/* Remarks text for description */}
                 <Col>
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Remarks</Form.Label>
+                    <Form.Group className="mb-3" controlId="formRemarks">
+                        <Form.Label >Remarks</Form.Label>
                         <Form.Control as="textarea" type="text" placeholder="Remarks"/>
                     </Form.Group>
                 </Col>

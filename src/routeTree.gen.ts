@@ -8,31 +8,38 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
+import { createFileRoute } from '@tanstack/react-router'
+
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as LoginImport } from './routes/login'
-import { Route as ResidentRouteImport } from './routes/resident/route'
 import { Route as AuthRouteImport } from './routes/_auth/route'
 import { Route as IndexImport } from './routes/index'
-import { Route as ResidentPaynowImport } from './routes/resident/paynow'
-import { Route as ResidentNoticesImport } from './routes/resident/notices'
-import { Route as ResidentInquiriesImport } from './routes/resident/inquiries'
-import { Route as ResidentFinancialImport } from './routes/resident/financial'
-import { Route as ResidentDashboardImport } from './routes/resident/dashboard'
 import { Route as AuthDashboardImport } from './routes/_auth/dashboard'
 
+// Create Virtual Routes
+
+const ResidentRouteLazyImport = createFileRoute('/resident')()
+const ResidentPaynowLazyImport = createFileRoute('/resident/paynow')()
+const ResidentNoticesLazyImport = createFileRoute('/resident/notices')()
+const ResidentInquiriesLazyImport = createFileRoute('/resident/inquiries')()
+const ResidentFinancialLazyImport = createFileRoute('/resident/financial')()
+const ResidentDashboardLazyImport = createFileRoute('/resident/dashboard')()
+
 // Create/Update Routes
+
+const ResidentRouteLazyRoute = ResidentRouteLazyImport.update({
+  id: '/resident',
+  path: '/resident',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/resident/route.lazy').then((d) => d.Route),
+)
 
 const LoginRoute = LoginImport.update({
   id: '/login',
   path: '/login',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const ResidentRouteRoute = ResidentRouteImport.update({
-  id: '/resident',
-  path: '/resident',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -47,35 +54,45 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const ResidentPaynowRoute = ResidentPaynowImport.update({
+const ResidentPaynowLazyRoute = ResidentPaynowLazyImport.update({
   id: '/paynow',
   path: '/paynow',
-  getParentRoute: () => ResidentRouteRoute,
-} as any)
+  getParentRoute: () => ResidentRouteLazyRoute,
+} as any).lazy(() =>
+  import('./routes/resident/paynow.lazy').then((d) => d.Route),
+)
 
-const ResidentNoticesRoute = ResidentNoticesImport.update({
+const ResidentNoticesLazyRoute = ResidentNoticesLazyImport.update({
   id: '/notices',
   path: '/notices',
-  getParentRoute: () => ResidentRouteRoute,
-} as any)
+  getParentRoute: () => ResidentRouteLazyRoute,
+} as any).lazy(() =>
+  import('./routes/resident/notices.lazy').then((d) => d.Route),
+)
 
-const ResidentInquiriesRoute = ResidentInquiriesImport.update({
+const ResidentInquiriesLazyRoute = ResidentInquiriesLazyImport.update({
   id: '/inquiries',
   path: '/inquiries',
-  getParentRoute: () => ResidentRouteRoute,
-} as any)
+  getParentRoute: () => ResidentRouteLazyRoute,
+} as any).lazy(() =>
+  import('./routes/resident/inquiries.lazy').then((d) => d.Route),
+)
 
-const ResidentFinancialRoute = ResidentFinancialImport.update({
+const ResidentFinancialLazyRoute = ResidentFinancialLazyImport.update({
   id: '/financial',
   path: '/financial',
-  getParentRoute: () => ResidentRouteRoute,
-} as any)
+  getParentRoute: () => ResidentRouteLazyRoute,
+} as any).lazy(() =>
+  import('./routes/resident/financial.lazy').then((d) => d.Route),
+)
 
-const ResidentDashboardRoute = ResidentDashboardImport.update({
+const ResidentDashboardLazyRoute = ResidentDashboardLazyImport.update({
   id: '/dashboard',
   path: '/dashboard',
-  getParentRoute: () => ResidentRouteRoute,
-} as any)
+  getParentRoute: () => ResidentRouteLazyRoute,
+} as any).lazy(() =>
+  import('./routes/resident/dashboard.lazy').then((d) => d.Route),
+)
 
 const AuthDashboardRoute = AuthDashboardImport.update({
   id: '/dashboard',
@@ -101,18 +118,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRoute
     }
-    '/resident': {
-      id: '/resident'
-      path: '/resident'
-      fullPath: '/resident'
-      preLoaderRoute: typeof ResidentRouteImport
-      parentRoute: typeof rootRoute
-    }
     '/login': {
       id: '/login'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginImport
+      parentRoute: typeof rootRoute
+    }
+    '/resident': {
+      id: '/resident'
+      path: '/resident'
+      fullPath: '/resident'
+      preLoaderRoute: typeof ResidentRouteLazyImport
       parentRoute: typeof rootRoute
     }
     '/_auth/dashboard': {
@@ -126,36 +143,36 @@ declare module '@tanstack/react-router' {
       id: '/resident/dashboard'
       path: '/dashboard'
       fullPath: '/resident/dashboard'
-      preLoaderRoute: typeof ResidentDashboardImport
-      parentRoute: typeof ResidentRouteImport
+      preLoaderRoute: typeof ResidentDashboardLazyImport
+      parentRoute: typeof ResidentRouteLazyImport
     }
     '/resident/financial': {
       id: '/resident/financial'
       path: '/financial'
       fullPath: '/resident/financial'
-      preLoaderRoute: typeof ResidentFinancialImport
-      parentRoute: typeof ResidentRouteImport
+      preLoaderRoute: typeof ResidentFinancialLazyImport
+      parentRoute: typeof ResidentRouteLazyImport
     }
     '/resident/inquiries': {
       id: '/resident/inquiries'
       path: '/inquiries'
       fullPath: '/resident/inquiries'
-      preLoaderRoute: typeof ResidentInquiriesImport
-      parentRoute: typeof ResidentRouteImport
+      preLoaderRoute: typeof ResidentInquiriesLazyImport
+      parentRoute: typeof ResidentRouteLazyImport
     }
     '/resident/notices': {
       id: '/resident/notices'
       path: '/notices'
       fullPath: '/resident/notices'
-      preLoaderRoute: typeof ResidentNoticesImport
-      parentRoute: typeof ResidentRouteImport
+      preLoaderRoute: typeof ResidentNoticesLazyImport
+      parentRoute: typeof ResidentRouteLazyImport
     }
     '/resident/paynow': {
       id: '/resident/paynow'
       path: '/paynow'
       fullPath: '/resident/paynow'
-      preLoaderRoute: typeof ResidentPaynowImport
-      parentRoute: typeof ResidentRouteImport
+      preLoaderRoute: typeof ResidentPaynowLazyImport
+      parentRoute: typeof ResidentRouteLazyImport
     }
   }
 }
@@ -174,64 +191,63 @@ const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
   AuthRouteRouteChildren,
 )
 
-interface ResidentRouteRouteChildren {
-  ResidentDashboardRoute: typeof ResidentDashboardRoute
-  ResidentFinancialRoute: typeof ResidentFinancialRoute
-  ResidentInquiriesRoute: typeof ResidentInquiriesRoute
-  ResidentNoticesRoute: typeof ResidentNoticesRoute
-  ResidentPaynowRoute: typeof ResidentPaynowRoute
+interface ResidentRouteLazyRouteChildren {
+  ResidentDashboardLazyRoute: typeof ResidentDashboardLazyRoute
+  ResidentFinancialLazyRoute: typeof ResidentFinancialLazyRoute
+  ResidentInquiriesLazyRoute: typeof ResidentInquiriesLazyRoute
+  ResidentNoticesLazyRoute: typeof ResidentNoticesLazyRoute
+  ResidentPaynowLazyRoute: typeof ResidentPaynowLazyRoute
 }
 
-const ResidentRouteRouteChildren: ResidentRouteRouteChildren = {
-  ResidentDashboardRoute: ResidentDashboardRoute,
-  ResidentFinancialRoute: ResidentFinancialRoute,
-  ResidentInquiriesRoute: ResidentInquiriesRoute,
-  ResidentNoticesRoute: ResidentNoticesRoute,
-  ResidentPaynowRoute: ResidentPaynowRoute,
+const ResidentRouteLazyRouteChildren: ResidentRouteLazyRouteChildren = {
+  ResidentDashboardLazyRoute: ResidentDashboardLazyRoute,
+  ResidentFinancialLazyRoute: ResidentFinancialLazyRoute,
+  ResidentInquiriesLazyRoute: ResidentInquiriesLazyRoute,
+  ResidentNoticesLazyRoute: ResidentNoticesLazyRoute,
+  ResidentPaynowLazyRoute: ResidentPaynowLazyRoute,
 }
 
-const ResidentRouteRouteWithChildren = ResidentRouteRoute._addFileChildren(
-  ResidentRouteRouteChildren,
-)
+const ResidentRouteLazyRouteWithChildren =
+  ResidentRouteLazyRoute._addFileChildren(ResidentRouteLazyRouteChildren)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '': typeof AuthRouteRouteWithChildren
-  '/resident': typeof ResidentRouteRouteWithChildren
   '/login': typeof LoginRoute
+  '/resident': typeof ResidentRouteLazyRouteWithChildren
   '/dashboard': typeof AuthDashboardRoute
-  '/resident/dashboard': typeof ResidentDashboardRoute
-  '/resident/financial': typeof ResidentFinancialRoute
-  '/resident/inquiries': typeof ResidentInquiriesRoute
-  '/resident/notices': typeof ResidentNoticesRoute
-  '/resident/paynow': typeof ResidentPaynowRoute
+  '/resident/dashboard': typeof ResidentDashboardLazyRoute
+  '/resident/financial': typeof ResidentFinancialLazyRoute
+  '/resident/inquiries': typeof ResidentInquiriesLazyRoute
+  '/resident/notices': typeof ResidentNoticesLazyRoute
+  '/resident/paynow': typeof ResidentPaynowLazyRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '': typeof AuthRouteRouteWithChildren
-  '/resident': typeof ResidentRouteRouteWithChildren
   '/login': typeof LoginRoute
+  '/resident': typeof ResidentRouteLazyRouteWithChildren
   '/dashboard': typeof AuthDashboardRoute
-  '/resident/dashboard': typeof ResidentDashboardRoute
-  '/resident/financial': typeof ResidentFinancialRoute
-  '/resident/inquiries': typeof ResidentInquiriesRoute
-  '/resident/notices': typeof ResidentNoticesRoute
-  '/resident/paynow': typeof ResidentPaynowRoute
+  '/resident/dashboard': typeof ResidentDashboardLazyRoute
+  '/resident/financial': typeof ResidentFinancialLazyRoute
+  '/resident/inquiries': typeof ResidentInquiriesLazyRoute
+  '/resident/notices': typeof ResidentNoticesLazyRoute
+  '/resident/paynow': typeof ResidentPaynowLazyRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/_auth': typeof AuthRouteRouteWithChildren
-  '/resident': typeof ResidentRouteRouteWithChildren
   '/login': typeof LoginRoute
+  '/resident': typeof ResidentRouteLazyRouteWithChildren
   '/_auth/dashboard': typeof AuthDashboardRoute
-  '/resident/dashboard': typeof ResidentDashboardRoute
-  '/resident/financial': typeof ResidentFinancialRoute
-  '/resident/inquiries': typeof ResidentInquiriesRoute
-  '/resident/notices': typeof ResidentNoticesRoute
-  '/resident/paynow': typeof ResidentPaynowRoute
+  '/resident/dashboard': typeof ResidentDashboardLazyRoute
+  '/resident/financial': typeof ResidentFinancialLazyRoute
+  '/resident/inquiries': typeof ResidentInquiriesLazyRoute
+  '/resident/notices': typeof ResidentNoticesLazyRoute
+  '/resident/paynow': typeof ResidentPaynowLazyRoute
 }
 
 export interface FileRouteTypes {
@@ -239,8 +255,8 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | ''
-    | '/resident'
     | '/login'
+    | '/resident'
     | '/dashboard'
     | '/resident/dashboard'
     | '/resident/financial'
@@ -251,8 +267,8 @@ export interface FileRouteTypes {
   to:
     | '/'
     | ''
-    | '/resident'
     | '/login'
+    | '/resident'
     | '/dashboard'
     | '/resident/dashboard'
     | '/resident/financial'
@@ -263,8 +279,8 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_auth'
-    | '/resident'
     | '/login'
+    | '/resident'
     | '/_auth/dashboard'
     | '/resident/dashboard'
     | '/resident/financial'
@@ -277,15 +293,15 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRouteRoute: typeof AuthRouteRouteWithChildren
-  ResidentRouteRoute: typeof ResidentRouteRouteWithChildren
   LoginRoute: typeof LoginRoute
+  ResidentRouteLazyRoute: typeof ResidentRouteLazyRouteWithChildren
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRouteRoute: AuthRouteRouteWithChildren,
-  ResidentRouteRoute: ResidentRouteRouteWithChildren,
   LoginRoute: LoginRoute,
+  ResidentRouteLazyRoute: ResidentRouteLazyRouteWithChildren,
 }
 
 export const routeTree = rootRoute
@@ -300,8 +316,8 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/_auth",
-        "/resident",
-        "/login"
+        "/login",
+        "/resident"
       ]
     },
     "/": {
@@ -313,8 +329,11 @@ export const routeTree = rootRoute
         "/_auth/dashboard"
       ]
     },
+    "/login": {
+      "filePath": "login.tsx"
+    },
     "/resident": {
-      "filePath": "resident/route.tsx",
+      "filePath": "resident/route.lazy.tsx",
       "children": [
         "/resident/dashboard",
         "/resident/financial",
@@ -323,31 +342,28 @@ export const routeTree = rootRoute
         "/resident/paynow"
       ]
     },
-    "/login": {
-      "filePath": "login.tsx"
-    },
     "/_auth/dashboard": {
       "filePath": "_auth/dashboard.tsx",
       "parent": "/_auth"
     },
     "/resident/dashboard": {
-      "filePath": "resident/dashboard.tsx",
+      "filePath": "resident/dashboard.lazy.tsx",
       "parent": "/resident"
     },
     "/resident/financial": {
-      "filePath": "resident/financial.tsx",
+      "filePath": "resident/financial.lazy.tsx",
       "parent": "/resident"
     },
     "/resident/inquiries": {
-      "filePath": "resident/inquiries.tsx",
+      "filePath": "resident/inquiries.lazy.tsx",
       "parent": "/resident"
     },
     "/resident/notices": {
-      "filePath": "resident/notices.tsx",
+      "filePath": "resident/notices.lazy.tsx",
       "parent": "/resident"
     },
     "/resident/paynow": {
-      "filePath": "resident/paynow.tsx",
+      "filePath": "resident/paynow.lazy.tsx",
       "parent": "/resident"
     }
   }

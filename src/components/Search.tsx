@@ -12,8 +12,9 @@ function Search({children}:SearchProps) {
     <div className="d-flex justify-content-between align-items-center flex-column gap-5 flex-md-row pt-5 mt-5 mb-3">
         <div className="d-flex align-items-center gap-2">
             <InputGroup>
-                <InputGroup.Text id="basic-addon1" className="border-0" style={{backgroundColor:"#F2F2F7"}}><IoIosSearch /></InputGroup.Text>
+                <InputGroup.Text className="border-0" style={{backgroundColor:"#F2F2F7"}}><IoIosSearch /></InputGroup.Text>
                 <Form.Control
+                name='search'
                 placeholder="Search"
                 aria-label="Search"
                 aria-describedby="basic-addon1"
