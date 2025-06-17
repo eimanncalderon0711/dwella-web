@@ -1,5 +1,5 @@
 // routes/login.tsx
-import { createFileRoute, redirect, useNavigate } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@tanstack/react-router'
 import { useAuth } from '../contexts/auth/AuthContext'
 import Login from '../pages/authentication/Login'
 

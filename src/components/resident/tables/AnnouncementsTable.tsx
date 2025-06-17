@@ -1,4 +1,3 @@
-import React from 'react'
 import { Container, Table } from 'react-bootstrap'
 import { FiEye } from 'react-icons/fi'
 
@@ -7,13 +6,13 @@ function AnnouncementsTable() {
     <Container className="w-100 d-flex flex-column gap-3">
         <div className="fw-bold" style={{fontSize:"20px"}}><span style={{borderBottom:"#344CB7 5px solid"}}>Announcements</span></div>
         <div className="overflow-auto">
-          <Table responsive={"sm"}>
+          <Table responsive={"sm"} className='table-bordered'>
             <thead>
               <tr className="text-nowrap">
-                <th>Title</th>
-                <th>Created By</th>
-                <th>Date Created</th>
-                <th>Action</th>
+                <th style={{backgroundColor:"#F2F2F7"}}>Title</th>
+                <th style={{backgroundColor:"#F2F2F7"}}>Created By</th>
+                <th style={{backgroundColor:"#F2F2F7"}}>Date Created</th>
+                <th style={{backgroundColor:"#F2F2F7"}}>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -21,25 +20,25 @@ function AnnouncementsTable() {
                 <td >Monthly Due</td>
                 <td>Sheila Mae</td>
                 <td>16 Jan 2025 at 9:00 PM</td>
-                <td><FiEye color="blue" size={20}/></td>
+                <td className='text-md-center'><FiEye color="blue" size={20}/></td>
               </tr>
               <tr className="text-nowrap">
                 <td >Monthly Due</td>
                 <td>Sheila Mae</td>
                 <td>16 Jan 2025 at 9:00 PM</td>
-                <td><FiEye color="blue" size={20}/></td>
+                <td className='text-md-center'><FiEye color="blue" size={20}/></td>
               </tr>
               <tr className="text-nowrap">
                 <td >Monthly Due</td>
                 <td>Sheila Mae</td>
                 <td>16 Jan 2025 at 9:00 PM</td>
-                <td><FiEye color="blue" size={20}/></td>
+                <td className='text-md-center'><FiEye color="blue" size={20}/></td>
               </tr>
               <tr className="text-nowrap">
                 <td >Monthly Due</td>
                 <td>Sheila Mae</td>
                 <td>16 Jan 2025 at 9:00 PM</td>
-                <td><FiEye color="blue" size={20}/></td>
+                <td className='text-md-center'><FiEye color="blue" size={20}/></td>
               </tr>
             </tbody>
           </Table>

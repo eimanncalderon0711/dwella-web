@@ -3,12 +3,13 @@ import Nav from "react-bootstrap/Nav";
 import { FaCircleInfo } from "react-icons/fa6";
 import { MdDashboard } from "react-icons/md";
 import { AiOutlineLineChart } from "react-icons/ai";
-import { RiMenu5Fill } from "react-icons/ri";
 import { TbUserQuestion } from "react-icons/tb";
 import "./side-bar.css"
 import { useState } from "react";
 import logo from "../../../assets/dwella-logo.png"
 import { Link, useLocation } from "@tanstack/react-router";
+import { CiMenuFries } from "react-icons/ci";
+import { IoCloseSharp } from "react-icons/io5";
 
 
 function SideBar() {
@@ -19,10 +20,12 @@ function SideBar() {
 
   return (
       
-          <Nav variant="pills" className="flex-column gap-3 shadow show-sidebar overflow-hidden">
-            <div className={`show-sidebar-menu ${isMenuOpen ? "text-start":"text-center"} d-block d-md-none`}>
-              <RiMenu5Fill onClick={() => setIsMenuOpen(!isMenuOpen)}/>
+          <Nav variant="pills" className={`flex-sm-column justify-content-center justify-content-sm-start gap-3 shadow show-sidebar`}>
+
+            <div className={`${isMenuOpen ? "mx-0" : "mx-auto"} d-none d-sm-block d-md-none`}>
+              {isMenuOpen ? <IoCloseSharp size={20} onClick={() => setIsMenuOpen(!isMenuOpen)} /> : <CiMenuFries  size={20} onClick={() => setIsMenuOpen(!isMenuOpen)}/>}
             </div>
+           
 
             <a href="#" className={`my-5 fw-bold ${isMenuOpen ? "d-block" : "d-none "} d-md-block fs-2`}>
               <img height={30} src={logo} alt="" />
