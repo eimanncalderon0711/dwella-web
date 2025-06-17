@@ -3,7 +3,7 @@ import { Col, Container, Form, Row } from 'react-bootstrap'
 import { IoMdCloudUpload } from 'react-icons/io';
 import Files from './Files';
 
-function UploadFile() {
+function UploadFile({title}:{title:string}) {
 
   const [files, setFiles] = useState<File[] | null>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -47,7 +47,7 @@ function UploadFile() {
 
   return (
     <Form.Group className="mb-3" controlId="formUploadFile">
-        <Form.Label>Upload proof of payment</Form.Label>
+        <Form.Label>{title}</Form.Label>
         <Container 
             onDrop={handleDrop}
             onDragOver={handleDragOver}

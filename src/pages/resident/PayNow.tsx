@@ -53,15 +53,19 @@ function PayNow() {
 
                 {/* Upload file component for file upload */}
                 <Col xs={'12'}>
-                    <UploadFile/>
+                    <UploadFile title='Upload proof of payment'/>
                 </Col>
 
                 {/* Remarks text for description */}
-                <Col>
+                <Col xs={12}>
                     <Form.Group className="mb-3" controlId="formRemarks">
                         <Form.Label >Remarks</Form.Label>
                         <Form.Control as="textarea" type="text" placeholder="Remarks"/>
                     </Form.Group>
+                </Col>
+                <Col className='d-flex gap-3 flex-wrap align-items-center justify-content-end mt-3'>
+                    <div className='d-flex flex-grow-1 flex-sm-grow-0 align-items-center justify-content-center px-5 py-3 rounded-3' style={{backgroundColor:"#CED4F5", cursor:"pointer"}}><span className='text-black text-center fw-bold'>Cancel</span></div>
+                    <div className='d-flex flex-grow-1 flex-sm-grow-0 align-items-center justify-content-center px-3 py-3 rounded-3' style={{backgroundColor:"#344CB7", cursor:"pointer"}}><span className='text-light text-center fw-bold'>Send Payment</span></div>
                 </Col>
             </Row>
         </div>

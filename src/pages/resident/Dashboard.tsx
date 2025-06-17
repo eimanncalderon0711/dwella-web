@@ -19,7 +19,7 @@ function Dashboard() {
       {/* Header page */}
       <Header>
         <div className="d-flex gap-3">
-            <div onClick={() => navigate({to: '/resident/paynow'})} className="d-flex align-items-center gap-2 p-3 rounded-3" style={{backgroundColor: "#CED4F5", cursor:"pointer"}}>
+            <div onClick={() => navigate({to: '/resident/contact'})} className="d-flex align-items-center gap-2 p-3 rounded-3" style={{backgroundColor: "#CED4F5", cursor:"pointer"}}>
                 <FaPhone/>
                 <a className="text-decoration-none text-black fw-bold">Contact Admin</a>
             </div>
