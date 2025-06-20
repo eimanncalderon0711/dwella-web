@@ -27,6 +27,9 @@ const ResidentPaynowLazyImport = createFileRoute('/resident/paynow')()
 const ResidentNoticesLazyImport = createFileRoute('/resident/notices')()
 const ResidentInquiriesLazyImport = createFileRoute('/resident/inquiries')()
 const ResidentFinancialLazyImport = createFileRoute('/resident/financial')()
+const ResidentEditProfileLazyImport = createFileRoute(
+  '/resident/edit-profile',
+)()
 const ResidentDashboardLazyImport = createFileRoute('/resident/dashboard')()
 
 // Create/Update Routes
@@ -94,6 +97,14 @@ const ResidentFinancialLazyRoute = ResidentFinancialLazyImport.update({
   getParentRoute: () => ResidentRouteLazyRoute,
 } as any).lazy(() =>
   import('./routes/resident/financial.lazy').then((d) => d.Route),
+)
+
+const ResidentEditProfileLazyRoute = ResidentEditProfileLazyImport.update({
+  id: '/edit-profile',
+  path: '/edit-profile',
+  getParentRoute: () => ResidentRouteLazyRoute,
+} as any).lazy(() =>
+  import('./routes/resident/edit-profile.lazy').then((d) => d.Route),
 )
 
 const ResidentDashboardLazyRoute = ResidentDashboardLazyImport.update({
@@ -169,6 +180,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResidentDashboardLazyImport
       parentRoute: typeof ResidentRouteLazyImport
     }
+    '/resident/edit-profile': {
+      id: '/resident/edit-profile'
+      path: '/edit-profile'
+      fullPath: '/resident/edit-profile'
+      preLoaderRoute: typeof ResidentEditProfileLazyImport
+      parentRoute: typeof ResidentRouteLazyImport
+    }
     '/resident/financial': {
       id: '/resident/financial'
       path: '/financial'
@@ -224,6 +242,7 @@ const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
 interface ResidentRouteLazyRouteChildren {
   ResidentContactRoute: typeof ResidentContactRoute
   ResidentDashboardLazyRoute: typeof ResidentDashboardLazyRoute
+  ResidentEditProfileLazyRoute: typeof ResidentEditProfileLazyRoute
   ResidentFinancialLazyRoute: typeof ResidentFinancialLazyRoute
   ResidentInquiriesLazyRoute: typeof ResidentInquiriesLazyRoute
   ResidentNoticesLazyRoute: typeof ResidentNoticesLazyRoute
@@ -234,6 +253,7 @@ interface ResidentRouteLazyRouteChildren {
 const ResidentRouteLazyRouteChildren: ResidentRouteLazyRouteChildren = {
   ResidentContactRoute: ResidentContactRoute,
   ResidentDashboardLazyRoute: ResidentDashboardLazyRoute,
+  ResidentEditProfileLazyRoute: ResidentEditProfileLazyRoute,
   ResidentFinancialLazyRoute: ResidentFinancialLazyRoute,
   ResidentInquiriesLazyRoute: ResidentInquiriesLazyRoute,
   ResidentNoticesLazyRoute: ResidentNoticesLazyRoute,
@@ -252,6 +272,7 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof AuthDashboardRoute
   '/resident/contact': typeof ResidentContactRoute
   '/resident/dashboard': typeof ResidentDashboardLazyRoute
+  '/resident/edit-profile': typeof ResidentEditProfileLazyRoute
   '/resident/financial': typeof ResidentFinancialLazyRoute
   '/resident/inquiries': typeof ResidentInquiriesLazyRoute
   '/resident/notices': typeof ResidentNoticesLazyRoute
@@ -267,6 +288,7 @@ export interface FileRoutesByTo {
   '/dashboard': typeof AuthDashboardRoute
   '/resident/contact': typeof ResidentContactRoute
   '/resident/dashboard': typeof ResidentDashboardLazyRoute
+  '/resident/edit-profile': typeof ResidentEditProfileLazyRoute
   '/resident/financial': typeof ResidentFinancialLazyRoute
   '/resident/inquiries': typeof ResidentInquiriesLazyRoute
   '/resident/notices': typeof ResidentNoticesLazyRoute
@@ -283,6 +305,7 @@ export interface FileRoutesById {
   '/_auth/dashboard': typeof AuthDashboardRoute
   '/resident/contact': typeof ResidentContactRoute
   '/resident/dashboard': typeof ResidentDashboardLazyRoute
+  '/resident/edit-profile': typeof ResidentEditProfileLazyRoute
   '/resident/financial': typeof ResidentFinancialLazyRoute
   '/resident/inquiries': typeof ResidentInquiriesLazyRoute
   '/resident/notices': typeof ResidentNoticesLazyRoute
@@ -300,6 +323,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/resident/contact'
     | '/resident/dashboard'
+    | '/resident/edit-profile'
     | '/resident/financial'
     | '/resident/inquiries'
     | '/resident/notices'
@@ -314,6 +338,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/resident/contact'
     | '/resident/dashboard'
+    | '/resident/edit-profile'
     | '/resident/financial'
     | '/resident/inquiries'
     | '/resident/notices'
@@ -328,6 +353,7 @@ export interface FileRouteTypes {
     | '/_auth/dashboard'
     | '/resident/contact'
     | '/resident/dashboard'
+    | '/resident/edit-profile'
     | '/resident/financial'
     | '/resident/inquiries'
     | '/resident/notices'
@@ -383,6 +409,7 @@ export const routeTree = rootRoute
       "children": [
         "/resident/contact",
         "/resident/dashboard",
+        "/resident/edit-profile",
         "/resident/financial",
         "/resident/inquiries",
         "/resident/notices",
@@ -400,6 +427,10 @@ export const routeTree = rootRoute
     },
     "/resident/dashboard": {
       "filePath": "resident/dashboard.lazy.tsx",
+      "parent": "/resident"
+    },
+    "/resident/edit-profile": {
+      "filePath": "resident/edit-profile.lazy.tsx",
       "parent": "/resident"
     },
     "/resident/financial": {
