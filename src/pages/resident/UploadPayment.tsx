@@ -15,7 +15,7 @@ function UploadPayment() {
 
         {/* Form page heading */}
         <div className='d-flex align-items-center gap-1 pt-5 mb-3'>
-            <span className='text-muted fw-bold d-flex align-items-center'>Dashboard</span>
+            <span className='text-muted fw-bold d-flex align-items-center'>Financial</span>
             <FaAngleRight size={12}/>
             <span className='text-dark fw-bold d-flex align-items-center'>Upload Payment</span>
         </div>
