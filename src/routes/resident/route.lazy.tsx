@@ -8,7 +8,7 @@ export const Route = createLazyFileRoute('/resident')({
 function RouteComponent() {
   console.log("render")
   return <>
-        <div className="d-flex vh-100 overflow-hidden flex-column flex-column-reverse flex-sm-row">
+        <div className="d-flex vh-100 flex-column flex-column-reverse flex-sm-row">
           <SideBar/>
           <div className='w-100 overflow-auto'>
             <Outlet/>

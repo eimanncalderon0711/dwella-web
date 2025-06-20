@@ -22,6 +22,9 @@ import { Route as AuthDashboardImport } from './routes/_auth/dashboard'
 // Create Virtual Routes
 
 const ResidentRouteLazyImport = createFileRoute('/resident')()
+const ResidentUploadPaymentLazyImport = createFileRoute(
+  '/resident/upload-payment',
+)()
 const ResidentProfileLazyImport = createFileRoute('/resident/profile')()
 const ResidentPaynowLazyImport = createFileRoute('/resident/paynow')()
 const ResidentNoticesLazyImport = createFileRoute('/resident/notices')()
@@ -59,6 +62,14 @@ const IndexRoute = IndexImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
 } as any)
+
+const ResidentUploadPaymentLazyRoute = ResidentUploadPaymentLazyImport.update({
+  id: '/upload-payment',
+  path: '/upload-payment',
+  getParentRoute: () => ResidentRouteLazyRoute,
+} as any).lazy(() =>
+  import('./routes/resident/upload-payment.lazy').then((d) => d.Route),
+)
 
 const ResidentProfileLazyRoute = ResidentProfileLazyImport.update({
   id: '/profile',
@@ -238,6 +249,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResidentProfileLazyImport
       parentRoute: typeof ResidentRouteLazyImport
     }
+    '/resident/upload-payment': {
+      id: '/resident/upload-payment'
+      path: '/upload-payment'
+      fullPath: '/resident/upload-payment'
+      preLoaderRoute: typeof ResidentUploadPaymentLazyImport
+      parentRoute: typeof ResidentRouteLazyImport
+    }
   }
 }
 
@@ -265,6 +283,7 @@ interface ResidentRouteLazyRouteChildren {
   ResidentNoticesLazyRoute: typeof ResidentNoticesLazyRoute
   ResidentPaynowLazyRoute: typeof ResidentPaynowLazyRoute
   ResidentProfileLazyRoute: typeof ResidentProfileLazyRoute
+  ResidentUploadPaymentLazyRoute: typeof ResidentUploadPaymentLazyRoute
 }
 
 const ResidentRouteLazyRouteChildren: ResidentRouteLazyRouteChildren = {
@@ -277,6 +296,7 @@ const ResidentRouteLazyRouteChildren: ResidentRouteLazyRouteChildren = {
   ResidentNoticesLazyRoute: ResidentNoticesLazyRoute,
   ResidentPaynowLazyRoute: ResidentPaynowLazyRoute,
   ResidentProfileLazyRoute: ResidentProfileLazyRoute,
+  ResidentUploadPaymentLazyRoute: ResidentUploadPaymentLazyRoute,
 }
 
 const ResidentRouteLazyRouteWithChildren =
@@ -297,6 +317,7 @@ export interface FileRoutesByFullPath {
   '/resident/notices': typeof ResidentNoticesLazyRoute
   '/resident/paynow': typeof ResidentPaynowLazyRoute
   '/resident/profile': typeof ResidentProfileLazyRoute
+  '/resident/upload-payment': typeof ResidentUploadPaymentLazyRoute
 }
 
 export interface FileRoutesByTo {
@@ -314,6 +335,7 @@ export interface FileRoutesByTo {
   '/resident/notices': typeof ResidentNoticesLazyRoute
   '/resident/paynow': typeof ResidentPaynowLazyRoute
   '/resident/profile': typeof ResidentProfileLazyRoute
+  '/resident/upload-payment': typeof ResidentUploadPaymentLazyRoute
 }
 
 export interface FileRoutesById {
@@ -332,6 +354,7 @@ export interface FileRoutesById {
   '/resident/notices': typeof ResidentNoticesLazyRoute
   '/resident/paynow': typeof ResidentPaynowLazyRoute
   '/resident/profile': typeof ResidentProfileLazyRoute
+  '/resident/upload-payment': typeof ResidentUploadPaymentLazyRoute
 }
 
 export interface FileRouteTypes {
@@ -351,6 +374,7 @@ export interface FileRouteTypes {
     | '/resident/notices'
     | '/resident/paynow'
     | '/resident/profile'
+    | '/resident/upload-payment'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -367,6 +391,7 @@ export interface FileRouteTypes {
     | '/resident/notices'
     | '/resident/paynow'
     | '/resident/profile'
+    | '/resident/upload-payment'
   id:
     | '__root__'
     | '/'
@@ -383,6 +408,7 @@ export interface FileRouteTypes {
     | '/resident/notices'
     | '/resident/paynow'
     | '/resident/profile'
+    | '/resident/upload-payment'
   fileRoutesById: FileRoutesById
 }
 
@@ -439,7 +465,8 @@ export const routeTree = rootRoute
         "/resident/inquiries",
         "/resident/notices",
         "/resident/paynow",
-        "/resident/profile"
+        "/resident/profile",
+        "/resident/upload-payment"
       ]
     },
     "/_auth/dashboard": {
@@ -480,6 +507,10 @@ export const routeTree = rootRoute
     },
     "/resident/profile": {
       "filePath": "resident/profile.lazy.tsx",
+      "parent": "/resident"
+    },
+    "/resident/upload-payment": {
+      "filePath": "resident/upload-payment.lazy.tsx",
       "parent": "/resident"
     }
   }
