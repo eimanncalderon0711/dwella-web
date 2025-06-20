@@ -9,7 +9,7 @@ function Contact() {
         {/* Header component*/}
         <Header>
             <div className="d-flex gap-3">
-                <h3 className='fw-bold'>Contact Admin</h3>
+                <h3 className='fw-bold'>Edit Profile</h3>
             </div>
         </Header>
 
@@ -17,7 +17,7 @@ function Contact() {
         <div className='d-flex align-items-center gap-1 pt-5 mb-3'>
             <span className='text-muted fw-bold d-flex align-items-center'>Dashboard</span>
             <FaAngleRight size={12}/>
-            <span className='text-dark fw-bold d-flex align-items-center'>Contact Admin</span>
+            <span className='text-dark fw-bold d-flex align-items-center'>Edit Profile</span>
         </div>
 
         {/* Pay now Form */}

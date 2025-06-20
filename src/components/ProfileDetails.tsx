@@ -1,7 +1,12 @@
+import { useNavigate } from "@tanstack/react-router"
 import { Col, Row } from "react-bootstrap"
 import { MdArrowOutward } from "react-icons/md"
 
 function ProfileDetails() {
+
+    const navigate = useNavigate();
+
+  
   return (
     <div className="p-4 rounded-3 m-auto" style={{ backgroundColor: "#F2F2F7", width: "90%"}}>
 
@@ -9,7 +14,7 @@ function ProfileDetails() {
         <Row>
             <Col className="d-flex justify-content-between align-items-center">
                 <div className="fs-4 fw-bold">Details</div>
-                <div className="bg-primary px-3 py-2 text-light d-flex gap-2 align-items-center rounded-3" style={{cursor:"pointer"}}>
+                <div onClick={() => navigate({to: '/resident/contact'})} className="bg-primary px-3 py-2 text-light d-flex gap-2 align-items-center rounded-3" style={{cursor:"pointer"}}>
                     <span className="fw-bold">Edit</span>
                     <MdArrowOutward size={25}/>
                 </div>

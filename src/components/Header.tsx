@@ -30,8 +30,8 @@ function Header({children} : HeaderProps) {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-            <Dropdown.Item href="#/settings" onClick={() => navigate({to: '/resident/profile'})}>View Profile</Dropdown.Item>
-            <Dropdown.Item href="#/account" onClick={() => navigate({to: '/resident/contact'})}>Account Settings</Dropdown.Item>
+            <Dropdown.Item onClick={() => navigate({to: '/resident/profile'})}>View Profile</Dropdown.Item>
+            <Dropdown.Item onClick={() => navigate({to: '/resident/account'})}>Account Settings</Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Item href="#/logout" className="text-danger">Logout</Dropdown.Item>
             </Dropdown.Menu>
