@@ -14,10 +14,17 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as LoginImport } from './routes/login'
+import { Route as AdminRouteImport } from './routes/admin/route'
 import { Route as AuthRouteImport } from './routes/_auth/route'
 import { Route as IndexImport } from './routes/index'
+import { Route as AdminIndexImport } from './routes/admin/index'
 import { Route as ResidentSubmitRequestImport } from './routes/resident/submit-request'
 import { Route as ResidentContactImport } from './routes/resident/contact'
+import { Route as AdminUnpaidAccountsImport } from './routes/admin/unpaid-accounts'
+import { Route as AdminResidentsImport } from './routes/admin/residents'
+import { Route as AdminNotificationsImport } from './routes/admin/notifications'
+import { Route as AdminFinancialImport } from './routes/admin/financial'
+import { Route as AdminEmployeesImport } from './routes/admin/employees'
 import { Route as AuthDashboardImport } from './routes/_auth/dashboard'
 
 // Create Virtual Routes
@@ -53,6 +60,12 @@ const LoginRoute = LoginImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const AdminRouteRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const AuthRouteRoute = AuthRouteImport.update({
   id: '/_auth',
   getParentRoute: () => rootRoute,
@@ -62,6 +75,12 @@ const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRoute,
+} as any)
+
+const AdminIndexRoute = AdminIndexImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRouteRoute,
 } as any)
 
 const ResidentUploadPaymentLazyRoute = ResidentUploadPaymentLazyImport.update({
@@ -148,6 +167,36 @@ const ResidentContactRoute = ResidentContactImport.update({
   getParentRoute: () => ResidentRouteLazyRoute,
 } as any)
 
+const AdminUnpaidAccountsRoute = AdminUnpaidAccountsImport.update({
+  id: '/unpaid-accounts',
+  path: '/unpaid-accounts',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+
+const AdminResidentsRoute = AdminResidentsImport.update({
+  id: '/residents',
+  path: '/residents',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+
+const AdminNotificationsRoute = AdminNotificationsImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+
+const AdminFinancialRoute = AdminFinancialImport.update({
+  id: '/financial',
+  path: '/financial',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+
+const AdminEmployeesRoute = AdminEmployeesImport.update({
+  id: '/employees',
+  path: '/employees',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+
 const AuthDashboardRoute = AuthDashboardImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -172,6 +221,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRoute
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRoute
+    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -192,6 +248,41 @@ declare module '@tanstack/react-router' {
       fullPath: '/dashboard'
       preLoaderRoute: typeof AuthDashboardImport
       parentRoute: typeof AuthRouteImport
+    }
+    '/admin/employees': {
+      id: '/admin/employees'
+      path: '/employees'
+      fullPath: '/admin/employees'
+      preLoaderRoute: typeof AdminEmployeesImport
+      parentRoute: typeof AdminRouteImport
+    }
+    '/admin/financial': {
+      id: '/admin/financial'
+      path: '/financial'
+      fullPath: '/admin/financial'
+      preLoaderRoute: typeof AdminFinancialImport
+      parentRoute: typeof AdminRouteImport
+    }
+    '/admin/notifications': {
+      id: '/admin/notifications'
+      path: '/notifications'
+      fullPath: '/admin/notifications'
+      preLoaderRoute: typeof AdminNotificationsImport
+      parentRoute: typeof AdminRouteImport
+    }
+    '/admin/residents': {
+      id: '/admin/residents'
+      path: '/residents'
+      fullPath: '/admin/residents'
+      preLoaderRoute: typeof AdminResidentsImport
+      parentRoute: typeof AdminRouteImport
+    }
+    '/admin/unpaid-accounts': {
+      id: '/admin/unpaid-accounts'
+      path: '/unpaid-accounts'
+      fullPath: '/admin/unpaid-accounts'
+      preLoaderRoute: typeof AdminUnpaidAccountsImport
+      parentRoute: typeof AdminRouteImport
     }
     '/resident/contact': {
       id: '/resident/contact'
@@ -270,6 +361,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResidentUploadPaymentLazyImport
       parentRoute: typeof ResidentRouteLazyImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexImport
+      parentRoute: typeof AdminRouteImport
+    }
   }
 }
 
@@ -285,6 +383,28 @@ const AuthRouteRouteChildren: AuthRouteRouteChildren = {
 
 const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
   AuthRouteRouteChildren,
+)
+
+interface AdminRouteRouteChildren {
+  AdminEmployeesRoute: typeof AdminEmployeesRoute
+  AdminFinancialRoute: typeof AdminFinancialRoute
+  AdminNotificationsRoute: typeof AdminNotificationsRoute
+  AdminResidentsRoute: typeof AdminResidentsRoute
+  AdminUnpaidAccountsRoute: typeof AdminUnpaidAccountsRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteRouteChildren: AdminRouteRouteChildren = {
+  AdminEmployeesRoute: AdminEmployeesRoute,
+  AdminFinancialRoute: AdminFinancialRoute,
+  AdminNotificationsRoute: AdminNotificationsRoute,
+  AdminResidentsRoute: AdminResidentsRoute,
+  AdminUnpaidAccountsRoute: AdminUnpaidAccountsRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteRouteWithChildren = AdminRouteRoute._addFileChildren(
+  AdminRouteRouteChildren,
 )
 
 interface ResidentRouteLazyRouteChildren {
@@ -321,9 +441,15 @@ const ResidentRouteLazyRouteWithChildren =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '': typeof AuthRouteRouteWithChildren
+  '/admin': typeof AdminRouteRouteWithChildren
   '/login': typeof LoginRoute
   '/resident': typeof ResidentRouteLazyRouteWithChildren
   '/dashboard': typeof AuthDashboardRoute
+  '/admin/employees': typeof AdminEmployeesRoute
+  '/admin/financial': typeof AdminFinancialRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/residents': typeof AdminResidentsRoute
+  '/admin/unpaid-accounts': typeof AdminUnpaidAccountsRoute
   '/resident/contact': typeof ResidentContactRoute
   '/resident/submit-request': typeof ResidentSubmitRequestRoute
   '/resident/account': typeof ResidentAccountLazyRoute
@@ -335,6 +461,7 @@ export interface FileRoutesByFullPath {
   '/resident/paynow': typeof ResidentPaynowLazyRoute
   '/resident/profile': typeof ResidentProfileLazyRoute
   '/resident/upload-payment': typeof ResidentUploadPaymentLazyRoute
+  '/admin/': typeof AdminIndexRoute
 }
 
 export interface FileRoutesByTo {
@@ -343,6 +470,11 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/resident': typeof ResidentRouteLazyRouteWithChildren
   '/dashboard': typeof AuthDashboardRoute
+  '/admin/employees': typeof AdminEmployeesRoute
+  '/admin/financial': typeof AdminFinancialRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/residents': typeof AdminResidentsRoute
+  '/admin/unpaid-accounts': typeof AdminUnpaidAccountsRoute
   '/resident/contact': typeof ResidentContactRoute
   '/resident/submit-request': typeof ResidentSubmitRequestRoute
   '/resident/account': typeof ResidentAccountLazyRoute
@@ -354,15 +486,22 @@ export interface FileRoutesByTo {
   '/resident/paynow': typeof ResidentPaynowLazyRoute
   '/resident/profile': typeof ResidentProfileLazyRoute
   '/resident/upload-payment': typeof ResidentUploadPaymentLazyRoute
+  '/admin': typeof AdminIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/_auth': typeof AuthRouteRouteWithChildren
+  '/admin': typeof AdminRouteRouteWithChildren
   '/login': typeof LoginRoute
   '/resident': typeof ResidentRouteLazyRouteWithChildren
   '/_auth/dashboard': typeof AuthDashboardRoute
+  '/admin/employees': typeof AdminEmployeesRoute
+  '/admin/financial': typeof AdminFinancialRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/residents': typeof AdminResidentsRoute
+  '/admin/unpaid-accounts': typeof AdminUnpaidAccountsRoute
   '/resident/contact': typeof ResidentContactRoute
   '/resident/submit-request': typeof ResidentSubmitRequestRoute
   '/resident/account': typeof ResidentAccountLazyRoute
@@ -374,6 +513,7 @@ export interface FileRoutesById {
   '/resident/paynow': typeof ResidentPaynowLazyRoute
   '/resident/profile': typeof ResidentProfileLazyRoute
   '/resident/upload-payment': typeof ResidentUploadPaymentLazyRoute
+  '/admin/': typeof AdminIndexRoute
 }
 
 export interface FileRouteTypes {
@@ -381,9 +521,15 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | ''
+    | '/admin'
     | '/login'
     | '/resident'
     | '/dashboard'
+    | '/admin/employees'
+    | '/admin/financial'
+    | '/admin/notifications'
+    | '/admin/residents'
+    | '/admin/unpaid-accounts'
     | '/resident/contact'
     | '/resident/submit-request'
     | '/resident/account'
@@ -395,6 +541,7 @@ export interface FileRouteTypes {
     | '/resident/paynow'
     | '/resident/profile'
     | '/resident/upload-payment'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -402,6 +549,11 @@ export interface FileRouteTypes {
     | '/login'
     | '/resident'
     | '/dashboard'
+    | '/admin/employees'
+    | '/admin/financial'
+    | '/admin/notifications'
+    | '/admin/residents'
+    | '/admin/unpaid-accounts'
     | '/resident/contact'
     | '/resident/submit-request'
     | '/resident/account'
@@ -413,13 +565,20 @@ export interface FileRouteTypes {
     | '/resident/paynow'
     | '/resident/profile'
     | '/resident/upload-payment'
+    | '/admin'
   id:
     | '__root__'
     | '/'
     | '/_auth'
+    | '/admin'
     | '/login'
     | '/resident'
     | '/_auth/dashboard'
+    | '/admin/employees'
+    | '/admin/financial'
+    | '/admin/notifications'
+    | '/admin/residents'
+    | '/admin/unpaid-accounts'
     | '/resident/contact'
     | '/resident/submit-request'
     | '/resident/account'
@@ -431,12 +590,14 @@ export interface FileRouteTypes {
     | '/resident/paynow'
     | '/resident/profile'
     | '/resident/upload-payment'
+    | '/admin/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRouteRoute: typeof AuthRouteRouteWithChildren
+  AdminRouteRoute: typeof AdminRouteRouteWithChildren
   LoginRoute: typeof LoginRoute
   ResidentRouteLazyRoute: typeof ResidentRouteLazyRouteWithChildren
 }
@@ -444,6 +605,7 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRouteRoute: AuthRouteRouteWithChildren,
+  AdminRouteRoute: AdminRouteRouteWithChildren,
   LoginRoute: LoginRoute,
   ResidentRouteLazyRoute: ResidentRouteLazyRouteWithChildren,
 }
@@ -460,6 +622,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/_auth",
+        "/admin",
         "/login",
         "/resident"
       ]
@@ -471,6 +634,17 @@ export const routeTree = rootRoute
       "filePath": "_auth/route.tsx",
       "children": [
         "/_auth/dashboard"
+      ]
+    },
+    "/admin": {
+      "filePath": "admin/route.tsx",
+      "children": [
+        "/admin/employees",
+        "/admin/financial",
+        "/admin/notifications",
+        "/admin/residents",
+        "/admin/unpaid-accounts",
+        "/admin/"
       ]
     },
     "/login": {
@@ -495,6 +669,26 @@ export const routeTree = rootRoute
     "/_auth/dashboard": {
       "filePath": "_auth/dashboard.tsx",
       "parent": "/_auth"
+    },
+    "/admin/employees": {
+      "filePath": "admin/employees.tsx",
+      "parent": "/admin"
+    },
+    "/admin/financial": {
+      "filePath": "admin/financial.tsx",
+      "parent": "/admin"
+    },
+    "/admin/notifications": {
+      "filePath": "admin/notifications.tsx",
+      "parent": "/admin"
+    },
+    "/admin/residents": {
+      "filePath": "admin/residents.tsx",
+      "parent": "/admin"
+    },
+    "/admin/unpaid-accounts": {
+      "filePath": "admin/unpaid-accounts.tsx",
+      "parent": "/admin"
     },
     "/resident/contact": {
       "filePath": "resident/contact.tsx",
@@ -539,6 +733,10 @@ export const routeTree = rootRoute
     "/resident/upload-payment": {
       "filePath": "resident/upload-payment.lazy.tsx",
       "parent": "/resident"
+    },
+    "/admin/": {
+      "filePath": "admin/index.tsx",
+      "parent": "/admin"
     }
   }
 }

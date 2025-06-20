@@ -1,7 +1,7 @@
-import { createLazyFileRoute, Outlet } from '@tanstack/react-router'
-import SideBar from '../../components/resident/sidebar/SideBar'
+import { createFileRoute, Outlet } from '@tanstack/react-router'
+import SideBar from '../../components/admin/sidebar/SideBar'
 
-export const Route = createLazyFileRoute('/resident')({
+export const Route = createFileRoute('/admin')({
   component: RouteComponent,
 })
 
