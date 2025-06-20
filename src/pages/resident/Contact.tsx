@@ -49,7 +49,7 @@ function Contact() {
                 <Col xs={12}>
                     <Form.Group className="mb-3" controlId="formMessage">
                         <Form.Label >Message</Form.Label>
-                        <Form.Control as="textarea" type="text" placeholder="e.g., Water service will be unavailable on May 6 from 8AM–5PM."/>
+                        <Form.Control as="textarea" type="text" rows={4} placeholder="e.g., Water service will be unavailable on May 6 from 8AM–5PM."/>
                     </Form.Group>
                 </Col>
 

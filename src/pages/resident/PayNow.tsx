@@ -60,7 +60,7 @@ function PayNow() {
                 <Col xs={12}>
                     <Form.Group className="mb-3" controlId="formRemarks">
                         <Form.Label >Remarks</Form.Label>
-                        <Form.Control as="textarea" type="text" placeholder="Remarks"/>
+                        <Form.Control as="textarea" type="text" rows={3} placeholder="Remarks"/>
                     </Form.Group>
                 </Col>
                 <Col className='d-flex gap-3 flex-wrap align-items-center justify-content-end mt-3'>

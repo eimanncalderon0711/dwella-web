@@ -1,5 +1,6 @@
 import {createRootRouteWithContext,Outlet} from "@tanstack/react-router";
 import { useAuth } from "../contexts/auth/AuthContext";
+import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 
 export const Route = createRootRouteWithContext<{
   auth: ReturnType<typeof useAuth>;
@@ -13,6 +14,7 @@ function __root() {
     <>
     {/* <Link to="/resident">Resident</Link> */}
     <Outlet />
+    <TanStackRouterDevtools/>
     </>
   )
 }

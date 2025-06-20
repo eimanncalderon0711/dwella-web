@@ -1,6 +1,7 @@
 import { Dropdown } from 'react-bootstrap'
 import  logo from "../assets/_ 1.png"
 import type { ReactNode } from 'react'
+import { useNavigate } from '@tanstack/react-router';
 
 
 interface HeaderProps {
@@ -8,6 +9,8 @@ interface HeaderProps {
 };
 
 function Header({children} : HeaderProps) {
+  const navigate = useNavigate();
+
   return (
     <div className="d-flex justify-content-start flex-column-reverse flex-sm-row justify-content-sm-between align-items-center gap-5 gap-md-3 flex-wrap-reverse">
         {children}
@@ -27,8 +30,8 @@ function Header({children} : HeaderProps) {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-            <Dropdown.Item href="#/settings">Settings</Dropdown.Item>
-            <Dropdown.Item href="#/account">Account</Dropdown.Item>
+            <Dropdown.Item href="#/settings" onClick={() => navigate({to: '/resident/profile'})}>View Profile</Dropdown.Item>
+            <Dropdown.Item href="#/account" onClick={() => navigate({to: '/resident/contact'})}>Account Settings</Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Item href="#/logout" className="text-danger">Logout</Dropdown.Item>
             </Dropdown.Menu>
