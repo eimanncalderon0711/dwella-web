@@ -22,6 +22,7 @@ import { Route as AuthDashboardImport } from './routes/_auth/dashboard'
 // Create Virtual Routes
 
 const ResidentRouteLazyImport = createFileRoute('/resident')()
+const ResidentProfileLazyImport = createFileRoute('/resident/profile')()
 const ResidentPaynowLazyImport = createFileRoute('/resident/paynow')()
 const ResidentNoticesLazyImport = createFileRoute('/resident/notices')()
 const ResidentInquiriesLazyImport = createFileRoute('/resident/inquiries')()
@@ -54,6 +55,14 @@ const IndexRoute = IndexImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
 } as any)
+
+const ResidentProfileLazyRoute = ResidentProfileLazyImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => ResidentRouteLazyRoute,
+} as any).lazy(() =>
+  import('./routes/resident/profile.lazy').then((d) => d.Route),
+)
 
 const ResidentPaynowLazyRoute = ResidentPaynowLazyImport.update({
   id: '/paynow',
@@ -188,6 +197,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResidentPaynowLazyImport
       parentRoute: typeof ResidentRouteLazyImport
     }
+    '/resident/profile': {
+      id: '/resident/profile'
+      path: '/profile'
+      fullPath: '/resident/profile'
+      preLoaderRoute: typeof ResidentProfileLazyImport
+      parentRoute: typeof ResidentRouteLazyImport
+    }
   }
 }
 
@@ -212,6 +228,7 @@ interface ResidentRouteLazyRouteChildren {
   ResidentInquiriesLazyRoute: typeof ResidentInquiriesLazyRoute
   ResidentNoticesLazyRoute: typeof ResidentNoticesLazyRoute
   ResidentPaynowLazyRoute: typeof ResidentPaynowLazyRoute
+  ResidentProfileLazyRoute: typeof ResidentProfileLazyRoute
 }
 
 const ResidentRouteLazyRouteChildren: ResidentRouteLazyRouteChildren = {
@@ -221,6 +238,7 @@ const ResidentRouteLazyRouteChildren: ResidentRouteLazyRouteChildren = {
   ResidentInquiriesLazyRoute: ResidentInquiriesLazyRoute,
   ResidentNoticesLazyRoute: ResidentNoticesLazyRoute,
   ResidentPaynowLazyRoute: ResidentPaynowLazyRoute,
+  ResidentProfileLazyRoute: ResidentProfileLazyRoute,
 }
 
 const ResidentRouteLazyRouteWithChildren =
@@ -238,6 +256,7 @@ export interface FileRoutesByFullPath {
   '/resident/inquiries': typeof ResidentInquiriesLazyRoute
   '/resident/notices': typeof ResidentNoticesLazyRoute
   '/resident/paynow': typeof ResidentPaynowLazyRoute
+  '/resident/profile': typeof ResidentProfileLazyRoute
 }
 
 export interface FileRoutesByTo {
@@ -252,6 +271,7 @@ export interface FileRoutesByTo {
   '/resident/inquiries': typeof ResidentInquiriesLazyRoute
   '/resident/notices': typeof ResidentNoticesLazyRoute
   '/resident/paynow': typeof ResidentPaynowLazyRoute
+  '/resident/profile': typeof ResidentProfileLazyRoute
 }
 
 export interface FileRoutesById {
@@ -267,6 +287,7 @@ export interface FileRoutesById {
   '/resident/inquiries': typeof ResidentInquiriesLazyRoute
   '/resident/notices': typeof ResidentNoticesLazyRoute
   '/resident/paynow': typeof ResidentPaynowLazyRoute
+  '/resident/profile': typeof ResidentProfileLazyRoute
 }
 
 export interface FileRouteTypes {
@@ -283,6 +304,7 @@ export interface FileRouteTypes {
     | '/resident/inquiries'
     | '/resident/notices'
     | '/resident/paynow'
+    | '/resident/profile'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -296,6 +318,7 @@ export interface FileRouteTypes {
     | '/resident/inquiries'
     | '/resident/notices'
     | '/resident/paynow'
+    | '/resident/profile'
   id:
     | '__root__'
     | '/'
@@ -309,6 +332,7 @@ export interface FileRouteTypes {
     | '/resident/inquiries'
     | '/resident/notices'
     | '/resident/paynow'
+    | '/resident/profile'
   fileRoutesById: FileRoutesById
 }
 
@@ -362,7 +386,8 @@ export const routeTree = rootRoute
         "/resident/financial",
         "/resident/inquiries",
         "/resident/notices",
-        "/resident/paynow"
+        "/resident/paynow",
+        "/resident/profile"
       ]
     },
     "/_auth/dashboard": {
@@ -391,6 +416,10 @@ export const routeTree = rootRoute
     },
     "/resident/paynow": {
       "filePath": "resident/paynow.lazy.tsx",
+      "parent": "/resident"
+    },
+    "/resident/profile": {
+      "filePath": "resident/profile.lazy.tsx",
       "parent": "/resident"
     }
   }
