@@ -1,7 +1,6 @@
 import Header from '../../components/Header'
 import { Container } from 'react-bootstrap'
 import Search from '../../components/Search'
-import { Link } from '@tanstack/react-router'
 import { IoMdAdd } from 'react-icons/io'
 import InquiriesTable from '../../components/resident/tables/InquiriesTable'
 
@@ -19,10 +18,10 @@ function Inquiries() {
       {/* Search engine component with request button*/}
       <Search>
         <div className="align-self-start">
-            <Link to='/resident' className="text-decoration-none d-flex align-items-center gap-3 text-light px-5 py-3 rounded-3 fw-bold" style={{backgroundColor:"#344CB7"}}>
+            <a href='/resident/submit-request' className="text-decoration-none d-flex align-items-center gap-3 text-light px-5 py-3 rounded-3 fw-bold" style={{backgroundColor:"#344CB7"}}>
                 <IoMdAdd size={25}/>
                 Request
-            </Link>
+            </a>
         </div>
       </Search>
 

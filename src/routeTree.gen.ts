@@ -16,6 +16,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as LoginImport } from './routes/login'
 import { Route as AuthRouteImport } from './routes/_auth/route'
 import { Route as IndexImport } from './routes/index'
+import { Route as ResidentSubmitRequestImport } from './routes/resident/submit-request'
 import { Route as ResidentContactImport } from './routes/resident/contact'
 import { Route as AuthDashboardImport } from './routes/_auth/dashboard'
 
@@ -124,6 +125,12 @@ const ResidentAccountLazyRoute = ResidentAccountLazyImport.update({
   import('./routes/resident/account.lazy').then((d) => d.Route),
 )
 
+const ResidentSubmitRequestRoute = ResidentSubmitRequestImport.update({
+  id: '/submit-request',
+  path: '/submit-request',
+  getParentRoute: () => ResidentRouteLazyRoute,
+} as any)
+
 const ResidentContactRoute = ResidentContactImport.update({
   id: '/contact',
   path: '/contact',
@@ -180,6 +187,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/resident/contact'
       preLoaderRoute: typeof ResidentContactImport
+      parentRoute: typeof ResidentRouteLazyImport
+    }
+    '/resident/submit-request': {
+      id: '/resident/submit-request'
+      path: '/submit-request'
+      fullPath: '/resident/submit-request'
+      preLoaderRoute: typeof ResidentSubmitRequestImport
       parentRoute: typeof ResidentRouteLazyImport
     }
     '/resident/account': {
@@ -257,6 +271,7 @@ const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
 
 interface ResidentRouteLazyRouteChildren {
   ResidentContactRoute: typeof ResidentContactRoute
+  ResidentSubmitRequestRoute: typeof ResidentSubmitRequestRoute
   ResidentAccountLazyRoute: typeof ResidentAccountLazyRoute
   ResidentDashboardLazyRoute: typeof ResidentDashboardLazyRoute
   ResidentEditProfileLazyRoute: typeof ResidentEditProfileLazyRoute
@@ -269,6 +284,7 @@ interface ResidentRouteLazyRouteChildren {
 
 const ResidentRouteLazyRouteChildren: ResidentRouteLazyRouteChildren = {
   ResidentContactRoute: ResidentContactRoute,
+  ResidentSubmitRequestRoute: ResidentSubmitRequestRoute,
   ResidentAccountLazyRoute: ResidentAccountLazyRoute,
   ResidentDashboardLazyRoute: ResidentDashboardLazyRoute,
   ResidentEditProfileLazyRoute: ResidentEditProfileLazyRoute,
@@ -289,6 +305,7 @@ export interface FileRoutesByFullPath {
   '/resident': typeof ResidentRouteLazyRouteWithChildren
   '/dashboard': typeof AuthDashboardRoute
   '/resident/contact': typeof ResidentContactRoute
+  '/resident/submit-request': typeof ResidentSubmitRequestRoute
   '/resident/account': typeof ResidentAccountLazyRoute
   '/resident/dashboard': typeof ResidentDashboardLazyRoute
   '/resident/edit-profile': typeof ResidentEditProfileLazyRoute
@@ -306,6 +323,7 @@ export interface FileRoutesByTo {
   '/resident': typeof ResidentRouteLazyRouteWithChildren
   '/dashboard': typeof AuthDashboardRoute
   '/resident/contact': typeof ResidentContactRoute
+  '/resident/submit-request': typeof ResidentSubmitRequestRoute
   '/resident/account': typeof ResidentAccountLazyRoute
   '/resident/dashboard': typeof ResidentDashboardLazyRoute
   '/resident/edit-profile': typeof ResidentEditProfileLazyRoute
@@ -324,6 +342,7 @@ export interface FileRoutesById {
   '/resident': typeof ResidentRouteLazyRouteWithChildren
   '/_auth/dashboard': typeof AuthDashboardRoute
   '/resident/contact': typeof ResidentContactRoute
+  '/resident/submit-request': typeof ResidentSubmitRequestRoute
   '/resident/account': typeof ResidentAccountLazyRoute
   '/resident/dashboard': typeof ResidentDashboardLazyRoute
   '/resident/edit-profile': typeof ResidentEditProfileLazyRoute
@@ -343,6 +362,7 @@ export interface FileRouteTypes {
     | '/resident'
     | '/dashboard'
     | '/resident/contact'
+    | '/resident/submit-request'
     | '/resident/account'
     | '/resident/dashboard'
     | '/resident/edit-profile'
@@ -359,6 +379,7 @@ export interface FileRouteTypes {
     | '/resident'
     | '/dashboard'
     | '/resident/contact'
+    | '/resident/submit-request'
     | '/resident/account'
     | '/resident/dashboard'
     | '/resident/edit-profile'
@@ -375,6 +396,7 @@ export interface FileRouteTypes {
     | '/resident'
     | '/_auth/dashboard'
     | '/resident/contact'
+    | '/resident/submit-request'
     | '/resident/account'
     | '/resident/dashboard'
     | '/resident/edit-profile'
@@ -432,6 +454,7 @@ export const routeTree = rootRoute
       "filePath": "resident/route.lazy.tsx",
       "children": [
         "/resident/contact",
+        "/resident/submit-request",
         "/resident/account",
         "/resident/dashboard",
         "/resident/edit-profile",
@@ -448,6 +471,10 @@ export const routeTree = rootRoute
     },
     "/resident/contact": {
       "filePath": "resident/contact.tsx",
+      "parent": "/resident"
+    },
+    "/resident/submit-request": {
+      "filePath": "resident/submit-request.tsx",
       "parent": "/resident"
     },
     "/resident/account": {
