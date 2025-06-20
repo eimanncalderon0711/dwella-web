@@ -35,15 +35,16 @@
 }
 
 @media (max-width: 567px ) {
-  /* .show-sidebar{
-    position: absolute;
+  .show-sidebar{
+    position: sticky;
+    bottom: 0;
     background-color: #dcdef5;
-    top: 0;
+    /* top: 0;
     bottom: 0;
     z-index: 10;
     transition-delay: 300ms ease-in-out;
-    padding: 3px 0.5rem;
-  } */
+    padding: 3px 0.5rem; */
+  } 
 
   .nav-link{
   font-size: 1rem;
