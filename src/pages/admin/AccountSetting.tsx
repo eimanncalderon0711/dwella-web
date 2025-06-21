@@ -1,6 +1,6 @@
-import { Col, Container, Form, Row } from 'react-bootstrap'
-import Header from '../../components/Header'
-import { FaAngleRight } from 'react-icons/fa6'
+import { Col, Container, Form, Row } from "react-bootstrap"
+import Header from "../../components/Header"
+import { FaAngleRight } from "react-icons/fa6"
 
 function AccountSetting() {
   return (

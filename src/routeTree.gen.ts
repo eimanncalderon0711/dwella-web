@@ -25,6 +25,7 @@ import { Route as AdminResidentsImport } from './routes/admin/residents'
 import { Route as AdminNotificationsImport } from './routes/admin/notifications'
 import { Route as AdminFinancialImport } from './routes/admin/financial'
 import { Route as AdminEmployeesImport } from './routes/admin/employees'
+import { Route as AdminAccountImport } from './routes/admin/account'
 import { Route as AuthDashboardImport } from './routes/_auth/dashboard'
 
 // Create Virtual Routes
@@ -197,6 +198,12 @@ const AdminEmployeesRoute = AdminEmployeesImport.update({
   getParentRoute: () => AdminRouteRoute,
 } as any)
 
+const AdminAccountRoute = AdminAccountImport.update({
+  id: '/account',
+  path: '/account',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+
 const AuthDashboardRoute = AuthDashboardImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -248,6 +255,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/dashboard'
       preLoaderRoute: typeof AuthDashboardImport
       parentRoute: typeof AuthRouteImport
+    }
+    '/admin/account': {
+      id: '/admin/account'
+      path: '/account'
+      fullPath: '/admin/account'
+      preLoaderRoute: typeof AdminAccountImport
+      parentRoute: typeof AdminRouteImport
     }
     '/admin/employees': {
       id: '/admin/employees'
@@ -386,6 +400,7 @@ const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
 )
 
 interface AdminRouteRouteChildren {
+  AdminAccountRoute: typeof AdminAccountRoute
   AdminEmployeesRoute: typeof AdminEmployeesRoute
   AdminFinancialRoute: typeof AdminFinancialRoute
   AdminNotificationsRoute: typeof AdminNotificationsRoute
@@ -395,6 +410,7 @@ interface AdminRouteRouteChildren {
 }
 
 const AdminRouteRouteChildren: AdminRouteRouteChildren = {
+  AdminAccountRoute: AdminAccountRoute,
   AdminEmployeesRoute: AdminEmployeesRoute,
   AdminFinancialRoute: AdminFinancialRoute,
   AdminNotificationsRoute: AdminNotificationsRoute,
@@ -445,6 +461,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/resident': typeof ResidentRouteLazyRouteWithChildren
   '/dashboard': typeof AuthDashboardRoute
+  '/admin/account': typeof AdminAccountRoute
   '/admin/employees': typeof AdminEmployeesRoute
   '/admin/financial': typeof AdminFinancialRoute
   '/admin/notifications': typeof AdminNotificationsRoute
@@ -470,6 +487,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/resident': typeof ResidentRouteLazyRouteWithChildren
   '/dashboard': typeof AuthDashboardRoute
+  '/admin/account': typeof AdminAccountRoute
   '/admin/employees': typeof AdminEmployeesRoute
   '/admin/financial': typeof AdminFinancialRoute
   '/admin/notifications': typeof AdminNotificationsRoute
@@ -497,6 +515,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/resident': typeof ResidentRouteLazyRouteWithChildren
   '/_auth/dashboard': typeof AuthDashboardRoute
+  '/admin/account': typeof AdminAccountRoute
   '/admin/employees': typeof AdminEmployeesRoute
   '/admin/financial': typeof AdminFinancialRoute
   '/admin/notifications': typeof AdminNotificationsRoute
@@ -525,6 +544,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/resident'
     | '/dashboard'
+    | '/admin/account'
     | '/admin/employees'
     | '/admin/financial'
     | '/admin/notifications'
@@ -549,6 +569,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/resident'
     | '/dashboard'
+    | '/admin/account'
     | '/admin/employees'
     | '/admin/financial'
     | '/admin/notifications'
@@ -574,6 +595,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/resident'
     | '/_auth/dashboard'
+    | '/admin/account'
     | '/admin/employees'
     | '/admin/financial'
     | '/admin/notifications'
@@ -639,6 +661,7 @@ export const routeTree = rootRoute
     "/admin": {
       "filePath": "admin/route.tsx",
       "children": [
+        "/admin/account",
         "/admin/employees",
         "/admin/financial",
         "/admin/notifications",
@@ -669,6 +692,10 @@ export const routeTree = rootRoute
     "/_auth/dashboard": {
       "filePath": "_auth/dashboard.tsx",
       "parent": "/_auth"
+    },
+    "/admin/account": {
+      "filePath": "admin/account.tsx",
+      "parent": "/admin"
     },
     "/admin/employees": {
       "filePath": "admin/employees.tsx",
