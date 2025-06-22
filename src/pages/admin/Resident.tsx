@@ -11,7 +11,7 @@ function Resident() {
       {/* Header component */}
       <Header path={'admin'}>
         <div className="d-flex gap-3">
-            <h3 className='fw-bold'>Residents</h3>
+            <h3 className='fw-bold'>Inquiries</h3>
         </div>
       </Header>
       
