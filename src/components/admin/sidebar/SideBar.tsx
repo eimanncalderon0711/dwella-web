@@ -49,7 +49,7 @@ function SideBar() {
               </span>
             </Link>
             
-            <Link to="/admin/financial" className={`text-decoration-none d-flex align-items-center fw-bold gap-2 rounded ${location.pathname.startsWith('/admin/financial') ? 'link-active' : 'link-inactive'}`}>
+            <Link to="/admin/financial/records" className={`text-decoration-none d-flex align-items-center fw-bold gap-2 rounded ${location.pathname.startsWith('/admin/financial') ? 'link-active' : 'link-inactive'}`}>
               <AiOutlineLineChart />
               <span className={`${ isMenuOpen ? "d-block" : "d-none"} d-md-block`}>
               Financial
