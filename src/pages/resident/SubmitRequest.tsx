@@ -7,7 +7,7 @@ function SubmitRequest() {
   return (
     <Container className="pt-5 d-flex flex-column w-100" style={{maxWidth:"70rem"}}>
         {/* Header component*/}
-        <Header>
+        <Header path={'resident'}>
             <div className="d-flex gap-3">
                 <h3 className='fw-bold'>Submit Request</h3>
             </div>

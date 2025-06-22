@@ -26,8 +26,8 @@ import { Route as AdminProfileImport } from './routes/admin/profile'
 import { Route as AdminNotificationsImport } from './routes/admin/notifications'
 import { Route as AdminFinancialImport } from './routes/admin/financial'
 import { Route as AdminEmployeesImport } from './routes/admin/employees'
-import { Route as AdminAccountImport } from './routes/admin/account'
 import { Route as AdminEditProfileImport } from './routes/admin/edit-profile'
+import { Route as AdminAccountImport } from './routes/admin/account'
 import { Route as AuthDashboardImport } from './routes/_auth/dashboard'
 
 // Create Virtual Routes
@@ -206,14 +206,15 @@ const AdminEmployeesRoute = AdminEmployeesImport.update({
   getParentRoute: () => AdminRouteRoute,
 } as any)
 
-const AdminAccountRoute = AdminAccountImport.update({
-  id: '/account',
-  path: '/account',
-
 const AdminEditProfileRoute = AdminEditProfileImport.update({
   id: '/edit-profile',
   path: '/edit-profile',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
 
+const AdminAccountRoute = AdminAccountImport.update({
+  id: '/account',
+  path: '/account',
   getParentRoute: () => AdminRouteRoute,
 } as any)
 
@@ -274,7 +275,8 @@ declare module '@tanstack/react-router' {
       path: '/account'
       fullPath: '/admin/account'
       preLoaderRoute: typeof AdminAccountImport
-
+      parentRoute: typeof AdminRouteImport
+    }
     '/admin/edit-profile': {
       id: '/admin/edit-profile'
       path: '/edit-profile'
@@ -739,8 +741,10 @@ export const routeTree = rootRoute
     },
     "/admin/account": {
       "filePath": "admin/account.tsx",
+      "parent": "/admin"
+    },
     "/admin/edit-profile": {
-      "filePath": "admin/dit-profile.tsx",
+      "filePath": "admin/edit-profile.tsx",
       "parent": "/admin"
     },
     "/admin/employees": {

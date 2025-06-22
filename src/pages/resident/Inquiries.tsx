@@ -9,7 +9,7 @@ function Inquiries() {
     <Container className="pt-sm-5 d-flex overflow-auto flex-column">
 
       {/* Header component */}
-      <Header>
+      <Header path={'resident'}>
         <div className="d-flex gap-3">
             <h3 className='fw-bold'>Inquiries</h3>
         </div>

@@ -6,9 +6,10 @@ import { useNavigate } from '@tanstack/react-router';
 
 interface HeaderProps {
   children?: ReactNode;
+  path: String;
 };
 
-function Header({children} : HeaderProps) {
+function Header({children, path} : HeaderProps) {
   const navigate = useNavigate();
 
   return (
@@ -30,10 +31,10 @@ function Header({children} : HeaderProps) {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-            <Dropdown.Item onClick={() => navigate({to: '/resident/profile'})}>View Profile</Dropdown.Item>
-            <Dropdown.Item onClick={() => navigate({to: '/resident/account'})}>Account Settings</Dropdown.Item>
+            <Dropdown.Item onClick={() => navigate({to: `/${path}/profile`})}>View Profile</Dropdown.Item>
+            <Dropdown.Item onClick={() => navigate({to: `/${path}/account`})}>Account Settings</Dropdown.Item>
             <Dropdown.Divider />
-            <Dropdown.Item href="#/logout" className="text-danger">Logout</Dropdown.Item>
+            <Dropdown.Item onClick={() => navigate({to: `/login`})} className="text-danger">Logout</Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
     </div>

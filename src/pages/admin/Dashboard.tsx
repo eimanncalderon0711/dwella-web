@@ -8,7 +8,7 @@ function Dashboard() {
     <Container className="pt-5 d-flex overflow-auto flex-column">
 
       {/* Header page */}
-      <Header>
+      <Header path={'admin'}>
        <div className="d-flex">
             <h3 className='fw-bold'>Dashboard</h3>
         </div>

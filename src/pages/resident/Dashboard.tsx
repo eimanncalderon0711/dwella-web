@@ -17,7 +17,7 @@ function Dashboard() {
     <Container className="pt-5 d-flex overflow-auto flex-column gap-5">
 
       {/* Header page */}
-      <Header>
+      <Header path={'resident'}>
         <div className="d-flex gap-3">
             <div onClick={() => navigate({to: '/resident/contact'})} className="d-flex align-items-center gap-2 p-3 rounded-3" style={{backgroundColor: "#CED4F5", cursor:"pointer"}}>
                 <FaPhone/>

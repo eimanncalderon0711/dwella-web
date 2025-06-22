@@ -12,7 +12,7 @@ function Profile() {
       style={{ maxWidth: "70rem" }}
     >
       {/* Header component*/}
-      <Header>
+      <Header path={'admin'}>
         <div className="d-flex gap-3">
           <h3 className="fw-bold">View profile</h3>
         </div>

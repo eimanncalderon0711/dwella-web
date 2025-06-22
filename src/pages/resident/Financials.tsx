@@ -11,7 +11,7 @@ function Financials() {
     <Container className="pt-5 d-flex overflow-auto flex-column gap-2">
       
       {/* Header component*/}
-      <Header>
+      <Header path={'resident'}>
         <div className="d-flex gap-3">
             <div onClick={() => navigate({to: '/resident/upload-payment'})} 
                 className="d-flex align-items-center gap-2 p-3 rounded-3" 

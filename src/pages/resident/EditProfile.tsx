@@ -6,7 +6,7 @@ function EditProfile() {
   return (
     <Container className="pt-5 d-flex flex-column w-100" style={{maxWidth:"70rem"}}>
         {/* Header component*/}
-        <Header>
+        <Header path={'resident'}>
             <div className="d-flex gap-3">
                 <h3 className='fw-bold'>Edit Profile</h3>
             </div>
@@ -49,7 +49,7 @@ function EditProfile() {
                 {/* Account status */}
                 <Col xs={12} md={6}>
                     <Form.Group className="mb-3" controlId="formPaymentOption">
-                        <Form.Label  >Payment method</Form.Label>
+                        <Form.Label  >Account Status</Form.Label>
                         <Form.Select  aria-label="Default select example">
                             <option value={undefined}>Select</option>
                             <option value="active">Active</option>
@@ -60,7 +60,7 @@ function EditProfile() {
 
                 <Col className='d-flex gap-3 flex-wrap align-items-center justify-content-end mt-3'>
                     <div className='d-flex flex-grow-1 flex-sm-grow-0 align-items-center justify-content-center px-5 py-3 rounded-3' style={{backgroundColor:"#CED4F5", cursor:"pointer"}}><span className='text-black text-center fw-bold'>Cancel</span></div>
-                    <div className='d-flex flex-grow-1 flex-sm-grow-0 align-items-center justify-content-center px-3 py-3 rounded-3' style={{backgroundColor:"#344CB7", cursor:"pointer"}}><span className='text-light text-center fw-bold'>Send Message</span></div>
+                    <div className='d-flex flex-grow-1 flex-sm-grow-0 align-items-center justify-content-center px-3 py-3 rounded-3' style={{backgroundColor:"#344CB7", cursor:"pointer"}}><span className='text-light text-center fw-bold'>Save Changes</span></div>
                 </Col>
             </Row>
         </div>
