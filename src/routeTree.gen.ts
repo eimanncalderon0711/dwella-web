@@ -22,10 +22,12 @@ import { Route as ResidentSubmitRequestImport } from './routes/resident/submit-r
 import { Route as ResidentContactImport } from './routes/resident/contact'
 import { Route as AdminUnpaidAccountsImport } from './routes/admin/unpaid-accounts'
 import { Route as AdminResidentsImport } from './routes/admin/residents'
+import { Route as AdminProfileImport } from './routes/admin/profile'
 import { Route as AdminNotificationsImport } from './routes/admin/notifications'
 import { Route as AdminFinancialImport } from './routes/admin/financial'
 import { Route as AdminEmployeesImport } from './routes/admin/employees'
 import { Route as AdminAccountImport } from './routes/admin/account'
+import { Route as AdminEditProfileImport } from './routes/admin/edit-profile'
 import { Route as AuthDashboardImport } from './routes/_auth/dashboard'
 
 // Create Virtual Routes
@@ -180,6 +182,12 @@ const AdminResidentsRoute = AdminResidentsImport.update({
   getParentRoute: () => AdminRouteRoute,
 } as any)
 
+const AdminProfileRoute = AdminProfileImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+
 const AdminNotificationsRoute = AdminNotificationsImport.update({
   id: '/notifications',
   path: '/notifications',
@@ -201,6 +209,11 @@ const AdminEmployeesRoute = AdminEmployeesImport.update({
 const AdminAccountRoute = AdminAccountImport.update({
   id: '/account',
   path: '/account',
+
+const AdminEditProfileRoute = AdminEditProfileImport.update({
+  id: '/edit-profile',
+  path: '/edit-profile',
+
   getParentRoute: () => AdminRouteRoute,
 } as any)
 
@@ -261,6 +274,12 @@ declare module '@tanstack/react-router' {
       path: '/account'
       fullPath: '/admin/account'
       preLoaderRoute: typeof AdminAccountImport
+
+    '/admin/edit-profile': {
+      id: '/admin/edit-profile'
+      path: '/edit-profile'
+      fullPath: '/admin/edit-profile'
+      preLoaderRoute: typeof AdminEditProfileImport
       parentRoute: typeof AdminRouteImport
     }
     '/admin/employees': {
@@ -282,6 +301,13 @@ declare module '@tanstack/react-router' {
       path: '/notifications'
       fullPath: '/admin/notifications'
       preLoaderRoute: typeof AdminNotificationsImport
+      parentRoute: typeof AdminRouteImport
+    }
+    '/admin/profile': {
+      id: '/admin/profile'
+      path: '/profile'
+      fullPath: '/admin/profile'
+      preLoaderRoute: typeof AdminProfileImport
       parentRoute: typeof AdminRouteImport
     }
     '/admin/residents': {
@@ -401,9 +427,11 @@ const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
 
 interface AdminRouteRouteChildren {
   AdminAccountRoute: typeof AdminAccountRoute
+  AdminEditProfileRoute: typeof AdminEditProfileRoute
   AdminEmployeesRoute: typeof AdminEmployeesRoute
   AdminFinancialRoute: typeof AdminFinancialRoute
   AdminNotificationsRoute: typeof AdminNotificationsRoute
+  AdminProfileRoute: typeof AdminProfileRoute
   AdminResidentsRoute: typeof AdminResidentsRoute
   AdminUnpaidAccountsRoute: typeof AdminUnpaidAccountsRoute
   AdminIndexRoute: typeof AdminIndexRoute
@@ -411,9 +439,11 @@ interface AdminRouteRouteChildren {
 
 const AdminRouteRouteChildren: AdminRouteRouteChildren = {
   AdminAccountRoute: AdminAccountRoute,
+  AdminEditProfileRoute: AdminEditProfileRoute,
   AdminEmployeesRoute: AdminEmployeesRoute,
   AdminFinancialRoute: AdminFinancialRoute,
   AdminNotificationsRoute: AdminNotificationsRoute,
+  AdminProfileRoute: AdminProfileRoute,
   AdminResidentsRoute: AdminResidentsRoute,
   AdminUnpaidAccountsRoute: AdminUnpaidAccountsRoute,
   AdminIndexRoute: AdminIndexRoute,
@@ -462,9 +492,11 @@ export interface FileRoutesByFullPath {
   '/resident': typeof ResidentRouteLazyRouteWithChildren
   '/dashboard': typeof AuthDashboardRoute
   '/admin/account': typeof AdminAccountRoute
+  '/admin/edit-profile': typeof AdminEditProfileRoute
   '/admin/employees': typeof AdminEmployeesRoute
   '/admin/financial': typeof AdminFinancialRoute
   '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/profile': typeof AdminProfileRoute
   '/admin/residents': typeof AdminResidentsRoute
   '/admin/unpaid-accounts': typeof AdminUnpaidAccountsRoute
   '/resident/contact': typeof ResidentContactRoute
@@ -488,9 +520,11 @@ export interface FileRoutesByTo {
   '/resident': typeof ResidentRouteLazyRouteWithChildren
   '/dashboard': typeof AuthDashboardRoute
   '/admin/account': typeof AdminAccountRoute
+  '/admin/edit-profile': typeof AdminEditProfileRoute
   '/admin/employees': typeof AdminEmployeesRoute
   '/admin/financial': typeof AdminFinancialRoute
   '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/profile': typeof AdminProfileRoute
   '/admin/residents': typeof AdminResidentsRoute
   '/admin/unpaid-accounts': typeof AdminUnpaidAccountsRoute
   '/resident/contact': typeof ResidentContactRoute
@@ -516,9 +550,11 @@ export interface FileRoutesById {
   '/resident': typeof ResidentRouteLazyRouteWithChildren
   '/_auth/dashboard': typeof AuthDashboardRoute
   '/admin/account': typeof AdminAccountRoute
+  '/admin/edit-profile': typeof AdminEditProfileRoute
   '/admin/employees': typeof AdminEmployeesRoute
   '/admin/financial': typeof AdminFinancialRoute
   '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/profile': typeof AdminProfileRoute
   '/admin/residents': typeof AdminResidentsRoute
   '/admin/unpaid-accounts': typeof AdminUnpaidAccountsRoute
   '/resident/contact': typeof ResidentContactRoute
@@ -545,9 +581,11 @@ export interface FileRouteTypes {
     | '/resident'
     | '/dashboard'
     | '/admin/account'
+    | '/admin/edit-profile'
     | '/admin/employees'
     | '/admin/financial'
     | '/admin/notifications'
+    | '/admin/profile'
     | '/admin/residents'
     | '/admin/unpaid-accounts'
     | '/resident/contact'
@@ -570,9 +608,11 @@ export interface FileRouteTypes {
     | '/resident'
     | '/dashboard'
     | '/admin/account'
+    | '/admin/edit-profile'
     | '/admin/employees'
     | '/admin/financial'
     | '/admin/notifications'
+    | '/admin/profile'
     | '/admin/residents'
     | '/admin/unpaid-accounts'
     | '/resident/contact'
@@ -596,9 +636,11 @@ export interface FileRouteTypes {
     | '/resident'
     | '/_auth/dashboard'
     | '/admin/account'
+    | '/admin/edit-profile'
     | '/admin/employees'
     | '/admin/financial'
     | '/admin/notifications'
+    | '/admin/profile'
     | '/admin/residents'
     | '/admin/unpaid-accounts'
     | '/resident/contact'
@@ -662,9 +704,11 @@ export const routeTree = rootRoute
       "filePath": "admin/route.tsx",
       "children": [
         "/admin/account",
+        "/admin/edit-profile",
         "/admin/employees",
         "/admin/financial",
         "/admin/notifications",
+        "/admin/profile",
         "/admin/residents",
         "/admin/unpaid-accounts",
         "/admin/"
@@ -695,6 +739,8 @@ export const routeTree = rootRoute
     },
     "/admin/account": {
       "filePath": "admin/account.tsx",
+    "/admin/edit-profile": {
+      "filePath": "admin/dit-profile.tsx",
       "parent": "/admin"
     },
     "/admin/employees": {
@@ -707,6 +753,10 @@ export const routeTree = rootRoute
     },
     "/admin/notifications": {
       "filePath": "admin/notifications.tsx",
+      "parent": "/admin"
+    },
+    "/admin/profile": {
+      "filePath": "admin/profile.tsx",
       "parent": "/admin"
     },
     "/admin/residents": {
