@@ -35,7 +35,7 @@ function SideBar() {
               </span>
             </Link>
 
-            <Link to="/admin/residents"  className={`text-decoration-none d-flex align-items-center fw-bold gap-2 rounded ${location.pathname.startsWith('/admin/residents') ? 'link-active' : 'link-inactive'}`}>
+            <Link to="/admin/resident"  className={`text-decoration-none d-flex align-items-center fw-bold gap-2 rounded ${location.pathname.startsWith('/admin/residents') ? 'link-active' : 'link-inactive'}`}>
               <FaPeopleRoof />
               <span className={`${ isMenuOpen ? "d-block" : "d-none"} d-md-block`}>
               Residents
