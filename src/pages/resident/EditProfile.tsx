@@ -14,7 +14,7 @@ function EditProfile() {
 
         {/* Form page heading */}
         <div className='d-flex align-items-center gap-1 pt-5 mb-3'>
-            <span className='text-muted fw-bold d-flex align-items-center'>Dashboard</span>
+            <span className='text-muted fw-bold d-flex align-items-center'>View Profile</span>
             <FaAngleRight size={12}/>
             <span className='text-dark fw-bold d-flex align-items-center'>Edit Profile</span>
         </div>

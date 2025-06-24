@@ -19,7 +19,7 @@ function AddResident() {
             <span className='text-dark fw-bold d-flex align-items-center'>Add Resident</span>
         </div>
 
-        {/* Pay now Form */}
+        {/* Add Resident Form */}
         <div className='p-5 rounded-3 mb-5' style={{backgroundColor:"#F2F2F7"}}>
             <h3>Details</h3>
             <Row className='pt-3'>
@@ -41,7 +41,6 @@ function AddResident() {
                 </Col>
 
                 {/* Email Address */}
-                <Col xs={12} md={6}>
                     <Form.Group className="mb-3" controlId="formEmailAddress">
                         <Form.Label >Email Address</Form.Label>
                         <Form.Control type="number" placeholder="e.g., example@gmail.com" />
