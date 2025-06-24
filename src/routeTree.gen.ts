@@ -25,7 +25,6 @@ import { Route as AdminProfileImport } from './routes/admin/profile'
 import { Route as AdminNotificationsImport } from './routes/admin/notifications'
 import { Route as AdminEmployeesImport } from './routes/admin/employees'
 import { Route as AdminEditProfileImport } from './routes/admin/edit-profile'
-import { Route as AdminAddResidentImport } from './routes/admin/add-resident'
 import { Route as AdminAccountImport } from './routes/admin/account'
 import { Route as AuthDashboardImport } from './routes/_auth/dashboard'
 import { Route as AdminResidentRouteImport } from './routes/admin/resident/route'
@@ -218,12 +217,6 @@ const AdminEditProfileRoute = AdminEditProfileImport.update({
   getParentRoute: () => AdminRouteRoute,
 } as any)
 
-const AdminAddResidentRoute = AdminAddResidentImport.update({
-  id: '/add-resident',
-  path: '/add-resident',
-  getParentRoute: () => AdminRouteRoute,
-} as any)
-
 const AdminAccountRoute = AdminAccountImport.update({
   id: '/account',
   path: '/account',
@@ -372,13 +365,6 @@ declare module '@tanstack/react-router' {
       path: '/account'
       fullPath: '/admin/account'
       preLoaderRoute: typeof AdminAccountImport
-      parentRoute: typeof AdminRouteImport
-    }
-    '/admin/add-resident': {
-      id: '/admin/add-resident'
-      path: '/add-resident'
-      fullPath: '/admin/add-resident'
-      preLoaderRoute: typeof AdminAddResidentImport
       parentRoute: typeof AdminRouteImport
     }
     '/admin/edit-profile': {
@@ -687,7 +673,6 @@ const AdminFinancialRouteWithChildren = AdminFinancialRoute._addFileChildren(
 interface AdminRouteRouteChildren {
   AdminResidentRouteRoute: typeof AdminResidentRouteRouteWithChildren
   AdminAccountRoute: typeof AdminAccountRoute
-  AdminAddResidentRoute: typeof AdminAddResidentRoute
   AdminEditProfileRoute: typeof AdminEditProfileRoute
   AdminEmployeesRoute: typeof AdminEmployeesRoute
   AdminNotificationsRoute: typeof AdminNotificationsRoute
@@ -700,7 +685,6 @@ interface AdminRouteRouteChildren {
 const AdminRouteRouteChildren: AdminRouteRouteChildren = {
   AdminResidentRouteRoute: AdminResidentRouteRouteWithChildren,
   AdminAccountRoute: AdminAccountRoute,
-  AdminAddResidentRoute: AdminAddResidentRoute,
   AdminEditProfileRoute: AdminEditProfileRoute,
   AdminEmployeesRoute: AdminEmployeesRoute,
   AdminNotificationsRoute: AdminNotificationsRoute,
@@ -754,7 +738,6 @@ export interface FileRoutesByFullPath {
   '/admin/resident': typeof AdminResidentRouteRouteWithChildren
   '/dashboard': typeof AuthDashboardRoute
   '/admin/account': typeof AdminAccountRoute
-  '/admin/add-resident': typeof AdminAddResidentRoute
   '/admin/edit-profile': typeof AdminEditProfileRoute
   '/admin/employees': typeof AdminEmployeesRoute
   '/admin/notifications': typeof AdminNotificationsRoute
@@ -791,7 +774,6 @@ export interface FileRoutesByTo {
   '/resident': typeof ResidentRouteLazyRouteWithChildren
   '/dashboard': typeof AuthDashboardRoute
   '/admin/account': typeof AdminAccountRoute
-  '/admin/add-resident': typeof AdminAddResidentRoute
   '/admin/edit-profile': typeof AdminEditProfileRoute
   '/admin/employees': typeof AdminEmployeesRoute
   '/admin/notifications': typeof AdminNotificationsRoute
@@ -830,7 +812,6 @@ export interface FileRoutesById {
   '/admin/resident': typeof AdminResidentRouteRouteWithChildren
   '/_auth/dashboard': typeof AuthDashboardRoute
   '/admin/account': typeof AdminAccountRoute
-  '/admin/add-resident': typeof AdminAddResidentRoute
   '/admin/edit-profile': typeof AdminEditProfileRoute
   '/admin/employees': typeof AdminEmployeesRoute
   '/admin/notifications': typeof AdminNotificationsRoute
@@ -873,7 +854,6 @@ export interface FileRouteTypes {
     | '/admin/resident'
     | '/dashboard'
     | '/admin/account'
-    | '/admin/add-resident'
     | '/admin/edit-profile'
     | '/admin/employees'
     | '/admin/notifications'
@@ -909,7 +889,6 @@ export interface FileRouteTypes {
     | '/resident'
     | '/dashboard'
     | '/admin/account'
-    | '/admin/add-resident'
     | '/admin/edit-profile'
     | '/admin/employees'
     | '/admin/notifications'
@@ -946,7 +925,6 @@ export interface FileRouteTypes {
     | '/admin/resident'
     | '/_auth/dashboard'
     | '/admin/account'
-    | '/admin/add-resident'
     | '/admin/edit-profile'
     | '/admin/employees'
     | '/admin/notifications'
@@ -1026,7 +1004,6 @@ export const routeTree = rootRoute
       "children": [
         "/admin/resident",
         "/admin/account",
-        "/admin/add-resident",
         "/admin/edit-profile",
         "/admin/employees",
         "/admin/notifications",
@@ -1070,10 +1047,6 @@ export const routeTree = rootRoute
     },
     "/admin/account": {
       "filePath": "admin/account.tsx",
-      "parent": "/admin"
-    },
-    "/admin/add-resident": {
-      "filePath": "admin/add-resident.tsx",
       "parent": "/admin"
     },
     "/admin/edit-profile": {

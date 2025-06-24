@@ -41,6 +41,7 @@ function AddResident() {
                 </Col>
 
                 {/* Email Address */}
+                <Col>
                     <Form.Group className="mb-3" controlId="formEmailAddress">
                         <Form.Label >Email Address</Form.Label>
                         <Form.Control type="number" placeholder="e.g., example@gmail.com" />
