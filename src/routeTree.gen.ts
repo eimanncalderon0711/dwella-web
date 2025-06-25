@@ -36,6 +36,7 @@ import { Route as AdminFinancialRecordPaymentImport } from './routes/admin/finan
 import { Route as AdminEmployeeAddEmployeeImport } from './routes/admin/employee/add-employee'
 import { Route as AdminResidentResidentIdRouteImport } from './routes/admin/resident/$residentId/route'
 import { Route as AdminFinancialFinancialRouteImport } from './routes/admin/financial/_financial/route'
+import { Route as AdminFinancialUploadIndexImport } from './routes/admin/financial/upload/index'
 import { Route as AdminFinancialFinancialIndexImport } from './routes/admin/financial/_financial/index'
 import { Route as AdminResidentResidentIdEditImport } from './routes/admin/resident/$residentId/edit'
 import { Route as AdminFinancialFinancialMonthlyDueImport } from './routes/admin/financial/_financial/monthly-due'
@@ -283,6 +284,12 @@ const AdminFinancialFinancialRouteRoute =
     id: '/_financial',
     getParentRoute: () => AdminFinancialRouteRoute,
   } as any)
+
+const AdminFinancialUploadIndexRoute = AdminFinancialUploadIndexImport.update({
+  id: '/upload/',
+  path: '/upload/',
+  getParentRoute: () => AdminFinancialRouteRoute,
+} as any)
 
 const AdminFinancialFinancialIndexRoute =
   AdminFinancialFinancialIndexImport.update({
@@ -609,6 +616,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminFinancialFinancialIndexImport
       parentRoute: typeof AdminFinancialFinancialRouteImport
     }
+    '/admin/financial/upload/': {
+      id: '/admin/financial/upload/'
+      path: '/upload'
+      fullPath: '/admin/financial/upload'
+      preLoaderRoute: typeof AdminFinancialUploadIndexImport
+      parentRoute: typeof AdminFinancialRouteImport
+    }
     '/admin/resident/$residentId/_view/inquires-history': {
       id: '/admin/resident/$residentId/_view/inquires-history'
       path: '/inquires-history'
@@ -698,12 +712,14 @@ const AdminFinancialFinancialRouteRouteWithChildren =
 interface AdminFinancialRouteRouteChildren {
   AdminFinancialFinancialRouteRoute: typeof AdminFinancialFinancialRouteRouteWithChildren
   AdminFinancialRecordPaymentRoute: typeof AdminFinancialRecordPaymentRoute
+  AdminFinancialUploadIndexRoute: typeof AdminFinancialUploadIndexRoute
 }
 
 const AdminFinancialRouteRouteChildren: AdminFinancialRouteRouteChildren = {
   AdminFinancialFinancialRouteRoute:
     AdminFinancialFinancialRouteRouteWithChildren,
   AdminFinancialRecordPaymentRoute: AdminFinancialRecordPaymentRoute,
+  AdminFinancialUploadIndexRoute: AdminFinancialUploadIndexRoute,
 }
 
 const AdminFinancialRouteRouteWithChildren =
@@ -858,6 +874,7 @@ export interface FileRoutesByFullPath {
   '/admin/financial/monthly-due': typeof AdminFinancialFinancialMonthlyDueRoute
   '/admin/resident/$residentId/edit': typeof AdminResidentResidentIdEditRoute
   '/admin/financial/': typeof AdminFinancialFinancialIndexRoute
+  '/admin/financial/upload': typeof AdminFinancialUploadIndexRoute
   '/admin/resident/$residentId/inquires-history': typeof AdminResidentResidentIdViewInquiresHistoryRoute
   '/admin/resident/$residentId/notice-received': typeof AdminResidentResidentIdViewNoticeReceivedRoute
   '/admin/employee/$employeeId': typeof AdminEmployeeEmployeeIdViewIndexRoute
@@ -897,6 +914,7 @@ export interface FileRoutesByTo {
   '/admin/resident': typeof AdminResidentIndexRoute
   '/admin/financial/monthly-due': typeof AdminFinancialFinancialMonthlyDueRoute
   '/admin/resident/$residentId/edit': typeof AdminResidentResidentIdEditRoute
+  '/admin/financial/upload': typeof AdminFinancialUploadIndexRoute
   '/admin/resident/$residentId/inquires-history': typeof AdminResidentResidentIdViewInquiresHistoryRoute
   '/admin/resident/$residentId/notice-received': typeof AdminResidentResidentIdViewNoticeReceivedRoute
   '/admin/employee/$employeeId': typeof AdminEmployeeEmployeeIdViewIndexRoute
@@ -942,6 +960,7 @@ export interface FileRoutesById {
   '/admin/financial/_financial/monthly-due': typeof AdminFinancialFinancialMonthlyDueRoute
   '/admin/resident/$residentId/edit': typeof AdminResidentResidentIdEditRoute
   '/admin/financial/_financial/': typeof AdminFinancialFinancialIndexRoute
+  '/admin/financial/upload/': typeof AdminFinancialUploadIndexRoute
   '/admin/resident/$residentId/_view/inquires-history': typeof AdminResidentResidentIdViewInquiresHistoryRoute
   '/admin/resident/$residentId/_view/notice-received': typeof AdminResidentResidentIdViewNoticeReceivedRoute
   '/admin/employee/$employeeId/_view/': typeof AdminEmployeeEmployeeIdViewIndexRoute
@@ -987,6 +1006,7 @@ export interface FileRouteTypes {
     | '/admin/financial/monthly-due'
     | '/admin/resident/$residentId/edit'
     | '/admin/financial/'
+    | '/admin/financial/upload'
     | '/admin/resident/$residentId/inquires-history'
     | '/admin/resident/$residentId/notice-received'
     | '/admin/employee/$employeeId'
@@ -1025,6 +1045,7 @@ export interface FileRouteTypes {
     | '/admin/resident'
     | '/admin/financial/monthly-due'
     | '/admin/resident/$residentId/edit'
+    | '/admin/financial/upload'
     | '/admin/resident/$residentId/inquires-history'
     | '/admin/resident/$residentId/notice-received'
     | '/admin/employee/$employeeId'
@@ -1068,6 +1089,7 @@ export interface FileRouteTypes {
     | '/admin/financial/_financial/monthly-due'
     | '/admin/resident/$residentId/edit'
     | '/admin/financial/_financial/'
+    | '/admin/financial/upload/'
     | '/admin/resident/$residentId/_view/inquires-history'
     | '/admin/resident/$residentId/_view/notice-received'
     | '/admin/employee/$employeeId/_view/'
@@ -1166,7 +1188,8 @@ export const routeTree = rootRoute
       "parent": "/admin",
       "children": [
         "/admin/financial/_financial",
-        "/admin/financial/record-payment"
+        "/admin/financial/record-payment",
+        "/admin/financial/upload/"
       ]
     },
     "/admin/resident": {
@@ -1306,6 +1329,10 @@ export const routeTree = rootRoute
     "/admin/financial/_financial/": {
       "filePath": "admin/financial/_financial/index.tsx",
       "parent": "/admin/financial/_financial"
+    },
+    "/admin/financial/upload/": {
+      "filePath": "admin/financial/upload/index.tsx",
+      "parent": "/admin/financial"
     },
     "/admin/resident/$residentId/_view/inquires-history": {
       "filePath": "admin/resident/$residentId/_view/inquires-history.tsx",
