@@ -19,7 +19,7 @@ function EditProfile() {
             <span className='text-dark fw-bold d-flex align-items-center'>Edit Profile</span>
         </div>
 
-        {/* Pay now Form */}
+        {/* Notice Form */}
         <div className='p-5 rounded-3 mb-5' style={{backgroundColor:"#F2F2F7"}}>
             <h3>Details</h3>
             <Row className='pt-3'>
