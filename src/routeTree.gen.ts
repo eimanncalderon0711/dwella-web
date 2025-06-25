@@ -41,6 +41,7 @@ import { Route as AdminFinancialFinancialRouteImport } from './routes/admin/fina
 import { Route as AdminFinancialUploadIndexImport } from './routes/admin/financial/upload/index'
 import { Route as AdminFinancialFinancialIndexImport } from './routes/admin/financial/_financial/index'
 import { Route as AdminResidentResidentIdEditImport } from './routes/admin/resident/$residentId/edit'
+import { Route as AdminFinancialEditResidentIdImport } from './routes/admin/financial/edit/$residentId'
 import { Route as AdminFinancialFinancialMonthlyDueImport } from './routes/admin/financial/_financial/monthly-due'
 import { Route as AdminResidentResidentIdViewRouteImport } from './routes/admin/resident/$residentId/_view/route'
 import { Route as AdminResidentResidentIdViewIndexImport } from './routes/admin/resident/$residentId/_view/index'
@@ -317,6 +318,13 @@ const AdminResidentResidentIdEditRoute =
     id: '/edit',
     path: '/edit',
     getParentRoute: () => AdminResidentResidentIdRouteRoute,
+  } as any)
+
+const AdminFinancialEditResidentIdRoute =
+  AdminFinancialEditResidentIdImport.update({
+    id: '/edit/$residentId',
+    path: '/edit/$residentId',
+    getParentRoute: () => AdminFinancialRouteRoute,
   } as any)
 
 const AdminFinancialFinancialMonthlyDueRoute =
@@ -630,6 +638,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminFinancialFinancialMonthlyDueImport
       parentRoute: typeof AdminFinancialFinancialRouteImport
     }
+    '/admin/financial/edit/$residentId': {
+      id: '/admin/financial/edit/$residentId'
+      path: '/edit/$residentId'
+      fullPath: '/admin/financial/edit/$residentId'
+      preLoaderRoute: typeof AdminFinancialEditResidentIdImport
+      parentRoute: typeof AdminFinancialRouteImport
+    }
     '/admin/resident/$residentId/edit': {
       id: '/admin/resident/$residentId/edit'
       path: '/edit'
@@ -740,6 +755,7 @@ const AdminFinancialFinancialRouteRouteWithChildren =
 interface AdminFinancialRouteRouteChildren {
   AdminFinancialFinancialRouteRoute: typeof AdminFinancialFinancialRouteRouteWithChildren
   AdminFinancialRecordPaymentRoute: typeof AdminFinancialRecordPaymentRoute
+  AdminFinancialEditResidentIdRoute: typeof AdminFinancialEditResidentIdRoute
   AdminFinancialUploadIndexRoute: typeof AdminFinancialUploadIndexRoute
 }
 
@@ -747,6 +763,7 @@ const AdminFinancialRouteRouteChildren: AdminFinancialRouteRouteChildren = {
   AdminFinancialFinancialRouteRoute:
     AdminFinancialFinancialRouteRouteWithChildren,
   AdminFinancialRecordPaymentRoute: AdminFinancialRecordPaymentRoute,
+  AdminFinancialEditResidentIdRoute: AdminFinancialEditResidentIdRoute,
   AdminFinancialUploadIndexRoute: AdminFinancialUploadIndexRoute,
 }
 
@@ -918,6 +935,7 @@ export interface FileRoutesByFullPath {
   '/admin/notifications/': typeof AdminNotificationsIndexRoute
   '/admin/resident/': typeof AdminResidentIndexRoute
   '/admin/financial/monthly-due': typeof AdminFinancialFinancialMonthlyDueRoute
+  '/admin/financial/edit/$residentId': typeof AdminFinancialEditResidentIdRoute
   '/admin/resident/$residentId/edit': typeof AdminResidentResidentIdEditRoute
   '/admin/financial/': typeof AdminFinancialFinancialIndexRoute
   '/admin/financial/upload': typeof AdminFinancialUploadIndexRoute
@@ -960,6 +978,7 @@ export interface FileRoutesByTo {
   '/admin/notifications': typeof AdminNotificationsIndexRoute
   '/admin/resident': typeof AdminResidentIndexRoute
   '/admin/financial/monthly-due': typeof AdminFinancialFinancialMonthlyDueRoute
+  '/admin/financial/edit/$residentId': typeof AdminFinancialEditResidentIdRoute
   '/admin/resident/$residentId/edit': typeof AdminResidentResidentIdEditRoute
   '/admin/financial/upload': typeof AdminFinancialUploadIndexRoute
   '/admin/resident/$residentId/inquires-history': typeof AdminResidentResidentIdViewInquiresHistoryRoute
@@ -1007,6 +1026,7 @@ export interface FileRoutesById {
   '/admin/resident/': typeof AdminResidentIndexRoute
   '/admin/resident/$residentId/_view': typeof AdminResidentResidentIdViewRouteRouteWithChildren
   '/admin/financial/_financial/monthly-due': typeof AdminFinancialFinancialMonthlyDueRoute
+  '/admin/financial/edit/$residentId': typeof AdminFinancialEditResidentIdRoute
   '/admin/resident/$residentId/edit': typeof AdminResidentResidentIdEditRoute
   '/admin/financial/_financial/': typeof AdminFinancialFinancialIndexRoute
   '/admin/financial/upload/': typeof AdminFinancialUploadIndexRoute
@@ -1055,6 +1075,7 @@ export interface FileRouteTypes {
     | '/admin/notifications/'
     | '/admin/resident/'
     | '/admin/financial/monthly-due'
+    | '/admin/financial/edit/$residentId'
     | '/admin/resident/$residentId/edit'
     | '/admin/financial/'
     | '/admin/financial/upload'
@@ -1096,6 +1117,7 @@ export interface FileRouteTypes {
     | '/admin/notifications'
     | '/admin/resident'
     | '/admin/financial/monthly-due'
+    | '/admin/financial/edit/$residentId'
     | '/admin/resident/$residentId/edit'
     | '/admin/financial/upload'
     | '/admin/resident/$residentId/inquires-history'
@@ -1141,6 +1163,7 @@ export interface FileRouteTypes {
     | '/admin/resident/'
     | '/admin/resident/$residentId/_view'
     | '/admin/financial/_financial/monthly-due'
+    | '/admin/financial/edit/$residentId'
     | '/admin/resident/$residentId/edit'
     | '/admin/financial/_financial/'
     | '/admin/financial/upload/'
@@ -1243,6 +1266,7 @@ export const routeTree = rootRoute
       "children": [
         "/admin/financial/_financial",
         "/admin/financial/record-payment",
+        "/admin/financial/edit/$residentId"
         "/admin/financial/upload/"
       ]
     },
@@ -1387,6 +1411,10 @@ export const routeTree = rootRoute
     "/admin/financial/_financial/monthly-due": {
       "filePath": "admin/financial/_financial/monthly-due.tsx",
       "parent": "/admin/financial/_financial"
+    },
+    "/admin/financial/edit/$residentId": {
+      "filePath": "admin/financial/edit/$residentId.tsx",
+      "parent": "/admin/financial"
     },
     "/admin/resident/$residentId/edit": {
       "filePath": "admin/resident/$residentId/edit.tsx",
