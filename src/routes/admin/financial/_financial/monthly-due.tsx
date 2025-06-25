@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import MonthlyDuesTable from '../../../components/admin/tables/MonthlyDuesTable'
+import MonthlyDuesTable from '../../../../components/admin/tables/MonthlyDuesTable'
 
 export const Route = createFileRoute('/admin/financial/_financial/monthly-due')({
   component: RouteComponent,
@@ -7,4 +7,5 @@ export const Route = createFileRoute('/admin/financial/_financial/monthly-due')(
 
 function RouteComponent() {
   return <MonthlyDuesTable/>
+
 }
