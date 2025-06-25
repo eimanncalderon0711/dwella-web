@@ -64,7 +64,7 @@ function RouteComponent() {
             Monthly Dues
           </Link>
 
-          {location.pathname.endsWith("/financial/monthly-due") && <Link to='' className='ms-auto text-decoration-none border border-primary px-3 py-2 rounded-3 fw-bold'>+ Upload</Link>}
+          {location.pathname.endsWith("/financial/monthly-due") && <Link to='/admin/financial/upload' className='ms-auto text-decoration-none border border-primary px-3 py-2 rounded-3 fw-bold'>+ Upload</Link>}
         </Stack>
         <Outlet />
       </Container>
