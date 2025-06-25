@@ -12,7 +12,7 @@ function Notifications() {
       {/* Header page */}
       <Header path={'admin'}>
        <div className="d-flex">
-            <h3 className='fw-bold'>Dashboard</h3>
+            <h3 className='fw-bold'>Notifications</h3>
         </div>
       </Header>
 

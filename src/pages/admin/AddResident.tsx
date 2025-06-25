@@ -66,7 +66,7 @@ function AddResident() {
 
                 {/* Initial payment */}
                 <Col xs={12} md={6}>
-                    <Form.Group className="mb-3" controlId="formMoveInDate">
+                    <Form.Group className="mb-3" controlId="formInitialPayment">
                         <Form.Label >Initial payment</Form.Label>
                         <Form.Control type="number" placeholder='Enter initial payment'/>
                     </Form.Group>
