@@ -42,7 +42,7 @@ function SideBar() {
               </span>
             </Link>
 
-            <Link to="/admin/employees"  className={`text-decoration-none d-flex align-items-center fw-bold gap-2 rounded ${location.pathname.startsWith('/admin/employees') ? 'link-active' : 'link-inactive'}`}>
+            <Link to="/admin/employee"  className={`text-decoration-none d-flex align-items-center fw-bold gap-2 rounded ${location.pathname.startsWith('/admin/employee') ? 'link-active' : 'link-inactive'}`}>
               <FaUserTie />
               <span className={`${ isMenuOpen ? "d-block" : "d-none"} d-md-block`}>
               Employees

@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
-import Employees from '../../pages/admin/Employees'
+import Employees from '../../../pages/admin/Employees'
 
-export const Route = createFileRoute('/admin/employees')({
+export const Route = createFileRoute('/admin/employee/')({
   component: RouteComponent,
 })
 
