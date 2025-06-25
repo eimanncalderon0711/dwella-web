@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import EditProfile from '../../../../../pages/employee/EditProfile';
 
 export const Route = createFileRoute('/admin/employee/$employeeId/edit/')({
   component: RouteComponent,
@@ -6,5 +7,5 @@ export const Route = createFileRoute('/admin/employee/$employeeId/edit/')({
 
 function RouteComponent() {
   const {employeeId} = Route.useParams();
-  return <div>Hello "/admin/employee/$employeeId/edit/" {employeeId}!</div>
+  return <EditProfile/>
 }
