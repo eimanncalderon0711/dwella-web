@@ -43,6 +43,10 @@ import { Route as AdminUnpaidAccountsIndexImport } from './routes/admin/unpaid-a
 import { Route as AdminResidentIndexImport } from './routes/admin/resident/index'
 import { Route as AdminNotificationsIndexImport } from './routes/admin/notifications/index'
 import { Route as AdminEmployeeIndexImport } from './routes/admin/employee/index'
+import { Route as EmployeeTaskSummaryUnverifiedPaymentsImport } from './routes/employee/_task-summary/unverified-payments'
+import { Route as EmployeeTaskSummaryPendingNoticesImport } from './routes/employee/_task-summary/pending-notices'
+import { Route as EmployeeTaskSummaryOverDueAccountsImport } from './routes/employee/_task-summary/over-due-accounts'
+import { Route as EmployeeTaskSummaryOpenInquiriesImport } from './routes/employee/_task-summary/open-inquiries'
 import { Route as AdminUnpaidAccountsRemindersImport } from './routes/admin/unpaid-accounts/reminders'
 import { Route as AdminResidentAddResidentImport } from './routes/admin/resident/add-resident'
 import { Route as AdminNotificationsSendSmsImport } from './routes/admin/notifications/send-sms'
@@ -340,6 +344,34 @@ const AdminEmployeeIndexRoute = AdminEmployeeIndexImport.update({
   path: '/',
   getParentRoute: () => AdminEmployeeRouteRoute,
 } as any)
+
+const EmployeeTaskSummaryUnverifiedPaymentsRoute =
+  EmployeeTaskSummaryUnverifiedPaymentsImport.update({
+    id: '/_task-summary/unverified-payments',
+    path: '/unverified-payments',
+    getParentRoute: () => EmployeeRouteRoute,
+  } as any)
+
+const EmployeeTaskSummaryPendingNoticesRoute =
+  EmployeeTaskSummaryPendingNoticesImport.update({
+    id: '/_task-summary/pending-notices',
+    path: '/pending-notices',
+    getParentRoute: () => EmployeeRouteRoute,
+  } as any)
+
+const EmployeeTaskSummaryOverDueAccountsRoute =
+  EmployeeTaskSummaryOverDueAccountsImport.update({
+    id: '/_task-summary/over-due-accounts',
+    path: '/over-due-accounts',
+    getParentRoute: () => EmployeeRouteRoute,
+  } as any)
+
+const EmployeeTaskSummaryOpenInquiriesRoute =
+  EmployeeTaskSummaryOpenInquiriesImport.update({
+    id: '/_task-summary/open-inquiries',
+    path: '/open-inquiries',
+    getParentRoute: () => EmployeeRouteRoute,
+  } as any)
 
 const AdminUnpaidAccountsRemindersRoute =
   AdminUnpaidAccountsRemindersImport.update({
@@ -772,6 +804,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminUnpaidAccountsRemindersImport
       parentRoute: typeof AdminUnpaidAccountsRouteImport
     }
+    '/employee/_task-summary/open-inquiries': {
+      id: '/employee/_task-summary/open-inquiries'
+      path: '/open-inquiries'
+      fullPath: '/employee/open-inquiries'
+      preLoaderRoute: typeof EmployeeTaskSummaryOpenInquiriesImport
+      parentRoute: typeof EmployeeRouteImport
+    }
+    '/employee/_task-summary/over-due-accounts': {
+      id: '/employee/_task-summary/over-due-accounts'
+      path: '/over-due-accounts'
+      fullPath: '/employee/over-due-accounts'
+      preLoaderRoute: typeof EmployeeTaskSummaryOverDueAccountsImport
+      parentRoute: typeof EmployeeRouteImport
+    }
+    '/employee/_task-summary/pending-notices': {
+      id: '/employee/_task-summary/pending-notices'
+      path: '/pending-notices'
+      fullPath: '/employee/pending-notices'
+      preLoaderRoute: typeof EmployeeTaskSummaryPendingNoticesImport
+      parentRoute: typeof EmployeeRouteImport
+    }
+    '/employee/_task-summary/unverified-payments': {
+      id: '/employee/_task-summary/unverified-payments'
+      path: '/unverified-payments'
+      fullPath: '/employee/unverified-payments'
+      preLoaderRoute: typeof EmployeeTaskSummaryUnverifiedPaymentsImport
+      parentRoute: typeof EmployeeRouteImport
+    }
     '/admin/employee/': {
       id: '/admin/employee/'
       path: '/'
@@ -1091,6 +1151,10 @@ interface EmployeeRouteRouteChildren {
   EmployeePaymentsRoute: typeof EmployeePaymentsRoute
   EmployeeProfileRoute: typeof EmployeeProfileRoute
   EmployeeIndexRoute: typeof EmployeeIndexRoute
+  EmployeeTaskSummaryOpenInquiriesRoute: typeof EmployeeTaskSummaryOpenInquiriesRoute
+  EmployeeTaskSummaryOverDueAccountsRoute: typeof EmployeeTaskSummaryOverDueAccountsRoute
+  EmployeeTaskSummaryPendingNoticesRoute: typeof EmployeeTaskSummaryPendingNoticesRoute
+  EmployeeTaskSummaryUnverifiedPaymentsRoute: typeof EmployeeTaskSummaryUnverifiedPaymentsRoute
 }
 
 const EmployeeRouteRouteChildren: EmployeeRouteRouteChildren = {
@@ -1102,6 +1166,13 @@ const EmployeeRouteRouteChildren: EmployeeRouteRouteChildren = {
   EmployeePaymentsRoute: EmployeePaymentsRoute,
   EmployeeProfileRoute: EmployeeProfileRoute,
   EmployeeIndexRoute: EmployeeIndexRoute,
+  EmployeeTaskSummaryOpenInquiriesRoute: EmployeeTaskSummaryOpenInquiriesRoute,
+  EmployeeTaskSummaryOverDueAccountsRoute:
+    EmployeeTaskSummaryOverDueAccountsRoute,
+  EmployeeTaskSummaryPendingNoticesRoute:
+    EmployeeTaskSummaryPendingNoticesRoute,
+  EmployeeTaskSummaryUnverifiedPaymentsRoute:
+    EmployeeTaskSummaryUnverifiedPaymentsRoute,
 }
 
 const EmployeeRouteRouteWithChildren = EmployeeRouteRoute._addFileChildren(
@@ -1182,6 +1253,10 @@ export interface FileRoutesByFullPath {
   '/admin/notifications/send-sms': typeof AdminNotificationsSendSmsRoute
   '/admin/resident/add-resident': typeof AdminResidentAddResidentRoute
   '/admin/unpaid-accounts/reminders': typeof AdminUnpaidAccountsRemindersRoute
+  '/employee/open-inquiries': typeof EmployeeTaskSummaryOpenInquiriesRoute
+  '/employee/over-due-accounts': typeof EmployeeTaskSummaryOverDueAccountsRoute
+  '/employee/pending-notices': typeof EmployeeTaskSummaryPendingNoticesRoute
+  '/employee/unverified-payments': typeof EmployeeTaskSummaryUnverifiedPaymentsRoute
   '/admin/employee/': typeof AdminEmployeeIndexRoute
   '/admin/notifications/': typeof AdminNotificationsIndexRoute
   '/admin/resident/': typeof AdminResidentIndexRoute
@@ -1235,6 +1310,10 @@ export interface FileRoutesByTo {
   '/admin/notifications/send-sms': typeof AdminNotificationsSendSmsRoute
   '/admin/resident/add-resident': typeof AdminResidentAddResidentRoute
   '/admin/unpaid-accounts/reminders': typeof AdminUnpaidAccountsRemindersRoute
+  '/employee/open-inquiries': typeof EmployeeTaskSummaryOpenInquiriesRoute
+  '/employee/over-due-accounts': typeof EmployeeTaskSummaryOverDueAccountsRoute
+  '/employee/pending-notices': typeof EmployeeTaskSummaryPendingNoticesRoute
+  '/employee/unverified-payments': typeof EmployeeTaskSummaryUnverifiedPaymentsRoute
   '/admin/employee': typeof AdminEmployeeIndexRoute
   '/admin/notifications': typeof AdminNotificationsIndexRoute
   '/admin/resident': typeof AdminResidentIndexRoute
@@ -1295,6 +1374,10 @@ export interface FileRoutesById {
   '/admin/notifications/send-sms': typeof AdminNotificationsSendSmsRoute
   '/admin/resident/add-resident': typeof AdminResidentAddResidentRoute
   '/admin/unpaid-accounts/reminders': typeof AdminUnpaidAccountsRemindersRoute
+  '/employee/_task-summary/open-inquiries': typeof EmployeeTaskSummaryOpenInquiriesRoute
+  '/employee/_task-summary/over-due-accounts': typeof EmployeeTaskSummaryOverDueAccountsRoute
+  '/employee/_task-summary/pending-notices': typeof EmployeeTaskSummaryPendingNoticesRoute
+  '/employee/_task-summary/unverified-payments': typeof EmployeeTaskSummaryUnverifiedPaymentsRoute
   '/admin/employee/': typeof AdminEmployeeIndexRoute
   '/admin/notifications/': typeof AdminNotificationsIndexRoute
   '/admin/resident/': typeof AdminResidentIndexRoute
@@ -1358,6 +1441,10 @@ export interface FileRouteTypes {
     | '/admin/notifications/send-sms'
     | '/admin/resident/add-resident'
     | '/admin/unpaid-accounts/reminders'
+    | '/employee/open-inquiries'
+    | '/employee/over-due-accounts'
+    | '/employee/pending-notices'
+    | '/employee/unverified-payments'
     | '/admin/employee/'
     | '/admin/notifications/'
     | '/admin/resident/'
@@ -1410,6 +1497,10 @@ export interface FileRouteTypes {
     | '/admin/notifications/send-sms'
     | '/admin/resident/add-resident'
     | '/admin/unpaid-accounts/reminders'
+    | '/employee/open-inquiries'
+    | '/employee/over-due-accounts'
+    | '/employee/pending-notices'
+    | '/employee/unverified-payments'
     | '/admin/employee'
     | '/admin/notifications'
     | '/admin/resident'
@@ -1468,6 +1559,10 @@ export interface FileRouteTypes {
     | '/admin/notifications/send-sms'
     | '/admin/resident/add-resident'
     | '/admin/unpaid-accounts/reminders'
+    | '/employee/_task-summary/open-inquiries'
+    | '/employee/_task-summary/over-due-accounts'
+    | '/employee/_task-summary/pending-notices'
+    | '/employee/_task-summary/unverified-payments'
     | '/admin/employee/'
     | '/admin/notifications/'
     | '/admin/resident/'
@@ -1556,7 +1651,11 @@ export const routeTree = rootRoute
         "/employee/notices",
         "/employee/payments",
         "/employee/profile",
-        "/employee/"
+        "/employee/",
+        "/employee/_task-summary/open-inquiries",
+        "/employee/_task-summary/over-due-accounts",
+        "/employee/_task-summary/pending-notices",
+        "/employee/_task-summary/unverified-payments"
       ]
     },
     "/login": {
@@ -1762,6 +1861,22 @@ export const routeTree = rootRoute
     "/admin/unpaid-accounts/reminders": {
       "filePath": "admin/unpaid-accounts/reminders.tsx",
       "parent": "/admin/unpaid-accounts"
+    },
+    "/employee/_task-summary/open-inquiries": {
+      "filePath": "employee/_task-summary/open-inquiries.tsx",
+      "parent": "/employee"
+    },
+    "/employee/_task-summary/over-due-accounts": {
+      "filePath": "employee/_task-summary/over-due-accounts.tsx",
+      "parent": "/employee"
+    },
+    "/employee/_task-summary/pending-notices": {
+      "filePath": "employee/_task-summary/pending-notices.tsx",
+      "parent": "/employee"
+    },
+    "/employee/_task-summary/unverified-payments": {
+      "filePath": "employee/_task-summary/unverified-payments.tsx",
+      "parent": "/employee"
     },
     "/admin/employee/": {
       "filePath": "admin/employee/index.tsx",

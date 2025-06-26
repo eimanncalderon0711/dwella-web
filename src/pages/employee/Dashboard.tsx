@@ -16,16 +16,16 @@ function Dashboard() {
       {/* Cards info */}
       <Row className="d-flex flex-column gy-3 flex-md-row pt-3 pt-md-5">
         <Col xs={12} md={6}>
-            <Card title="Overdue Accounts" quantity="3"/>
+            <Card title="Overdue Accounts" quantity="3" path="/employee/over-due-accounts"/>
         </Col>
         <Col xs={12} md={6}>
-            <Card title="Unverified Payments" quantity="6"/>
+            <Card title="Unverified Payments" quantity="6" path="/employee/unverified-payments"/>
         </Col>
         <Col xs={12} md={6}>
-            <Card title="Pending Notices" quantity="4"/>
+            <Card title="Pending Notices" quantity="4" path="/employee/pending-notices"/>
         </Col>
         <Col xs={12} md={6}>
-            <Card title="Open Inquries" quantity="3"/>
+            <Card title="Open Inquries" quantity="3" path="/employee/open-inquiries"/>
         </Col>
       </Row>
 
