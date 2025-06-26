@@ -1,9 +1,9 @@
-import { Col, Container, Row } from "react-bootstrap";
-import ProfileAvatar from "../../components/ProfileAvatar";
-import Header from "../../components/Header";
-import { FaAngleRight } from "react-icons/fa6";
-import ProfileStatus from "../../components/ProfileStatus";
-import ProfileDetails from "../../components/ProfileDetails";
+import { Col, Container, Row } from "react-bootstrap"
+import Header from "../../components/Header"
+import { FaAngleRight } from "react-icons/fa6"
+import ProfileAvatar from "../../components/ProfileAvatar"
+import ProfileStatus from "../../components/ProfileStatus"
+import ProfileDetails from "../../components/ProfileDetails"
 
 function Profile() {
   return (
@@ -12,7 +12,7 @@ function Profile() {
       style={{ maxWidth: "70rem" }}
     >
       {/* Header component*/}
-      <Header path={'resident'}>
+      <Header path={'employee'}>
         <div className="d-flex gap-3">
           <h3 className="fw-bold">View profile</h3>
         </div>
@@ -37,14 +37,13 @@ function Profile() {
           <ProfileStatus/>  {/* Online/Offline status */}
         </Col>
       </Row>
-
-      {/* Profile details */}
-      <Row className="rounded-3 mt-3" style={{ backgroundColor: "#F2F2F7" }}>
-          <ProfileDetails props={{to:'/resident/edit-profile'}}/> {/* Full profile details */}
-      </Row>
       
+       {/* Profile details */}
+      <Row className="rounded-3 mt-3" style={{ backgroundColor: "#F2F2F7" }}>
+          <ProfileDetails props={{to:'/employee/edit-profile'}}/> {/* Full profile details */}
+      </Row>
     </Container>
-  );
+  )
 }
 
-export default Profile;
+export default Profile

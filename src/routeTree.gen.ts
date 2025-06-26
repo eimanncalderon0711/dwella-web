@@ -22,6 +22,7 @@ import { Route as EmployeeIndexImport } from './routes/employee/index'
 import { Route as AdminIndexImport } from './routes/admin/index'
 import { Route as ResidentSubmitRequestImport } from './routes/resident/submit-request'
 import { Route as ResidentContactImport } from './routes/resident/contact'
+import { Route as EmployeeProfileImport } from './routes/employee/profile'
 import { Route as EmployeePaymentsImport } from './routes/employee/payments'
 import { Route as EmployeeNoticesImport } from './routes/employee/notices'
 import { Route as EmployeeInquiriesImport } from './routes/employee/inquiries'
@@ -210,6 +211,12 @@ const ResidentContactRoute = ResidentContactImport.update({
   id: '/contact',
   path: '/contact',
   getParentRoute: () => ResidentRouteLazyRoute,
+} as any)
+
+const EmployeeProfileRoute = EmployeeProfileImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => EmployeeRouteRoute,
 } as any)
 
 const EmployeePaymentsRoute = EmployeePaymentsImport.update({
@@ -581,6 +588,13 @@ declare module '@tanstack/react-router' {
       path: '/payments'
       fullPath: '/employee/payments'
       preLoaderRoute: typeof EmployeePaymentsImport
+      parentRoute: typeof EmployeeRouteImport
+    }
+    '/employee/profile': {
+      id: '/employee/profile'
+      path: '/profile'
+      fullPath: '/employee/profile'
+      preLoaderRoute: typeof EmployeeProfileImport
       parentRoute: typeof EmployeeRouteImport
     }
     '/resident/contact': {
@@ -1045,6 +1059,7 @@ interface EmployeeRouteRouteChildren {
   EmployeeInquiriesRoute: typeof EmployeeInquiriesRoute
   EmployeeNoticesRoute: typeof EmployeeNoticesRoute
   EmployeePaymentsRoute: typeof EmployeePaymentsRoute
+  EmployeeProfileRoute: typeof EmployeeProfileRoute
   EmployeeIndexRoute: typeof EmployeeIndexRoute
 }
 
@@ -1053,6 +1068,7 @@ const EmployeeRouteRouteChildren: EmployeeRouteRouteChildren = {
   EmployeeInquiriesRoute: EmployeeInquiriesRoute,
   EmployeeNoticesRoute: EmployeeNoticesRoute,
   EmployeePaymentsRoute: EmployeePaymentsRoute,
+  EmployeeProfileRoute: EmployeeProfileRoute,
   EmployeeIndexRoute: EmployeeIndexRoute,
 }
 
@@ -1111,6 +1127,7 @@ export interface FileRoutesByFullPath {
   '/employee/inquiries': typeof EmployeeInquiriesRoute
   '/employee/notices': typeof EmployeeNoticesRoute
   '/employee/payments': typeof EmployeePaymentsRoute
+  '/employee/profile': typeof EmployeeProfileRoute
   '/resident/contact': typeof ResidentContactRoute
   '/resident/submit-request': typeof ResidentSubmitRequestRoute
   '/resident/account': typeof ResidentAccountLazyRoute
@@ -1161,6 +1178,7 @@ export interface FileRoutesByTo {
   '/employee/inquiries': typeof EmployeeInquiriesRoute
   '/employee/notices': typeof EmployeeNoticesRoute
   '/employee/payments': typeof EmployeePaymentsRoute
+  '/employee/profile': typeof EmployeeProfileRoute
   '/resident/contact': typeof ResidentContactRoute
   '/resident/submit-request': typeof ResidentSubmitRequestRoute
   '/resident/account': typeof ResidentAccountLazyRoute
@@ -1217,6 +1235,7 @@ export interface FileRoutesById {
   '/employee/inquiries': typeof EmployeeInquiriesRoute
   '/employee/notices': typeof EmployeeNoticesRoute
   '/employee/payments': typeof EmployeePaymentsRoute
+  '/employee/profile': typeof EmployeeProfileRoute
   '/resident/contact': typeof ResidentContactRoute
   '/resident/submit-request': typeof ResidentSubmitRequestRoute
   '/resident/account': typeof ResidentAccountLazyRoute
@@ -1278,6 +1297,7 @@ export interface FileRouteTypes {
     | '/employee/inquiries'
     | '/employee/notices'
     | '/employee/payments'
+    | '/employee/profile'
     | '/resident/contact'
     | '/resident/submit-request'
     | '/resident/account'
@@ -1327,6 +1347,7 @@ export interface FileRouteTypes {
     | '/employee/inquiries'
     | '/employee/notices'
     | '/employee/payments'
+    | '/employee/profile'
     | '/resident/contact'
     | '/resident/submit-request'
     | '/resident/account'
@@ -1381,6 +1402,7 @@ export interface FileRouteTypes {
     | '/employee/inquiries'
     | '/employee/notices'
     | '/employee/payments'
+    | '/employee/profile'
     | '/resident/contact'
     | '/resident/submit-request'
     | '/resident/account'
@@ -1487,6 +1509,7 @@ export const routeTree = rootRoute
         "/employee/inquiries",
         "/employee/notices",
         "/employee/payments",
+        "/employee/profile",
         "/employee/"
       ]
     },
@@ -1588,6 +1611,10 @@ export const routeTree = rootRoute
     },
     "/employee/payments": {
       "filePath": "employee/payments.tsx",
+      "parent": "/employee"
+    },
+    "/employee/profile": {
+      "filePath": "employee/profile.tsx",
       "parent": "/employee"
     },
     "/resident/contact": {
