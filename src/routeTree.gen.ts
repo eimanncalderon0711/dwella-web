@@ -18,6 +18,7 @@ import { Route as EmployeeRouteImport } from './routes/employee/route'
 import { Route as AdminRouteImport } from './routes/admin/route'
 import { Route as AuthRouteImport } from './routes/_auth/route'
 import { Route as IndexImport } from './routes/index'
+import { Route as EmployeeIndexImport } from './routes/employee/index'
 import { Route as AdminIndexImport } from './routes/admin/index'
 import { Route as ResidentSubmitRequestImport } from './routes/resident/submit-request'
 import { Route as ResidentContactImport } from './routes/resident/contact'
@@ -108,6 +109,12 @@ const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRoute,
+} as any)
+
+const EmployeeIndexRoute = EmployeeIndexImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => EmployeeRouteRoute,
 } as any)
 
 const AdminIndexRoute = AdminIndexImport.update({
@@ -597,6 +604,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexImport
       parentRoute: typeof AdminRouteImport
     }
+    '/employee/': {
+      id: '/employee/'
+      path: '/'
+      fullPath: '/employee/'
+      preLoaderRoute: typeof EmployeeIndexImport
+      parentRoute: typeof EmployeeRouteImport
+    }
     '/admin/financial/_financial': {
       id: '/admin/financial/_financial'
       path: ''
@@ -943,6 +957,18 @@ const AdminRouteRouteWithChildren = AdminRouteRoute._addFileChildren(
   AdminRouteRouteChildren,
 )
 
+interface EmployeeRouteRouteChildren {
+  EmployeeIndexRoute: typeof EmployeeIndexRoute
+}
+
+const EmployeeRouteRouteChildren: EmployeeRouteRouteChildren = {
+  EmployeeIndexRoute: EmployeeIndexRoute,
+}
+
+const EmployeeRouteRouteWithChildren = EmployeeRouteRoute._addFileChildren(
+  EmployeeRouteRouteChildren,
+)
+
 interface ResidentRouteLazyRouteChildren {
   ResidentContactRoute: typeof ResidentContactRoute
   ResidentSubmitRequestRoute: typeof ResidentSubmitRequestRoute
@@ -978,7 +1004,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '': typeof AuthRouteRouteWithChildren
   '/admin': typeof AdminRouteRouteWithChildren
-  '/employee': typeof EmployeeRouteRoute
+  '/employee': typeof EmployeeRouteRouteWithChildren
   '/login': typeof LoginRoute
   '/resident': typeof ResidentRouteLazyRouteWithChildren
   '/admin/employee': typeof AdminEmployeeRouteRouteWithChildren
@@ -1002,6 +1028,7 @@ export interface FileRoutesByFullPath {
   '/resident/profile': typeof ResidentProfileLazyRoute
   '/resident/upload-payment': typeof ResidentUploadPaymentLazyRoute
   '/admin/': typeof AdminIndexRoute
+  '/employee/': typeof EmployeeIndexRoute
   '/admin/resident/$residentId': typeof AdminResidentResidentIdViewRouteRouteWithChildren
   '/admin/employee/add-employee': typeof AdminEmployeeAddEmployeeRoute
   '/admin/financial/record-payment': typeof AdminFinancialRecordPaymentRoute
@@ -1028,7 +1055,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '': typeof AuthRouteRouteWithChildren
-  '/employee': typeof EmployeeRouteRoute
   '/login': typeof LoginRoute
   '/resident': typeof ResidentRouteLazyRouteWithChildren
   '/admin/financial': typeof AdminFinancialFinancialIndexRoute
@@ -1048,6 +1074,7 @@ export interface FileRoutesByTo {
   '/resident/profile': typeof ResidentProfileLazyRoute
   '/resident/upload-payment': typeof ResidentUploadPaymentLazyRoute
   '/admin': typeof AdminIndexRoute
+  '/employee': typeof EmployeeIndexRoute
   '/admin/resident/$residentId': typeof AdminResidentResidentIdViewIndexRoute
   '/admin/employee/add-employee': typeof AdminEmployeeAddEmployeeRoute
   '/admin/financial/record-payment': typeof AdminFinancialRecordPaymentRoute
@@ -1074,7 +1101,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_auth': typeof AuthRouteRouteWithChildren
   '/admin': typeof AdminRouteRouteWithChildren
-  '/employee': typeof EmployeeRouteRoute
+  '/employee': typeof EmployeeRouteRouteWithChildren
   '/login': typeof LoginRoute
   '/resident': typeof ResidentRouteLazyRouteWithChildren
   '/admin/employee': typeof AdminEmployeeRouteRouteWithChildren
@@ -1098,6 +1125,7 @@ export interface FileRoutesById {
   '/resident/profile': typeof ResidentProfileLazyRoute
   '/resident/upload-payment': typeof ResidentUploadPaymentLazyRoute
   '/admin/': typeof AdminIndexRoute
+  '/employee/': typeof EmployeeIndexRoute
   '/admin/financial/_financial': typeof AdminFinancialFinancialRouteRouteWithChildren
   '/admin/resident/$residentId': typeof AdminResidentResidentIdRouteRouteWithChildren
   '/admin/employee/add-employee': typeof AdminEmployeeAddEmployeeRoute
@@ -1153,6 +1181,7 @@ export interface FileRouteTypes {
     | '/resident/profile'
     | '/resident/upload-payment'
     | '/admin/'
+    | '/employee/'
     | '/admin/resident/$residentId'
     | '/admin/employee/add-employee'
     | '/admin/financial/record-payment'
@@ -1178,7 +1207,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | ''
-    | '/employee'
     | '/login'
     | '/resident'
     | '/admin/financial'
@@ -1198,6 +1226,7 @@ export interface FileRouteTypes {
     | '/resident/profile'
     | '/resident/upload-payment'
     | '/admin'
+    | '/employee'
     | '/admin/resident/$residentId'
     | '/admin/employee/add-employee'
     | '/admin/financial/record-payment'
@@ -1246,6 +1275,7 @@ export interface FileRouteTypes {
     | '/resident/profile'
     | '/resident/upload-payment'
     | '/admin/'
+    | '/employee/'
     | '/admin/financial/_financial'
     | '/admin/resident/$residentId'
     | '/admin/employee/add-employee'
@@ -1276,7 +1306,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRouteRoute: typeof AuthRouteRouteWithChildren
   AdminRouteRoute: typeof AdminRouteRouteWithChildren
-  EmployeeRouteRoute: typeof EmployeeRouteRoute
+  EmployeeRouteRoute: typeof EmployeeRouteRouteWithChildren
   LoginRoute: typeof LoginRoute
   ResidentRouteLazyRoute: typeof ResidentRouteLazyRouteWithChildren
 }
@@ -1285,7 +1315,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRouteRoute: AuthRouteRouteWithChildren,
   AdminRouteRoute: AdminRouteRouteWithChildren,
-  EmployeeRouteRoute: EmployeeRouteRoute,
+  EmployeeRouteRoute: EmployeeRouteRouteWithChildren,
   LoginRoute: LoginRoute,
   ResidentRouteLazyRoute: ResidentRouteLazyRouteWithChildren,
 }
@@ -1332,7 +1362,10 @@ export const routeTree = rootRoute
       ]
     },
     "/employee": {
-      "filePath": "employee/route.tsx"
+      "filePath": "employee/route.tsx",
+      "children": [
+        "/employee/"
+      ]
     },
     "/login": {
       "filePath": "login.tsx"
@@ -1462,6 +1495,10 @@ export const routeTree = rootRoute
     "/admin/": {
       "filePath": "admin/index.tsx",
       "parent": "/admin"
+    },
+    "/employee/": {
+      "filePath": "employee/index.tsx",
+      "parent": "/employee"
     },
     "/admin/financial/_financial": {
       "filePath": "admin/financial/_financial/route.tsx",
