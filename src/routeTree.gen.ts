@@ -33,6 +33,7 @@ import { Route as AdminResidentIndexImport } from './routes/admin/resident/index
 import { Route as AdminNotificationsIndexImport } from './routes/admin/notifications/index'
 import { Route as AdminEmployeeIndexImport } from './routes/admin/employee/index'
 import { Route as AdminResidentAddResidentImport } from './routes/admin/resident/add-resident'
+import { Route as AdminNotificationsSendSmsImport } from './routes/admin/notifications/send-sms'
 import { Route as AdminNotificationsCreateImport } from './routes/admin/notifications/create'
 import { Route as AdminFinancialRecordPaymentImport } from './routes/admin/financial/record-payment'
 import { Route as AdminEmployeeAddEmployeeImport } from './routes/admin/employee/add-employee'
@@ -266,6 +267,12 @@ const AdminResidentAddResidentRoute = AdminResidentAddResidentImport.update({
   id: '/add-resident',
   path: '/add-resident',
   getParentRoute: () => AdminResidentRouteRoute,
+} as any)
+
+const AdminNotificationsSendSmsRoute = AdminNotificationsSendSmsImport.update({
+  id: '/send-sms',
+  path: '/send-sms',
+  getParentRoute: () => AdminNotificationsRouteRoute,
 } as any)
 
 const AdminNotificationsCreateRoute = AdminNotificationsCreateImport.update({
@@ -596,6 +603,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminNotificationsCreateImport
       parentRoute: typeof AdminNotificationsRouteImport
     }
+    '/admin/notifications/send-sms': {
+      id: '/admin/notifications/send-sms'
+      path: '/send-sms'
+      fullPath: '/admin/notifications/send-sms'
+      preLoaderRoute: typeof AdminNotificationsSendSmsImport
+      parentRoute: typeof AdminNotificationsRouteImport
+    }
     '/admin/resident/add-resident': {
       id: '/admin/resident/add-resident'
       path: '/add-resident'
@@ -772,12 +786,14 @@ const AdminFinancialRouteRouteWithChildren =
 
 interface AdminNotificationsRouteRouteChildren {
   AdminNotificationsCreateRoute: typeof AdminNotificationsCreateRoute
+  AdminNotificationsSendSmsRoute: typeof AdminNotificationsSendSmsRoute
   AdminNotificationsIndexRoute: typeof AdminNotificationsIndexRoute
 }
 
 const AdminNotificationsRouteRouteChildren: AdminNotificationsRouteRouteChildren =
   {
     AdminNotificationsCreateRoute: AdminNotificationsCreateRoute,
+    AdminNotificationsSendSmsRoute: AdminNotificationsSendSmsRoute,
     AdminNotificationsIndexRoute: AdminNotificationsIndexRoute,
   }
 
@@ -930,6 +946,7 @@ export interface FileRoutesByFullPath {
   '/admin/employee/add-employee': typeof AdminEmployeeAddEmployeeRoute
   '/admin/financial/record-payment': typeof AdminFinancialRecordPaymentRoute
   '/admin/notifications/create': typeof AdminNotificationsCreateRoute
+  '/admin/notifications/send-sms': typeof AdminNotificationsSendSmsRoute
   '/admin/resident/add-resident': typeof AdminResidentAddResidentRoute
   '/admin/employee/': typeof AdminEmployeeIndexRoute
   '/admin/notifications/': typeof AdminNotificationsIndexRoute
@@ -973,6 +990,7 @@ export interface FileRoutesByTo {
   '/admin/employee/add-employee': typeof AdminEmployeeAddEmployeeRoute
   '/admin/financial/record-payment': typeof AdminFinancialRecordPaymentRoute
   '/admin/notifications/create': typeof AdminNotificationsCreateRoute
+  '/admin/notifications/send-sms': typeof AdminNotificationsSendSmsRoute
   '/admin/resident/add-resident': typeof AdminResidentAddResidentRoute
   '/admin/employee': typeof AdminEmployeeIndexRoute
   '/admin/notifications': typeof AdminNotificationsIndexRoute
@@ -1020,6 +1038,7 @@ export interface FileRoutesById {
   '/admin/employee/add-employee': typeof AdminEmployeeAddEmployeeRoute
   '/admin/financial/record-payment': typeof AdminFinancialRecordPaymentRoute
   '/admin/notifications/create': typeof AdminNotificationsCreateRoute
+  '/admin/notifications/send-sms': typeof AdminNotificationsSendSmsRoute
   '/admin/resident/add-resident': typeof AdminResidentAddResidentRoute
   '/admin/employee/': typeof AdminEmployeeIndexRoute
   '/admin/notifications/': typeof AdminNotificationsIndexRoute
@@ -1070,6 +1089,7 @@ export interface FileRouteTypes {
     | '/admin/employee/add-employee'
     | '/admin/financial/record-payment'
     | '/admin/notifications/create'
+    | '/admin/notifications/send-sms'
     | '/admin/resident/add-resident'
     | '/admin/employee/'
     | '/admin/notifications/'
@@ -1112,6 +1132,7 @@ export interface FileRouteTypes {
     | '/admin/employee/add-employee'
     | '/admin/financial/record-payment'
     | '/admin/notifications/create'
+    | '/admin/notifications/send-sms'
     | '/admin/resident/add-resident'
     | '/admin/employee'
     | '/admin/notifications'
@@ -1157,6 +1178,7 @@ export interface FileRouteTypes {
     | '/admin/employee/add-employee'
     | '/admin/financial/record-payment'
     | '/admin/notifications/create'
+    | '/admin/notifications/send-sms'
     | '/admin/resident/add-resident'
     | '/admin/employee/'
     | '/admin/notifications/'
@@ -1266,7 +1288,7 @@ export const routeTree = rootRoute
       "children": [
         "/admin/financial/_financial",
         "/admin/financial/record-payment",
-        "/admin/financial/edit/$residentId"
+        "/admin/financial/edit/$residentId",
         "/admin/financial/upload/"
       ]
     },
@@ -1275,6 +1297,7 @@ export const routeTree = rootRoute
       "parent": "/admin",
       "children": [
         "/admin/notifications/create",
+        "/admin/notifications/send-sms",
         "/admin/notifications/"
       ]
     },
@@ -1381,6 +1404,10 @@ export const routeTree = rootRoute
     },
     "/admin/notifications/create": {
       "filePath": "admin/notifications/create.tsx",
+      "parent": "/admin/notifications"
+    },
+    "/admin/notifications/send-sms": {
+      "filePath": "admin/notifications/send-sms.tsx",
       "parent": "/admin/notifications"
     },
     "/admin/resident/add-resident": {
