@@ -26,8 +26,8 @@ import { Route as EmployeeProfileImport } from './routes/employee/profile'
 import { Route as EmployeePaymentsImport } from './routes/employee/payments'
 import { Route as EmployeeNoticesImport } from './routes/employee/notices'
 import { Route as EmployeeInquiriesImport } from './routes/employee/inquiries'
-import { Route as EmployeeAccountImport } from './routes/employee/account'
 import { Route as EmployeeEditProfileImport } from './routes/employee/edit-profile'
+import { Route as EmployeeAccountImport } from './routes/employee/account'
 import { Route as AdminProfileImport } from './routes/admin/profile'
 import { Route as AdminEditProfileImport } from './routes/admin/edit-profile'
 import { Route as AdminAccountImport } from './routes/admin/account'
@@ -239,15 +239,15 @@ const EmployeeInquiriesRoute = EmployeeInquiriesImport.update({
   getParentRoute: () => EmployeeRouteRoute,
 } as any)
 
-const EmployeeAccountRoute = EmployeeAccountImport.update({
-  id: '/account',
-  path: '/account',
-  getParentRoute: () => EmployeeRouteRoute,
-} as any)
-
 const EmployeeEditProfileRoute = EmployeeEditProfileImport.update({
   id: '/edit-profile',
   path: '/edit-profile',
+  getParentRoute: () => EmployeeRouteRoute,
+} as any)
+
+const EmployeeAccountRoute = EmployeeAccountImport.update({
+  id: '/account',
+  path: '/account',
   getParentRoute: () => EmployeeRouteRoute,
 } as any)
 
@@ -1441,8 +1441,8 @@ export interface FileRouteTypes {
     | '/admin/account'
     | '/admin/edit-profile'
     | '/admin/profile'
-    | '/employee/edit-profile'
     | '/employee/account'
+    | '/employee/edit-profile'
     | '/employee/inquiries'
     | '/employee/notices'
     | '/employee/payments'
@@ -1550,8 +1550,8 @@ export const routeTree = rootRoute
       "filePath": "employee/route.tsx",
       "children": [
         "/employee/resident",
-        "/employee/edit-profile",
         "/employee/account",
+        "/employee/edit-profile",
         "/employee/inquiries",
         "/employee/notices",
         "/employee/payments",
@@ -1647,12 +1647,12 @@ export const routeTree = rootRoute
       "filePath": "admin/profile.tsx",
       "parent": "/admin"
     },
-    "/employee/edit-profile": {
-      "filePath": "employee/edit-profile.tsx",
-      "parent": "/employee"
-    },
     "/employee/account": {
       "filePath": "employee/account.tsx",
+      "parent": "/employee"
+    },
+    "/employee/edit-profile": {
+      "filePath": "employee/edit-profile.tsx",
       "parent": "/employee"
     },
     "/employee/inquiries": {
