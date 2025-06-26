@@ -1,15 +1,15 @@
 
 import Nav from "react-bootstrap/Nav";
-import { FaPeopleRoof, FaUserTie } from "react-icons/fa6";
+import { FaCircleInfo, FaPeopleRoof } from "react-icons/fa6";
 import { MdDashboard } from "react-icons/md";
-import { AiOutlineLineChart } from "react-icons/ai";
-import { TbUserExclamation, } from "react-icons/tb";
+import {  TbUserQuestion, } from "react-icons/tb";
 import "./side-bar.css"
 import { useState } from "react";
 import logo from "../../../assets/dwella-logo.png"
 import { Link, useLocation } from "@tanstack/react-router";
 import { CiMenuFries } from "react-icons/ci";
-import { IoCloseSharp, IoNotifications } from "react-icons/io5";
+import { IoCloseSharp } from "react-icons/io5";
+import { ImCreditCard } from "react-icons/im";
 
 
 function SideBar() {
@@ -28,45 +28,38 @@ function SideBar() {
               <img height={30} src={logo} alt="" />
             </a>
 
-            <Link to="/admin"  className={`text-decoration-none d-flex align-items-center fw-bold gap-2 rounded ${location.pathname.endsWith('/admin') ? 'link-active' : 'link-inactive'}`}>
+            <Link to="/employee"  className={`text-decoration-none d-flex align-items-center fw-bold gap-2 rounded ${location.pathname.endsWith('/employee') ? 'link-active' : 'link-inactive'}`}>
               <MdDashboard />
               <span className={`${ isMenuOpen ? "d-block" : "d-none"} d-md-block`}>
               Dashboard
               </span>
             </Link>
 
-            <Link to="/admin/resident"  className={`text-decoration-none d-flex align-items-center fw-bold gap-2 rounded ${location.pathname.startsWith('/admin/resident') ? 'link-active' : 'link-inactive'}`}>
+            <Link to="/employee/resident"  className={`text-decoration-none d-flex align-items-center fw-bold gap-2 rounded ${location.pathname.startsWith('/employee/resident') ? 'link-active' : 'link-inactive'}`}>
               <FaPeopleRoof />
               <span className={`${ isMenuOpen ? "d-block" : "d-none"} d-md-block`}>
               Residents
               </span>
             </Link>
 
-            <Link to="/admin/employee"  className={`text-decoration-none d-flex align-items-center fw-bold gap-2 rounded ${location.pathname.startsWith('/admin/employee') ? 'link-active' : 'link-inactive'}`}>
-              <FaUserTie />
+            <Link to="/employee/payments"  className={`text-decoration-none d-flex align-items-center fw-bold gap-2 rounded ${location.pathname.startsWith('/employee/payments') ? 'link-active' : 'link-inactive'}`}>
+              <ImCreditCard />
               <span className={`${ isMenuOpen ? "d-block" : "d-none"} d-md-block`}>
-              Employees
+              Payments
               </span>
             </Link>
             
-            <Link to="/admin/financial" className={`text-decoration-none d-flex align-items-center fw-bold gap-2 rounded ${location.pathname.startsWith('/admin/financial') ? 'link-active' : 'link-inactive'}`}>
-              <AiOutlineLineChart />
+            <Link to="/employee/notices" className={`text-decoration-none d-flex align-items-center fw-bold gap-2 rounded ${location.pathname.startsWith('/employee/notices') ? 'link-active' : 'link-inactive'}`}>
+              <FaCircleInfo />
               <span className={`${ isMenuOpen ? "d-block" : "d-none"} d-md-block`}>
-              Financial
+              Notices
               </span>
             </Link>
 
-            <Link to="/admin/notifications" className={`text-decoration-none d-flex align-items-center fw-bold gap-2 rounded ${location.pathname.startsWith('/admin/notifications') ? 'link-active' : 'link-inactive'}`}>
-              <IoNotifications />
+            <Link to="/employee/inquiries" className={`text-decoration-none d-flex align-items-center fw-bold gap-2 rounded ${location.pathname.startsWith('/employee/inquiries') ? 'link-active' : 'link-inactive'}`}>
+              <TbUserQuestion />
               <span className={`${ isMenuOpen ? "d-block" : "d-none"} d-md-block`}>
-              Notifications
-              </span>
-            </Link>
-
-            <Link to="/admin/unpaid-accounts" className={`text-decoration-none d-flex align-items-center fw-bold gap-2 rounded ${location.pathname.startsWith('/admin/unpaid-accounts') ? 'link-active' : 'link-inactive'}`}>
-              <TbUserExclamation />
-              <span className={`${ isMenuOpen ? "d-block" : "d-none"} d-md-block text-nowrap`}>
-              Unpaid Accounts
+              Inquiries
               </span>
             </Link>
 
