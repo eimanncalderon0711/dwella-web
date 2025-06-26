@@ -1045,6 +1045,7 @@ interface EmployeeRouteRouteChildren {
   EmployeeInquiriesRoute: typeof EmployeeInquiriesRoute
   EmployeeNoticesRoute: typeof EmployeeNoticesRoute
   EmployeePaymentsRoute: typeof EmployeePaymentsRoute
+  EmployeeIndexRoute: typeof EmployeeIndexRoute
 }
 
 const EmployeeRouteRouteChildren: EmployeeRouteRouteChildren = {
@@ -1052,12 +1053,6 @@ const EmployeeRouteRouteChildren: EmployeeRouteRouteChildren = {
   EmployeeInquiriesRoute: EmployeeInquiriesRoute,
   EmployeeNoticesRoute: EmployeeNoticesRoute,
   EmployeePaymentsRoute: EmployeePaymentsRoute,
-=======
-interface EmployeeRouteRouteChildren {
-  EmployeeIndexRoute: typeof EmployeeIndexRoute
-}
-
-const EmployeeRouteRouteChildren: EmployeeRouteRouteChildren = {
   EmployeeIndexRoute: EmployeeIndexRoute,
 }
 
@@ -1156,7 +1151,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '': typeof AuthRouteRouteWithChildren
-  '/employee': typeof EmployeeRouteRouteWithChildren
   '/login': typeof LoginRoute
   '/resident': typeof ResidentRouteLazyRouteWithChildren
   '/admin/financial': typeof AdminFinancialFinancialIndexRoute
@@ -1492,7 +1486,7 @@ export const routeTree = rootRoute
         "/employee/resident",
         "/employee/inquiries",
         "/employee/notices",
-        "/employee/payments"
+        "/employee/payments",
         "/employee/"
       ]
     },
