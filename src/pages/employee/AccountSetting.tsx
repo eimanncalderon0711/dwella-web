@@ -6,7 +6,7 @@ function AccountSetting() {
   return (
     <Container className="pt-5 d-flex flex-column w-100" style={{maxWidth:"70rem"}}>
         {/* Header component*/}
-        <Header path={'admin'}>
+        <Header path={'employee'}>
             <div className="d-flex gap-3">
                 <h3 className='fw-bold'>Account Settings</h3>
             </div>
