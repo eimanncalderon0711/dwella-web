@@ -23,10 +23,12 @@ function EditProfile() {
         <div className='p-5 rounded-3 mb-5' style={{backgroundColor:"#F2F2F7"}}>
             <h3>Details</h3>
             <Row className='pt-3'>
+
+                {/* Fullname */}
                 <Col xs={12} md={6}>
-                    <Form.Group className="mb-3" controlId="formContactInfo">
-                        <Form.Label >Contact Info</Form.Label>
-                        <Form.Control type="text" placeholder="e.g., 09179874321" />
+                    <Form.Group className="mb-3" controlId="formFullname">
+                        <Form.Label >Fullname</Form.Label>
+                        <Form.Control type="text" placeholder="e.g., Juan Dela Cruz" />
                     </Form.Group>
                 </Col>
 
@@ -37,28 +39,20 @@ function EditProfile() {
                         <Form.Control type="text" placeholder="e.g., miguel.santos@email.com" />
                     </Form.Group>
                 </Col>
-                
-                {/* Account Role */}
+
+                {/* Contact Number */}
                 <Col xs={12} md={6}>
-                    <Form.Group className="mb-3" controlId="formAccountRole">
-                        <Form.Label  >Role</Form.Label>
-                        <Form.Select  aria-label="Default select example">
-                            <option value={undefined}>Select</option>
-                            <option value="active">Employee 1</option>
-                            <option value="inactive">Employee 2</option>
-                        </Form.Select>
+                    <Form.Group className="mb-3" controlId="formContactNumber">
+                        <Form.Label >Contact Number</Form.Label>
+                        <Form.Control type="number" placeholder="e.g., 09123456789" />
                     </Form.Group>
                 </Col>
 
-                {/* Account status */}
+                {/* Address */}
                 <Col xs={12} md={6}>
-                    <Form.Group className="mb-3" controlId="formAccountStatus">
-                        <Form.Label  >Account Status</Form.Label>
-                        <Form.Select  aria-label="Default select example">
-                            <option value={undefined}>Select</option>
-                            <option value="active">Active</option>
-                            <option value="inactive">Inactive</option>
-                        </Form.Select>
+                    <Form.Group className="mb-3" controlId="formAddress">
+                        <Form.Label >Address</Form.Label>
+                        <Form.Control type="text" placeholder="e.g., Cagayan De Oro City" />
                     </Form.Group>
                 </Col>
 
