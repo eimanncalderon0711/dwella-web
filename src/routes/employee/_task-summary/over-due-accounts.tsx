@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import OverDueAccounts from '../../../pages/employee/OverDueAccounts'
 
 export const Route = createFileRoute(
   '/employee/_task-summary/over-due-accounts',
@@ -7,5 +8,5 @@ export const Route = createFileRoute(
 })
 
 function RouteComponent() {
-  return <div>Hello "/employee/_task-summary/over-due-accounts"!</div>
+  return <OverDueAccounts/>
 }
