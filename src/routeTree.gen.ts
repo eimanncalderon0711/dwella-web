@@ -20,18 +20,20 @@ import { Route as IndexImport } from './routes/index'
 import { Route as AdminIndexImport } from './routes/admin/index'
 import { Route as ResidentSubmitRequestImport } from './routes/resident/submit-request'
 import { Route as ResidentContactImport } from './routes/resident/contact'
-import { Route as AdminUnpaidAccountsImport } from './routes/admin/unpaid-accounts'
 import { Route as AdminProfileImport } from './routes/admin/profile'
 import { Route as AdminEditProfileImport } from './routes/admin/edit-profile'
 import { Route as AdminAccountImport } from './routes/admin/account'
 import { Route as AuthDashboardImport } from './routes/_auth/dashboard'
+import { Route as AdminUnpaidAccountsRouteImport } from './routes/admin/unpaid-accounts/route'
 import { Route as AdminResidentRouteImport } from './routes/admin/resident/route'
 import { Route as AdminNotificationsRouteImport } from './routes/admin/notifications/route'
 import { Route as AdminFinancialRouteImport } from './routes/admin/financial/route'
 import { Route as AdminEmployeeRouteImport } from './routes/admin/employee/route'
+import { Route as AdminUnpaidAccountsIndexImport } from './routes/admin/unpaid-accounts/index'
 import { Route as AdminResidentIndexImport } from './routes/admin/resident/index'
 import { Route as AdminNotificationsIndexImport } from './routes/admin/notifications/index'
 import { Route as AdminEmployeeIndexImport } from './routes/admin/employee/index'
+import { Route as AdminUnpaidAccountsRemindersImport } from './routes/admin/unpaid-accounts/reminders'
 import { Route as AdminResidentAddResidentImport } from './routes/admin/resident/add-resident'
 import { Route as AdminNotificationsSendSmsImport } from './routes/admin/notifications/send-sms'
 import { Route as AdminNotificationsCreateImport } from './routes/admin/notifications/create'
@@ -191,12 +193,6 @@ const ResidentContactRoute = ResidentContactImport.update({
   getParentRoute: () => ResidentRouteLazyRoute,
 } as any)
 
-const AdminUnpaidAccountsRoute = AdminUnpaidAccountsImport.update({
-  id: '/unpaid-accounts',
-  path: '/unpaid-accounts',
-  getParentRoute: () => AdminRouteRoute,
-} as any)
-
 const AdminProfileRoute = AdminProfileImport.update({
   id: '/profile',
   path: '/profile',
@@ -219,6 +215,12 @@ const AuthDashboardRoute = AuthDashboardImport.update({
   id: '/dashboard',
   path: '/dashboard',
   getParentRoute: () => AuthRouteRoute,
+} as any)
+
+const AdminUnpaidAccountsRouteRoute = AdminUnpaidAccountsRouteImport.update({
+  id: '/unpaid-accounts',
+  path: '/unpaid-accounts',
+  getParentRoute: () => AdminRouteRoute,
 } as any)
 
 const AdminResidentRouteRoute = AdminResidentRouteImport.update({
@@ -245,6 +247,12 @@ const AdminEmployeeRouteRoute = AdminEmployeeRouteImport.update({
   getParentRoute: () => AdminRouteRoute,
 } as any)
 
+const AdminUnpaidAccountsIndexRoute = AdminUnpaidAccountsIndexImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminUnpaidAccountsRouteRoute,
+} as any)
+
 const AdminResidentIndexRoute = AdminResidentIndexImport.update({
   id: '/',
   path: '/',
@@ -262,6 +270,13 @@ const AdminEmployeeIndexRoute = AdminEmployeeIndexImport.update({
   path: '/',
   getParentRoute: () => AdminEmployeeRouteRoute,
 } as any)
+
+const AdminUnpaidAccountsRemindersRoute =
+  AdminUnpaidAccountsRemindersImport.update({
+    id: '/reminders',
+    path: '/reminders',
+    getParentRoute: () => AdminUnpaidAccountsRouteRoute,
+  } as any)
 
 const AdminResidentAddResidentRoute = AdminResidentAddResidentImport.update({
   id: '/add-resident',
@@ -449,6 +464,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminResidentRouteImport
       parentRoute: typeof AdminRouteImport
     }
+    '/admin/unpaid-accounts': {
+      id: '/admin/unpaid-accounts'
+      path: '/unpaid-accounts'
+      fullPath: '/admin/unpaid-accounts'
+      preLoaderRoute: typeof AdminUnpaidAccountsRouteImport
+      parentRoute: typeof AdminRouteImport
+    }
     '/_auth/dashboard': {
       id: '/_auth/dashboard'
       path: '/dashboard'
@@ -475,13 +497,6 @@ declare module '@tanstack/react-router' {
       path: '/profile'
       fullPath: '/admin/profile'
       preLoaderRoute: typeof AdminProfileImport
-      parentRoute: typeof AdminRouteImport
-    }
-    '/admin/unpaid-accounts': {
-      id: '/admin/unpaid-accounts'
-      path: '/unpaid-accounts'
-      fullPath: '/admin/unpaid-accounts'
-      preLoaderRoute: typeof AdminUnpaidAccountsImport
       parentRoute: typeof AdminRouteImport
     }
     '/resident/contact': {
@@ -617,6 +632,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminResidentAddResidentImport
       parentRoute: typeof AdminResidentRouteImport
     }
+    '/admin/unpaid-accounts/reminders': {
+      id: '/admin/unpaid-accounts/reminders'
+      path: '/reminders'
+      fullPath: '/admin/unpaid-accounts/reminders'
+      preLoaderRoute: typeof AdminUnpaidAccountsRemindersImport
+      parentRoute: typeof AdminUnpaidAccountsRouteImport
+    }
     '/admin/employee/': {
       id: '/admin/employee/'
       path: '/'
@@ -637,6 +659,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin/resident/'
       preLoaderRoute: typeof AdminResidentIndexImport
       parentRoute: typeof AdminResidentRouteImport
+    }
+    '/admin/unpaid-accounts/': {
+      id: '/admin/unpaid-accounts/'
+      path: '/'
+      fullPath: '/admin/unpaid-accounts/'
+      preLoaderRoute: typeof AdminUnpaidAccountsIndexImport
+      parentRoute: typeof AdminUnpaidAccountsRouteImport
     }
     '/admin/resident/$residentId/_view': {
       id: '/admin/resident/$residentId/_view'
@@ -856,15 +885,31 @@ const AdminResidentRouteRouteChildren: AdminResidentRouteRouteChildren = {
 const AdminResidentRouteRouteWithChildren =
   AdminResidentRouteRoute._addFileChildren(AdminResidentRouteRouteChildren)
 
+interface AdminUnpaidAccountsRouteRouteChildren {
+  AdminUnpaidAccountsRemindersRoute: typeof AdminUnpaidAccountsRemindersRoute
+  AdminUnpaidAccountsIndexRoute: typeof AdminUnpaidAccountsIndexRoute
+}
+
+const AdminUnpaidAccountsRouteRouteChildren: AdminUnpaidAccountsRouteRouteChildren =
+  {
+    AdminUnpaidAccountsRemindersRoute: AdminUnpaidAccountsRemindersRoute,
+    AdminUnpaidAccountsIndexRoute: AdminUnpaidAccountsIndexRoute,
+  }
+
+const AdminUnpaidAccountsRouteRouteWithChildren =
+  AdminUnpaidAccountsRouteRoute._addFileChildren(
+    AdminUnpaidAccountsRouteRouteChildren,
+  )
+
 interface AdminRouteRouteChildren {
   AdminEmployeeRouteRoute: typeof AdminEmployeeRouteRouteWithChildren
   AdminFinancialRouteRoute: typeof AdminFinancialRouteRouteWithChildren
   AdminNotificationsRouteRoute: typeof AdminNotificationsRouteRouteWithChildren
   AdminResidentRouteRoute: typeof AdminResidentRouteRouteWithChildren
+  AdminUnpaidAccountsRouteRoute: typeof AdminUnpaidAccountsRouteRouteWithChildren
   AdminAccountRoute: typeof AdminAccountRoute
   AdminEditProfileRoute: typeof AdminEditProfileRoute
   AdminProfileRoute: typeof AdminProfileRoute
-  AdminUnpaidAccountsRoute: typeof AdminUnpaidAccountsRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
@@ -873,10 +918,10 @@ const AdminRouteRouteChildren: AdminRouteRouteChildren = {
   AdminFinancialRouteRoute: AdminFinancialRouteRouteWithChildren,
   AdminNotificationsRouteRoute: AdminNotificationsRouteRouteWithChildren,
   AdminResidentRouteRoute: AdminResidentRouteRouteWithChildren,
+  AdminUnpaidAccountsRouteRoute: AdminUnpaidAccountsRouteRouteWithChildren,
   AdminAccountRoute: AdminAccountRoute,
   AdminEditProfileRoute: AdminEditProfileRoute,
   AdminProfileRoute: AdminProfileRoute,
-  AdminUnpaidAccountsRoute: AdminUnpaidAccountsRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
 
@@ -925,11 +970,11 @@ export interface FileRoutesByFullPath {
   '/admin/financial': typeof AdminFinancialFinancialRouteRouteWithChildren
   '/admin/notifications': typeof AdminNotificationsRouteRouteWithChildren
   '/admin/resident': typeof AdminResidentRouteRouteWithChildren
+  '/admin/unpaid-accounts': typeof AdminUnpaidAccountsRouteRouteWithChildren
   '/dashboard': typeof AuthDashboardRoute
   '/admin/account': typeof AdminAccountRoute
   '/admin/edit-profile': typeof AdminEditProfileRoute
   '/admin/profile': typeof AdminProfileRoute
-  '/admin/unpaid-accounts': typeof AdminUnpaidAccountsRoute
   '/resident/contact': typeof ResidentContactRoute
   '/resident/submit-request': typeof ResidentSubmitRequestRoute
   '/resident/account': typeof ResidentAccountLazyRoute
@@ -948,9 +993,11 @@ export interface FileRoutesByFullPath {
   '/admin/notifications/create': typeof AdminNotificationsCreateRoute
   '/admin/notifications/send-sms': typeof AdminNotificationsSendSmsRoute
   '/admin/resident/add-resident': typeof AdminResidentAddResidentRoute
+  '/admin/unpaid-accounts/reminders': typeof AdminUnpaidAccountsRemindersRoute
   '/admin/employee/': typeof AdminEmployeeIndexRoute
   '/admin/notifications/': typeof AdminNotificationsIndexRoute
   '/admin/resident/': typeof AdminResidentIndexRoute
+  '/admin/unpaid-accounts/': typeof AdminUnpaidAccountsIndexRoute
   '/admin/financial/monthly-due': typeof AdminFinancialFinancialMonthlyDueRoute
   '/admin/financial/edit/$residentId': typeof AdminFinancialEditResidentIdRoute
   '/admin/resident/$residentId/edit': typeof AdminResidentResidentIdEditRoute
@@ -973,7 +1020,6 @@ export interface FileRoutesByTo {
   '/admin/account': typeof AdminAccountRoute
   '/admin/edit-profile': typeof AdminEditProfileRoute
   '/admin/profile': typeof AdminProfileRoute
-  '/admin/unpaid-accounts': typeof AdminUnpaidAccountsRoute
   '/resident/contact': typeof ResidentContactRoute
   '/resident/submit-request': typeof ResidentSubmitRequestRoute
   '/resident/account': typeof ResidentAccountLazyRoute
@@ -992,9 +1038,11 @@ export interface FileRoutesByTo {
   '/admin/notifications/create': typeof AdminNotificationsCreateRoute
   '/admin/notifications/send-sms': typeof AdminNotificationsSendSmsRoute
   '/admin/resident/add-resident': typeof AdminResidentAddResidentRoute
+  '/admin/unpaid-accounts/reminders': typeof AdminUnpaidAccountsRemindersRoute
   '/admin/employee': typeof AdminEmployeeIndexRoute
   '/admin/notifications': typeof AdminNotificationsIndexRoute
   '/admin/resident': typeof AdminResidentIndexRoute
+  '/admin/unpaid-accounts': typeof AdminUnpaidAccountsIndexRoute
   '/admin/financial/monthly-due': typeof AdminFinancialFinancialMonthlyDueRoute
   '/admin/financial/edit/$residentId': typeof AdminFinancialEditResidentIdRoute
   '/admin/resident/$residentId/edit': typeof AdminResidentResidentIdEditRoute
@@ -1016,11 +1064,11 @@ export interface FileRoutesById {
   '/admin/financial': typeof AdminFinancialRouteRouteWithChildren
   '/admin/notifications': typeof AdminNotificationsRouteRouteWithChildren
   '/admin/resident': typeof AdminResidentRouteRouteWithChildren
+  '/admin/unpaid-accounts': typeof AdminUnpaidAccountsRouteRouteWithChildren
   '/_auth/dashboard': typeof AuthDashboardRoute
   '/admin/account': typeof AdminAccountRoute
   '/admin/edit-profile': typeof AdminEditProfileRoute
   '/admin/profile': typeof AdminProfileRoute
-  '/admin/unpaid-accounts': typeof AdminUnpaidAccountsRoute
   '/resident/contact': typeof ResidentContactRoute
   '/resident/submit-request': typeof ResidentSubmitRequestRoute
   '/resident/account': typeof ResidentAccountLazyRoute
@@ -1040,9 +1088,11 @@ export interface FileRoutesById {
   '/admin/notifications/create': typeof AdminNotificationsCreateRoute
   '/admin/notifications/send-sms': typeof AdminNotificationsSendSmsRoute
   '/admin/resident/add-resident': typeof AdminResidentAddResidentRoute
+  '/admin/unpaid-accounts/reminders': typeof AdminUnpaidAccountsRemindersRoute
   '/admin/employee/': typeof AdminEmployeeIndexRoute
   '/admin/notifications/': typeof AdminNotificationsIndexRoute
   '/admin/resident/': typeof AdminResidentIndexRoute
+  '/admin/unpaid-accounts/': typeof AdminUnpaidAccountsIndexRoute
   '/admin/resident/$residentId/_view': typeof AdminResidentResidentIdViewRouteRouteWithChildren
   '/admin/financial/_financial/monthly-due': typeof AdminFinancialFinancialMonthlyDueRoute
   '/admin/financial/edit/$residentId': typeof AdminFinancialEditResidentIdRoute
@@ -1068,11 +1118,11 @@ export interface FileRouteTypes {
     | '/admin/financial'
     | '/admin/notifications'
     | '/admin/resident'
+    | '/admin/unpaid-accounts'
     | '/dashboard'
     | '/admin/account'
     | '/admin/edit-profile'
     | '/admin/profile'
-    | '/admin/unpaid-accounts'
     | '/resident/contact'
     | '/resident/submit-request'
     | '/resident/account'
@@ -1091,9 +1141,11 @@ export interface FileRouteTypes {
     | '/admin/notifications/create'
     | '/admin/notifications/send-sms'
     | '/admin/resident/add-resident'
+    | '/admin/unpaid-accounts/reminders'
     | '/admin/employee/'
     | '/admin/notifications/'
     | '/admin/resident/'
+    | '/admin/unpaid-accounts/'
     | '/admin/financial/monthly-due'
     | '/admin/financial/edit/$residentId'
     | '/admin/resident/$residentId/edit'
@@ -1115,7 +1167,6 @@ export interface FileRouteTypes {
     | '/admin/account'
     | '/admin/edit-profile'
     | '/admin/profile'
-    | '/admin/unpaid-accounts'
     | '/resident/contact'
     | '/resident/submit-request'
     | '/resident/account'
@@ -1134,9 +1185,11 @@ export interface FileRouteTypes {
     | '/admin/notifications/create'
     | '/admin/notifications/send-sms'
     | '/admin/resident/add-resident'
+    | '/admin/unpaid-accounts/reminders'
     | '/admin/employee'
     | '/admin/notifications'
     | '/admin/resident'
+    | '/admin/unpaid-accounts'
     | '/admin/financial/monthly-due'
     | '/admin/financial/edit/$residentId'
     | '/admin/resident/$residentId/edit'
@@ -1156,11 +1209,11 @@ export interface FileRouteTypes {
     | '/admin/financial'
     | '/admin/notifications'
     | '/admin/resident'
+    | '/admin/unpaid-accounts'
     | '/_auth/dashboard'
     | '/admin/account'
     | '/admin/edit-profile'
     | '/admin/profile'
-    | '/admin/unpaid-accounts'
     | '/resident/contact'
     | '/resident/submit-request'
     | '/resident/account'
@@ -1180,9 +1233,11 @@ export interface FileRouteTypes {
     | '/admin/notifications/create'
     | '/admin/notifications/send-sms'
     | '/admin/resident/add-resident'
+    | '/admin/unpaid-accounts/reminders'
     | '/admin/employee/'
     | '/admin/notifications/'
     | '/admin/resident/'
+    | '/admin/unpaid-accounts/'
     | '/admin/resident/$residentId/_view'
     | '/admin/financial/_financial/monthly-due'
     | '/admin/financial/edit/$residentId'
@@ -1246,10 +1301,10 @@ export const routeTree = rootRoute
         "/admin/financial",
         "/admin/notifications",
         "/admin/resident",
+        "/admin/unpaid-accounts",
         "/admin/account",
         "/admin/edit-profile",
         "/admin/profile",
-        "/admin/unpaid-accounts",
         "/admin/"
       ]
     },
@@ -1310,6 +1365,14 @@ export const routeTree = rootRoute
         "/admin/resident/"
       ]
     },
+    "/admin/unpaid-accounts": {
+      "filePath": "admin/unpaid-accounts/route.tsx",
+      "parent": "/admin",
+      "children": [
+        "/admin/unpaid-accounts/reminders",
+        "/admin/unpaid-accounts/"
+      ]
+    },
     "/_auth/dashboard": {
       "filePath": "_auth/dashboard.tsx",
       "parent": "/_auth"
@@ -1324,10 +1387,6 @@ export const routeTree = rootRoute
     },
     "/admin/profile": {
       "filePath": "admin/profile.tsx",
-      "parent": "/admin"
-    },
-    "/admin/unpaid-accounts": {
-      "filePath": "admin/unpaid-accounts.tsx",
       "parent": "/admin"
     },
     "/resident/contact": {
@@ -1414,6 +1473,10 @@ export const routeTree = rootRoute
       "filePath": "admin/resident/add-resident.tsx",
       "parent": "/admin/resident"
     },
+    "/admin/unpaid-accounts/reminders": {
+      "filePath": "admin/unpaid-accounts/reminders.tsx",
+      "parent": "/admin/unpaid-accounts"
+    },
     "/admin/employee/": {
       "filePath": "admin/employee/index.tsx",
       "parent": "/admin/employee"
@@ -1425,6 +1488,10 @@ export const routeTree = rootRoute
     "/admin/resident/": {
       "filePath": "admin/resident/index.tsx",
       "parent": "/admin/resident"
+    },
+    "/admin/unpaid-accounts/": {
+      "filePath": "admin/unpaid-accounts/index.tsx",
+      "parent": "/admin/unpaid-accounts"
     },
     "/admin/resident/$residentId/_view": {
       "filePath": "admin/resident/$residentId/_view/route.tsx",

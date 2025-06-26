@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
-import UnpaidAccount from '../../pages/admin/UnpaidAccount'
+import UnpaidAccount from '../../../pages/admin/UnpaidAccount'
 
-export const Route = createFileRoute('/admin/unpaid-accounts')({
+export const Route = createFileRoute('/admin/unpaid-accounts/')({
   component: RouteComponent,
 })
 
