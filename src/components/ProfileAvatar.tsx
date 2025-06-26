@@ -2,7 +2,14 @@ import { FaCamera } from "react-icons/fa6"
 import profile from "../assets/_ 1.png"
 import { Image } from "react-bootstrap"
 
-function ProfileAvatar() {
+
+interface ProfileProps{
+  name:string;
+  position:string;
+  address:string;
+}
+
+function ProfileAvatar(props: ProfileProps) {
   return (
     <div className="p-3 d-flex align-items-center gap-2">
 
@@ -16,9 +23,9 @@ function ProfileAvatar() {
       
       {/* Side profile info */}
         <div className="d-flex flex-column">
-            <h3 className="fw-bold fs-5">Trexy Balansag</h3>
-            <span className="text-muted">President</span>
-            <span className="text-muted">Cagayan De Oro City</span>
+            <h3 className="fw-bold fs-5">{props.name}</h3>
+            <span className="text-muted">{props.position}</span>
+            <span className="text-muted">{props.address}</span>
         </div>
     </div>
   )
