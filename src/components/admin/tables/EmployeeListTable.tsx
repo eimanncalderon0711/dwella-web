@@ -27,7 +27,7 @@ function EmployeeListTable() {
                     <td className='d-flex align-items-center justify-content-center gap-2 '>
                         <div className='text-primary fw-bold fs-5'><FaPencilAlt /></div>
                         <div className='text-danger fw-bold fs-5'><FaRegTrashAlt /></div>
-                        <div className='text-primary fw-bold fs-5'><IoMdEye /></div>
+                        <a href="/admin/employee/1"className='text-primary fw-bold fs-5'><IoMdEye /></a>
                     </td>
               </tr>
               <tr className="text-nowrap">
@@ -39,7 +39,7 @@ function EmployeeListTable() {
                     <td className='d-flex align-items-center justify-content-center gap-2 '>
                         <div className='text-primary fw-bold fs-5'><FaPencilAlt /></div>
                         <div className='text-danger fw-bold fs-5'><FaRegTrashAlt /></div>
-                        <div className='text-primary fw-bold fs-5'><IoMdEye /></div>
+                        <a href="/admin/employee/2"className='text-primary fw-bold fs-5'><IoMdEye /></a>
                     </td>
               </tr>
               <tr className="text-nowrap">
@@ -51,7 +51,7 @@ function EmployeeListTable() {
                     <td className='d-flex align-items-center justify-content-center gap-2 '>
                         <div className='text-primary fw-bold fs-5'><FaPencilAlt /></div>
                         <div className='text-danger fw-bold fs-5'><FaRegTrashAlt /></div>
-                        <div className='text-primary fw-bold fs-5'><IoMdEye /></div>
+                        <a href="/admin/employee/3"className='text-primary fw-bold fs-5'><IoMdEye /></a>
                     </td>
               </tr>
               <tr className="text-nowrap">
@@ -63,7 +63,7 @@ function EmployeeListTable() {
                     <td className='d-flex align-items-center justify-content-center gap-2 '>
                         <div className='text-primary fw-bold fs-5'><FaPencilAlt /></div>
                         <div className='text-danger fw-bold fs-5'><FaRegTrashAlt /></div>
-                        <div className='text-primary fw-bold fs-5'><IoMdEye /></div>
+                        <a href="/admin/employee/4"className='text-primary fw-bold fs-5'><IoMdEye /></a>
                     </td>
               </tr>
               <tr className="text-nowrap">
@@ -75,7 +75,7 @@ function EmployeeListTable() {
                     <td className='d-flex align-items-center justify-content-center gap-2 '>
                         <div className='text-primary fw-bold fs-5'><FaPencilAlt /></div>
                         <div className='text-danger fw-bold fs-5'><FaRegTrashAlt /></div>
-                        <div className='text-primary fw-bold fs-5'><IoMdEye /></div>
+                        <a href="/admin/employee/5"className='text-primary fw-bold fs-5'><IoMdEye /></a>
                     </td>
               </tr>
             </tbody>
