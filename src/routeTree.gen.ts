@@ -26,6 +26,7 @@ import { Route as EmployeeProfileImport } from './routes/employee/profile'
 import { Route as EmployeePaymentsImport } from './routes/employee/payments'
 import { Route as EmployeeNoticesImport } from './routes/employee/notices'
 import { Route as EmployeeInquiriesImport } from './routes/employee/inquiries'
+import { Route as EmployeeAccountImport } from './routes/employee/account'
 import { Route as EmployeeEditProfileImport } from './routes/employee/edit-profile'
 import { Route as AdminProfileImport } from './routes/admin/profile'
 import { Route as AdminEditProfileImport } from './routes/admin/edit-profile'
@@ -235,6 +236,12 @@ const EmployeeNoticesRoute = EmployeeNoticesImport.update({
 const EmployeeInquiriesRoute = EmployeeInquiriesImport.update({
   id: '/inquiries',
   path: '/inquiries',
+  getParentRoute: () => EmployeeRouteRoute,
+} as any)
+
+const EmployeeAccountRoute = EmployeeAccountImport.update({
+  id: '/account',
+  path: '/account',
   getParentRoute: () => EmployeeRouteRoute,
 } as any)
 
@@ -575,6 +582,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin/profile'
       preLoaderRoute: typeof AdminProfileImport
       parentRoute: typeof AdminRouteImport
+    }
+    '/employee/account': {
+      id: '/employee/account'
+      path: '/account'
+      fullPath: '/employee/account'
+      preLoaderRoute: typeof EmployeeAccountImport
+      parentRoute: typeof EmployeeRouteImport
     }
     '/employee/edit-profile': {
       id: '/employee/edit-profile'
@@ -1070,6 +1084,7 @@ const EmployeeResidentRouteRouteWithChildren =
 
 interface EmployeeRouteRouteChildren {
   EmployeeResidentRouteRoute: typeof EmployeeResidentRouteRouteWithChildren
+  EmployeeAccountRoute: typeof EmployeeAccountRoute
   EmployeeEditProfileRoute: typeof EmployeeEditProfileRoute
   EmployeeInquiriesRoute: typeof EmployeeInquiriesRoute
   EmployeeNoticesRoute: typeof EmployeeNoticesRoute
@@ -1080,6 +1095,7 @@ interface EmployeeRouteRouteChildren {
 
 const EmployeeRouteRouteChildren: EmployeeRouteRouteChildren = {
   EmployeeResidentRouteRoute: EmployeeResidentRouteRouteWithChildren,
+  EmployeeAccountRoute: EmployeeAccountRoute,
   EmployeeEditProfileRoute: EmployeeEditProfileRoute,
   EmployeeInquiriesRoute: EmployeeInquiriesRoute,
   EmployeeNoticesRoute: EmployeeNoticesRoute,
@@ -1140,6 +1156,7 @@ export interface FileRoutesByFullPath {
   '/admin/account': typeof AdminAccountRoute
   '/admin/edit-profile': typeof AdminEditProfileRoute
   '/admin/profile': typeof AdminProfileRoute
+  '/employee/account': typeof EmployeeAccountRoute
   '/employee/edit-profile': typeof EmployeeEditProfileRoute
   '/employee/inquiries': typeof EmployeeInquiriesRoute
   '/employee/notices': typeof EmployeeNoticesRoute
@@ -1192,6 +1209,7 @@ export interface FileRoutesByTo {
   '/admin/account': typeof AdminAccountRoute
   '/admin/edit-profile': typeof AdminEditProfileRoute
   '/admin/profile': typeof AdminProfileRoute
+  '/employee/account': typeof EmployeeAccountRoute
   '/employee/edit-profile': typeof EmployeeEditProfileRoute
   '/employee/inquiries': typeof EmployeeInquiriesRoute
   '/employee/notices': typeof EmployeeNoticesRoute
@@ -1250,6 +1268,7 @@ export interface FileRoutesById {
   '/admin/account': typeof AdminAccountRoute
   '/admin/edit-profile': typeof AdminEditProfileRoute
   '/admin/profile': typeof AdminProfileRoute
+  '/employee/account': typeof EmployeeAccountRoute
   '/employee/edit-profile': typeof EmployeeEditProfileRoute
   '/employee/inquiries': typeof EmployeeInquiriesRoute
   '/employee/notices': typeof EmployeeNoticesRoute
@@ -1313,6 +1332,7 @@ export interface FileRouteTypes {
     | '/admin/account'
     | '/admin/edit-profile'
     | '/admin/profile'
+    | '/employee/account'
     | '/employee/edit-profile'
     | '/employee/inquiries'
     | '/employee/notices'
@@ -1364,6 +1384,7 @@ export interface FileRouteTypes {
     | '/admin/account'
     | '/admin/edit-profile'
     | '/admin/profile'
+    | '/employee/account'
     | '/employee/edit-profile'
     | '/employee/inquiries'
     | '/employee/notices'
@@ -1421,6 +1442,7 @@ export interface FileRouteTypes {
     | '/admin/edit-profile'
     | '/admin/profile'
     | '/employee/edit-profile'
+    | '/employee/account'
     | '/employee/inquiries'
     | '/employee/notices'
     | '/employee/payments'
@@ -1529,6 +1551,7 @@ export const routeTree = rootRoute
       "children": [
         "/employee/resident",
         "/employee/edit-profile",
+        "/employee/account",
         "/employee/inquiries",
         "/employee/notices",
         "/employee/payments",
@@ -1626,6 +1649,10 @@ export const routeTree = rootRoute
     },
     "/employee/edit-profile": {
       "filePath": "employee/edit-profile.tsx",
+      "parent": "/employee"
+    },
+    "/employee/account": {
+      "filePath": "employee/account.tsx",
       "parent": "/employee"
     },
     "/employee/inquiries": {
