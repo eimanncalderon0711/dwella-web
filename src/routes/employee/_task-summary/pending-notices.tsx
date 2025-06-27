@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import PendingNotices from '../../../pages/employee/PendingNotices'
 
 export const Route = createFileRoute('/employee/_task-summary/pending-notices')(
   {
@@ -7,5 +8,5 @@ export const Route = createFileRoute('/employee/_task-summary/pending-notices')(
 )
 
 function RouteComponent() {
-  return <div>Hello "/employee/_task-summary/pending-notices"!</div>
+  return <PendingNotices/>
 }
