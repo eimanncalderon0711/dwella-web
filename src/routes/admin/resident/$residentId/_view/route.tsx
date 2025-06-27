@@ -14,7 +14,8 @@ function RouteComponent() {
       className="pt-5 d-flex flex-column"
       style={{ maxWidth: "70rem" }}
       >
-     <ResidentProfile props={{residentId}}/>
+     <ResidentProfile residentId={residentId}/>
+     
      <div className='d-flex gap-2 pt-3'>
         <Link 
           to='/admin/resident/$residentId' 
@@ -41,6 +42,7 @@ function RouteComponent() {
           Inquires History
         </Link>
      </div>
+     
     <Outlet/>
     </Container>
   </>

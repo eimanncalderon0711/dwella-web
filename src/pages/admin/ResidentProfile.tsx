@@ -9,7 +9,7 @@ interface ResidentProps{
   residentId: string
 }
 
-function ResidentProfile({props}:{props: ResidentProps}) {
+function ResidentProfile(props:ResidentProps) {
   return (
     <Container
       className="pt-5 d-flex flex-column w-100"
@@ -36,7 +36,7 @@ function ResidentProfile({props}:{props: ResidentProps}) {
       {/* Top profile */}
       <Row className="rounded-3" style={{ backgroundColor: "#F2F2F7" }}>
         <Col xs={12} className="d-flex align-items-center flex-wrap justify-content-between m-auto" style={{width:"95%"}}>
-          <ProfileAvatar /> {/* Avatar photo */}
+          <ProfileAvatar name='Trexy balansag' position='Admin' address='Cagayan De Oro City'/> {/* Avatar photo */}
           <ProfileStatus/>  {/* Online/Offline status */}
         </Col>
       </Row>
