@@ -1,15 +1,16 @@
-import { Col, Container, Row } from 'react-bootstrap'
-import Header from '../../components/Header'
-import { FaAngleRight } from 'react-icons/fa6'
-import ProfileAvatar from '../../components/ProfileAvatar'
-import ProfileStatus from '../../components/ProfileStatus'
-import ProfileDetails from '../../components/ProfileDetails'
+import { Col, Container, Row } from "react-bootstrap";
+import Header from "../../components/Header";
+import { FaAngleRight } from "react-icons/fa6";
+import ProfileAvatar from "../../components/ProfileAvatar";
+import ProfileStatus from "../../components/ProfileStatus";
+import ProfileDetails from "../../components/ProfileDetails";
 
-interface ResidentProps{
-  residentId: string
+
+interface ResidentProfileProps {
+    residentId: string;
 }
 
-function ResidentProfile(props:ResidentProps) {
+function ResidentProfile(props: ResidentProfileProps) {
   return (
     <Container
       className="pt-5 d-flex flex-column w-100"
@@ -43,7 +44,7 @@ function ResidentProfile(props:ResidentProps) {
 
       {/* Profile details */}
       <Row className="rounded-3 mt-3" style={{ backgroundColor: "#F2F2F7" }}>
-          <ProfileDetails props={{ to: `/admin/resident/${props.residentId}/edit` }}/> {/* Full profile details */}
+          <ProfileDetails props={{ to: `/employee/resident/${props.residentId}/edit` }}/> {/* Full profile details */}
       </Row>
     </Container>
   )

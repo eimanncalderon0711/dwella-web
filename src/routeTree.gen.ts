@@ -43,6 +43,7 @@ import { Route as AdminUnpaidAccountsIndexImport } from './routes/admin/unpaid-a
 import { Route as AdminResidentIndexImport } from './routes/admin/resident/index'
 import { Route as AdminNotificationsIndexImport } from './routes/admin/notifications/index'
 import { Route as AdminEmployeeIndexImport } from './routes/admin/employee/index'
+import { Route as EmployeeResidentAddResidentImport } from './routes/employee/resident/add-resident'
 import { Route as EmployeeTaskSummaryUnverifiedPaymentsImport } from './routes/employee/_task-summary/unverified-payments'
 import { Route as EmployeeTaskSummaryPendingNoticesImport } from './routes/employee/_task-summary/pending-notices'
 import { Route as EmployeeTaskSummaryOverDueAccountsImport } from './routes/employee/_task-summary/over-due-accounts'
@@ -53,17 +54,23 @@ import { Route as AdminNotificationsSendSmsImport } from './routes/admin/notific
 import { Route as AdminNotificationsCreateImport } from './routes/admin/notifications/create'
 import { Route as AdminFinancialRecordPaymentImport } from './routes/admin/financial/record-payment'
 import { Route as AdminEmployeeAddEmployeeImport } from './routes/admin/employee/add-employee'
+import { Route as EmployeeResidentResidentIdRouteImport } from './routes/employee/resident/$residentId/route'
 import { Route as AdminResidentResidentIdRouteImport } from './routes/admin/resident/$residentId/route'
 import { Route as AdminFinancialFinancialRouteImport } from './routes/admin/financial/_financial/route'
 import { Route as AdminFinancialUploadIndexImport } from './routes/admin/financial/upload/index'
 import { Route as AdminFinancialFinancialIndexImport } from './routes/admin/financial/_financial/index'
 import { Route as AdminEmployeeEmployeeIdIndexImport } from './routes/admin/employee/$employeeId/index'
+import { Route as EmployeeResidentResidentIdEditImport } from './routes/employee/resident/$residentId/edit'
 import { Route as AdminResidentResidentIdEditImport } from './routes/admin/resident/$residentId/edit'
 import { Route as AdminFinancialEditResidentIdImport } from './routes/admin/financial/edit/$residentId'
 import { Route as AdminFinancialFinancialMonthlyDueImport } from './routes/admin/financial/_financial/monthly-due'
 import { Route as AdminEmployeeEmployeeIdEditImport } from './routes/admin/employee/$employeeId/edit'
+import { Route as EmployeeResidentResidentIdViewRouteImport } from './routes/employee/resident/$residentId/_view/route'
 import { Route as AdminResidentResidentIdViewRouteImport } from './routes/admin/resident/$residentId/_view/route'
+import { Route as EmployeeResidentResidentIdViewIndexImport } from './routes/employee/resident/$residentId/_view/index'
 import { Route as AdminResidentResidentIdViewIndexImport } from './routes/admin/resident/$residentId/_view/index'
+import { Route as EmployeeResidentResidentIdViewNoticeReceivedImport } from './routes/employee/resident/$residentId/_view/notice-received'
+import { Route as EmployeeResidentResidentIdViewInquiresHistoryImport } from './routes/employee/resident/$residentId/_view/inquires-history'
 import { Route as AdminResidentResidentIdViewNoticeReceivedImport } from './routes/admin/resident/$residentId/_view/notice-received'
 import { Route as AdminResidentResidentIdViewInquiresHistoryImport } from './routes/admin/resident/$residentId/_view/inquires-history'
 
@@ -345,6 +352,13 @@ const AdminEmployeeIndexRoute = AdminEmployeeIndexImport.update({
   getParentRoute: () => AdminEmployeeRouteRoute,
 } as any)
 
+const EmployeeResidentAddResidentRoute =
+  EmployeeResidentAddResidentImport.update({
+    id: '/add-resident',
+    path: '/add-resident',
+    getParentRoute: () => EmployeeResidentRouteRoute,
+  } as any)
+
 const EmployeeTaskSummaryUnverifiedPaymentsRoute =
   EmployeeTaskSummaryUnverifiedPaymentsImport.update({
     id: '/_task-summary/unverified-payments',
@@ -411,6 +425,13 @@ const AdminEmployeeAddEmployeeRoute = AdminEmployeeAddEmployeeImport.update({
   getParentRoute: () => AdminEmployeeRouteRoute,
 } as any)
 
+const EmployeeResidentResidentIdRouteRoute =
+  EmployeeResidentResidentIdRouteImport.update({
+    id: '/$residentId',
+    path: '/$residentId',
+    getParentRoute: () => EmployeeResidentRouteRoute,
+  } as any)
+
 const AdminResidentResidentIdRouteRoute =
   AdminResidentResidentIdRouteImport.update({
     id: '/$residentId',
@@ -444,6 +465,13 @@ const AdminEmployeeEmployeeIdIndexRoute =
     getParentRoute: () => AdminEmployeeRouteRoute,
   } as any)
 
+const EmployeeResidentResidentIdEditRoute =
+  EmployeeResidentResidentIdEditImport.update({
+    id: '/edit',
+    path: '/edit',
+    getParentRoute: () => EmployeeResidentResidentIdRouteRoute,
+  } as any)
+
 const AdminResidentResidentIdEditRoute =
   AdminResidentResidentIdEditImport.update({
     id: '/edit',
@@ -472,10 +500,23 @@ const AdminEmployeeEmployeeIdEditRoute =
     getParentRoute: () => AdminEmployeeRouteRoute,
   } as any)
 
+const EmployeeResidentResidentIdViewRouteRoute =
+  EmployeeResidentResidentIdViewRouteImport.update({
+    id: '/_view',
+    getParentRoute: () => EmployeeResidentResidentIdRouteRoute,
+  } as any)
+
 const AdminResidentResidentIdViewRouteRoute =
   AdminResidentResidentIdViewRouteImport.update({
     id: '/_view',
     getParentRoute: () => AdminResidentResidentIdRouteRoute,
+  } as any)
+
+const EmployeeResidentResidentIdViewIndexRoute =
+  EmployeeResidentResidentIdViewIndexImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => EmployeeResidentResidentIdViewRouteRoute,
   } as any)
 
 const AdminResidentResidentIdViewIndexRoute =
@@ -483,6 +524,20 @@ const AdminResidentResidentIdViewIndexRoute =
     id: '/',
     path: '/',
     getParentRoute: () => AdminResidentResidentIdViewRouteRoute,
+  } as any)
+
+const EmployeeResidentResidentIdViewNoticeReceivedRoute =
+  EmployeeResidentResidentIdViewNoticeReceivedImport.update({
+    id: '/notice-received',
+    path: '/notice-received',
+    getParentRoute: () => EmployeeResidentResidentIdViewRouteRoute,
+  } as any)
+
+const EmployeeResidentResidentIdViewInquiresHistoryRoute =
+  EmployeeResidentResidentIdViewInquiresHistoryImport.update({
+    id: '/inquires-history',
+    path: '/inquires-history',
+    getParentRoute: () => EmployeeResidentResidentIdViewRouteRoute,
   } as any)
 
 const AdminResidentResidentIdViewNoticeReceivedRoute =
@@ -762,6 +817,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminResidentResidentIdRouteImport
       parentRoute: typeof AdminResidentRouteImport
     }
+    '/employee/resident/$residentId': {
+      id: '/employee/resident/$residentId'
+      path: '/$residentId'
+      fullPath: '/employee/resident/$residentId'
+      preLoaderRoute: typeof EmployeeResidentResidentIdRouteImport
+      parentRoute: typeof EmployeeResidentRouteImport
+    }
     '/admin/employee/add-employee': {
       id: '/admin/employee/add-employee'
       path: '/add-employee'
@@ -832,6 +894,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EmployeeTaskSummaryUnverifiedPaymentsImport
       parentRoute: typeof EmployeeRouteImport
     }
+    '/employee/resident/add-resident': {
+      id: '/employee/resident/add-resident'
+      path: '/add-resident'
+      fullPath: '/employee/resident/add-resident'
+      preLoaderRoute: typeof EmployeeResidentAddResidentImport
+      parentRoute: typeof EmployeeResidentRouteImport
+    }
     '/admin/employee/': {
       id: '/admin/employee/'
       path: '/'
@@ -874,6 +943,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminResidentResidentIdViewRouteImport
       parentRoute: typeof AdminResidentResidentIdRouteImport
     }
+    '/employee/resident/$residentId/_view': {
+      id: '/employee/resident/$residentId/_view'
+      path: ''
+      fullPath: '/employee/resident/$residentId'
+      preLoaderRoute: typeof EmployeeResidentResidentIdViewRouteImport
+      parentRoute: typeof EmployeeResidentResidentIdRouteImport
+    }
     '/admin/employee/$employeeId/edit': {
       id: '/admin/employee/$employeeId/edit'
       path: '/$employeeId/edit'
@@ -901,6 +977,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin/resident/$residentId/edit'
       preLoaderRoute: typeof AdminResidentResidentIdEditImport
       parentRoute: typeof AdminResidentResidentIdRouteImport
+    }
+    '/employee/resident/$residentId/edit': {
+      id: '/employee/resident/$residentId/edit'
+      path: '/edit'
+      fullPath: '/employee/resident/$residentId/edit'
+      preLoaderRoute: typeof EmployeeResidentResidentIdEditImport
+      parentRoute: typeof EmployeeResidentResidentIdRouteImport
     }
     '/admin/employee/$employeeId/': {
       id: '/admin/employee/$employeeId/'
@@ -937,12 +1020,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminResidentResidentIdViewNoticeReceivedImport
       parentRoute: typeof AdminResidentResidentIdViewRouteImport
     }
+    '/employee/resident/$residentId/_view/inquires-history': {
+      id: '/employee/resident/$residentId/_view/inquires-history'
+      path: '/inquires-history'
+      fullPath: '/employee/resident/$residentId/inquires-history'
+      preLoaderRoute: typeof EmployeeResidentResidentIdViewInquiresHistoryImport
+      parentRoute: typeof EmployeeResidentResidentIdViewRouteImport
+    }
+    '/employee/resident/$residentId/_view/notice-received': {
+      id: '/employee/resident/$residentId/_view/notice-received'
+      path: '/notice-received'
+      fullPath: '/employee/resident/$residentId/notice-received'
+      preLoaderRoute: typeof EmployeeResidentResidentIdViewNoticeReceivedImport
+      parentRoute: typeof EmployeeResidentResidentIdViewRouteImport
+    }
     '/admin/resident/$residentId/_view/': {
       id: '/admin/resident/$residentId/_view/'
       path: '/'
       fullPath: '/admin/resident/$residentId/'
       preLoaderRoute: typeof AdminResidentResidentIdViewIndexImport
       parentRoute: typeof AdminResidentResidentIdViewRouteImport
+    }
+    '/employee/resident/$residentId/_view/': {
+      id: '/employee/resident/$residentId/_view/'
+      path: '/'
+      fullPath: '/employee/resident/$residentId/'
+      preLoaderRoute: typeof EmployeeResidentResidentIdViewIndexImport
+      parentRoute: typeof EmployeeResidentResidentIdViewRouteImport
     }
   }
 }
@@ -1129,11 +1233,54 @@ const AdminRouteRouteWithChildren = AdminRouteRoute._addFileChildren(
   AdminRouteRouteChildren,
 )
 
+interface EmployeeResidentResidentIdViewRouteRouteChildren {
+  EmployeeResidentResidentIdViewInquiresHistoryRoute: typeof EmployeeResidentResidentIdViewInquiresHistoryRoute
+  EmployeeResidentResidentIdViewNoticeReceivedRoute: typeof EmployeeResidentResidentIdViewNoticeReceivedRoute
+  EmployeeResidentResidentIdViewIndexRoute: typeof EmployeeResidentResidentIdViewIndexRoute
+}
+
+const EmployeeResidentResidentIdViewRouteRouteChildren: EmployeeResidentResidentIdViewRouteRouteChildren =
+  {
+    EmployeeResidentResidentIdViewInquiresHistoryRoute:
+      EmployeeResidentResidentIdViewInquiresHistoryRoute,
+    EmployeeResidentResidentIdViewNoticeReceivedRoute:
+      EmployeeResidentResidentIdViewNoticeReceivedRoute,
+    EmployeeResidentResidentIdViewIndexRoute:
+      EmployeeResidentResidentIdViewIndexRoute,
+  }
+
+const EmployeeResidentResidentIdViewRouteRouteWithChildren =
+  EmployeeResidentResidentIdViewRouteRoute._addFileChildren(
+    EmployeeResidentResidentIdViewRouteRouteChildren,
+  )
+
+interface EmployeeResidentResidentIdRouteRouteChildren {
+  EmployeeResidentResidentIdViewRouteRoute: typeof EmployeeResidentResidentIdViewRouteRouteWithChildren
+  EmployeeResidentResidentIdEditRoute: typeof EmployeeResidentResidentIdEditRoute
+}
+
+const EmployeeResidentResidentIdRouteRouteChildren: EmployeeResidentResidentIdRouteRouteChildren =
+  {
+    EmployeeResidentResidentIdViewRouteRoute:
+      EmployeeResidentResidentIdViewRouteRouteWithChildren,
+    EmployeeResidentResidentIdEditRoute: EmployeeResidentResidentIdEditRoute,
+  }
+
+const EmployeeResidentResidentIdRouteRouteWithChildren =
+  EmployeeResidentResidentIdRouteRoute._addFileChildren(
+    EmployeeResidentResidentIdRouteRouteChildren,
+  )
+
 interface EmployeeResidentRouteRouteChildren {
+  EmployeeResidentResidentIdRouteRoute: typeof EmployeeResidentResidentIdRouteRouteWithChildren
+  EmployeeResidentAddResidentRoute: typeof EmployeeResidentAddResidentRoute
   EmployeeResidentIndexRoute: typeof EmployeeResidentIndexRoute
 }
 
 const EmployeeResidentRouteRouteChildren: EmployeeResidentRouteRouteChildren = {
+  EmployeeResidentResidentIdRouteRoute:
+    EmployeeResidentResidentIdRouteRouteWithChildren,
+  EmployeeResidentAddResidentRoute: EmployeeResidentAddResidentRoute,
   EmployeeResidentIndexRoute: EmployeeResidentIndexRoute,
 }
 
@@ -1247,6 +1394,7 @@ export interface FileRoutesByFullPath {
   '/admin/': typeof AdminIndexRoute
   '/employee/': typeof EmployeeIndexRoute
   '/admin/resident/$residentId': typeof AdminResidentResidentIdViewRouteRouteWithChildren
+  '/employee/resident/$residentId': typeof EmployeeResidentResidentIdViewRouteRouteWithChildren
   '/admin/employee/add-employee': typeof AdminEmployeeAddEmployeeRoute
   '/admin/financial/record-payment': typeof AdminFinancialRecordPaymentRoute
   '/admin/notifications/create': typeof AdminNotificationsCreateRoute
@@ -1257,6 +1405,7 @@ export interface FileRoutesByFullPath {
   '/employee/over-due-accounts': typeof EmployeeTaskSummaryOverDueAccountsRoute
   '/employee/pending-notices': typeof EmployeeTaskSummaryPendingNoticesRoute
   '/employee/unverified-payments': typeof EmployeeTaskSummaryUnverifiedPaymentsRoute
+  '/employee/resident/add-resident': typeof EmployeeResidentAddResidentRoute
   '/admin/employee/': typeof AdminEmployeeIndexRoute
   '/admin/notifications/': typeof AdminNotificationsIndexRoute
   '/admin/resident/': typeof AdminResidentIndexRoute
@@ -1266,12 +1415,16 @@ export interface FileRoutesByFullPath {
   '/admin/financial/monthly-due': typeof AdminFinancialFinancialMonthlyDueRoute
   '/admin/financial/edit/$residentId': typeof AdminFinancialEditResidentIdRoute
   '/admin/resident/$residentId/edit': typeof AdminResidentResidentIdEditRoute
+  '/employee/resident/$residentId/edit': typeof EmployeeResidentResidentIdEditRoute
   '/admin/employee/$employeeId': typeof AdminEmployeeEmployeeIdIndexRoute
   '/admin/financial/': typeof AdminFinancialFinancialIndexRoute
   '/admin/financial/upload': typeof AdminFinancialUploadIndexRoute
   '/admin/resident/$residentId/inquires-history': typeof AdminResidentResidentIdViewInquiresHistoryRoute
   '/admin/resident/$residentId/notice-received': typeof AdminResidentResidentIdViewNoticeReceivedRoute
+  '/employee/resident/$residentId/inquires-history': typeof EmployeeResidentResidentIdViewInquiresHistoryRoute
+  '/employee/resident/$residentId/notice-received': typeof EmployeeResidentResidentIdViewNoticeReceivedRoute
   '/admin/resident/$residentId/': typeof AdminResidentResidentIdViewIndexRoute
+  '/employee/resident/$residentId/': typeof EmployeeResidentResidentIdViewIndexRoute
 }
 
 export interface FileRoutesByTo {
@@ -1304,6 +1457,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminIndexRoute
   '/employee': typeof EmployeeIndexRoute
   '/admin/resident/$residentId': typeof AdminResidentResidentIdViewIndexRoute
+  '/employee/resident/$residentId': typeof EmployeeResidentResidentIdViewIndexRoute
   '/admin/employee/add-employee': typeof AdminEmployeeAddEmployeeRoute
   '/admin/financial/record-payment': typeof AdminFinancialRecordPaymentRoute
   '/admin/notifications/create': typeof AdminNotificationsCreateRoute
@@ -1314,6 +1468,7 @@ export interface FileRoutesByTo {
   '/employee/over-due-accounts': typeof EmployeeTaskSummaryOverDueAccountsRoute
   '/employee/pending-notices': typeof EmployeeTaskSummaryPendingNoticesRoute
   '/employee/unverified-payments': typeof EmployeeTaskSummaryUnverifiedPaymentsRoute
+  '/employee/resident/add-resident': typeof EmployeeResidentAddResidentRoute
   '/admin/employee': typeof AdminEmployeeIndexRoute
   '/admin/notifications': typeof AdminNotificationsIndexRoute
   '/admin/resident': typeof AdminResidentIndexRoute
@@ -1323,10 +1478,13 @@ export interface FileRoutesByTo {
   '/admin/financial/monthly-due': typeof AdminFinancialFinancialMonthlyDueRoute
   '/admin/financial/edit/$residentId': typeof AdminFinancialEditResidentIdRoute
   '/admin/resident/$residentId/edit': typeof AdminResidentResidentIdEditRoute
+  '/employee/resident/$residentId/edit': typeof EmployeeResidentResidentIdEditRoute
   '/admin/employee/$employeeId': typeof AdminEmployeeEmployeeIdIndexRoute
   '/admin/financial/upload': typeof AdminFinancialUploadIndexRoute
   '/admin/resident/$residentId/inquires-history': typeof AdminResidentResidentIdViewInquiresHistoryRoute
   '/admin/resident/$residentId/notice-received': typeof AdminResidentResidentIdViewNoticeReceivedRoute
+  '/employee/resident/$residentId/inquires-history': typeof EmployeeResidentResidentIdViewInquiresHistoryRoute
+  '/employee/resident/$residentId/notice-received': typeof EmployeeResidentResidentIdViewNoticeReceivedRoute
 }
 
 export interface FileRoutesById {
@@ -1368,6 +1526,7 @@ export interface FileRoutesById {
   '/employee/': typeof EmployeeIndexRoute
   '/admin/financial/_financial': typeof AdminFinancialFinancialRouteRouteWithChildren
   '/admin/resident/$residentId': typeof AdminResidentResidentIdRouteRouteWithChildren
+  '/employee/resident/$residentId': typeof EmployeeResidentResidentIdRouteRouteWithChildren
   '/admin/employee/add-employee': typeof AdminEmployeeAddEmployeeRoute
   '/admin/financial/record-payment': typeof AdminFinancialRecordPaymentRoute
   '/admin/notifications/create': typeof AdminNotificationsCreateRoute
@@ -1378,22 +1537,28 @@ export interface FileRoutesById {
   '/employee/_task-summary/over-due-accounts': typeof EmployeeTaskSummaryOverDueAccountsRoute
   '/employee/_task-summary/pending-notices': typeof EmployeeTaskSummaryPendingNoticesRoute
   '/employee/_task-summary/unverified-payments': typeof EmployeeTaskSummaryUnverifiedPaymentsRoute
+  '/employee/resident/add-resident': typeof EmployeeResidentAddResidentRoute
   '/admin/employee/': typeof AdminEmployeeIndexRoute
   '/admin/notifications/': typeof AdminNotificationsIndexRoute
   '/admin/resident/': typeof AdminResidentIndexRoute
   '/admin/unpaid-accounts/': typeof AdminUnpaidAccountsIndexRoute
   '/employee/resident/': typeof EmployeeResidentIndexRoute
   '/admin/resident/$residentId/_view': typeof AdminResidentResidentIdViewRouteRouteWithChildren
+  '/employee/resident/$residentId/_view': typeof EmployeeResidentResidentIdViewRouteRouteWithChildren
   '/admin/employee/$employeeId/edit': typeof AdminEmployeeEmployeeIdEditRoute
   '/admin/financial/_financial/monthly-due': typeof AdminFinancialFinancialMonthlyDueRoute
   '/admin/financial/edit/$residentId': typeof AdminFinancialEditResidentIdRoute
   '/admin/resident/$residentId/edit': typeof AdminResidentResidentIdEditRoute
+  '/employee/resident/$residentId/edit': typeof EmployeeResidentResidentIdEditRoute
   '/admin/employee/$employeeId/': typeof AdminEmployeeEmployeeIdIndexRoute
   '/admin/financial/_financial/': typeof AdminFinancialFinancialIndexRoute
   '/admin/financial/upload/': typeof AdminFinancialUploadIndexRoute
   '/admin/resident/$residentId/_view/inquires-history': typeof AdminResidentResidentIdViewInquiresHistoryRoute
   '/admin/resident/$residentId/_view/notice-received': typeof AdminResidentResidentIdViewNoticeReceivedRoute
+  '/employee/resident/$residentId/_view/inquires-history': typeof EmployeeResidentResidentIdViewInquiresHistoryRoute
+  '/employee/resident/$residentId/_view/notice-received': typeof EmployeeResidentResidentIdViewNoticeReceivedRoute
   '/admin/resident/$residentId/_view/': typeof AdminResidentResidentIdViewIndexRoute
+  '/employee/resident/$residentId/_view/': typeof EmployeeResidentResidentIdViewIndexRoute
 }
 
 export interface FileRouteTypes {
@@ -1435,6 +1600,7 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/employee/'
     | '/admin/resident/$residentId'
+    | '/employee/resident/$residentId'
     | '/admin/employee/add-employee'
     | '/admin/financial/record-payment'
     | '/admin/notifications/create'
@@ -1445,6 +1611,7 @@ export interface FileRouteTypes {
     | '/employee/over-due-accounts'
     | '/employee/pending-notices'
     | '/employee/unverified-payments'
+    | '/employee/resident/add-resident'
     | '/admin/employee/'
     | '/admin/notifications/'
     | '/admin/resident/'
@@ -1454,12 +1621,16 @@ export interface FileRouteTypes {
     | '/admin/financial/monthly-due'
     | '/admin/financial/edit/$residentId'
     | '/admin/resident/$residentId/edit'
+    | '/employee/resident/$residentId/edit'
     | '/admin/employee/$employeeId'
     | '/admin/financial/'
     | '/admin/financial/upload'
     | '/admin/resident/$residentId/inquires-history'
     | '/admin/resident/$residentId/notice-received'
+    | '/employee/resident/$residentId/inquires-history'
+    | '/employee/resident/$residentId/notice-received'
     | '/admin/resident/$residentId/'
+    | '/employee/resident/$residentId/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -1491,6 +1662,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/employee'
     | '/admin/resident/$residentId'
+    | '/employee/resident/$residentId'
     | '/admin/employee/add-employee'
     | '/admin/financial/record-payment'
     | '/admin/notifications/create'
@@ -1501,6 +1673,7 @@ export interface FileRouteTypes {
     | '/employee/over-due-accounts'
     | '/employee/pending-notices'
     | '/employee/unverified-payments'
+    | '/employee/resident/add-resident'
     | '/admin/employee'
     | '/admin/notifications'
     | '/admin/resident'
@@ -1510,10 +1683,13 @@ export interface FileRouteTypes {
     | '/admin/financial/monthly-due'
     | '/admin/financial/edit/$residentId'
     | '/admin/resident/$residentId/edit'
+    | '/employee/resident/$residentId/edit'
     | '/admin/employee/$employeeId'
     | '/admin/financial/upload'
     | '/admin/resident/$residentId/inquires-history'
     | '/admin/resident/$residentId/notice-received'
+    | '/employee/resident/$residentId/inquires-history'
+    | '/employee/resident/$residentId/notice-received'
   id:
     | '__root__'
     | '/'
@@ -1553,6 +1729,7 @@ export interface FileRouteTypes {
     | '/employee/'
     | '/admin/financial/_financial'
     | '/admin/resident/$residentId'
+    | '/employee/resident/$residentId'
     | '/admin/employee/add-employee'
     | '/admin/financial/record-payment'
     | '/admin/notifications/create'
@@ -1563,22 +1740,28 @@ export interface FileRouteTypes {
     | '/employee/_task-summary/over-due-accounts'
     | '/employee/_task-summary/pending-notices'
     | '/employee/_task-summary/unverified-payments'
+    | '/employee/resident/add-resident'
     | '/admin/employee/'
     | '/admin/notifications/'
     | '/admin/resident/'
     | '/admin/unpaid-accounts/'
     | '/employee/resident/'
     | '/admin/resident/$residentId/_view'
+    | '/employee/resident/$residentId/_view'
     | '/admin/employee/$employeeId/edit'
     | '/admin/financial/_financial/monthly-due'
     | '/admin/financial/edit/$residentId'
     | '/admin/resident/$residentId/edit'
+    | '/employee/resident/$residentId/edit'
     | '/admin/employee/$employeeId/'
     | '/admin/financial/_financial/'
     | '/admin/financial/upload/'
     | '/admin/resident/$residentId/_view/inquires-history'
     | '/admin/resident/$residentId/_view/notice-received'
+    | '/employee/resident/$residentId/_view/inquires-history'
+    | '/employee/resident/$residentId/_view/notice-received'
     | '/admin/resident/$residentId/_view/'
+    | '/employee/resident/$residentId/_view/'
   fileRoutesById: FileRoutesById
 }
 
@@ -1727,6 +1910,8 @@ export const routeTree = rootRoute
       "filePath": "employee/resident/route.tsx",
       "parent": "/employee",
       "children": [
+        "/employee/resident/$residentId",
+        "/employee/resident/add-resident",
         "/employee/resident/"
       ]
     },
@@ -1838,6 +2023,14 @@ export const routeTree = rootRoute
         "/admin/resident/$residentId/edit"
       ]
     },
+    "/employee/resident/$residentId": {
+      "filePath": "employee/resident/$residentId/route.tsx",
+      "parent": "/employee/resident",
+      "children": [
+        "/employee/resident/$residentId/_view",
+        "/employee/resident/$residentId/edit"
+      ]
+    },
     "/admin/employee/add-employee": {
       "filePath": "admin/employee/add-employee.tsx",
       "parent": "/admin/employee"
@@ -1878,6 +2071,10 @@ export const routeTree = rootRoute
       "filePath": "employee/_task-summary/unverified-payments.tsx",
       "parent": "/employee"
     },
+    "/employee/resident/add-resident": {
+      "filePath": "employee/resident/add-resident.tsx",
+      "parent": "/employee/resident"
+    },
     "/admin/employee/": {
       "filePath": "admin/employee/index.tsx",
       "parent": "/admin/employee"
@@ -1907,6 +2104,15 @@ export const routeTree = rootRoute
         "/admin/resident/$residentId/_view/"
       ]
     },
+    "/employee/resident/$residentId/_view": {
+      "filePath": "employee/resident/$residentId/_view/route.tsx",
+      "parent": "/employee/resident/$residentId",
+      "children": [
+        "/employee/resident/$residentId/_view/inquires-history",
+        "/employee/resident/$residentId/_view/notice-received",
+        "/employee/resident/$residentId/_view/"
+      ]
+    },
     "/admin/employee/$employeeId/edit": {
       "filePath": "admin/employee/$employeeId/edit.tsx",
       "parent": "/admin/employee"
@@ -1922,6 +2128,10 @@ export const routeTree = rootRoute
     "/admin/resident/$residentId/edit": {
       "filePath": "admin/resident/$residentId/edit.tsx",
       "parent": "/admin/resident/$residentId"
+    },
+    "/employee/resident/$residentId/edit": {
+      "filePath": "employee/resident/$residentId/edit.tsx",
+      "parent": "/employee/resident/$residentId"
     },
     "/admin/employee/$employeeId/": {
       "filePath": "admin/employee/$employeeId/index.tsx",
@@ -1943,9 +2153,21 @@ export const routeTree = rootRoute
       "filePath": "admin/resident/$residentId/_view/notice-received.tsx",
       "parent": "/admin/resident/$residentId/_view"
     },
+    "/employee/resident/$residentId/_view/inquires-history": {
+      "filePath": "employee/resident/$residentId/_view/inquires-history.tsx",
+      "parent": "/employee/resident/$residentId/_view"
+    },
+    "/employee/resident/$residentId/_view/notice-received": {
+      "filePath": "employee/resident/$residentId/_view/notice-received.tsx",
+      "parent": "/employee/resident/$residentId/_view"
+    },
     "/admin/resident/$residentId/_view/": {
       "filePath": "admin/resident/$residentId/_view/index.tsx",
       "parent": "/admin/resident/$residentId/_view"
+    },
+    "/employee/resident/$residentId/_view/": {
+      "filePath": "employee/resident/$residentId/_view/index.tsx",
+      "parent": "/employee/resident/$residentId/_view"
     }
   }
 }
