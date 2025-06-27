@@ -25,7 +25,7 @@ function ResidentProfile(props:ResidentProps) {
      {/* Profile heading */}
       <div className="d-flex align-items-center gap-1 pt-5 mb-3">
         <span className="text-muted fw-bold d-flex align-items-center">
-          Dashboard
+          Resident
         </span>
         <FaAngleRight size={12} />
         <span className="text-dark fw-bold d-flex align-items-center">

@@ -8,6 +8,5 @@ export const Route = createFileRoute(
 })
 
 function RouteComponent() {
-  const {residentId} = Route.useParams()
   return <InquiresHistoryTable/>
 }
