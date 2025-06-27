@@ -10,7 +10,7 @@ function Payments() {
 
       {/* Header component */}
       <Header path={'admin'}>
-        <a href='' className="text-decoration-none text-white px-4 py-3 rounded-3 d-flex align-items-center gap-2" style={{backgroundColor:"#344CB7"}}>
+        <a href='/employee/payments/record-payment' className="text-decoration-none text-white px-4 py-3 rounded-3 d-flex align-items-center gap-2" style={{backgroundColor:"#344CB7"}}>
             <IoMdAdd size={25}/>
             <p className='fw-bold text-center m-auto'>Record Payment</p>
         </a>
