@@ -6,5 +6,4 @@ export const Route = createFileRoute('/employee/resident/$residentId')({
 
 function RouteComponent() {
   return <Outlet/>
-
 }
