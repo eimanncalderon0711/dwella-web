@@ -1,32 +1,51 @@
 // src/auth/AuthContext.tsx
 import type { ReactNode } from '@tanstack/react-router';
 import { createContext, useContext, useState} from 'react';
+import AuthService from '../../services/auth.service';
 
 type AuthContextType = {
-  user: string | null;
-  login: (username: string) => void;
+  token: string | null;
+  refreshToken: string | null;
+  login: (username: string, password: string) => void;
   logout: () => void;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<string | null>(() => {
-    return localStorage.getItem('user') || null
-  })
+export const AuthProvider = ({ children }: { children: ReactNode }) => { 
 
-  const login = (username: string) => {
-    setUser(username)
-    localStorage.setItem('user', username)
+  const has_token = localStorage.getItem('token');
+  
+  const [token, setToken] = useState<string | null>(null);
+  const [refreshToken, setRefreshToken] = useState<string | null>(null);
+  
+  
+  if (has_token){
+    setToken(has_token);
+  }
+
+  const login = async (username: string, password: string) => {
+    
+    const {login, refreshToken} = AuthService();
+
+    try {
+      const data = await login(username, password)
+      setToken(data.access);
+      setRefreshToken(data.refresh);
+
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const logout = () => {
-    setUser(null)
-    localStorage.removeItem('user')
+    localStorage.removeItem('token')
+    setToken('')
+    setRefreshToken('')
   }
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{token, refreshToken, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

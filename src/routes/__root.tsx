@@ -12,7 +12,6 @@ export const Route = createRootRouteWithContext<{
 function __root() {
   return (
     <>
-    {/* <Link to="/resident">Resident</Link> */}
     <Outlet />
     <TanStackRouterDevtools/>
     </>

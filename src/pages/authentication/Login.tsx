@@ -8,9 +8,10 @@ function Login() {
   const {login} = useAuth();
   const navigate = useNavigate()
 
-    const handleLogin = () => {
-    login('User123')
-    navigate({ to: '/resident/dashboard' })
+    const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    login('User123', 'asdasda')
+    // navigate({ to: '/resident/dashboard' })
   }
 
 
@@ -22,7 +23,7 @@ function Login() {
       <Row style={{height: "90%"}}>
         <Container className="m-auto">
             {/* Form for login */}
-            <Form className="custom-form rounded-4">
+            <Form className="custom-form rounded-4" onSubmit={handleLogin}>
             <Form.Label className="d-block text-center fs-2 fw-medium custom-color mb-5">
                 Login in to DWELLA
             </Form.Label>
@@ -50,7 +51,7 @@ function Login() {
             </Form.Group>
             
             {/* Button to login credential  */}
-            <Button className="mb-3 d-block w-100 border-0" style={{backgroundColor: "#344CB7"}} type="submit" onClick={handleLogin}>
+            <Button className="mb-3 d-block w-100 border-0" style={{backgroundColor: "#344CB7"}} type="submit">
                 Login
             </Button>
             

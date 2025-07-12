@@ -34,7 +34,7 @@ function Header({children, path} : HeaderProps) {
             <Dropdown.Item onClick={() => navigate({to: `/${path}/profile`})}>View Profile</Dropdown.Item>
             <Dropdown.Item onClick={() => navigate({to: `/${path}/account`})}>Account Settings</Dropdown.Item>
             <Dropdown.Divider />
-            <Dropdown.Item onClick={() => navigate({to: `/login`})} className="text-danger">Logout</Dropdown.Item>
+            <Dropdown.Item onClick={() => localStorage.removeItem('access_token')} className="text-danger">Logout</Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
     </div>
