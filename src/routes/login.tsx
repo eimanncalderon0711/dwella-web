@@ -5,7 +5,7 @@ import Login from '../pages/authentication/Login'
 export const Route = createFileRoute('/login')({
   beforeLoad: ({context}) => {
     const {token} = context.auth;
-    if(token) return redirect({to:'/employee'})
+    if(token) return redirect({to:'/resident/dashboard', replace: true})
   },
   component: RouteComponent,
 })

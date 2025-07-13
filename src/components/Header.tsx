@@ -17,6 +17,7 @@ function Header({children, path} : HeaderProps) {
 
   const logOutHandler = () => {
     logout();
+    navigate({to:'/login'})
   }
 
   return (

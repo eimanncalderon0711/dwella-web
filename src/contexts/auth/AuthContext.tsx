@@ -9,7 +9,6 @@ type AuthContextType = {
   login: (username: string, password: string) => void;
   logout: () => void;
   isLoading: boolean;
-  isAuthenticated: () => boolean;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -36,18 +35,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     try {
       const data = await login(username, password);
+      console.log(data)
       localStorage.setItem('access_token', data.access);
       localStorage.setItem('refresh_token', data.refresh);
       setToken(data.access);
       setRefreshToken(data.refresh);
       
-    } catch (error) {
-      console.log(error)
-      throw error; // ✅ rethrow so login page can catch it
+    } catch (error: any) {
+      console.log('invalid password ka boy!!', error.status)
     }
   }
-
-  const isAuthenticated = () =>  token !== null;
 
   
   const logout = () => {
@@ -58,7 +55,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }
 
   return (
-    <AuthContext.Provider value={{token, refreshToken, isAuthenticated, login, logout, isLoading }}>
+    <AuthContext.Provider value={{token, refreshToken, login, logout, isLoading }}>
       {children}
     </AuthContext.Provider>
   );

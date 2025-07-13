@@ -21,9 +21,6 @@ function SideBar() {
   const { token } = useAuth();  // Check if the user is authenticated
 
   if (!token) return <h1>Not Authenticated</h1>;
-
-  console.log('Current pathname:', location.pathname)
-
   
   return (
           <Nav variant="pills" className={`flex-sm-column justify-content-center justify-content-sm-start gap-3 shadow show-sidebar`}>

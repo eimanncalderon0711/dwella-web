@@ -9,9 +9,18 @@ function Login() {
   const {login, token} = useAuth();
   const navigate = useNavigate()
 
+    useEffect(() => {
+      if (!token) {
+        return
+      }
+      navigate({ to: '/resident/dashboard', replace: true });
+    }, [token]);
+
     const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    login('example', 'example_pass')
+    
+      event.preventDefault();
+      login('example', 'example_pass1')
+    
   }
 
 

@@ -7,7 +7,7 @@ export const Route = createFileRoute('/')({
       if (!token) {
       return redirect({ to: '/login' });
     }
-    return redirect({ to: `/employee` });
+    return redirect({ to: `/resident/dashboard` });
   },
   component: () => null,
 })

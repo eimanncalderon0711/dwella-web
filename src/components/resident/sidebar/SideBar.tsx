@@ -10,6 +10,7 @@ import logo from "../../../assets/dwella-logo.png"
 import { Link, useLocation } from "@tanstack/react-router";
 import { CiMenuFries } from "react-icons/ci";
 import { IoCloseSharp } from "react-icons/io5";
+import { useAuth } from "../../../contexts/auth/AuthContext";
 
 
 function SideBar() {
@@ -17,6 +18,9 @@ function SideBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   
+  const { token } = useAuth();  // Check if the user is authenticated
+
+  if (!token) return <h1>Not authenticated</h1>;
 
   return (
       
