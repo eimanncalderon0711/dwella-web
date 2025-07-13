@@ -1,7 +1,22 @@
-import { createFileRoute, Outlet } from '@tanstack/react-router'
+import { createFileRoute, Outlet, redirect } from '@tanstack/react-router'
 import SideBar from '../../../components/employee/sidebar/SideBar'
+import type { ITokenPayload } from '../../../interfaces/payloads/ITokenPayload';
+import { jwtDecode } from 'jwt-decode';
 
 export const Route = createFileRoute('/_protected/employee')({
+  beforeLoad: ({ context }) => {
+      const { token } = context.auth;
+  
+      if (token) {
+        const decoded = jwtDecode<ITokenPayload>(token);
+        switch(decoded.role){
+          case 'resident':
+            return redirect({to: '/resident/dashboard'})
+          case 'admin':
+            return redirect({to: '/admin'})
+        }
+      }
+    },
   component: RouteComponent,
 })
 

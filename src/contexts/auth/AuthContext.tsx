@@ -1,7 +1,8 @@
 // src/auth/AuthContext.tsx
-import { redirect, useNavigate, type ReactNode } from '@tanstack/react-router';
+import { type ReactNode } from '@tanstack/react-router';
 import { createContext, useContext, useEffect, useState} from 'react';
 import AuthService from '../../services/auth.service';
+import type { IServiceError } from '../../interfaces/error-handlers/IServiceError';
 
 type AuthContextType = {
   token: string | null;
@@ -27,7 +28,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setIsLoading(false); // done loading auth
   }, []);
 
-
   
   const login = async (username: string, password: string) => {
     
@@ -35,14 +35,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     try {
       const data = await login(username, password);
-      console.log(data)
       localStorage.setItem('access_token', data.access);
       localStorage.setItem('refresh_token', data.refresh);
       setToken(data.access);
       setRefreshToken(data.refresh);
       
-    } catch (error: any) {
-      console.log('invalid password ka boy!!', error.status)
+    } catch (error) {
+      const err = error as IServiceError;
+      console.log(err)
     }
   }
 

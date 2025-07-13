@@ -2,27 +2,48 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import "../../index.css";
 import { useAuth } from "../../contexts/auth/AuthContext";
 import { useNavigate } from "@tanstack/react-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import type { Authentication } from "../../models/Authentication.model";
+import { jwtDecode } from "jwt-decode";
+import type { ITokenPayload } from "../../interfaces/payloads/ITokenPayload";
+
+const initialAuthentication : Authentication = {
+  username: "",
+  password: ""
+}
 
 function Login() {
 
   const {login, token} = useAuth();
   const navigate = useNavigate()
 
+  const [auth , setAuth] = useState<Authentication>(initialAuthentication);
+
     useEffect(() => {
       if (!token) {
         return
       }
-      navigate({ to: '/resident/dashboard', replace: true });
+      const decoded = jwtDecode<ITokenPayload>(token)
+      switch (decoded.role) {
+        case 'admin':
+           navigate({ to: '/admin', replace: true });
+           break;
+        case 'resident':
+           navigate({ to: '/resident/dashboard', replace: true });
+           break;
+        case 'employee':
+           navigate({ to: '/employee', replace: true });
+           break;
+      }
     }, [token]);
 
     const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
     
       event.preventDefault();
-      login('example', 'example_pass1')
+      login(auth.username, auth.password);
+      setAuth(initialAuthentication);
     
   }
-
 
   return (
     <Container className="vh-100">
@@ -40,11 +61,11 @@ function Login() {
             {/* Email and password field */}
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label className="custom-font-size">Email</Form.Label>
-                <Form.Control className="custom-font-size" type="email" placeholder="name@example.com" autoComplete="current-email"/>
+                <Form.Control value={auth.username} onChange={(e) => setAuth((data) => ({...data, username: e.target.value}))} className="custom-font-size" type="text" placeholder="name@example.com" autoComplete="current-email"/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
                 <Form.Label className="custom-font-size">Password</Form.Label>
-                <Form.Control className="custom-font-size" type="password" placeholder="Enter password" autoComplete="current-password"/>
+                <Form.Control value={auth.password} onChange={(e) => setAuth((data) => ({...data, password: e.target.value}))} className="custom-font-size" type="password" placeholder="Enter password" autoComplete="current-password"/>
             </Form.Group>
 
             {/* Button to redirect to forgot password page */}
