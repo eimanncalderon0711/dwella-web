@@ -1,6 +1,6 @@
 // src/auth/AuthContext.tsx
-import type { ReactNode } from '@tanstack/react-router';
-import { createContext, useContext, useState} from 'react';
+import { redirect, useNavigate, type ReactNode } from '@tanstack/react-router';
+import { createContext, useContext, useEffect, useState} from 'react';
 import AuthService from '../../services/auth.service';
 
 type AuthContextType = {
@@ -8,44 +8,57 @@ type AuthContextType = {
   refreshToken: string | null;
   login: (username: string, password: string) => void;
   logout: () => void;
+  isLoading: boolean;
+  isAuthenticated: () => boolean;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => { 
+  
+  const [token, setToken] = useState<string | null>(localStorage.getItem('access_token'));
+  const [refreshToken, setRefreshToken] = useState<string | null>(localStorage.getItem('refresh_token'));
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  
+  useEffect(() => {
+    const storedAccess = localStorage.getItem('access_token');
+    const storedRefresh = localStorage.getItem('refresh_token');
+    if (storedAccess) setToken(storedAccess);
+    if (storedRefresh) setRefreshToken(storedRefresh);
+    setIsLoading(false); // done loading auth
+  }, []);
 
-  const has_token = localStorage.getItem('token');
-  
-  const [token, setToken] = useState<string | null>(null);
-  const [refreshToken, setRefreshToken] = useState<string | null>(null);
-  
-  
-  if (has_token){
-    setToken(has_token);
-  }
 
+  
   const login = async (username: string, password: string) => {
     
-    const {login, refreshToken} = AuthService();
+    const {login} = AuthService();
 
     try {
-      const data = await login(username, password)
+      const data = await login(username, password);
+      localStorage.setItem('access_token', data.access);
+      localStorage.setItem('refresh_token', data.refresh);
       setToken(data.access);
       setRefreshToken(data.refresh);
-
+      
     } catch (error) {
       console.log(error)
+      throw error; // ✅ rethrow so login page can catch it
     }
   }
 
+  const isAuthenticated = () =>  token !== null;
+
+  
   const logout = () => {
-    localStorage.removeItem('token')
-    setToken('')
-    setRefreshToken('')
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    setToken(null);
+    setRefreshToken(null);
   }
 
   return (
-    <AuthContext.Provider value={{token, refreshToken, login, logout }}>
+    <AuthContext.Provider value={{token, refreshToken, isAuthenticated, login, logout, isLoading }}>
       {children}
     </AuthContext.Provider>
   );

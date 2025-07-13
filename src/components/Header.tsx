@@ -1,7 +1,8 @@
 import { Dropdown } from 'react-bootstrap'
 import  logo from "../assets/_ 1.png"
-import type { ReactNode } from 'react'
-import { useNavigate } from '@tanstack/react-router';
+import { useEffect, type ReactNode } from 'react'
+import { redirect, useNavigate } from '@tanstack/react-router';
+import { useAuth } from '../contexts/auth/AuthContext';
 
 
 interface HeaderProps {
@@ -11,6 +12,12 @@ interface HeaderProps {
 
 function Header({children, path} : HeaderProps) {
   const navigate = useNavigate();
+
+  const {logout} = useAuth();
+
+  const logOutHandler = () => {
+    logout();
+  }
 
   return (
     <div className="d-flex justify-content-start flex-column-reverse flex-sm-row justify-content-sm-between align-items-center gap-5 gap-md-3 flex-wrap-reverse">
@@ -34,7 +41,7 @@ function Header({children, path} : HeaderProps) {
             <Dropdown.Item onClick={() => navigate({to: `/${path}/profile`})}>View Profile</Dropdown.Item>
             <Dropdown.Item onClick={() => navigate({to: `/${path}/account`})}>Account Settings</Dropdown.Item>
             <Dropdown.Divider />
-            <Dropdown.Item onClick={() => localStorage.removeItem('access_token')} className="text-danger">Logout</Dropdown.Item>
+            <Dropdown.Item onClick={logOutHandler} className="text-danger">Logout</Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
     </div>

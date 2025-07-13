@@ -2,16 +2,16 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import "../../index.css";
 import { useAuth } from "../../contexts/auth/AuthContext";
 import { useNavigate } from "@tanstack/react-router";
+import { useEffect } from "react";
 
 function Login() {
 
-  const {login} = useAuth();
+  const {login, token} = useAuth();
   const navigate = useNavigate()
 
     const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    login('User123', 'asdasda')
-    // navigate({ to: '/resident/dashboard' })
+    login('example', 'example_pass')
   }
 
 
@@ -31,11 +31,11 @@ function Login() {
             {/* Email and password field */}
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label className="custom-font-size">Email</Form.Label>
-                <Form.Control className="custom-font-size" type="email" placeholder="name@example.com" />
+                <Form.Control className="custom-font-size" type="email" placeholder="name@example.com" autoComplete="current-email"/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
                 <Form.Label className="custom-font-size">Password</Form.Label>
-                <Form.Control className="custom-font-size" type="password" placeholder="Enter password" />
+                <Form.Control className="custom-font-size" type="password" placeholder="Enter password" autoComplete="current-password"/>
             </Form.Group>
 
             {/* Button to redirect to forgot password page */}

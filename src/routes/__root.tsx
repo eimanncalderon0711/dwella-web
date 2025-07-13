@@ -8,8 +8,10 @@ export const Route = createRootRouteWithContext<{
   component: __root,
 });
 
-
 function __root() {
+   const {isLoading } = useAuth();
+
+  if (isLoading) return <div>Loading...</div>;
   return (
     <>
     <Outlet />

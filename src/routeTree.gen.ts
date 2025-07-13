@@ -14,98 +14,105 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as LoginImport } from './routes/login'
-import { Route as EmployeeRouteImport } from './routes/employee/route'
-import { Route as AdminRouteImport } from './routes/admin/route'
-import { Route as AuthRouteImport } from './routes/_auth/route'
+import { Route as ProtectedImport } from './routes/_protected'
 import { Route as IndexImport } from './routes/index'
-import { Route as EmployeeIndexImport } from './routes/employee/index'
-import { Route as AdminIndexImport } from './routes/admin/index'
-import { Route as ResidentSubmitRequestImport } from './routes/resident/submit-request'
-import { Route as ResidentContactImport } from './routes/resident/contact'
-import { Route as EmployeeProfileImport } from './routes/employee/profile'
-import { Route as EmployeeEditProfileImport } from './routes/employee/edit-profile'
-import { Route as EmployeeAccountImport } from './routes/employee/account'
-import { Route as AdminProfileImport } from './routes/admin/profile'
-import { Route as AdminEditProfileImport } from './routes/admin/edit-profile'
-import { Route as AdminAccountImport } from './routes/admin/account'
-import { Route as AuthDashboardImport } from './routes/_auth/dashboard'
-import { Route as EmployeeResidentRouteImport } from './routes/employee/resident/route'
-import { Route as EmployeePaymentsRouteImport } from './routes/employee/payments/route'
-import { Route as EmployeeNoticesRouteImport } from './routes/employee/notices/route'
-import { Route as EmployeeInquiriesRouteImport } from './routes/employee/inquiries/route'
-import { Route as AdminUnpaidAccountsRouteImport } from './routes/admin/unpaid-accounts/route'
-import { Route as AdminResidentRouteImport } from './routes/admin/resident/route'
-import { Route as AdminNotificationsRouteImport } from './routes/admin/notifications/route'
-import { Route as AdminFinancialRouteImport } from './routes/admin/financial/route'
-import { Route as AdminEmployeeRouteImport } from './routes/admin/employee/route'
-import { Route as EmployeeResidentIndexImport } from './routes/employee/resident/index'
-import { Route as EmployeePaymentsIndexImport } from './routes/employee/payments/index'
-import { Route as EmployeeNoticesIndexImport } from './routes/employee/notices/index'
-import { Route as EmployeeInquiriesIndexImport } from './routes/employee/inquiries/index'
-import { Route as AdminUnpaidAccountsIndexImport } from './routes/admin/unpaid-accounts/index'
-import { Route as AdminResidentIndexImport } from './routes/admin/resident/index'
-import { Route as AdminNotificationsIndexImport } from './routes/admin/notifications/index'
-import { Route as AdminEmployeeIndexImport } from './routes/admin/employee/index'
-import { Route as EmployeeResidentAddResidentImport } from './routes/employee/resident/add-resident'
-import { Route as EmployeePaymentsRecordPaymentImport } from './routes/employee/payments/record-payment'
-import { Route as EmployeeNoticesCreateImport } from './routes/employee/notices/create'
-import { Route as EmployeeInquiriesCreateImport } from './routes/employee/inquiries/create'
-import { Route as EmployeeTaskSummaryUnverifiedPaymentsImport } from './routes/employee/_task-summary/unverified-payments'
-import { Route as EmployeeTaskSummaryPendingNoticesImport } from './routes/employee/_task-summary/pending-notices'
-import { Route as EmployeeTaskSummaryOverDueAccountsImport } from './routes/employee/_task-summary/over-due-accounts'
-import { Route as EmployeeTaskSummaryOpenInquiriesImport } from './routes/employee/_task-summary/open-inquiries'
-import { Route as AdminUnpaidAccountsRemindersImport } from './routes/admin/unpaid-accounts/reminders'
-import { Route as AdminResidentAddResidentImport } from './routes/admin/resident/add-resident'
-import { Route as AdminNotificationsSendSmsImport } from './routes/admin/notifications/send-sms'
-import { Route as AdminNotificationsCreateImport } from './routes/admin/notifications/create'
-import { Route as AdminFinancialRecordPaymentImport } from './routes/admin/financial/record-payment'
-import { Route as AdminEmployeeAddEmployeeImport } from './routes/admin/employee/add-employee'
-import { Route as EmployeeResidentResidentIdRouteImport } from './routes/employee/resident/$residentId/route'
-import { Route as AdminResidentResidentIdRouteImport } from './routes/admin/resident/$residentId/route'
-import { Route as AdminFinancialFinancialRouteImport } from './routes/admin/financial/_financial/route'
-import { Route as AdminFinancialUploadIndexImport } from './routes/admin/financial/upload/index'
-import { Route as AdminFinancialFinancialIndexImport } from './routes/admin/financial/_financial/index'
-import { Route as AdminEmployeeEmployeeIdIndexImport } from './routes/admin/employee/$employeeId/index'
-import { Route as EmployeeResidentResidentIdEditImport } from './routes/employee/resident/$residentId/edit'
-import { Route as AdminResidentResidentIdEditImport } from './routes/admin/resident/$residentId/edit'
-import { Route as AdminFinancialEditResidentIdImport } from './routes/admin/financial/edit/$residentId'
-import { Route as AdminFinancialFinancialMonthlyDueImport } from './routes/admin/financial/_financial/monthly-due'
-import { Route as AdminEmployeeEmployeeIdEditImport } from './routes/admin/employee/$employeeId/edit'
-import { Route as EmployeeResidentResidentIdViewRouteImport } from './routes/employee/resident/$residentId/_view/route'
-import { Route as AdminResidentResidentIdViewRouteImport } from './routes/admin/resident/$residentId/_view/route'
-import { Route as EmployeeResidentResidentIdViewIndexImport } from './routes/employee/resident/$residentId/_view/index'
-import { Route as AdminResidentResidentIdViewIndexImport } from './routes/admin/resident/$residentId/_view/index'
-import { Route as EmployeeResidentResidentIdViewNoticeReceivedImport } from './routes/employee/resident/$residentId/_view/notice-received'
-import { Route as EmployeeResidentResidentIdViewInquiresHistoryImport } from './routes/employee/resident/$residentId/_view/inquires-history'
-import { Route as AdminResidentResidentIdViewNoticeReceivedImport } from './routes/admin/resident/$residentId/_view/notice-received'
-import { Route as AdminResidentResidentIdViewInquiresHistoryImport } from './routes/admin/resident/$residentId/_view/inquires-history'
+import { Route as ProtectedEmployeeRouteImport } from './routes/_protected/employee/route'
+import { Route as ProtectedAdminRouteImport } from './routes/_protected/admin/route'
+import { Route as ProtectedEmployeeIndexImport } from './routes/_protected/employee/index'
+import { Route as ProtectedAdminIndexImport } from './routes/_protected/admin/index'
+import { Route as ProtectedResidentSubmitRequestImport } from './routes/_protected/resident/submit-request'
+import { Route as ProtectedResidentContactImport } from './routes/_protected/resident/contact'
+import { Route as ProtectedEmployeeProfileImport } from './routes/_protected/employee/profile'
+import { Route as ProtectedEmployeeEditProfileImport } from './routes/_protected/employee/edit-profile'
+import { Route as ProtectedEmployeeAccountImport } from './routes/_protected/employee/account'
+import { Route as ProtectedAdminProfileImport } from './routes/_protected/admin/profile'
+import { Route as ProtectedAdminEditProfileImport } from './routes/_protected/admin/edit-profile'
+import { Route as ProtectedAdminAccountImport } from './routes/_protected/admin/account'
+import { Route as ProtectedEmployeeResidentRouteImport } from './routes/_protected/employee/resident/route'
+import { Route as ProtectedEmployeePaymentsRouteImport } from './routes/_protected/employee/payments/route'
+import { Route as ProtectedEmployeeNoticesRouteImport } from './routes/_protected/employee/notices/route'
+import { Route as ProtectedEmployeeInquiriesRouteImport } from './routes/_protected/employee/inquiries/route'
+import { Route as ProtectedAdminUnpaidAccountsRouteImport } from './routes/_protected/admin/unpaid-accounts/route'
+import { Route as ProtectedAdminResidentRouteImport } from './routes/_protected/admin/resident/route'
+import { Route as ProtectedAdminNotificationsRouteImport } from './routes/_protected/admin/notifications/route'
+import { Route as ProtectedAdminFinancialRouteImport } from './routes/_protected/admin/financial/route'
+import { Route as ProtectedAdminEmployeeRouteImport } from './routes/_protected/admin/employee/route'
+import { Route as ProtectedEmployeeResidentIndexImport } from './routes/_protected/employee/resident/index'
+import { Route as ProtectedEmployeePaymentsIndexImport } from './routes/_protected/employee/payments/index'
+import { Route as ProtectedEmployeeNoticesIndexImport } from './routes/_protected/employee/notices/index'
+import { Route as ProtectedEmployeeInquiriesIndexImport } from './routes/_protected/employee/inquiries/index'
+import { Route as ProtectedAdminUnpaidAccountsIndexImport } from './routes/_protected/admin/unpaid-accounts/index'
+import { Route as ProtectedAdminResidentIndexImport } from './routes/_protected/admin/resident/index'
+import { Route as ProtectedAdminNotificationsIndexImport } from './routes/_protected/admin/notifications/index'
+import { Route as ProtectedAdminEmployeeIndexImport } from './routes/_protected/admin/employee/index'
+import { Route as ProtectedEmployeeResidentAddResidentImport } from './routes/_protected/employee/resident/add-resident'
+import { Route as ProtectedEmployeePaymentsRecordPaymentImport } from './routes/_protected/employee/payments/record-payment'
+import { Route as ProtectedEmployeeNoticesCreateImport } from './routes/_protected/employee/notices/create'
+import { Route as ProtectedEmployeeInquiriesCreateImport } from './routes/_protected/employee/inquiries/create'
+import { Route as ProtectedEmployeeTaskSummaryUnverifiedPaymentsImport } from './routes/_protected/employee/_task-summary/unverified-payments'
+import { Route as ProtectedEmployeeTaskSummaryPendingNoticesImport } from './routes/_protected/employee/_task-summary/pending-notices'
+import { Route as ProtectedEmployeeTaskSummaryOverDueAccountsImport } from './routes/_protected/employee/_task-summary/over-due-accounts'
+import { Route as ProtectedEmployeeTaskSummaryOpenInquiriesImport } from './routes/_protected/employee/_task-summary/open-inquiries'
+import { Route as ProtectedAdminUnpaidAccountsRemindersImport } from './routes/_protected/admin/unpaid-accounts/reminders'
+import { Route as ProtectedAdminResidentAddResidentImport } from './routes/_protected/admin/resident/add-resident'
+import { Route as ProtectedAdminNotificationsSendSmsImport } from './routes/_protected/admin/notifications/send-sms'
+import { Route as ProtectedAdminNotificationsCreateImport } from './routes/_protected/admin/notifications/create'
+import { Route as ProtectedAdminFinancialRecordPaymentImport } from './routes/_protected/admin/financial/record-payment'
+import { Route as ProtectedAdminEmployeeAddEmployeeImport } from './routes/_protected/admin/employee/add-employee'
+import { Route as ProtectedEmployeeResidentResidentIdRouteImport } from './routes/_protected/employee/resident/$residentId/route'
+import { Route as ProtectedAdminResidentResidentIdRouteImport } from './routes/_protected/admin/resident/$residentId/route'
+import { Route as ProtectedAdminFinancialFinancialRouteImport } from './routes/_protected/admin/financial/_financial/route'
+import { Route as ProtectedAdminFinancialUploadIndexImport } from './routes/_protected/admin/financial/upload/index'
+import { Route as ProtectedAdminFinancialFinancialIndexImport } from './routes/_protected/admin/financial/_financial/index'
+import { Route as ProtectedAdminEmployeeEmployeeIdIndexImport } from './routes/_protected/admin/employee/$employeeId/index'
+import { Route as ProtectedEmployeeResidentResidentIdEditImport } from './routes/_protected/employee/resident/$residentId/edit'
+import { Route as ProtectedAdminResidentResidentIdEditImport } from './routes/_protected/admin/resident/$residentId/edit'
+import { Route as ProtectedAdminFinancialEditResidentIdImport } from './routes/_protected/admin/financial/edit/$residentId'
+import { Route as ProtectedAdminFinancialFinancialMonthlyDueImport } from './routes/_protected/admin/financial/_financial/monthly-due'
+import { Route as ProtectedAdminEmployeeEmployeeIdEditImport } from './routes/_protected/admin/employee/$employeeId/edit'
+import { Route as ProtectedEmployeeResidentResidentIdViewRouteImport } from './routes/_protected/employee/resident/$residentId/_view/route'
+import { Route as ProtectedAdminResidentResidentIdViewRouteImport } from './routes/_protected/admin/resident/$residentId/_view/route'
+import { Route as ProtectedEmployeeResidentResidentIdViewIndexImport } from './routes/_protected/employee/resident/$residentId/_view/index'
+import { Route as ProtectedAdminResidentResidentIdViewIndexImport } from './routes/_protected/admin/resident/$residentId/_view/index'
+import { Route as ProtectedEmployeeResidentResidentIdViewNoticeReceivedImport } from './routes/_protected/employee/resident/$residentId/_view/notice-received'
+import { Route as ProtectedEmployeeResidentResidentIdViewInquiresHistoryImport } from './routes/_protected/employee/resident/$residentId/_view/inquires-history'
+import { Route as ProtectedAdminResidentResidentIdViewNoticeReceivedImport } from './routes/_protected/admin/resident/$residentId/_view/notice-received'
+import { Route as ProtectedAdminResidentResidentIdViewInquiresHistoryImport } from './routes/_protected/admin/resident/$residentId/_view/inquires-history'
 
 // Create Virtual Routes
 
-const ResidentRouteLazyImport = createFileRoute('/resident')()
-const ResidentUploadPaymentLazyImport = createFileRoute(
-  '/resident/upload-payment',
+const ProtectedResidentRouteLazyImport = createFileRoute(
+  '/_protected/resident',
 )()
-const ResidentProfileLazyImport = createFileRoute('/resident/profile')()
-const ResidentPaynowLazyImport = createFileRoute('/resident/paynow')()
-const ResidentNoticesLazyImport = createFileRoute('/resident/notices')()
-const ResidentInquiriesLazyImport = createFileRoute('/resident/inquiries')()
-const ResidentFinancialLazyImport = createFileRoute('/resident/financial')()
-const ResidentEditProfileLazyImport = createFileRoute(
-  '/resident/edit-profile',
+const ProtectedResidentUploadPaymentLazyImport = createFileRoute(
+  '/_protected/resident/upload-payment',
 )()
-const ResidentDashboardLazyImport = createFileRoute('/resident/dashboard')()
-const ResidentAccountLazyImport = createFileRoute('/resident/account')()
+const ProtectedResidentProfileLazyImport = createFileRoute(
+  '/_protected/resident/profile',
+)()
+const ProtectedResidentPaynowLazyImport = createFileRoute(
+  '/_protected/resident/paynow',
+)()
+const ProtectedResidentNoticesLazyImport = createFileRoute(
+  '/_protected/resident/notices',
+)()
+const ProtectedResidentInquiriesLazyImport = createFileRoute(
+  '/_protected/resident/inquiries',
+)()
+const ProtectedResidentFinancialLazyImport = createFileRoute(
+  '/_protected/resident/financial',
+)()
+const ProtectedResidentEditProfileLazyImport = createFileRoute(
+  '/_protected/resident/edit-profile',
+)()
+const ProtectedResidentDashboardLazyImport = createFileRoute(
+  '/_protected/resident/dashboard',
+)()
+const ProtectedResidentAccountLazyImport = createFileRoute(
+  '/_protected/resident/account',
+)()
 
 // Create/Update Routes
-
-const ResidentRouteLazyRoute = ResidentRouteLazyImport.update({
-  id: '/resident',
-  path: '/resident',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() =>
-  import('./routes/resident/route.lazy').then((d) => d.Route),
-)
 
 const LoginRoute = LoginImport.update({
   id: '/login',
@@ -113,20 +120,8 @@ const LoginRoute = LoginImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const EmployeeRouteRoute = EmployeeRouteImport.update({
-  id: '/employee',
-  path: '/employee',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const AdminRouteRoute = AdminRouteImport.update({
-  id: '/admin',
-  path: '/admin',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const AuthRouteRoute = AuthRouteImport.update({
-  id: '/_auth',
+const ProtectedRoute = ProtectedImport.update({
+  id: '/_protected',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -136,465 +131,520 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const EmployeeIndexRoute = EmployeeIndexImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => EmployeeRouteRoute,
-} as any)
-
-const AdminIndexRoute = AdminIndexImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => AdminRouteRoute,
-} as any)
-
-const ResidentUploadPaymentLazyRoute = ResidentUploadPaymentLazyImport.update({
-  id: '/upload-payment',
-  path: '/upload-payment',
-  getParentRoute: () => ResidentRouteLazyRoute,
-} as any).lazy(() =>
-  import('./routes/resident/upload-payment.lazy').then((d) => d.Route),
+const ProtectedResidentRouteLazyRoute = ProtectedResidentRouteLazyImport.update(
+  {
+    id: '/resident',
+    path: '/resident',
+    getParentRoute: () => ProtectedRoute,
+  } as any,
+).lazy(() =>
+  import('./routes/_protected/resident/route.lazy').then((d) => d.Route),
 )
 
-const ResidentProfileLazyRoute = ResidentProfileLazyImport.update({
-  id: '/profile',
-  path: '/profile',
-  getParentRoute: () => ResidentRouteLazyRoute,
-} as any).lazy(() =>
-  import('./routes/resident/profile.lazy').then((d) => d.Route),
-)
-
-const ResidentPaynowLazyRoute = ResidentPaynowLazyImport.update({
-  id: '/paynow',
-  path: '/paynow',
-  getParentRoute: () => ResidentRouteLazyRoute,
-} as any).lazy(() =>
-  import('./routes/resident/paynow.lazy').then((d) => d.Route),
-)
-
-const ResidentNoticesLazyRoute = ResidentNoticesLazyImport.update({
-  id: '/notices',
-  path: '/notices',
-  getParentRoute: () => ResidentRouteLazyRoute,
-} as any).lazy(() =>
-  import('./routes/resident/notices.lazy').then((d) => d.Route),
-)
-
-const ResidentInquiriesLazyRoute = ResidentInquiriesLazyImport.update({
-  id: '/inquiries',
-  path: '/inquiries',
-  getParentRoute: () => ResidentRouteLazyRoute,
-} as any).lazy(() =>
-  import('./routes/resident/inquiries.lazy').then((d) => d.Route),
-)
-
-const ResidentFinancialLazyRoute = ResidentFinancialLazyImport.update({
-  id: '/financial',
-  path: '/financial',
-  getParentRoute: () => ResidentRouteLazyRoute,
-} as any).lazy(() =>
-  import('./routes/resident/financial.lazy').then((d) => d.Route),
-)
-
-const ResidentEditProfileLazyRoute = ResidentEditProfileLazyImport.update({
-  id: '/edit-profile',
-  path: '/edit-profile',
-  getParentRoute: () => ResidentRouteLazyRoute,
-} as any).lazy(() =>
-  import('./routes/resident/edit-profile.lazy').then((d) => d.Route),
-)
-
-const ResidentDashboardLazyRoute = ResidentDashboardLazyImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
-  getParentRoute: () => ResidentRouteLazyRoute,
-} as any).lazy(() =>
-  import('./routes/resident/dashboard.lazy').then((d) => d.Route),
-)
-
-const ResidentAccountLazyRoute = ResidentAccountLazyImport.update({
-  id: '/account',
-  path: '/account',
-  getParentRoute: () => ResidentRouteLazyRoute,
-} as any).lazy(() =>
-  import('./routes/resident/account.lazy').then((d) => d.Route),
-)
-
-const ResidentSubmitRequestRoute = ResidentSubmitRequestImport.update({
-  id: '/submit-request',
-  path: '/submit-request',
-  getParentRoute: () => ResidentRouteLazyRoute,
-} as any)
-
-const ResidentContactRoute = ResidentContactImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => ResidentRouteLazyRoute,
-} as any)
-
-const EmployeeProfileRoute = EmployeeProfileImport.update({
-  id: '/profile',
-  path: '/profile',
-  getParentRoute: () => EmployeeRouteRoute,
-} as any)
-
-const EmployeeEditProfileRoute = EmployeeEditProfileImport.update({
-  id: '/edit-profile',
-  path: '/edit-profile',
-  getParentRoute: () => EmployeeRouteRoute,
-} as any)
-
-const EmployeeAccountRoute = EmployeeAccountImport.update({
-  id: '/account',
-  path: '/account',
-  getParentRoute: () => EmployeeRouteRoute,
-} as any)
-
-const AdminProfileRoute = AdminProfileImport.update({
-  id: '/profile',
-  path: '/profile',
-  getParentRoute: () => AdminRouteRoute,
-} as any)
-
-const AdminEditProfileRoute = AdminEditProfileImport.update({
-  id: '/edit-profile',
-  path: '/edit-profile',
-  getParentRoute: () => AdminRouteRoute,
-} as any)
-
-const AdminAccountRoute = AdminAccountImport.update({
-  id: '/account',
-  path: '/account',
-  getParentRoute: () => AdminRouteRoute,
-} as any)
-
-const AuthDashboardRoute = AuthDashboardImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
-  getParentRoute: () => AuthRouteRoute,
-} as any)
-
-const EmployeeResidentRouteRoute = EmployeeResidentRouteImport.update({
-  id: '/resident',
-  path: '/resident',
-  getParentRoute: () => EmployeeRouteRoute,
-} as any)
-
-const EmployeePaymentsRouteRoute = EmployeePaymentsRouteImport.update({
-  id: '/payments',
-  path: '/payments',
-  getParentRoute: () => EmployeeRouteRoute,
-} as any)
-
-const EmployeeNoticesRouteRoute = EmployeeNoticesRouteImport.update({
-  id: '/notices',
-  path: '/notices',
-  getParentRoute: () => EmployeeRouteRoute,
-} as any)
-
-const EmployeeInquiriesRouteRoute = EmployeeInquiriesRouteImport.update({
-  id: '/inquiries',
-  path: '/inquiries',
-  getParentRoute: () => EmployeeRouteRoute,
-} as any)
-
-const AdminUnpaidAccountsRouteRoute = AdminUnpaidAccountsRouteImport.update({
-  id: '/unpaid-accounts',
-  path: '/unpaid-accounts',
-  getParentRoute: () => AdminRouteRoute,
-} as any)
-
-const AdminResidentRouteRoute = AdminResidentRouteImport.update({
-  id: '/resident',
-  path: '/resident',
-  getParentRoute: () => AdminRouteRoute,
-} as any)
-
-const AdminNotificationsRouteRoute = AdminNotificationsRouteImport.update({
-  id: '/notifications',
-  path: '/notifications',
-  getParentRoute: () => AdminRouteRoute,
-} as any)
-
-const AdminFinancialRouteRoute = AdminFinancialRouteImport.update({
-  id: '/financial',
-  path: '/financial',
-  getParentRoute: () => AdminRouteRoute,
-} as any)
-
-const AdminEmployeeRouteRoute = AdminEmployeeRouteImport.update({
+const ProtectedEmployeeRouteRoute = ProtectedEmployeeRouteImport.update({
   id: '/employee',
   path: '/employee',
-  getParentRoute: () => AdminRouteRoute,
+  getParentRoute: () => ProtectedRoute,
 } as any)
 
-const EmployeeResidentIndexRoute = EmployeeResidentIndexImport.update({
+const ProtectedAdminRouteRoute = ProtectedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => ProtectedRoute,
+} as any)
+
+const ProtectedEmployeeIndexRoute = ProtectedEmployeeIndexImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => EmployeeResidentRouteRoute,
+  getParentRoute: () => ProtectedEmployeeRouteRoute,
 } as any)
 
-const EmployeePaymentsIndexRoute = EmployeePaymentsIndexImport.update({
+const ProtectedAdminIndexRoute = ProtectedAdminIndexImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => EmployeePaymentsRouteRoute,
+  getParentRoute: () => ProtectedAdminRouteRoute,
 } as any)
 
-const EmployeeNoticesIndexRoute = EmployeeNoticesIndexImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => EmployeeNoticesRouteRoute,
+const ProtectedResidentUploadPaymentLazyRoute =
+  ProtectedResidentUploadPaymentLazyImport.update({
+    id: '/upload-payment',
+    path: '/upload-payment',
+    getParentRoute: () => ProtectedResidentRouteLazyRoute,
+  } as any).lazy(() =>
+    import('./routes/_protected/resident/upload-payment.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
+const ProtectedResidentProfileLazyRoute =
+  ProtectedResidentProfileLazyImport.update({
+    id: '/profile',
+    path: '/profile',
+    getParentRoute: () => ProtectedResidentRouteLazyRoute,
+  } as any).lazy(() =>
+    import('./routes/_protected/resident/profile.lazy').then((d) => d.Route),
+  )
+
+const ProtectedResidentPaynowLazyRoute =
+  ProtectedResidentPaynowLazyImport.update({
+    id: '/paynow',
+    path: '/paynow',
+    getParentRoute: () => ProtectedResidentRouteLazyRoute,
+  } as any).lazy(() =>
+    import('./routes/_protected/resident/paynow.lazy').then((d) => d.Route),
+  )
+
+const ProtectedResidentNoticesLazyRoute =
+  ProtectedResidentNoticesLazyImport.update({
+    id: '/notices',
+    path: '/notices',
+    getParentRoute: () => ProtectedResidentRouteLazyRoute,
+  } as any).lazy(() =>
+    import('./routes/_protected/resident/notices.lazy').then((d) => d.Route),
+  )
+
+const ProtectedResidentInquiriesLazyRoute =
+  ProtectedResidentInquiriesLazyImport.update({
+    id: '/inquiries',
+    path: '/inquiries',
+    getParentRoute: () => ProtectedResidentRouteLazyRoute,
+  } as any).lazy(() =>
+    import('./routes/_protected/resident/inquiries.lazy').then((d) => d.Route),
+  )
+
+const ProtectedResidentFinancialLazyRoute =
+  ProtectedResidentFinancialLazyImport.update({
+    id: '/financial',
+    path: '/financial',
+    getParentRoute: () => ProtectedResidentRouteLazyRoute,
+  } as any).lazy(() =>
+    import('./routes/_protected/resident/financial.lazy').then((d) => d.Route),
+  )
+
+const ProtectedResidentEditProfileLazyRoute =
+  ProtectedResidentEditProfileLazyImport.update({
+    id: '/edit-profile',
+    path: '/edit-profile',
+    getParentRoute: () => ProtectedResidentRouteLazyRoute,
+  } as any).lazy(() =>
+    import('./routes/_protected/resident/edit-profile.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
+const ProtectedResidentDashboardLazyRoute =
+  ProtectedResidentDashboardLazyImport.update({
+    id: '/dashboard',
+    path: '/dashboard',
+    getParentRoute: () => ProtectedResidentRouteLazyRoute,
+  } as any).lazy(() =>
+    import('./routes/_protected/resident/dashboard.lazy').then((d) => d.Route),
+  )
+
+const ProtectedResidentAccountLazyRoute =
+  ProtectedResidentAccountLazyImport.update({
+    id: '/account',
+    path: '/account',
+    getParentRoute: () => ProtectedResidentRouteLazyRoute,
+  } as any).lazy(() =>
+    import('./routes/_protected/resident/account.lazy').then((d) => d.Route),
+  )
+
+const ProtectedResidentSubmitRequestRoute =
+  ProtectedResidentSubmitRequestImport.update({
+    id: '/submit-request',
+    path: '/submit-request',
+    getParentRoute: () => ProtectedResidentRouteLazyRoute,
+  } as any)
+
+const ProtectedResidentContactRoute = ProtectedResidentContactImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => ProtectedResidentRouteLazyRoute,
 } as any)
 
-const EmployeeInquiriesIndexRoute = EmployeeInquiriesIndexImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => EmployeeInquiriesRouteRoute,
+const ProtectedEmployeeProfileRoute = ProtectedEmployeeProfileImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => ProtectedEmployeeRouteRoute,
 } as any)
 
-const AdminUnpaidAccountsIndexRoute = AdminUnpaidAccountsIndexImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => AdminUnpaidAccountsRouteRoute,
+const ProtectedEmployeeEditProfileRoute =
+  ProtectedEmployeeEditProfileImport.update({
+    id: '/edit-profile',
+    path: '/edit-profile',
+    getParentRoute: () => ProtectedEmployeeRouteRoute,
+  } as any)
+
+const ProtectedEmployeeAccountRoute = ProtectedEmployeeAccountImport.update({
+  id: '/account',
+  path: '/account',
+  getParentRoute: () => ProtectedEmployeeRouteRoute,
 } as any)
 
-const AdminResidentIndexRoute = AdminResidentIndexImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => AdminResidentRouteRoute,
+const ProtectedAdminProfileRoute = ProtectedAdminProfileImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => ProtectedAdminRouteRoute,
 } as any)
 
-const AdminNotificationsIndexRoute = AdminNotificationsIndexImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => AdminNotificationsRouteRoute,
+const ProtectedAdminEditProfileRoute = ProtectedAdminEditProfileImport.update({
+  id: '/edit-profile',
+  path: '/edit-profile',
+  getParentRoute: () => ProtectedAdminRouteRoute,
 } as any)
 
-const AdminEmployeeIndexRoute = AdminEmployeeIndexImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => AdminEmployeeRouteRoute,
+const ProtectedAdminAccountRoute = ProtectedAdminAccountImport.update({
+  id: '/account',
+  path: '/account',
+  getParentRoute: () => ProtectedAdminRouteRoute,
 } as any)
 
-const EmployeeResidentAddResidentRoute =
-  EmployeeResidentAddResidentImport.update({
+const ProtectedEmployeeResidentRouteRoute =
+  ProtectedEmployeeResidentRouteImport.update({
+    id: '/resident',
+    path: '/resident',
+    getParentRoute: () => ProtectedEmployeeRouteRoute,
+  } as any)
+
+const ProtectedEmployeePaymentsRouteRoute =
+  ProtectedEmployeePaymentsRouteImport.update({
+    id: '/payments',
+    path: '/payments',
+    getParentRoute: () => ProtectedEmployeeRouteRoute,
+  } as any)
+
+const ProtectedEmployeeNoticesRouteRoute =
+  ProtectedEmployeeNoticesRouteImport.update({
+    id: '/notices',
+    path: '/notices',
+    getParentRoute: () => ProtectedEmployeeRouteRoute,
+  } as any)
+
+const ProtectedEmployeeInquiriesRouteRoute =
+  ProtectedEmployeeInquiriesRouteImport.update({
+    id: '/inquiries',
+    path: '/inquiries',
+    getParentRoute: () => ProtectedEmployeeRouteRoute,
+  } as any)
+
+const ProtectedAdminUnpaidAccountsRouteRoute =
+  ProtectedAdminUnpaidAccountsRouteImport.update({
+    id: '/unpaid-accounts',
+    path: '/unpaid-accounts',
+    getParentRoute: () => ProtectedAdminRouteRoute,
+  } as any)
+
+const ProtectedAdminResidentRouteRoute =
+  ProtectedAdminResidentRouteImport.update({
+    id: '/resident',
+    path: '/resident',
+    getParentRoute: () => ProtectedAdminRouteRoute,
+  } as any)
+
+const ProtectedAdminNotificationsRouteRoute =
+  ProtectedAdminNotificationsRouteImport.update({
+    id: '/notifications',
+    path: '/notifications',
+    getParentRoute: () => ProtectedAdminRouteRoute,
+  } as any)
+
+const ProtectedAdminFinancialRouteRoute =
+  ProtectedAdminFinancialRouteImport.update({
+    id: '/financial',
+    path: '/financial',
+    getParentRoute: () => ProtectedAdminRouteRoute,
+  } as any)
+
+const ProtectedAdminEmployeeRouteRoute =
+  ProtectedAdminEmployeeRouteImport.update({
+    id: '/employee',
+    path: '/employee',
+    getParentRoute: () => ProtectedAdminRouteRoute,
+  } as any)
+
+const ProtectedEmployeeResidentIndexRoute =
+  ProtectedEmployeeResidentIndexImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ProtectedEmployeeResidentRouteRoute,
+  } as any)
+
+const ProtectedEmployeePaymentsIndexRoute =
+  ProtectedEmployeePaymentsIndexImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ProtectedEmployeePaymentsRouteRoute,
+  } as any)
+
+const ProtectedEmployeeNoticesIndexRoute =
+  ProtectedEmployeeNoticesIndexImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ProtectedEmployeeNoticesRouteRoute,
+  } as any)
+
+const ProtectedEmployeeInquiriesIndexRoute =
+  ProtectedEmployeeInquiriesIndexImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ProtectedEmployeeInquiriesRouteRoute,
+  } as any)
+
+const ProtectedAdminUnpaidAccountsIndexRoute =
+  ProtectedAdminUnpaidAccountsIndexImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ProtectedAdminUnpaidAccountsRouteRoute,
+  } as any)
+
+const ProtectedAdminResidentIndexRoute =
+  ProtectedAdminResidentIndexImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ProtectedAdminResidentRouteRoute,
+  } as any)
+
+const ProtectedAdminNotificationsIndexRoute =
+  ProtectedAdminNotificationsIndexImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ProtectedAdminNotificationsRouteRoute,
+  } as any)
+
+const ProtectedAdminEmployeeIndexRoute =
+  ProtectedAdminEmployeeIndexImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ProtectedAdminEmployeeRouteRoute,
+  } as any)
+
+const ProtectedEmployeeResidentAddResidentRoute =
+  ProtectedEmployeeResidentAddResidentImport.update({
     id: '/add-resident',
     path: '/add-resident',
-    getParentRoute: () => EmployeeResidentRouteRoute,
+    getParentRoute: () => ProtectedEmployeeResidentRouteRoute,
   } as any)
 
-const EmployeePaymentsRecordPaymentRoute =
-  EmployeePaymentsRecordPaymentImport.update({
+const ProtectedEmployeePaymentsRecordPaymentRoute =
+  ProtectedEmployeePaymentsRecordPaymentImport.update({
     id: '/record-payment',
     path: '/record-payment',
-    getParentRoute: () => EmployeePaymentsRouteRoute,
+    getParentRoute: () => ProtectedEmployeePaymentsRouteRoute,
   } as any)
 
-const EmployeeNoticesCreateRoute = EmployeeNoticesCreateImport.update({
-  id: '/create',
-  path: '/create',
-  getParentRoute: () => EmployeeNoticesRouteRoute,
-} as any)
+const ProtectedEmployeeNoticesCreateRoute =
+  ProtectedEmployeeNoticesCreateImport.update({
+    id: '/create',
+    path: '/create',
+    getParentRoute: () => ProtectedEmployeeNoticesRouteRoute,
+  } as any)
 
-const EmployeeInquiriesCreateRoute = EmployeeInquiriesCreateImport.update({
-  id: '/create',
-  path: '/create',
-  getParentRoute: () => EmployeeInquiriesRouteRoute,
-} as any)
+const ProtectedEmployeeInquiriesCreateRoute =
+  ProtectedEmployeeInquiriesCreateImport.update({
+    id: '/create',
+    path: '/create',
+    getParentRoute: () => ProtectedEmployeeInquiriesRouteRoute,
+  } as any)
 
-const EmployeeTaskSummaryUnverifiedPaymentsRoute =
-  EmployeeTaskSummaryUnverifiedPaymentsImport.update({
+const ProtectedEmployeeTaskSummaryUnverifiedPaymentsRoute =
+  ProtectedEmployeeTaskSummaryUnverifiedPaymentsImport.update({
     id: '/_task-summary/unverified-payments',
     path: '/unverified-payments',
-    getParentRoute: () => EmployeeRouteRoute,
+    getParentRoute: () => ProtectedEmployeeRouteRoute,
   } as any)
 
-const EmployeeTaskSummaryPendingNoticesRoute =
-  EmployeeTaskSummaryPendingNoticesImport.update({
+const ProtectedEmployeeTaskSummaryPendingNoticesRoute =
+  ProtectedEmployeeTaskSummaryPendingNoticesImport.update({
     id: '/_task-summary/pending-notices',
     path: '/pending-notices',
-    getParentRoute: () => EmployeeRouteRoute,
+    getParentRoute: () => ProtectedEmployeeRouteRoute,
   } as any)
 
-const EmployeeTaskSummaryOverDueAccountsRoute =
-  EmployeeTaskSummaryOverDueAccountsImport.update({
+const ProtectedEmployeeTaskSummaryOverDueAccountsRoute =
+  ProtectedEmployeeTaskSummaryOverDueAccountsImport.update({
     id: '/_task-summary/over-due-accounts',
     path: '/over-due-accounts',
-    getParentRoute: () => EmployeeRouteRoute,
+    getParentRoute: () => ProtectedEmployeeRouteRoute,
   } as any)
 
-const EmployeeTaskSummaryOpenInquiriesRoute =
-  EmployeeTaskSummaryOpenInquiriesImport.update({
+const ProtectedEmployeeTaskSummaryOpenInquiriesRoute =
+  ProtectedEmployeeTaskSummaryOpenInquiriesImport.update({
     id: '/_task-summary/open-inquiries',
     path: '/open-inquiries',
-    getParentRoute: () => EmployeeRouteRoute,
+    getParentRoute: () => ProtectedEmployeeRouteRoute,
   } as any)
 
-const AdminUnpaidAccountsRemindersRoute =
-  AdminUnpaidAccountsRemindersImport.update({
+const ProtectedAdminUnpaidAccountsRemindersRoute =
+  ProtectedAdminUnpaidAccountsRemindersImport.update({
     id: '/reminders',
     path: '/reminders',
-    getParentRoute: () => AdminUnpaidAccountsRouteRoute,
+    getParentRoute: () => ProtectedAdminUnpaidAccountsRouteRoute,
   } as any)
 
-const AdminResidentAddResidentRoute = AdminResidentAddResidentImport.update({
-  id: '/add-resident',
-  path: '/add-resident',
-  getParentRoute: () => AdminResidentRouteRoute,
-} as any)
+const ProtectedAdminResidentAddResidentRoute =
+  ProtectedAdminResidentAddResidentImport.update({
+    id: '/add-resident',
+    path: '/add-resident',
+    getParentRoute: () => ProtectedAdminResidentRouteRoute,
+  } as any)
 
-const AdminNotificationsSendSmsRoute = AdminNotificationsSendSmsImport.update({
-  id: '/send-sms',
-  path: '/send-sms',
-  getParentRoute: () => AdminNotificationsRouteRoute,
-} as any)
+const ProtectedAdminNotificationsSendSmsRoute =
+  ProtectedAdminNotificationsSendSmsImport.update({
+    id: '/send-sms',
+    path: '/send-sms',
+    getParentRoute: () => ProtectedAdminNotificationsRouteRoute,
+  } as any)
 
-const AdminNotificationsCreateRoute = AdminNotificationsCreateImport.update({
-  id: '/create',
-  path: '/create',
-  getParentRoute: () => AdminNotificationsRouteRoute,
-} as any)
+const ProtectedAdminNotificationsCreateRoute =
+  ProtectedAdminNotificationsCreateImport.update({
+    id: '/create',
+    path: '/create',
+    getParentRoute: () => ProtectedAdminNotificationsRouteRoute,
+  } as any)
 
-const AdminFinancialRecordPaymentRoute =
-  AdminFinancialRecordPaymentImport.update({
+const ProtectedAdminFinancialRecordPaymentRoute =
+  ProtectedAdminFinancialRecordPaymentImport.update({
     id: '/record-payment',
     path: '/record-payment',
-    getParentRoute: () => AdminFinancialRouteRoute,
+    getParentRoute: () => ProtectedAdminFinancialRouteRoute,
   } as any)
 
-const AdminEmployeeAddEmployeeRoute = AdminEmployeeAddEmployeeImport.update({
-  id: '/add-employee',
-  path: '/add-employee',
-  getParentRoute: () => AdminEmployeeRouteRoute,
-} as any)
+const ProtectedAdminEmployeeAddEmployeeRoute =
+  ProtectedAdminEmployeeAddEmployeeImport.update({
+    id: '/add-employee',
+    path: '/add-employee',
+    getParentRoute: () => ProtectedAdminEmployeeRouteRoute,
+  } as any)
 
-const EmployeeResidentResidentIdRouteRoute =
-  EmployeeResidentResidentIdRouteImport.update({
+const ProtectedEmployeeResidentResidentIdRouteRoute =
+  ProtectedEmployeeResidentResidentIdRouteImport.update({
     id: '/$residentId',
     path: '/$residentId',
-    getParentRoute: () => EmployeeResidentRouteRoute,
+    getParentRoute: () => ProtectedEmployeeResidentRouteRoute,
   } as any)
 
-const AdminResidentResidentIdRouteRoute =
-  AdminResidentResidentIdRouteImport.update({
+const ProtectedAdminResidentResidentIdRouteRoute =
+  ProtectedAdminResidentResidentIdRouteImport.update({
     id: '/$residentId',
     path: '/$residentId',
-    getParentRoute: () => AdminResidentRouteRoute,
+    getParentRoute: () => ProtectedAdminResidentRouteRoute,
   } as any)
 
-const AdminFinancialFinancialRouteRoute =
-  AdminFinancialFinancialRouteImport.update({
+const ProtectedAdminFinancialFinancialRouteRoute =
+  ProtectedAdminFinancialFinancialRouteImport.update({
     id: '/_financial',
-    getParentRoute: () => AdminFinancialRouteRoute,
+    getParentRoute: () => ProtectedAdminFinancialRouteRoute,
   } as any)
 
-const AdminFinancialUploadIndexRoute = AdminFinancialUploadIndexImport.update({
-  id: '/upload/',
-  path: '/upload/',
-  getParentRoute: () => AdminFinancialRouteRoute,
-} as any)
+const ProtectedAdminFinancialUploadIndexRoute =
+  ProtectedAdminFinancialUploadIndexImport.update({
+    id: '/upload/',
+    path: '/upload/',
+    getParentRoute: () => ProtectedAdminFinancialRouteRoute,
+  } as any)
 
-const AdminFinancialFinancialIndexRoute =
-  AdminFinancialFinancialIndexImport.update({
+const ProtectedAdminFinancialFinancialIndexRoute =
+  ProtectedAdminFinancialFinancialIndexImport.update({
     id: '/',
     path: '/',
-    getParentRoute: () => AdminFinancialFinancialRouteRoute,
+    getParentRoute: () => ProtectedAdminFinancialFinancialRouteRoute,
   } as any)
 
-const AdminEmployeeEmployeeIdIndexRoute =
-  AdminEmployeeEmployeeIdIndexImport.update({
+const ProtectedAdminEmployeeEmployeeIdIndexRoute =
+  ProtectedAdminEmployeeEmployeeIdIndexImport.update({
     id: '/$employeeId/',
     path: '/$employeeId/',
-    getParentRoute: () => AdminEmployeeRouteRoute,
+    getParentRoute: () => ProtectedAdminEmployeeRouteRoute,
   } as any)
 
-const EmployeeResidentResidentIdEditRoute =
-  EmployeeResidentResidentIdEditImport.update({
+const ProtectedEmployeeResidentResidentIdEditRoute =
+  ProtectedEmployeeResidentResidentIdEditImport.update({
     id: '/edit',
     path: '/edit',
-    getParentRoute: () => EmployeeResidentResidentIdRouteRoute,
+    getParentRoute: () => ProtectedEmployeeResidentResidentIdRouteRoute,
   } as any)
 
-const AdminResidentResidentIdEditRoute =
-  AdminResidentResidentIdEditImport.update({
+const ProtectedAdminResidentResidentIdEditRoute =
+  ProtectedAdminResidentResidentIdEditImport.update({
     id: '/edit',
     path: '/edit',
-    getParentRoute: () => AdminResidentResidentIdRouteRoute,
+    getParentRoute: () => ProtectedAdminResidentResidentIdRouteRoute,
   } as any)
 
-const AdminFinancialEditResidentIdRoute =
-  AdminFinancialEditResidentIdImport.update({
+const ProtectedAdminFinancialEditResidentIdRoute =
+  ProtectedAdminFinancialEditResidentIdImport.update({
     id: '/edit/$residentId',
     path: '/edit/$residentId',
-    getParentRoute: () => AdminFinancialRouteRoute,
+    getParentRoute: () => ProtectedAdminFinancialRouteRoute,
   } as any)
 
-const AdminFinancialFinancialMonthlyDueRoute =
-  AdminFinancialFinancialMonthlyDueImport.update({
+const ProtectedAdminFinancialFinancialMonthlyDueRoute =
+  ProtectedAdminFinancialFinancialMonthlyDueImport.update({
     id: '/monthly-due',
     path: '/monthly-due',
-    getParentRoute: () => AdminFinancialFinancialRouteRoute,
+    getParentRoute: () => ProtectedAdminFinancialFinancialRouteRoute,
   } as any)
 
-const AdminEmployeeEmployeeIdEditRoute =
-  AdminEmployeeEmployeeIdEditImport.update({
+const ProtectedAdminEmployeeEmployeeIdEditRoute =
+  ProtectedAdminEmployeeEmployeeIdEditImport.update({
     id: '/$employeeId/edit',
     path: '/$employeeId/edit',
-    getParentRoute: () => AdminEmployeeRouteRoute,
+    getParentRoute: () => ProtectedAdminEmployeeRouteRoute,
   } as any)
 
-const EmployeeResidentResidentIdViewRouteRoute =
-  EmployeeResidentResidentIdViewRouteImport.update({
+const ProtectedEmployeeResidentResidentIdViewRouteRoute =
+  ProtectedEmployeeResidentResidentIdViewRouteImport.update({
     id: '/_view',
-    getParentRoute: () => EmployeeResidentResidentIdRouteRoute,
+    getParentRoute: () => ProtectedEmployeeResidentResidentIdRouteRoute,
   } as any)
 
-const AdminResidentResidentIdViewRouteRoute =
-  AdminResidentResidentIdViewRouteImport.update({
+const ProtectedAdminResidentResidentIdViewRouteRoute =
+  ProtectedAdminResidentResidentIdViewRouteImport.update({
     id: '/_view',
-    getParentRoute: () => AdminResidentResidentIdRouteRoute,
+    getParentRoute: () => ProtectedAdminResidentResidentIdRouteRoute,
   } as any)
 
-const EmployeeResidentResidentIdViewIndexRoute =
-  EmployeeResidentResidentIdViewIndexImport.update({
+const ProtectedEmployeeResidentResidentIdViewIndexRoute =
+  ProtectedEmployeeResidentResidentIdViewIndexImport.update({
     id: '/',
     path: '/',
-    getParentRoute: () => EmployeeResidentResidentIdViewRouteRoute,
+    getParentRoute: () => ProtectedEmployeeResidentResidentIdViewRouteRoute,
   } as any)
 
-const AdminResidentResidentIdViewIndexRoute =
-  AdminResidentResidentIdViewIndexImport.update({
+const ProtectedAdminResidentResidentIdViewIndexRoute =
+  ProtectedAdminResidentResidentIdViewIndexImport.update({
     id: '/',
     path: '/',
-    getParentRoute: () => AdminResidentResidentIdViewRouteRoute,
+    getParentRoute: () => ProtectedAdminResidentResidentIdViewRouteRoute,
   } as any)
 
-const EmployeeResidentResidentIdViewNoticeReceivedRoute =
-  EmployeeResidentResidentIdViewNoticeReceivedImport.update({
+const ProtectedEmployeeResidentResidentIdViewNoticeReceivedRoute =
+  ProtectedEmployeeResidentResidentIdViewNoticeReceivedImport.update({
     id: '/notice-received',
     path: '/notice-received',
-    getParentRoute: () => EmployeeResidentResidentIdViewRouteRoute,
+    getParentRoute: () => ProtectedEmployeeResidentResidentIdViewRouteRoute,
   } as any)
 
-const EmployeeResidentResidentIdViewInquiresHistoryRoute =
-  EmployeeResidentResidentIdViewInquiresHistoryImport.update({
+const ProtectedEmployeeResidentResidentIdViewInquiresHistoryRoute =
+  ProtectedEmployeeResidentResidentIdViewInquiresHistoryImport.update({
     id: '/inquires-history',
     path: '/inquires-history',
-    getParentRoute: () => EmployeeResidentResidentIdViewRouteRoute,
+    getParentRoute: () => ProtectedEmployeeResidentResidentIdViewRouteRoute,
   } as any)
 
-const AdminResidentResidentIdViewNoticeReceivedRoute =
-  AdminResidentResidentIdViewNoticeReceivedImport.update({
+const ProtectedAdminResidentResidentIdViewNoticeReceivedRoute =
+  ProtectedAdminResidentResidentIdViewNoticeReceivedImport.update({
     id: '/notice-received',
     path: '/notice-received',
-    getParentRoute: () => AdminResidentResidentIdViewRouteRoute,
+    getParentRoute: () => ProtectedAdminResidentResidentIdViewRouteRoute,
   } as any)
 
-const AdminResidentResidentIdViewInquiresHistoryRoute =
-  AdminResidentResidentIdViewInquiresHistoryImport.update({
+const ProtectedAdminResidentResidentIdViewInquiresHistoryRoute =
+  ProtectedAdminResidentResidentIdViewInquiresHistoryImport.update({
     id: '/inquires-history',
     path: '/inquires-history',
-    getParentRoute: () => AdminResidentResidentIdViewRouteRoute,
+    getParentRoute: () => ProtectedAdminResidentResidentIdViewRouteRoute,
   } as any)
 
 // Populate the FileRoutesByPath interface
@@ -608,25 +658,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/_auth': {
-      id: '/_auth'
+    '/_protected': {
+      id: '/_protected'
       path: ''
       fullPath: ''
-      preLoaderRoute: typeof AuthRouteImport
-      parentRoute: typeof rootRoute
-    }
-    '/admin': {
-      id: '/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AdminRouteImport
-      parentRoute: typeof rootRoute
-    }
-    '/employee': {
-      id: '/employee'
-      path: '/employee'
-      fullPath: '/employee'
-      preLoaderRoute: typeof EmployeeRouteImport
+      preLoaderRoute: typeof ProtectedImport
       parentRoute: typeof rootRoute
     }
     '/login': {
@@ -636,1073 +672,1129 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginImport
       parentRoute: typeof rootRoute
     }
-    '/resident': {
-      id: '/resident'
+    '/_protected/admin': {
+      id: '/_protected/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof ProtectedAdminRouteImport
+      parentRoute: typeof ProtectedImport
+    }
+    '/_protected/employee': {
+      id: '/_protected/employee'
+      path: '/employee'
+      fullPath: '/employee'
+      preLoaderRoute: typeof ProtectedEmployeeRouteImport
+      parentRoute: typeof ProtectedImport
+    }
+    '/_protected/resident': {
+      id: '/_protected/resident'
       path: '/resident'
       fullPath: '/resident'
-      preLoaderRoute: typeof ResidentRouteLazyImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof ProtectedResidentRouteLazyImport
+      parentRoute: typeof ProtectedImport
     }
-    '/admin/employee': {
-      id: '/admin/employee'
+    '/_protected/admin/employee': {
+      id: '/_protected/admin/employee'
       path: '/employee'
       fullPath: '/admin/employee'
-      preLoaderRoute: typeof AdminEmployeeRouteImport
-      parentRoute: typeof AdminRouteImport
+      preLoaderRoute: typeof ProtectedAdminEmployeeRouteImport
+      parentRoute: typeof ProtectedAdminRouteImport
     }
-    '/admin/financial': {
-      id: '/admin/financial'
+    '/_protected/admin/financial': {
+      id: '/_protected/admin/financial'
       path: '/financial'
       fullPath: '/admin/financial'
-      preLoaderRoute: typeof AdminFinancialRouteImport
-      parentRoute: typeof AdminRouteImport
+      preLoaderRoute: typeof ProtectedAdminFinancialRouteImport
+      parentRoute: typeof ProtectedAdminRouteImport
     }
-    '/admin/notifications': {
-      id: '/admin/notifications'
+    '/_protected/admin/notifications': {
+      id: '/_protected/admin/notifications'
       path: '/notifications'
       fullPath: '/admin/notifications'
-      preLoaderRoute: typeof AdminNotificationsRouteImport
-      parentRoute: typeof AdminRouteImport
+      preLoaderRoute: typeof ProtectedAdminNotificationsRouteImport
+      parentRoute: typeof ProtectedAdminRouteImport
     }
-    '/admin/resident': {
-      id: '/admin/resident'
+    '/_protected/admin/resident': {
+      id: '/_protected/admin/resident'
       path: '/resident'
       fullPath: '/admin/resident'
-      preLoaderRoute: typeof AdminResidentRouteImport
-      parentRoute: typeof AdminRouteImport
+      preLoaderRoute: typeof ProtectedAdminResidentRouteImport
+      parentRoute: typeof ProtectedAdminRouteImport
     }
-    '/admin/unpaid-accounts': {
-      id: '/admin/unpaid-accounts'
+    '/_protected/admin/unpaid-accounts': {
+      id: '/_protected/admin/unpaid-accounts'
       path: '/unpaid-accounts'
       fullPath: '/admin/unpaid-accounts'
-      preLoaderRoute: typeof AdminUnpaidAccountsRouteImport
-      parentRoute: typeof AdminRouteImport
+      preLoaderRoute: typeof ProtectedAdminUnpaidAccountsRouteImport
+      parentRoute: typeof ProtectedAdminRouteImport
     }
-    '/employee/inquiries': {
-      id: '/employee/inquiries'
+    '/_protected/employee/inquiries': {
+      id: '/_protected/employee/inquiries'
       path: '/inquiries'
       fullPath: '/employee/inquiries'
-      preLoaderRoute: typeof EmployeeInquiriesRouteImport
-      parentRoute: typeof EmployeeRouteImport
+      preLoaderRoute: typeof ProtectedEmployeeInquiriesRouteImport
+      parentRoute: typeof ProtectedEmployeeRouteImport
     }
-    '/employee/notices': {
-      id: '/employee/notices'
+    '/_protected/employee/notices': {
+      id: '/_protected/employee/notices'
       path: '/notices'
       fullPath: '/employee/notices'
-      preLoaderRoute: typeof EmployeeNoticesRouteImport
-      parentRoute: typeof EmployeeRouteImport
+      preLoaderRoute: typeof ProtectedEmployeeNoticesRouteImport
+      parentRoute: typeof ProtectedEmployeeRouteImport
     }
-    '/employee/payments': {
-      id: '/employee/payments'
+    '/_protected/employee/payments': {
+      id: '/_protected/employee/payments'
       path: '/payments'
       fullPath: '/employee/payments'
-      preLoaderRoute: typeof EmployeePaymentsRouteImport
-      parentRoute: typeof EmployeeRouteImport
+      preLoaderRoute: typeof ProtectedEmployeePaymentsRouteImport
+      parentRoute: typeof ProtectedEmployeeRouteImport
     }
-    '/employee/resident': {
-      id: '/employee/resident'
+    '/_protected/employee/resident': {
+      id: '/_protected/employee/resident'
       path: '/resident'
       fullPath: '/employee/resident'
-      preLoaderRoute: typeof EmployeeResidentRouteImport
-      parentRoute: typeof EmployeeRouteImport
+      preLoaderRoute: typeof ProtectedEmployeeResidentRouteImport
+      parentRoute: typeof ProtectedEmployeeRouteImport
     }
-    '/_auth/dashboard': {
-      id: '/_auth/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof AuthDashboardImport
-      parentRoute: typeof AuthRouteImport
-    }
-    '/admin/account': {
-      id: '/admin/account'
+    '/_protected/admin/account': {
+      id: '/_protected/admin/account'
       path: '/account'
       fullPath: '/admin/account'
-      preLoaderRoute: typeof AdminAccountImport
-      parentRoute: typeof AdminRouteImport
+      preLoaderRoute: typeof ProtectedAdminAccountImport
+      parentRoute: typeof ProtectedAdminRouteImport
     }
-    '/admin/edit-profile': {
-      id: '/admin/edit-profile'
+    '/_protected/admin/edit-profile': {
+      id: '/_protected/admin/edit-profile'
       path: '/edit-profile'
       fullPath: '/admin/edit-profile'
-      preLoaderRoute: typeof AdminEditProfileImport
-      parentRoute: typeof AdminRouteImport
+      preLoaderRoute: typeof ProtectedAdminEditProfileImport
+      parentRoute: typeof ProtectedAdminRouteImport
     }
-    '/admin/profile': {
-      id: '/admin/profile'
+    '/_protected/admin/profile': {
+      id: '/_protected/admin/profile'
       path: '/profile'
       fullPath: '/admin/profile'
-      preLoaderRoute: typeof AdminProfileImport
-      parentRoute: typeof AdminRouteImport
+      preLoaderRoute: typeof ProtectedAdminProfileImport
+      parentRoute: typeof ProtectedAdminRouteImport
     }
-    '/employee/account': {
-      id: '/employee/account'
+    '/_protected/employee/account': {
+      id: '/_protected/employee/account'
       path: '/account'
       fullPath: '/employee/account'
-      preLoaderRoute: typeof EmployeeAccountImport
-      parentRoute: typeof EmployeeRouteImport
+      preLoaderRoute: typeof ProtectedEmployeeAccountImport
+      parentRoute: typeof ProtectedEmployeeRouteImport
     }
-    '/employee/edit-profile': {
-      id: '/employee/edit-profile'
+    '/_protected/employee/edit-profile': {
+      id: '/_protected/employee/edit-profile'
       path: '/edit-profile'
       fullPath: '/employee/edit-profile'
-      preLoaderRoute: typeof EmployeeEditProfileImport
-      parentRoute: typeof EmployeeRouteImport
+      preLoaderRoute: typeof ProtectedEmployeeEditProfileImport
+      parentRoute: typeof ProtectedEmployeeRouteImport
     }
-    '/employee/profile': {
-      id: '/employee/profile'
+    '/_protected/employee/profile': {
+      id: '/_protected/employee/profile'
       path: '/profile'
       fullPath: '/employee/profile'
-      preLoaderRoute: typeof EmployeeProfileImport
-      parentRoute: typeof EmployeeRouteImport
+      preLoaderRoute: typeof ProtectedEmployeeProfileImport
+      parentRoute: typeof ProtectedEmployeeRouteImport
     }
-    '/resident/contact': {
-      id: '/resident/contact'
+    '/_protected/resident/contact': {
+      id: '/_protected/resident/contact'
       path: '/contact'
       fullPath: '/resident/contact'
-      preLoaderRoute: typeof ResidentContactImport
-      parentRoute: typeof ResidentRouteLazyImport
+      preLoaderRoute: typeof ProtectedResidentContactImport
+      parentRoute: typeof ProtectedResidentRouteLazyImport
     }
-    '/resident/submit-request': {
-      id: '/resident/submit-request'
+    '/_protected/resident/submit-request': {
+      id: '/_protected/resident/submit-request'
       path: '/submit-request'
       fullPath: '/resident/submit-request'
-      preLoaderRoute: typeof ResidentSubmitRequestImport
-      parentRoute: typeof ResidentRouteLazyImport
+      preLoaderRoute: typeof ProtectedResidentSubmitRequestImport
+      parentRoute: typeof ProtectedResidentRouteLazyImport
     }
-    '/resident/account': {
-      id: '/resident/account'
+    '/_protected/resident/account': {
+      id: '/_protected/resident/account'
       path: '/account'
       fullPath: '/resident/account'
-      preLoaderRoute: typeof ResidentAccountLazyImport
-      parentRoute: typeof ResidentRouteLazyImport
+      preLoaderRoute: typeof ProtectedResidentAccountLazyImport
+      parentRoute: typeof ProtectedResidentRouteLazyImport
     }
-    '/resident/dashboard': {
-      id: '/resident/dashboard'
+    '/_protected/resident/dashboard': {
+      id: '/_protected/resident/dashboard'
       path: '/dashboard'
       fullPath: '/resident/dashboard'
-      preLoaderRoute: typeof ResidentDashboardLazyImport
-      parentRoute: typeof ResidentRouteLazyImport
+      preLoaderRoute: typeof ProtectedResidentDashboardLazyImport
+      parentRoute: typeof ProtectedResidentRouteLazyImport
     }
-    '/resident/edit-profile': {
-      id: '/resident/edit-profile'
+    '/_protected/resident/edit-profile': {
+      id: '/_protected/resident/edit-profile'
       path: '/edit-profile'
       fullPath: '/resident/edit-profile'
-      preLoaderRoute: typeof ResidentEditProfileLazyImport
-      parentRoute: typeof ResidentRouteLazyImport
+      preLoaderRoute: typeof ProtectedResidentEditProfileLazyImport
+      parentRoute: typeof ProtectedResidentRouteLazyImport
     }
-    '/resident/financial': {
-      id: '/resident/financial'
+    '/_protected/resident/financial': {
+      id: '/_protected/resident/financial'
       path: '/financial'
       fullPath: '/resident/financial'
-      preLoaderRoute: typeof ResidentFinancialLazyImport
-      parentRoute: typeof ResidentRouteLazyImport
+      preLoaderRoute: typeof ProtectedResidentFinancialLazyImport
+      parentRoute: typeof ProtectedResidentRouteLazyImport
     }
-    '/resident/inquiries': {
-      id: '/resident/inquiries'
+    '/_protected/resident/inquiries': {
+      id: '/_protected/resident/inquiries'
       path: '/inquiries'
       fullPath: '/resident/inquiries'
-      preLoaderRoute: typeof ResidentInquiriesLazyImport
-      parentRoute: typeof ResidentRouteLazyImport
+      preLoaderRoute: typeof ProtectedResidentInquiriesLazyImport
+      parentRoute: typeof ProtectedResidentRouteLazyImport
     }
-    '/resident/notices': {
-      id: '/resident/notices'
+    '/_protected/resident/notices': {
+      id: '/_protected/resident/notices'
       path: '/notices'
       fullPath: '/resident/notices'
-      preLoaderRoute: typeof ResidentNoticesLazyImport
-      parentRoute: typeof ResidentRouteLazyImport
+      preLoaderRoute: typeof ProtectedResidentNoticesLazyImport
+      parentRoute: typeof ProtectedResidentRouteLazyImport
     }
-    '/resident/paynow': {
-      id: '/resident/paynow'
+    '/_protected/resident/paynow': {
+      id: '/_protected/resident/paynow'
       path: '/paynow'
       fullPath: '/resident/paynow'
-      preLoaderRoute: typeof ResidentPaynowLazyImport
-      parentRoute: typeof ResidentRouteLazyImport
+      preLoaderRoute: typeof ProtectedResidentPaynowLazyImport
+      parentRoute: typeof ProtectedResidentRouteLazyImport
     }
-    '/resident/profile': {
-      id: '/resident/profile'
+    '/_protected/resident/profile': {
+      id: '/_protected/resident/profile'
       path: '/profile'
       fullPath: '/resident/profile'
-      preLoaderRoute: typeof ResidentProfileLazyImport
-      parentRoute: typeof ResidentRouteLazyImport
+      preLoaderRoute: typeof ProtectedResidentProfileLazyImport
+      parentRoute: typeof ProtectedResidentRouteLazyImport
     }
-    '/resident/upload-payment': {
-      id: '/resident/upload-payment'
+    '/_protected/resident/upload-payment': {
+      id: '/_protected/resident/upload-payment'
       path: '/upload-payment'
       fullPath: '/resident/upload-payment'
-      preLoaderRoute: typeof ResidentUploadPaymentLazyImport
-      parentRoute: typeof ResidentRouteLazyImport
+      preLoaderRoute: typeof ProtectedResidentUploadPaymentLazyImport
+      parentRoute: typeof ProtectedResidentRouteLazyImport
     }
-    '/admin/': {
-      id: '/admin/'
+    '/_protected/admin/': {
+      id: '/_protected/admin/'
       path: '/'
       fullPath: '/admin/'
-      preLoaderRoute: typeof AdminIndexImport
-      parentRoute: typeof AdminRouteImport
+      preLoaderRoute: typeof ProtectedAdminIndexImport
+      parentRoute: typeof ProtectedAdminRouteImport
     }
-    '/employee/': {
-      id: '/employee/'
+    '/_protected/employee/': {
+      id: '/_protected/employee/'
       path: '/'
       fullPath: '/employee/'
-      preLoaderRoute: typeof EmployeeIndexImport
-      parentRoute: typeof EmployeeRouteImport
+      preLoaderRoute: typeof ProtectedEmployeeIndexImport
+      parentRoute: typeof ProtectedEmployeeRouteImport
     }
-    '/admin/financial/_financial': {
-      id: '/admin/financial/_financial'
+    '/_protected/admin/financial/_financial': {
+      id: '/_protected/admin/financial/_financial'
       path: ''
       fullPath: '/admin/financial'
-      preLoaderRoute: typeof AdminFinancialFinancialRouteImport
-      parentRoute: typeof AdminFinancialRouteImport
+      preLoaderRoute: typeof ProtectedAdminFinancialFinancialRouteImport
+      parentRoute: typeof ProtectedAdminFinancialRouteImport
     }
-    '/admin/resident/$residentId': {
-      id: '/admin/resident/$residentId'
+    '/_protected/admin/resident/$residentId': {
+      id: '/_protected/admin/resident/$residentId'
       path: '/$residentId'
       fullPath: '/admin/resident/$residentId'
-      preLoaderRoute: typeof AdminResidentResidentIdRouteImport
-      parentRoute: typeof AdminResidentRouteImport
+      preLoaderRoute: typeof ProtectedAdminResidentResidentIdRouteImport
+      parentRoute: typeof ProtectedAdminResidentRouteImport
     }
-    '/employee/resident/$residentId': {
-      id: '/employee/resident/$residentId'
+    '/_protected/employee/resident/$residentId': {
+      id: '/_protected/employee/resident/$residentId'
       path: '/$residentId'
       fullPath: '/employee/resident/$residentId'
-      preLoaderRoute: typeof EmployeeResidentResidentIdRouteImport
-      parentRoute: typeof EmployeeResidentRouteImport
+      preLoaderRoute: typeof ProtectedEmployeeResidentResidentIdRouteImport
+      parentRoute: typeof ProtectedEmployeeResidentRouteImport
     }
-    '/admin/employee/add-employee': {
-      id: '/admin/employee/add-employee'
+    '/_protected/admin/employee/add-employee': {
+      id: '/_protected/admin/employee/add-employee'
       path: '/add-employee'
       fullPath: '/admin/employee/add-employee'
-      preLoaderRoute: typeof AdminEmployeeAddEmployeeImport
-      parentRoute: typeof AdminEmployeeRouteImport
+      preLoaderRoute: typeof ProtectedAdminEmployeeAddEmployeeImport
+      parentRoute: typeof ProtectedAdminEmployeeRouteImport
     }
-    '/admin/financial/record-payment': {
-      id: '/admin/financial/record-payment'
+    '/_protected/admin/financial/record-payment': {
+      id: '/_protected/admin/financial/record-payment'
       path: '/record-payment'
       fullPath: '/admin/financial/record-payment'
-      preLoaderRoute: typeof AdminFinancialRecordPaymentImport
-      parentRoute: typeof AdminFinancialRouteImport
+      preLoaderRoute: typeof ProtectedAdminFinancialRecordPaymentImport
+      parentRoute: typeof ProtectedAdminFinancialRouteImport
     }
-    '/admin/notifications/create': {
-      id: '/admin/notifications/create'
+    '/_protected/admin/notifications/create': {
+      id: '/_protected/admin/notifications/create'
       path: '/create'
       fullPath: '/admin/notifications/create'
-      preLoaderRoute: typeof AdminNotificationsCreateImport
-      parentRoute: typeof AdminNotificationsRouteImport
+      preLoaderRoute: typeof ProtectedAdminNotificationsCreateImport
+      parentRoute: typeof ProtectedAdminNotificationsRouteImport
     }
-    '/admin/notifications/send-sms': {
-      id: '/admin/notifications/send-sms'
+    '/_protected/admin/notifications/send-sms': {
+      id: '/_protected/admin/notifications/send-sms'
       path: '/send-sms'
       fullPath: '/admin/notifications/send-sms'
-      preLoaderRoute: typeof AdminNotificationsSendSmsImport
-      parentRoute: typeof AdminNotificationsRouteImport
+      preLoaderRoute: typeof ProtectedAdminNotificationsSendSmsImport
+      parentRoute: typeof ProtectedAdminNotificationsRouteImport
     }
-    '/admin/resident/add-resident': {
-      id: '/admin/resident/add-resident'
+    '/_protected/admin/resident/add-resident': {
+      id: '/_protected/admin/resident/add-resident'
       path: '/add-resident'
       fullPath: '/admin/resident/add-resident'
-      preLoaderRoute: typeof AdminResidentAddResidentImport
-      parentRoute: typeof AdminResidentRouteImport
+      preLoaderRoute: typeof ProtectedAdminResidentAddResidentImport
+      parentRoute: typeof ProtectedAdminResidentRouteImport
     }
-    '/admin/unpaid-accounts/reminders': {
-      id: '/admin/unpaid-accounts/reminders'
+    '/_protected/admin/unpaid-accounts/reminders': {
+      id: '/_protected/admin/unpaid-accounts/reminders'
       path: '/reminders'
       fullPath: '/admin/unpaid-accounts/reminders'
-      preLoaderRoute: typeof AdminUnpaidAccountsRemindersImport
-      parentRoute: typeof AdminUnpaidAccountsRouteImport
+      preLoaderRoute: typeof ProtectedAdminUnpaidAccountsRemindersImport
+      parentRoute: typeof ProtectedAdminUnpaidAccountsRouteImport
     }
-    '/employee/_task-summary/open-inquiries': {
-      id: '/employee/_task-summary/open-inquiries'
+    '/_protected/employee/_task-summary/open-inquiries': {
+      id: '/_protected/employee/_task-summary/open-inquiries'
       path: '/open-inquiries'
       fullPath: '/employee/open-inquiries'
-      preLoaderRoute: typeof EmployeeTaskSummaryOpenInquiriesImport
-      parentRoute: typeof EmployeeRouteImport
+      preLoaderRoute: typeof ProtectedEmployeeTaskSummaryOpenInquiriesImport
+      parentRoute: typeof ProtectedEmployeeRouteImport
     }
-    '/employee/_task-summary/over-due-accounts': {
-      id: '/employee/_task-summary/over-due-accounts'
+    '/_protected/employee/_task-summary/over-due-accounts': {
+      id: '/_protected/employee/_task-summary/over-due-accounts'
       path: '/over-due-accounts'
       fullPath: '/employee/over-due-accounts'
-      preLoaderRoute: typeof EmployeeTaskSummaryOverDueAccountsImport
-      parentRoute: typeof EmployeeRouteImport
+      preLoaderRoute: typeof ProtectedEmployeeTaskSummaryOverDueAccountsImport
+      parentRoute: typeof ProtectedEmployeeRouteImport
     }
-    '/employee/_task-summary/pending-notices': {
-      id: '/employee/_task-summary/pending-notices'
+    '/_protected/employee/_task-summary/pending-notices': {
+      id: '/_protected/employee/_task-summary/pending-notices'
       path: '/pending-notices'
       fullPath: '/employee/pending-notices'
-      preLoaderRoute: typeof EmployeeTaskSummaryPendingNoticesImport
-      parentRoute: typeof EmployeeRouteImport
+      preLoaderRoute: typeof ProtectedEmployeeTaskSummaryPendingNoticesImport
+      parentRoute: typeof ProtectedEmployeeRouteImport
     }
-    '/employee/_task-summary/unverified-payments': {
-      id: '/employee/_task-summary/unverified-payments'
+    '/_protected/employee/_task-summary/unverified-payments': {
+      id: '/_protected/employee/_task-summary/unverified-payments'
       path: '/unverified-payments'
       fullPath: '/employee/unverified-payments'
-      preLoaderRoute: typeof EmployeeTaskSummaryUnverifiedPaymentsImport
-      parentRoute: typeof EmployeeRouteImport
+      preLoaderRoute: typeof ProtectedEmployeeTaskSummaryUnverifiedPaymentsImport
+      parentRoute: typeof ProtectedEmployeeRouteImport
     }
-    '/employee/inquiries/create': {
-      id: '/employee/inquiries/create'
+    '/_protected/employee/inquiries/create': {
+      id: '/_protected/employee/inquiries/create'
       path: '/create'
       fullPath: '/employee/inquiries/create'
-      preLoaderRoute: typeof EmployeeInquiriesCreateImport
-      parentRoute: typeof EmployeeInquiriesRouteImport
+      preLoaderRoute: typeof ProtectedEmployeeInquiriesCreateImport
+      parentRoute: typeof ProtectedEmployeeInquiriesRouteImport
     }
-    '/employee/notices/create': {
-      id: '/employee/notices/create'
+    '/_protected/employee/notices/create': {
+      id: '/_protected/employee/notices/create'
       path: '/create'
       fullPath: '/employee/notices/create'
-      preLoaderRoute: typeof EmployeeNoticesCreateImport
-      parentRoute: typeof EmployeeNoticesRouteImport
+      preLoaderRoute: typeof ProtectedEmployeeNoticesCreateImport
+      parentRoute: typeof ProtectedEmployeeNoticesRouteImport
     }
-    '/employee/payments/record-payment': {
-      id: '/employee/payments/record-payment'
+    '/_protected/employee/payments/record-payment': {
+      id: '/_protected/employee/payments/record-payment'
       path: '/record-payment'
       fullPath: '/employee/payments/record-payment'
-      preLoaderRoute: typeof EmployeePaymentsRecordPaymentImport
-      parentRoute: typeof EmployeePaymentsRouteImport
+      preLoaderRoute: typeof ProtectedEmployeePaymentsRecordPaymentImport
+      parentRoute: typeof ProtectedEmployeePaymentsRouteImport
     }
-    '/employee/resident/add-resident': {
-      id: '/employee/resident/add-resident'
+    '/_protected/employee/resident/add-resident': {
+      id: '/_protected/employee/resident/add-resident'
       path: '/add-resident'
       fullPath: '/employee/resident/add-resident'
-      preLoaderRoute: typeof EmployeeResidentAddResidentImport
-      parentRoute: typeof EmployeeResidentRouteImport
+      preLoaderRoute: typeof ProtectedEmployeeResidentAddResidentImport
+      parentRoute: typeof ProtectedEmployeeResidentRouteImport
     }
-    '/admin/employee/': {
-      id: '/admin/employee/'
+    '/_protected/admin/employee/': {
+      id: '/_protected/admin/employee/'
       path: '/'
       fullPath: '/admin/employee/'
-      preLoaderRoute: typeof AdminEmployeeIndexImport
-      parentRoute: typeof AdminEmployeeRouteImport
+      preLoaderRoute: typeof ProtectedAdminEmployeeIndexImport
+      parentRoute: typeof ProtectedAdminEmployeeRouteImport
     }
-    '/admin/notifications/': {
-      id: '/admin/notifications/'
+    '/_protected/admin/notifications/': {
+      id: '/_protected/admin/notifications/'
       path: '/'
       fullPath: '/admin/notifications/'
-      preLoaderRoute: typeof AdminNotificationsIndexImport
-      parentRoute: typeof AdminNotificationsRouteImport
+      preLoaderRoute: typeof ProtectedAdminNotificationsIndexImport
+      parentRoute: typeof ProtectedAdminNotificationsRouteImport
     }
-    '/admin/resident/': {
-      id: '/admin/resident/'
+    '/_protected/admin/resident/': {
+      id: '/_protected/admin/resident/'
       path: '/'
       fullPath: '/admin/resident/'
-      preLoaderRoute: typeof AdminResidentIndexImport
-      parentRoute: typeof AdminResidentRouteImport
+      preLoaderRoute: typeof ProtectedAdminResidentIndexImport
+      parentRoute: typeof ProtectedAdminResidentRouteImport
     }
-    '/admin/unpaid-accounts/': {
-      id: '/admin/unpaid-accounts/'
+    '/_protected/admin/unpaid-accounts/': {
+      id: '/_protected/admin/unpaid-accounts/'
       path: '/'
       fullPath: '/admin/unpaid-accounts/'
-      preLoaderRoute: typeof AdminUnpaidAccountsIndexImport
-      parentRoute: typeof AdminUnpaidAccountsRouteImport
+      preLoaderRoute: typeof ProtectedAdminUnpaidAccountsIndexImport
+      parentRoute: typeof ProtectedAdminUnpaidAccountsRouteImport
     }
-    '/employee/inquiries/': {
-      id: '/employee/inquiries/'
+    '/_protected/employee/inquiries/': {
+      id: '/_protected/employee/inquiries/'
       path: '/'
       fullPath: '/employee/inquiries/'
-      preLoaderRoute: typeof EmployeeInquiriesIndexImport
-      parentRoute: typeof EmployeeInquiriesRouteImport
+      preLoaderRoute: typeof ProtectedEmployeeInquiriesIndexImport
+      parentRoute: typeof ProtectedEmployeeInquiriesRouteImport
     }
-    '/employee/notices/': {
-      id: '/employee/notices/'
+    '/_protected/employee/notices/': {
+      id: '/_protected/employee/notices/'
       path: '/'
       fullPath: '/employee/notices/'
-      preLoaderRoute: typeof EmployeeNoticesIndexImport
-      parentRoute: typeof EmployeeNoticesRouteImport
+      preLoaderRoute: typeof ProtectedEmployeeNoticesIndexImport
+      parentRoute: typeof ProtectedEmployeeNoticesRouteImport
     }
-    '/employee/payments/': {
-      id: '/employee/payments/'
+    '/_protected/employee/payments/': {
+      id: '/_protected/employee/payments/'
       path: '/'
       fullPath: '/employee/payments/'
-      preLoaderRoute: typeof EmployeePaymentsIndexImport
-      parentRoute: typeof EmployeePaymentsRouteImport
+      preLoaderRoute: typeof ProtectedEmployeePaymentsIndexImport
+      parentRoute: typeof ProtectedEmployeePaymentsRouteImport
     }
-    '/employee/resident/': {
-      id: '/employee/resident/'
+    '/_protected/employee/resident/': {
+      id: '/_protected/employee/resident/'
       path: '/'
       fullPath: '/employee/resident/'
-      preLoaderRoute: typeof EmployeeResidentIndexImport
-      parentRoute: typeof EmployeeResidentRouteImport
+      preLoaderRoute: typeof ProtectedEmployeeResidentIndexImport
+      parentRoute: typeof ProtectedEmployeeResidentRouteImport
     }
-    '/admin/resident/$residentId/_view': {
-      id: '/admin/resident/$residentId/_view'
+    '/_protected/admin/resident/$residentId/_view': {
+      id: '/_protected/admin/resident/$residentId/_view'
       path: ''
       fullPath: '/admin/resident/$residentId'
-      preLoaderRoute: typeof AdminResidentResidentIdViewRouteImport
-      parentRoute: typeof AdminResidentResidentIdRouteImport
+      preLoaderRoute: typeof ProtectedAdminResidentResidentIdViewRouteImport
+      parentRoute: typeof ProtectedAdminResidentResidentIdRouteImport
     }
-    '/employee/resident/$residentId/_view': {
-      id: '/employee/resident/$residentId/_view'
+    '/_protected/employee/resident/$residentId/_view': {
+      id: '/_protected/employee/resident/$residentId/_view'
       path: ''
       fullPath: '/employee/resident/$residentId'
-      preLoaderRoute: typeof EmployeeResidentResidentIdViewRouteImport
-      parentRoute: typeof EmployeeResidentResidentIdRouteImport
+      preLoaderRoute: typeof ProtectedEmployeeResidentResidentIdViewRouteImport
+      parentRoute: typeof ProtectedEmployeeResidentResidentIdRouteImport
     }
-    '/admin/employee/$employeeId/edit': {
-      id: '/admin/employee/$employeeId/edit'
+    '/_protected/admin/employee/$employeeId/edit': {
+      id: '/_protected/admin/employee/$employeeId/edit'
       path: '/$employeeId/edit'
       fullPath: '/admin/employee/$employeeId/edit'
-      preLoaderRoute: typeof AdminEmployeeEmployeeIdEditImport
-      parentRoute: typeof AdminEmployeeRouteImport
+      preLoaderRoute: typeof ProtectedAdminEmployeeEmployeeIdEditImport
+      parentRoute: typeof ProtectedAdminEmployeeRouteImport
     }
-    '/admin/financial/_financial/monthly-due': {
-      id: '/admin/financial/_financial/monthly-due'
+    '/_protected/admin/financial/_financial/monthly-due': {
+      id: '/_protected/admin/financial/_financial/monthly-due'
       path: '/monthly-due'
       fullPath: '/admin/financial/monthly-due'
-      preLoaderRoute: typeof AdminFinancialFinancialMonthlyDueImport
-      parentRoute: typeof AdminFinancialFinancialRouteImport
+      preLoaderRoute: typeof ProtectedAdminFinancialFinancialMonthlyDueImport
+      parentRoute: typeof ProtectedAdminFinancialFinancialRouteImport
     }
-    '/admin/financial/edit/$residentId': {
-      id: '/admin/financial/edit/$residentId'
+    '/_protected/admin/financial/edit/$residentId': {
+      id: '/_protected/admin/financial/edit/$residentId'
       path: '/edit/$residentId'
       fullPath: '/admin/financial/edit/$residentId'
-      preLoaderRoute: typeof AdminFinancialEditResidentIdImport
-      parentRoute: typeof AdminFinancialRouteImport
+      preLoaderRoute: typeof ProtectedAdminFinancialEditResidentIdImport
+      parentRoute: typeof ProtectedAdminFinancialRouteImport
     }
-    '/admin/resident/$residentId/edit': {
-      id: '/admin/resident/$residentId/edit'
+    '/_protected/admin/resident/$residentId/edit': {
+      id: '/_protected/admin/resident/$residentId/edit'
       path: '/edit'
       fullPath: '/admin/resident/$residentId/edit'
-      preLoaderRoute: typeof AdminResidentResidentIdEditImport
-      parentRoute: typeof AdminResidentResidentIdRouteImport
+      preLoaderRoute: typeof ProtectedAdminResidentResidentIdEditImport
+      parentRoute: typeof ProtectedAdminResidentResidentIdRouteImport
     }
-    '/employee/resident/$residentId/edit': {
-      id: '/employee/resident/$residentId/edit'
+    '/_protected/employee/resident/$residentId/edit': {
+      id: '/_protected/employee/resident/$residentId/edit'
       path: '/edit'
       fullPath: '/employee/resident/$residentId/edit'
-      preLoaderRoute: typeof EmployeeResidentResidentIdEditImport
-      parentRoute: typeof EmployeeResidentResidentIdRouteImport
+      preLoaderRoute: typeof ProtectedEmployeeResidentResidentIdEditImport
+      parentRoute: typeof ProtectedEmployeeResidentResidentIdRouteImport
     }
-    '/admin/employee/$employeeId/': {
-      id: '/admin/employee/$employeeId/'
+    '/_protected/admin/employee/$employeeId/': {
+      id: '/_protected/admin/employee/$employeeId/'
       path: '/$employeeId'
       fullPath: '/admin/employee/$employeeId'
-      preLoaderRoute: typeof AdminEmployeeEmployeeIdIndexImport
-      parentRoute: typeof AdminEmployeeRouteImport
+      preLoaderRoute: typeof ProtectedAdminEmployeeEmployeeIdIndexImport
+      parentRoute: typeof ProtectedAdminEmployeeRouteImport
     }
-    '/admin/financial/_financial/': {
-      id: '/admin/financial/_financial/'
+    '/_protected/admin/financial/_financial/': {
+      id: '/_protected/admin/financial/_financial/'
       path: '/'
       fullPath: '/admin/financial/'
-      preLoaderRoute: typeof AdminFinancialFinancialIndexImport
-      parentRoute: typeof AdminFinancialFinancialRouteImport
+      preLoaderRoute: typeof ProtectedAdminFinancialFinancialIndexImport
+      parentRoute: typeof ProtectedAdminFinancialFinancialRouteImport
     }
-    '/admin/financial/upload/': {
-      id: '/admin/financial/upload/'
+    '/_protected/admin/financial/upload/': {
+      id: '/_protected/admin/financial/upload/'
       path: '/upload'
       fullPath: '/admin/financial/upload'
-      preLoaderRoute: typeof AdminFinancialUploadIndexImport
-      parentRoute: typeof AdminFinancialRouteImport
+      preLoaderRoute: typeof ProtectedAdminFinancialUploadIndexImport
+      parentRoute: typeof ProtectedAdminFinancialRouteImport
     }
-    '/admin/resident/$residentId/_view/inquires-history': {
-      id: '/admin/resident/$residentId/_view/inquires-history'
+    '/_protected/admin/resident/$residentId/_view/inquires-history': {
+      id: '/_protected/admin/resident/$residentId/_view/inquires-history'
       path: '/inquires-history'
       fullPath: '/admin/resident/$residentId/inquires-history'
-      preLoaderRoute: typeof AdminResidentResidentIdViewInquiresHistoryImport
-      parentRoute: typeof AdminResidentResidentIdViewRouteImport
+      preLoaderRoute: typeof ProtectedAdminResidentResidentIdViewInquiresHistoryImport
+      parentRoute: typeof ProtectedAdminResidentResidentIdViewRouteImport
     }
-    '/admin/resident/$residentId/_view/notice-received': {
-      id: '/admin/resident/$residentId/_view/notice-received'
+    '/_protected/admin/resident/$residentId/_view/notice-received': {
+      id: '/_protected/admin/resident/$residentId/_view/notice-received'
       path: '/notice-received'
       fullPath: '/admin/resident/$residentId/notice-received'
-      preLoaderRoute: typeof AdminResidentResidentIdViewNoticeReceivedImport
-      parentRoute: typeof AdminResidentResidentIdViewRouteImport
+      preLoaderRoute: typeof ProtectedAdminResidentResidentIdViewNoticeReceivedImport
+      parentRoute: typeof ProtectedAdminResidentResidentIdViewRouteImport
     }
-    '/employee/resident/$residentId/_view/inquires-history': {
-      id: '/employee/resident/$residentId/_view/inquires-history'
+    '/_protected/employee/resident/$residentId/_view/inquires-history': {
+      id: '/_protected/employee/resident/$residentId/_view/inquires-history'
       path: '/inquires-history'
       fullPath: '/employee/resident/$residentId/inquires-history'
-      preLoaderRoute: typeof EmployeeResidentResidentIdViewInquiresHistoryImport
-      parentRoute: typeof EmployeeResidentResidentIdViewRouteImport
+      preLoaderRoute: typeof ProtectedEmployeeResidentResidentIdViewInquiresHistoryImport
+      parentRoute: typeof ProtectedEmployeeResidentResidentIdViewRouteImport
     }
-    '/employee/resident/$residentId/_view/notice-received': {
-      id: '/employee/resident/$residentId/_view/notice-received'
+    '/_protected/employee/resident/$residentId/_view/notice-received': {
+      id: '/_protected/employee/resident/$residentId/_view/notice-received'
       path: '/notice-received'
       fullPath: '/employee/resident/$residentId/notice-received'
-      preLoaderRoute: typeof EmployeeResidentResidentIdViewNoticeReceivedImport
-      parentRoute: typeof EmployeeResidentResidentIdViewRouteImport
+      preLoaderRoute: typeof ProtectedEmployeeResidentResidentIdViewNoticeReceivedImport
+      parentRoute: typeof ProtectedEmployeeResidentResidentIdViewRouteImport
     }
-    '/admin/resident/$residentId/_view/': {
-      id: '/admin/resident/$residentId/_view/'
+    '/_protected/admin/resident/$residentId/_view/': {
+      id: '/_protected/admin/resident/$residentId/_view/'
       path: '/'
       fullPath: '/admin/resident/$residentId/'
-      preLoaderRoute: typeof AdminResidentResidentIdViewIndexImport
-      parentRoute: typeof AdminResidentResidentIdViewRouteImport
+      preLoaderRoute: typeof ProtectedAdminResidentResidentIdViewIndexImport
+      parentRoute: typeof ProtectedAdminResidentResidentIdViewRouteImport
     }
-    '/employee/resident/$residentId/_view/': {
-      id: '/employee/resident/$residentId/_view/'
+    '/_protected/employee/resident/$residentId/_view/': {
+      id: '/_protected/employee/resident/$residentId/_view/'
       path: '/'
       fullPath: '/employee/resident/$residentId/'
-      preLoaderRoute: typeof EmployeeResidentResidentIdViewIndexImport
-      parentRoute: typeof EmployeeResidentResidentIdViewRouteImport
+      preLoaderRoute: typeof ProtectedEmployeeResidentResidentIdViewIndexImport
+      parentRoute: typeof ProtectedEmployeeResidentResidentIdViewRouteImport
     }
   }
 }
 
 // Create and export the route tree
 
-interface AuthRouteRouteChildren {
-  AuthDashboardRoute: typeof AuthDashboardRoute
+interface ProtectedAdminEmployeeRouteRouteChildren {
+  ProtectedAdminEmployeeAddEmployeeRoute: typeof ProtectedAdminEmployeeAddEmployeeRoute
+  ProtectedAdminEmployeeIndexRoute: typeof ProtectedAdminEmployeeIndexRoute
+  ProtectedAdminEmployeeEmployeeIdEditRoute: typeof ProtectedAdminEmployeeEmployeeIdEditRoute
+  ProtectedAdminEmployeeEmployeeIdIndexRoute: typeof ProtectedAdminEmployeeEmployeeIdIndexRoute
 }
 
-const AuthRouteRouteChildren: AuthRouteRouteChildren = {
-  AuthDashboardRoute: AuthDashboardRoute,
+const ProtectedAdminEmployeeRouteRouteChildren: ProtectedAdminEmployeeRouteRouteChildren =
+  {
+    ProtectedAdminEmployeeAddEmployeeRoute:
+      ProtectedAdminEmployeeAddEmployeeRoute,
+    ProtectedAdminEmployeeIndexRoute: ProtectedAdminEmployeeIndexRoute,
+    ProtectedAdminEmployeeEmployeeIdEditRoute:
+      ProtectedAdminEmployeeEmployeeIdEditRoute,
+    ProtectedAdminEmployeeEmployeeIdIndexRoute:
+      ProtectedAdminEmployeeEmployeeIdIndexRoute,
+  }
+
+const ProtectedAdminEmployeeRouteRouteWithChildren =
+  ProtectedAdminEmployeeRouteRoute._addFileChildren(
+    ProtectedAdminEmployeeRouteRouteChildren,
+  )
+
+interface ProtectedAdminFinancialFinancialRouteRouteChildren {
+  ProtectedAdminFinancialFinancialMonthlyDueRoute: typeof ProtectedAdminFinancialFinancialMonthlyDueRoute
+  ProtectedAdminFinancialFinancialIndexRoute: typeof ProtectedAdminFinancialFinancialIndexRoute
 }
 
-const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
-  AuthRouteRouteChildren,
+const ProtectedAdminFinancialFinancialRouteRouteChildren: ProtectedAdminFinancialFinancialRouteRouteChildren =
+  {
+    ProtectedAdminFinancialFinancialMonthlyDueRoute:
+      ProtectedAdminFinancialFinancialMonthlyDueRoute,
+    ProtectedAdminFinancialFinancialIndexRoute:
+      ProtectedAdminFinancialFinancialIndexRoute,
+  }
+
+const ProtectedAdminFinancialFinancialRouteRouteWithChildren =
+  ProtectedAdminFinancialFinancialRouteRoute._addFileChildren(
+    ProtectedAdminFinancialFinancialRouteRouteChildren,
+  )
+
+interface ProtectedAdminFinancialRouteRouteChildren {
+  ProtectedAdminFinancialFinancialRouteRoute: typeof ProtectedAdminFinancialFinancialRouteRouteWithChildren
+  ProtectedAdminFinancialRecordPaymentRoute: typeof ProtectedAdminFinancialRecordPaymentRoute
+  ProtectedAdminFinancialEditResidentIdRoute: typeof ProtectedAdminFinancialEditResidentIdRoute
+  ProtectedAdminFinancialUploadIndexRoute: typeof ProtectedAdminFinancialUploadIndexRoute
+}
+
+const ProtectedAdminFinancialRouteRouteChildren: ProtectedAdminFinancialRouteRouteChildren =
+  {
+    ProtectedAdminFinancialFinancialRouteRoute:
+      ProtectedAdminFinancialFinancialRouteRouteWithChildren,
+    ProtectedAdminFinancialRecordPaymentRoute:
+      ProtectedAdminFinancialRecordPaymentRoute,
+    ProtectedAdminFinancialEditResidentIdRoute:
+      ProtectedAdminFinancialEditResidentIdRoute,
+    ProtectedAdminFinancialUploadIndexRoute:
+      ProtectedAdminFinancialUploadIndexRoute,
+  }
+
+const ProtectedAdminFinancialRouteRouteWithChildren =
+  ProtectedAdminFinancialRouteRoute._addFileChildren(
+    ProtectedAdminFinancialRouteRouteChildren,
+  )
+
+interface ProtectedAdminNotificationsRouteRouteChildren {
+  ProtectedAdminNotificationsCreateRoute: typeof ProtectedAdminNotificationsCreateRoute
+  ProtectedAdminNotificationsSendSmsRoute: typeof ProtectedAdminNotificationsSendSmsRoute
+  ProtectedAdminNotificationsIndexRoute: typeof ProtectedAdminNotificationsIndexRoute
+}
+
+const ProtectedAdminNotificationsRouteRouteChildren: ProtectedAdminNotificationsRouteRouteChildren =
+  {
+    ProtectedAdminNotificationsCreateRoute:
+      ProtectedAdminNotificationsCreateRoute,
+    ProtectedAdminNotificationsSendSmsRoute:
+      ProtectedAdminNotificationsSendSmsRoute,
+    ProtectedAdminNotificationsIndexRoute:
+      ProtectedAdminNotificationsIndexRoute,
+  }
+
+const ProtectedAdminNotificationsRouteRouteWithChildren =
+  ProtectedAdminNotificationsRouteRoute._addFileChildren(
+    ProtectedAdminNotificationsRouteRouteChildren,
+  )
+
+interface ProtectedAdminResidentResidentIdViewRouteRouteChildren {
+  ProtectedAdminResidentResidentIdViewInquiresHistoryRoute: typeof ProtectedAdminResidentResidentIdViewInquiresHistoryRoute
+  ProtectedAdminResidentResidentIdViewNoticeReceivedRoute: typeof ProtectedAdminResidentResidentIdViewNoticeReceivedRoute
+  ProtectedAdminResidentResidentIdViewIndexRoute: typeof ProtectedAdminResidentResidentIdViewIndexRoute
+}
+
+const ProtectedAdminResidentResidentIdViewRouteRouteChildren: ProtectedAdminResidentResidentIdViewRouteRouteChildren =
+  {
+    ProtectedAdminResidentResidentIdViewInquiresHistoryRoute:
+      ProtectedAdminResidentResidentIdViewInquiresHistoryRoute,
+    ProtectedAdminResidentResidentIdViewNoticeReceivedRoute:
+      ProtectedAdminResidentResidentIdViewNoticeReceivedRoute,
+    ProtectedAdminResidentResidentIdViewIndexRoute:
+      ProtectedAdminResidentResidentIdViewIndexRoute,
+  }
+
+const ProtectedAdminResidentResidentIdViewRouteRouteWithChildren =
+  ProtectedAdminResidentResidentIdViewRouteRoute._addFileChildren(
+    ProtectedAdminResidentResidentIdViewRouteRouteChildren,
+  )
+
+interface ProtectedAdminResidentResidentIdRouteRouteChildren {
+  ProtectedAdminResidentResidentIdViewRouteRoute: typeof ProtectedAdminResidentResidentIdViewRouteRouteWithChildren
+  ProtectedAdminResidentResidentIdEditRoute: typeof ProtectedAdminResidentResidentIdEditRoute
+}
+
+const ProtectedAdminResidentResidentIdRouteRouteChildren: ProtectedAdminResidentResidentIdRouteRouteChildren =
+  {
+    ProtectedAdminResidentResidentIdViewRouteRoute:
+      ProtectedAdminResidentResidentIdViewRouteRouteWithChildren,
+    ProtectedAdminResidentResidentIdEditRoute:
+      ProtectedAdminResidentResidentIdEditRoute,
+  }
+
+const ProtectedAdminResidentResidentIdRouteRouteWithChildren =
+  ProtectedAdminResidentResidentIdRouteRoute._addFileChildren(
+    ProtectedAdminResidentResidentIdRouteRouteChildren,
+  )
+
+interface ProtectedAdminResidentRouteRouteChildren {
+  ProtectedAdminResidentResidentIdRouteRoute: typeof ProtectedAdminResidentResidentIdRouteRouteWithChildren
+  ProtectedAdminResidentAddResidentRoute: typeof ProtectedAdminResidentAddResidentRoute
+  ProtectedAdminResidentIndexRoute: typeof ProtectedAdminResidentIndexRoute
+}
+
+const ProtectedAdminResidentRouteRouteChildren: ProtectedAdminResidentRouteRouteChildren =
+  {
+    ProtectedAdminResidentResidentIdRouteRoute:
+      ProtectedAdminResidentResidentIdRouteRouteWithChildren,
+    ProtectedAdminResidentAddResidentRoute:
+      ProtectedAdminResidentAddResidentRoute,
+    ProtectedAdminResidentIndexRoute: ProtectedAdminResidentIndexRoute,
+  }
+
+const ProtectedAdminResidentRouteRouteWithChildren =
+  ProtectedAdminResidentRouteRoute._addFileChildren(
+    ProtectedAdminResidentRouteRouteChildren,
+  )
+
+interface ProtectedAdminUnpaidAccountsRouteRouteChildren {
+  ProtectedAdminUnpaidAccountsRemindersRoute: typeof ProtectedAdminUnpaidAccountsRemindersRoute
+  ProtectedAdminUnpaidAccountsIndexRoute: typeof ProtectedAdminUnpaidAccountsIndexRoute
+}
+
+const ProtectedAdminUnpaidAccountsRouteRouteChildren: ProtectedAdminUnpaidAccountsRouteRouteChildren =
+  {
+    ProtectedAdminUnpaidAccountsRemindersRoute:
+      ProtectedAdminUnpaidAccountsRemindersRoute,
+    ProtectedAdminUnpaidAccountsIndexRoute:
+      ProtectedAdminUnpaidAccountsIndexRoute,
+  }
+
+const ProtectedAdminUnpaidAccountsRouteRouteWithChildren =
+  ProtectedAdminUnpaidAccountsRouteRoute._addFileChildren(
+    ProtectedAdminUnpaidAccountsRouteRouteChildren,
+  )
+
+interface ProtectedAdminRouteRouteChildren {
+  ProtectedAdminEmployeeRouteRoute: typeof ProtectedAdminEmployeeRouteRouteWithChildren
+  ProtectedAdminFinancialRouteRoute: typeof ProtectedAdminFinancialRouteRouteWithChildren
+  ProtectedAdminNotificationsRouteRoute: typeof ProtectedAdminNotificationsRouteRouteWithChildren
+  ProtectedAdminResidentRouteRoute: typeof ProtectedAdminResidentRouteRouteWithChildren
+  ProtectedAdminUnpaidAccountsRouteRoute: typeof ProtectedAdminUnpaidAccountsRouteRouteWithChildren
+  ProtectedAdminAccountRoute: typeof ProtectedAdminAccountRoute
+  ProtectedAdminEditProfileRoute: typeof ProtectedAdminEditProfileRoute
+  ProtectedAdminProfileRoute: typeof ProtectedAdminProfileRoute
+  ProtectedAdminIndexRoute: typeof ProtectedAdminIndexRoute
+}
+
+const ProtectedAdminRouteRouteChildren: ProtectedAdminRouteRouteChildren = {
+  ProtectedAdminEmployeeRouteRoute:
+    ProtectedAdminEmployeeRouteRouteWithChildren,
+  ProtectedAdminFinancialRouteRoute:
+    ProtectedAdminFinancialRouteRouteWithChildren,
+  ProtectedAdminNotificationsRouteRoute:
+    ProtectedAdminNotificationsRouteRouteWithChildren,
+  ProtectedAdminResidentRouteRoute:
+    ProtectedAdminResidentRouteRouteWithChildren,
+  ProtectedAdminUnpaidAccountsRouteRoute:
+    ProtectedAdminUnpaidAccountsRouteRouteWithChildren,
+  ProtectedAdminAccountRoute: ProtectedAdminAccountRoute,
+  ProtectedAdminEditProfileRoute: ProtectedAdminEditProfileRoute,
+  ProtectedAdminProfileRoute: ProtectedAdminProfileRoute,
+  ProtectedAdminIndexRoute: ProtectedAdminIndexRoute,
+}
+
+const ProtectedAdminRouteRouteWithChildren =
+  ProtectedAdminRouteRoute._addFileChildren(ProtectedAdminRouteRouteChildren)
+
+interface ProtectedEmployeeInquiriesRouteRouteChildren {
+  ProtectedEmployeeInquiriesCreateRoute: typeof ProtectedEmployeeInquiriesCreateRoute
+  ProtectedEmployeeInquiriesIndexRoute: typeof ProtectedEmployeeInquiriesIndexRoute
+}
+
+const ProtectedEmployeeInquiriesRouteRouteChildren: ProtectedEmployeeInquiriesRouteRouteChildren =
+  {
+    ProtectedEmployeeInquiriesCreateRoute:
+      ProtectedEmployeeInquiriesCreateRoute,
+    ProtectedEmployeeInquiriesIndexRoute: ProtectedEmployeeInquiriesIndexRoute,
+  }
+
+const ProtectedEmployeeInquiriesRouteRouteWithChildren =
+  ProtectedEmployeeInquiriesRouteRoute._addFileChildren(
+    ProtectedEmployeeInquiriesRouteRouteChildren,
+  )
+
+interface ProtectedEmployeeNoticesRouteRouteChildren {
+  ProtectedEmployeeNoticesCreateRoute: typeof ProtectedEmployeeNoticesCreateRoute
+  ProtectedEmployeeNoticesIndexRoute: typeof ProtectedEmployeeNoticesIndexRoute
+}
+
+const ProtectedEmployeeNoticesRouteRouteChildren: ProtectedEmployeeNoticesRouteRouteChildren =
+  {
+    ProtectedEmployeeNoticesCreateRoute: ProtectedEmployeeNoticesCreateRoute,
+    ProtectedEmployeeNoticesIndexRoute: ProtectedEmployeeNoticesIndexRoute,
+  }
+
+const ProtectedEmployeeNoticesRouteRouteWithChildren =
+  ProtectedEmployeeNoticesRouteRoute._addFileChildren(
+    ProtectedEmployeeNoticesRouteRouteChildren,
+  )
+
+interface ProtectedEmployeePaymentsRouteRouteChildren {
+  ProtectedEmployeePaymentsRecordPaymentRoute: typeof ProtectedEmployeePaymentsRecordPaymentRoute
+  ProtectedEmployeePaymentsIndexRoute: typeof ProtectedEmployeePaymentsIndexRoute
+}
+
+const ProtectedEmployeePaymentsRouteRouteChildren: ProtectedEmployeePaymentsRouteRouteChildren =
+  {
+    ProtectedEmployeePaymentsRecordPaymentRoute:
+      ProtectedEmployeePaymentsRecordPaymentRoute,
+    ProtectedEmployeePaymentsIndexRoute: ProtectedEmployeePaymentsIndexRoute,
+  }
+
+const ProtectedEmployeePaymentsRouteRouteWithChildren =
+  ProtectedEmployeePaymentsRouteRoute._addFileChildren(
+    ProtectedEmployeePaymentsRouteRouteChildren,
+  )
+
+interface ProtectedEmployeeResidentResidentIdViewRouteRouteChildren {
+  ProtectedEmployeeResidentResidentIdViewInquiresHistoryRoute: typeof ProtectedEmployeeResidentResidentIdViewInquiresHistoryRoute
+  ProtectedEmployeeResidentResidentIdViewNoticeReceivedRoute: typeof ProtectedEmployeeResidentResidentIdViewNoticeReceivedRoute
+  ProtectedEmployeeResidentResidentIdViewIndexRoute: typeof ProtectedEmployeeResidentResidentIdViewIndexRoute
+}
+
+const ProtectedEmployeeResidentResidentIdViewRouteRouteChildren: ProtectedEmployeeResidentResidentIdViewRouteRouteChildren =
+  {
+    ProtectedEmployeeResidentResidentIdViewInquiresHistoryRoute:
+      ProtectedEmployeeResidentResidentIdViewInquiresHistoryRoute,
+    ProtectedEmployeeResidentResidentIdViewNoticeReceivedRoute:
+      ProtectedEmployeeResidentResidentIdViewNoticeReceivedRoute,
+    ProtectedEmployeeResidentResidentIdViewIndexRoute:
+      ProtectedEmployeeResidentResidentIdViewIndexRoute,
+  }
+
+const ProtectedEmployeeResidentResidentIdViewRouteRouteWithChildren =
+  ProtectedEmployeeResidentResidentIdViewRouteRoute._addFileChildren(
+    ProtectedEmployeeResidentResidentIdViewRouteRouteChildren,
+  )
+
+interface ProtectedEmployeeResidentResidentIdRouteRouteChildren {
+  ProtectedEmployeeResidentResidentIdViewRouteRoute: typeof ProtectedEmployeeResidentResidentIdViewRouteRouteWithChildren
+  ProtectedEmployeeResidentResidentIdEditRoute: typeof ProtectedEmployeeResidentResidentIdEditRoute
+}
+
+const ProtectedEmployeeResidentResidentIdRouteRouteChildren: ProtectedEmployeeResidentResidentIdRouteRouteChildren =
+  {
+    ProtectedEmployeeResidentResidentIdViewRouteRoute:
+      ProtectedEmployeeResidentResidentIdViewRouteRouteWithChildren,
+    ProtectedEmployeeResidentResidentIdEditRoute:
+      ProtectedEmployeeResidentResidentIdEditRoute,
+  }
+
+const ProtectedEmployeeResidentResidentIdRouteRouteWithChildren =
+  ProtectedEmployeeResidentResidentIdRouteRoute._addFileChildren(
+    ProtectedEmployeeResidentResidentIdRouteRouteChildren,
+  )
+
+interface ProtectedEmployeeResidentRouteRouteChildren {
+  ProtectedEmployeeResidentResidentIdRouteRoute: typeof ProtectedEmployeeResidentResidentIdRouteRouteWithChildren
+  ProtectedEmployeeResidentAddResidentRoute: typeof ProtectedEmployeeResidentAddResidentRoute
+  ProtectedEmployeeResidentIndexRoute: typeof ProtectedEmployeeResidentIndexRoute
+}
+
+const ProtectedEmployeeResidentRouteRouteChildren: ProtectedEmployeeResidentRouteRouteChildren =
+  {
+    ProtectedEmployeeResidentResidentIdRouteRoute:
+      ProtectedEmployeeResidentResidentIdRouteRouteWithChildren,
+    ProtectedEmployeeResidentAddResidentRoute:
+      ProtectedEmployeeResidentAddResidentRoute,
+    ProtectedEmployeeResidentIndexRoute: ProtectedEmployeeResidentIndexRoute,
+  }
+
+const ProtectedEmployeeResidentRouteRouteWithChildren =
+  ProtectedEmployeeResidentRouteRoute._addFileChildren(
+    ProtectedEmployeeResidentRouteRouteChildren,
+  )
+
+interface ProtectedEmployeeRouteRouteChildren {
+  ProtectedEmployeeInquiriesRouteRoute: typeof ProtectedEmployeeInquiriesRouteRouteWithChildren
+  ProtectedEmployeeNoticesRouteRoute: typeof ProtectedEmployeeNoticesRouteRouteWithChildren
+  ProtectedEmployeePaymentsRouteRoute: typeof ProtectedEmployeePaymentsRouteRouteWithChildren
+  ProtectedEmployeeResidentRouteRoute: typeof ProtectedEmployeeResidentRouteRouteWithChildren
+  ProtectedEmployeeAccountRoute: typeof ProtectedEmployeeAccountRoute
+  ProtectedEmployeeEditProfileRoute: typeof ProtectedEmployeeEditProfileRoute
+  ProtectedEmployeeProfileRoute: typeof ProtectedEmployeeProfileRoute
+  ProtectedEmployeeIndexRoute: typeof ProtectedEmployeeIndexRoute
+  ProtectedEmployeeTaskSummaryOpenInquiriesRoute: typeof ProtectedEmployeeTaskSummaryOpenInquiriesRoute
+  ProtectedEmployeeTaskSummaryOverDueAccountsRoute: typeof ProtectedEmployeeTaskSummaryOverDueAccountsRoute
+  ProtectedEmployeeTaskSummaryPendingNoticesRoute: typeof ProtectedEmployeeTaskSummaryPendingNoticesRoute
+  ProtectedEmployeeTaskSummaryUnverifiedPaymentsRoute: typeof ProtectedEmployeeTaskSummaryUnverifiedPaymentsRoute
+}
+
+const ProtectedEmployeeRouteRouteChildren: ProtectedEmployeeRouteRouteChildren =
+  {
+    ProtectedEmployeeInquiriesRouteRoute:
+      ProtectedEmployeeInquiriesRouteRouteWithChildren,
+    ProtectedEmployeeNoticesRouteRoute:
+      ProtectedEmployeeNoticesRouteRouteWithChildren,
+    ProtectedEmployeePaymentsRouteRoute:
+      ProtectedEmployeePaymentsRouteRouteWithChildren,
+    ProtectedEmployeeResidentRouteRoute:
+      ProtectedEmployeeResidentRouteRouteWithChildren,
+    ProtectedEmployeeAccountRoute: ProtectedEmployeeAccountRoute,
+    ProtectedEmployeeEditProfileRoute: ProtectedEmployeeEditProfileRoute,
+    ProtectedEmployeeProfileRoute: ProtectedEmployeeProfileRoute,
+    ProtectedEmployeeIndexRoute: ProtectedEmployeeIndexRoute,
+    ProtectedEmployeeTaskSummaryOpenInquiriesRoute:
+      ProtectedEmployeeTaskSummaryOpenInquiriesRoute,
+    ProtectedEmployeeTaskSummaryOverDueAccountsRoute:
+      ProtectedEmployeeTaskSummaryOverDueAccountsRoute,
+    ProtectedEmployeeTaskSummaryPendingNoticesRoute:
+      ProtectedEmployeeTaskSummaryPendingNoticesRoute,
+    ProtectedEmployeeTaskSummaryUnverifiedPaymentsRoute:
+      ProtectedEmployeeTaskSummaryUnverifiedPaymentsRoute,
+  }
+
+const ProtectedEmployeeRouteRouteWithChildren =
+  ProtectedEmployeeRouteRoute._addFileChildren(
+    ProtectedEmployeeRouteRouteChildren,
+  )
+
+interface ProtectedResidentRouteLazyRouteChildren {
+  ProtectedResidentContactRoute: typeof ProtectedResidentContactRoute
+  ProtectedResidentSubmitRequestRoute: typeof ProtectedResidentSubmitRequestRoute
+  ProtectedResidentAccountLazyRoute: typeof ProtectedResidentAccountLazyRoute
+  ProtectedResidentDashboardLazyRoute: typeof ProtectedResidentDashboardLazyRoute
+  ProtectedResidentEditProfileLazyRoute: typeof ProtectedResidentEditProfileLazyRoute
+  ProtectedResidentFinancialLazyRoute: typeof ProtectedResidentFinancialLazyRoute
+  ProtectedResidentInquiriesLazyRoute: typeof ProtectedResidentInquiriesLazyRoute
+  ProtectedResidentNoticesLazyRoute: typeof ProtectedResidentNoticesLazyRoute
+  ProtectedResidentPaynowLazyRoute: typeof ProtectedResidentPaynowLazyRoute
+  ProtectedResidentProfileLazyRoute: typeof ProtectedResidentProfileLazyRoute
+  ProtectedResidentUploadPaymentLazyRoute: typeof ProtectedResidentUploadPaymentLazyRoute
+}
+
+const ProtectedResidentRouteLazyRouteChildren: ProtectedResidentRouteLazyRouteChildren =
+  {
+    ProtectedResidentContactRoute: ProtectedResidentContactRoute,
+    ProtectedResidentSubmitRequestRoute: ProtectedResidentSubmitRequestRoute,
+    ProtectedResidentAccountLazyRoute: ProtectedResidentAccountLazyRoute,
+    ProtectedResidentDashboardLazyRoute: ProtectedResidentDashboardLazyRoute,
+    ProtectedResidentEditProfileLazyRoute:
+      ProtectedResidentEditProfileLazyRoute,
+    ProtectedResidentFinancialLazyRoute: ProtectedResidentFinancialLazyRoute,
+    ProtectedResidentInquiriesLazyRoute: ProtectedResidentInquiriesLazyRoute,
+    ProtectedResidentNoticesLazyRoute: ProtectedResidentNoticesLazyRoute,
+    ProtectedResidentPaynowLazyRoute: ProtectedResidentPaynowLazyRoute,
+    ProtectedResidentProfileLazyRoute: ProtectedResidentProfileLazyRoute,
+    ProtectedResidentUploadPaymentLazyRoute:
+      ProtectedResidentUploadPaymentLazyRoute,
+  }
+
+const ProtectedResidentRouteLazyRouteWithChildren =
+  ProtectedResidentRouteLazyRoute._addFileChildren(
+    ProtectedResidentRouteLazyRouteChildren,
+  )
+
+interface ProtectedRouteChildren {
+  ProtectedAdminRouteRoute: typeof ProtectedAdminRouteRouteWithChildren
+  ProtectedEmployeeRouteRoute: typeof ProtectedEmployeeRouteRouteWithChildren
+  ProtectedResidentRouteLazyRoute: typeof ProtectedResidentRouteLazyRouteWithChildren
+}
+
+const ProtectedRouteChildren: ProtectedRouteChildren = {
+  ProtectedAdminRouteRoute: ProtectedAdminRouteRouteWithChildren,
+  ProtectedEmployeeRouteRoute: ProtectedEmployeeRouteRouteWithChildren,
+  ProtectedResidentRouteLazyRoute: ProtectedResidentRouteLazyRouteWithChildren,
+}
+
+const ProtectedRouteWithChildren = ProtectedRoute._addFileChildren(
+  ProtectedRouteChildren,
 )
-
-interface AdminEmployeeRouteRouteChildren {
-  AdminEmployeeAddEmployeeRoute: typeof AdminEmployeeAddEmployeeRoute
-  AdminEmployeeIndexRoute: typeof AdminEmployeeIndexRoute
-  AdminEmployeeEmployeeIdEditRoute: typeof AdminEmployeeEmployeeIdEditRoute
-  AdminEmployeeEmployeeIdIndexRoute: typeof AdminEmployeeEmployeeIdIndexRoute
-}
-
-const AdminEmployeeRouteRouteChildren: AdminEmployeeRouteRouteChildren = {
-  AdminEmployeeAddEmployeeRoute: AdminEmployeeAddEmployeeRoute,
-  AdminEmployeeIndexRoute: AdminEmployeeIndexRoute,
-  AdminEmployeeEmployeeIdEditRoute: AdminEmployeeEmployeeIdEditRoute,
-  AdminEmployeeEmployeeIdIndexRoute: AdminEmployeeEmployeeIdIndexRoute,
-}
-
-const AdminEmployeeRouteRouteWithChildren =
-  AdminEmployeeRouteRoute._addFileChildren(AdminEmployeeRouteRouteChildren)
-
-interface AdminFinancialFinancialRouteRouteChildren {
-  AdminFinancialFinancialMonthlyDueRoute: typeof AdminFinancialFinancialMonthlyDueRoute
-  AdminFinancialFinancialIndexRoute: typeof AdminFinancialFinancialIndexRoute
-}
-
-const AdminFinancialFinancialRouteRouteChildren: AdminFinancialFinancialRouteRouteChildren =
-  {
-    AdminFinancialFinancialMonthlyDueRoute:
-      AdminFinancialFinancialMonthlyDueRoute,
-    AdminFinancialFinancialIndexRoute: AdminFinancialFinancialIndexRoute,
-  }
-
-const AdminFinancialFinancialRouteRouteWithChildren =
-  AdminFinancialFinancialRouteRoute._addFileChildren(
-    AdminFinancialFinancialRouteRouteChildren,
-  )
-
-interface AdminFinancialRouteRouteChildren {
-  AdminFinancialFinancialRouteRoute: typeof AdminFinancialFinancialRouteRouteWithChildren
-  AdminFinancialRecordPaymentRoute: typeof AdminFinancialRecordPaymentRoute
-  AdminFinancialEditResidentIdRoute: typeof AdminFinancialEditResidentIdRoute
-  AdminFinancialUploadIndexRoute: typeof AdminFinancialUploadIndexRoute
-}
-
-const AdminFinancialRouteRouteChildren: AdminFinancialRouteRouteChildren = {
-  AdminFinancialFinancialRouteRoute:
-    AdminFinancialFinancialRouteRouteWithChildren,
-  AdminFinancialRecordPaymentRoute: AdminFinancialRecordPaymentRoute,
-  AdminFinancialEditResidentIdRoute: AdminFinancialEditResidentIdRoute,
-  AdminFinancialUploadIndexRoute: AdminFinancialUploadIndexRoute,
-}
-
-const AdminFinancialRouteRouteWithChildren =
-  AdminFinancialRouteRoute._addFileChildren(AdminFinancialRouteRouteChildren)
-
-interface AdminNotificationsRouteRouteChildren {
-  AdminNotificationsCreateRoute: typeof AdminNotificationsCreateRoute
-  AdminNotificationsSendSmsRoute: typeof AdminNotificationsSendSmsRoute
-  AdminNotificationsIndexRoute: typeof AdminNotificationsIndexRoute
-}
-
-const AdminNotificationsRouteRouteChildren: AdminNotificationsRouteRouteChildren =
-  {
-    AdminNotificationsCreateRoute: AdminNotificationsCreateRoute,
-    AdminNotificationsSendSmsRoute: AdminNotificationsSendSmsRoute,
-    AdminNotificationsIndexRoute: AdminNotificationsIndexRoute,
-  }
-
-const AdminNotificationsRouteRouteWithChildren =
-  AdminNotificationsRouteRoute._addFileChildren(
-    AdminNotificationsRouteRouteChildren,
-  )
-
-interface AdminResidentResidentIdViewRouteRouteChildren {
-  AdminResidentResidentIdViewInquiresHistoryRoute: typeof AdminResidentResidentIdViewInquiresHistoryRoute
-  AdminResidentResidentIdViewNoticeReceivedRoute: typeof AdminResidentResidentIdViewNoticeReceivedRoute
-  AdminResidentResidentIdViewIndexRoute: typeof AdminResidentResidentIdViewIndexRoute
-}
-
-const AdminResidentResidentIdViewRouteRouteChildren: AdminResidentResidentIdViewRouteRouteChildren =
-  {
-    AdminResidentResidentIdViewInquiresHistoryRoute:
-      AdminResidentResidentIdViewInquiresHistoryRoute,
-    AdminResidentResidentIdViewNoticeReceivedRoute:
-      AdminResidentResidentIdViewNoticeReceivedRoute,
-    AdminResidentResidentIdViewIndexRoute:
-      AdminResidentResidentIdViewIndexRoute,
-  }
-
-const AdminResidentResidentIdViewRouteRouteWithChildren =
-  AdminResidentResidentIdViewRouteRoute._addFileChildren(
-    AdminResidentResidentIdViewRouteRouteChildren,
-  )
-
-interface AdminResidentResidentIdRouteRouteChildren {
-  AdminResidentResidentIdViewRouteRoute: typeof AdminResidentResidentIdViewRouteRouteWithChildren
-  AdminResidentResidentIdEditRoute: typeof AdminResidentResidentIdEditRoute
-}
-
-const AdminResidentResidentIdRouteRouteChildren: AdminResidentResidentIdRouteRouteChildren =
-  {
-    AdminResidentResidentIdViewRouteRoute:
-      AdminResidentResidentIdViewRouteRouteWithChildren,
-    AdminResidentResidentIdEditRoute: AdminResidentResidentIdEditRoute,
-  }
-
-const AdminResidentResidentIdRouteRouteWithChildren =
-  AdminResidentResidentIdRouteRoute._addFileChildren(
-    AdminResidentResidentIdRouteRouteChildren,
-  )
-
-interface AdminResidentRouteRouteChildren {
-  AdminResidentResidentIdRouteRoute: typeof AdminResidentResidentIdRouteRouteWithChildren
-  AdminResidentAddResidentRoute: typeof AdminResidentAddResidentRoute
-  AdminResidentIndexRoute: typeof AdminResidentIndexRoute
-}
-
-const AdminResidentRouteRouteChildren: AdminResidentRouteRouteChildren = {
-  AdminResidentResidentIdRouteRoute:
-    AdminResidentResidentIdRouteRouteWithChildren,
-  AdminResidentAddResidentRoute: AdminResidentAddResidentRoute,
-  AdminResidentIndexRoute: AdminResidentIndexRoute,
-}
-
-const AdminResidentRouteRouteWithChildren =
-  AdminResidentRouteRoute._addFileChildren(AdminResidentRouteRouteChildren)
-
-interface AdminUnpaidAccountsRouteRouteChildren {
-  AdminUnpaidAccountsRemindersRoute: typeof AdminUnpaidAccountsRemindersRoute
-  AdminUnpaidAccountsIndexRoute: typeof AdminUnpaidAccountsIndexRoute
-}
-
-const AdminUnpaidAccountsRouteRouteChildren: AdminUnpaidAccountsRouteRouteChildren =
-  {
-    AdminUnpaidAccountsRemindersRoute: AdminUnpaidAccountsRemindersRoute,
-    AdminUnpaidAccountsIndexRoute: AdminUnpaidAccountsIndexRoute,
-  }
-
-const AdminUnpaidAccountsRouteRouteWithChildren =
-  AdminUnpaidAccountsRouteRoute._addFileChildren(
-    AdminUnpaidAccountsRouteRouteChildren,
-  )
-
-interface AdminRouteRouteChildren {
-  AdminEmployeeRouteRoute: typeof AdminEmployeeRouteRouteWithChildren
-  AdminFinancialRouteRoute: typeof AdminFinancialRouteRouteWithChildren
-  AdminNotificationsRouteRoute: typeof AdminNotificationsRouteRouteWithChildren
-  AdminResidentRouteRoute: typeof AdminResidentRouteRouteWithChildren
-  AdminUnpaidAccountsRouteRoute: typeof AdminUnpaidAccountsRouteRouteWithChildren
-  AdminAccountRoute: typeof AdminAccountRoute
-  AdminEditProfileRoute: typeof AdminEditProfileRoute
-  AdminProfileRoute: typeof AdminProfileRoute
-  AdminIndexRoute: typeof AdminIndexRoute
-}
-
-const AdminRouteRouteChildren: AdminRouteRouteChildren = {
-  AdminEmployeeRouteRoute: AdminEmployeeRouteRouteWithChildren,
-  AdminFinancialRouteRoute: AdminFinancialRouteRouteWithChildren,
-  AdminNotificationsRouteRoute: AdminNotificationsRouteRouteWithChildren,
-  AdminResidentRouteRoute: AdminResidentRouteRouteWithChildren,
-  AdminUnpaidAccountsRouteRoute: AdminUnpaidAccountsRouteRouteWithChildren,
-  AdminAccountRoute: AdminAccountRoute,
-  AdminEditProfileRoute: AdminEditProfileRoute,
-  AdminProfileRoute: AdminProfileRoute,
-  AdminIndexRoute: AdminIndexRoute,
-}
-
-const AdminRouteRouteWithChildren = AdminRouteRoute._addFileChildren(
-  AdminRouteRouteChildren,
-)
-
-interface EmployeeInquiriesRouteRouteChildren {
-  EmployeeInquiriesCreateRoute: typeof EmployeeInquiriesCreateRoute
-  EmployeeInquiriesIndexRoute: typeof EmployeeInquiriesIndexRoute
-}
-
-const EmployeeInquiriesRouteRouteChildren: EmployeeInquiriesRouteRouteChildren =
-  {
-    EmployeeInquiriesCreateRoute: EmployeeInquiriesCreateRoute,
-    EmployeeInquiriesIndexRoute: EmployeeInquiriesIndexRoute,
-  }
-
-const EmployeeInquiriesRouteRouteWithChildren =
-  EmployeeInquiriesRouteRoute._addFileChildren(
-    EmployeeInquiriesRouteRouteChildren,
-  )
-
-interface EmployeeNoticesRouteRouteChildren {
-  EmployeeNoticesCreateRoute: typeof EmployeeNoticesCreateRoute
-  EmployeeNoticesIndexRoute: typeof EmployeeNoticesIndexRoute
-}
-
-const EmployeeNoticesRouteRouteChildren: EmployeeNoticesRouteRouteChildren = {
-  EmployeeNoticesCreateRoute: EmployeeNoticesCreateRoute,
-  EmployeeNoticesIndexRoute: EmployeeNoticesIndexRoute,
-}
-
-const EmployeeNoticesRouteRouteWithChildren =
-  EmployeeNoticesRouteRoute._addFileChildren(EmployeeNoticesRouteRouteChildren)
-
-interface EmployeePaymentsRouteRouteChildren {
-  EmployeePaymentsRecordPaymentRoute: typeof EmployeePaymentsRecordPaymentRoute
-  EmployeePaymentsIndexRoute: typeof EmployeePaymentsIndexRoute
-}
-
-const EmployeePaymentsRouteRouteChildren: EmployeePaymentsRouteRouteChildren = {
-  EmployeePaymentsRecordPaymentRoute: EmployeePaymentsRecordPaymentRoute,
-  EmployeePaymentsIndexRoute: EmployeePaymentsIndexRoute,
-}
-
-const EmployeePaymentsRouteRouteWithChildren =
-  EmployeePaymentsRouteRoute._addFileChildren(
-    EmployeePaymentsRouteRouteChildren,
-  )
-
-interface EmployeeResidentResidentIdViewRouteRouteChildren {
-  EmployeeResidentResidentIdViewInquiresHistoryRoute: typeof EmployeeResidentResidentIdViewInquiresHistoryRoute
-  EmployeeResidentResidentIdViewNoticeReceivedRoute: typeof EmployeeResidentResidentIdViewNoticeReceivedRoute
-  EmployeeResidentResidentIdViewIndexRoute: typeof EmployeeResidentResidentIdViewIndexRoute
-}
-
-const EmployeeResidentResidentIdViewRouteRouteChildren: EmployeeResidentResidentIdViewRouteRouteChildren =
-  {
-    EmployeeResidentResidentIdViewInquiresHistoryRoute:
-      EmployeeResidentResidentIdViewInquiresHistoryRoute,
-    EmployeeResidentResidentIdViewNoticeReceivedRoute:
-      EmployeeResidentResidentIdViewNoticeReceivedRoute,
-    EmployeeResidentResidentIdViewIndexRoute:
-      EmployeeResidentResidentIdViewIndexRoute,
-  }
-
-const EmployeeResidentResidentIdViewRouteRouteWithChildren =
-  EmployeeResidentResidentIdViewRouteRoute._addFileChildren(
-    EmployeeResidentResidentIdViewRouteRouteChildren,
-  )
-
-interface EmployeeResidentResidentIdRouteRouteChildren {
-  EmployeeResidentResidentIdViewRouteRoute: typeof EmployeeResidentResidentIdViewRouteRouteWithChildren
-  EmployeeResidentResidentIdEditRoute: typeof EmployeeResidentResidentIdEditRoute
-}
-
-const EmployeeResidentResidentIdRouteRouteChildren: EmployeeResidentResidentIdRouteRouteChildren =
-  {
-    EmployeeResidentResidentIdViewRouteRoute:
-      EmployeeResidentResidentIdViewRouteRouteWithChildren,
-    EmployeeResidentResidentIdEditRoute: EmployeeResidentResidentIdEditRoute,
-  }
-
-const EmployeeResidentResidentIdRouteRouteWithChildren =
-  EmployeeResidentResidentIdRouteRoute._addFileChildren(
-    EmployeeResidentResidentIdRouteRouteChildren,
-  )
-
-interface EmployeeResidentRouteRouteChildren {
-  EmployeeResidentResidentIdRouteRoute: typeof EmployeeResidentResidentIdRouteRouteWithChildren
-  EmployeeResidentAddResidentRoute: typeof EmployeeResidentAddResidentRoute
-  EmployeeResidentIndexRoute: typeof EmployeeResidentIndexRoute
-}
-
-const EmployeeResidentRouteRouteChildren: EmployeeResidentRouteRouteChildren = {
-  EmployeeResidentResidentIdRouteRoute:
-    EmployeeResidentResidentIdRouteRouteWithChildren,
-  EmployeeResidentAddResidentRoute: EmployeeResidentAddResidentRoute,
-  EmployeeResidentIndexRoute: EmployeeResidentIndexRoute,
-}
-
-const EmployeeResidentRouteRouteWithChildren =
-  EmployeeResidentRouteRoute._addFileChildren(
-    EmployeeResidentRouteRouteChildren,
-  )
-
-interface EmployeeRouteRouteChildren {
-  EmployeeInquiriesRouteRoute: typeof EmployeeInquiriesRouteRouteWithChildren
-  EmployeeNoticesRouteRoute: typeof EmployeeNoticesRouteRouteWithChildren
-  EmployeePaymentsRouteRoute: typeof EmployeePaymentsRouteRouteWithChildren
-  EmployeeResidentRouteRoute: typeof EmployeeResidentRouteRouteWithChildren
-  EmployeeAccountRoute: typeof EmployeeAccountRoute
-  EmployeeEditProfileRoute: typeof EmployeeEditProfileRoute
-  EmployeeProfileRoute: typeof EmployeeProfileRoute
-  EmployeeIndexRoute: typeof EmployeeIndexRoute
-  EmployeeTaskSummaryOpenInquiriesRoute: typeof EmployeeTaskSummaryOpenInquiriesRoute
-  EmployeeTaskSummaryOverDueAccountsRoute: typeof EmployeeTaskSummaryOverDueAccountsRoute
-  EmployeeTaskSummaryPendingNoticesRoute: typeof EmployeeTaskSummaryPendingNoticesRoute
-  EmployeeTaskSummaryUnverifiedPaymentsRoute: typeof EmployeeTaskSummaryUnverifiedPaymentsRoute
-}
-
-const EmployeeRouteRouteChildren: EmployeeRouteRouteChildren = {
-  EmployeeInquiriesRouteRoute: EmployeeInquiriesRouteRouteWithChildren,
-  EmployeeNoticesRouteRoute: EmployeeNoticesRouteRouteWithChildren,
-  EmployeePaymentsRouteRoute: EmployeePaymentsRouteRouteWithChildren,
-  EmployeeResidentRouteRoute: EmployeeResidentRouteRouteWithChildren,
-  EmployeeAccountRoute: EmployeeAccountRoute,
-  EmployeeEditProfileRoute: EmployeeEditProfileRoute,
-  EmployeeProfileRoute: EmployeeProfileRoute,
-  EmployeeIndexRoute: EmployeeIndexRoute,
-  EmployeeTaskSummaryOpenInquiriesRoute: EmployeeTaskSummaryOpenInquiriesRoute,
-  EmployeeTaskSummaryOverDueAccountsRoute:
-    EmployeeTaskSummaryOverDueAccountsRoute,
-  EmployeeTaskSummaryPendingNoticesRoute:
-    EmployeeTaskSummaryPendingNoticesRoute,
-  EmployeeTaskSummaryUnverifiedPaymentsRoute:
-    EmployeeTaskSummaryUnverifiedPaymentsRoute,
-}
-
-const EmployeeRouteRouteWithChildren = EmployeeRouteRoute._addFileChildren(
-  EmployeeRouteRouteChildren,
-)
-
-interface ResidentRouteLazyRouteChildren {
-  ResidentContactRoute: typeof ResidentContactRoute
-  ResidentSubmitRequestRoute: typeof ResidentSubmitRequestRoute
-  ResidentAccountLazyRoute: typeof ResidentAccountLazyRoute
-  ResidentDashboardLazyRoute: typeof ResidentDashboardLazyRoute
-  ResidentEditProfileLazyRoute: typeof ResidentEditProfileLazyRoute
-  ResidentFinancialLazyRoute: typeof ResidentFinancialLazyRoute
-  ResidentInquiriesLazyRoute: typeof ResidentInquiriesLazyRoute
-  ResidentNoticesLazyRoute: typeof ResidentNoticesLazyRoute
-  ResidentPaynowLazyRoute: typeof ResidentPaynowLazyRoute
-  ResidentProfileLazyRoute: typeof ResidentProfileLazyRoute
-  ResidentUploadPaymentLazyRoute: typeof ResidentUploadPaymentLazyRoute
-}
-
-const ResidentRouteLazyRouteChildren: ResidentRouteLazyRouteChildren = {
-  ResidentContactRoute: ResidentContactRoute,
-  ResidentSubmitRequestRoute: ResidentSubmitRequestRoute,
-  ResidentAccountLazyRoute: ResidentAccountLazyRoute,
-  ResidentDashboardLazyRoute: ResidentDashboardLazyRoute,
-  ResidentEditProfileLazyRoute: ResidentEditProfileLazyRoute,
-  ResidentFinancialLazyRoute: ResidentFinancialLazyRoute,
-  ResidentInquiriesLazyRoute: ResidentInquiriesLazyRoute,
-  ResidentNoticesLazyRoute: ResidentNoticesLazyRoute,
-  ResidentPaynowLazyRoute: ResidentPaynowLazyRoute,
-  ResidentProfileLazyRoute: ResidentProfileLazyRoute,
-  ResidentUploadPaymentLazyRoute: ResidentUploadPaymentLazyRoute,
-}
-
-const ResidentRouteLazyRouteWithChildren =
-  ResidentRouteLazyRoute._addFileChildren(ResidentRouteLazyRouteChildren)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '': typeof AuthRouteRouteWithChildren
-  '/admin': typeof AdminRouteRouteWithChildren
-  '/employee': typeof EmployeeRouteRouteWithChildren
+  '': typeof ProtectedRouteWithChildren
   '/login': typeof LoginRoute
-  '/resident': typeof ResidentRouteLazyRouteWithChildren
-  '/admin/employee': typeof AdminEmployeeRouteRouteWithChildren
-  '/admin/financial': typeof AdminFinancialFinancialRouteRouteWithChildren
-  '/admin/notifications': typeof AdminNotificationsRouteRouteWithChildren
-  '/admin/resident': typeof AdminResidentRouteRouteWithChildren
-  '/admin/unpaid-accounts': typeof AdminUnpaidAccountsRouteRouteWithChildren
-  '/employee/inquiries': typeof EmployeeInquiriesRouteRouteWithChildren
-  '/employee/notices': typeof EmployeeNoticesRouteRouteWithChildren
-  '/employee/payments': typeof EmployeePaymentsRouteRouteWithChildren
-  '/employee/resident': typeof EmployeeResidentRouteRouteWithChildren
-  '/dashboard': typeof AuthDashboardRoute
-  '/admin/account': typeof AdminAccountRoute
-  '/admin/edit-profile': typeof AdminEditProfileRoute
-  '/admin/profile': typeof AdminProfileRoute
-  '/employee/account': typeof EmployeeAccountRoute
-  '/employee/edit-profile': typeof EmployeeEditProfileRoute
-  '/employee/profile': typeof EmployeeProfileRoute
-  '/resident/contact': typeof ResidentContactRoute
-  '/resident/submit-request': typeof ResidentSubmitRequestRoute
-  '/resident/account': typeof ResidentAccountLazyRoute
-  '/resident/dashboard': typeof ResidentDashboardLazyRoute
-  '/resident/edit-profile': typeof ResidentEditProfileLazyRoute
-  '/resident/financial': typeof ResidentFinancialLazyRoute
-  '/resident/inquiries': typeof ResidentInquiriesLazyRoute
-  '/resident/notices': typeof ResidentNoticesLazyRoute
-  '/resident/paynow': typeof ResidentPaynowLazyRoute
-  '/resident/profile': typeof ResidentProfileLazyRoute
-  '/resident/upload-payment': typeof ResidentUploadPaymentLazyRoute
-  '/admin/': typeof AdminIndexRoute
-  '/employee/': typeof EmployeeIndexRoute
-  '/admin/resident/$residentId': typeof AdminResidentResidentIdViewRouteRouteWithChildren
-  '/employee/resident/$residentId': typeof EmployeeResidentResidentIdViewRouteRouteWithChildren
-  '/admin/employee/add-employee': typeof AdminEmployeeAddEmployeeRoute
-  '/admin/financial/record-payment': typeof AdminFinancialRecordPaymentRoute
-  '/admin/notifications/create': typeof AdminNotificationsCreateRoute
-  '/admin/notifications/send-sms': typeof AdminNotificationsSendSmsRoute
-  '/admin/resident/add-resident': typeof AdminResidentAddResidentRoute
-  '/admin/unpaid-accounts/reminders': typeof AdminUnpaidAccountsRemindersRoute
-  '/employee/open-inquiries': typeof EmployeeTaskSummaryOpenInquiriesRoute
-  '/employee/over-due-accounts': typeof EmployeeTaskSummaryOverDueAccountsRoute
-  '/employee/pending-notices': typeof EmployeeTaskSummaryPendingNoticesRoute
-  '/employee/unverified-payments': typeof EmployeeTaskSummaryUnverifiedPaymentsRoute
-  '/employee/inquiries/create': typeof EmployeeInquiriesCreateRoute
-  '/employee/notices/create': typeof EmployeeNoticesCreateRoute
-  '/employee/payments/record-payment': typeof EmployeePaymentsRecordPaymentRoute
-  '/employee/resident/add-resident': typeof EmployeeResidentAddResidentRoute
-  '/admin/employee/': typeof AdminEmployeeIndexRoute
-  '/admin/notifications/': typeof AdminNotificationsIndexRoute
-  '/admin/resident/': typeof AdminResidentIndexRoute
-  '/admin/unpaid-accounts/': typeof AdminUnpaidAccountsIndexRoute
-  '/employee/inquiries/': typeof EmployeeInquiriesIndexRoute
-  '/employee/notices/': typeof EmployeeNoticesIndexRoute
-  '/employee/payments/': typeof EmployeePaymentsIndexRoute
-  '/employee/resident/': typeof EmployeeResidentIndexRoute
-  '/admin/employee/$employeeId/edit': typeof AdminEmployeeEmployeeIdEditRoute
-  '/admin/financial/monthly-due': typeof AdminFinancialFinancialMonthlyDueRoute
-  '/admin/financial/edit/$residentId': typeof AdminFinancialEditResidentIdRoute
-  '/admin/resident/$residentId/edit': typeof AdminResidentResidentIdEditRoute
-  '/employee/resident/$residentId/edit': typeof EmployeeResidentResidentIdEditRoute
-  '/admin/employee/$employeeId': typeof AdminEmployeeEmployeeIdIndexRoute
-  '/admin/financial/': typeof AdminFinancialFinancialIndexRoute
-  '/admin/financial/upload': typeof AdminFinancialUploadIndexRoute
-  '/admin/resident/$residentId/inquires-history': typeof AdminResidentResidentIdViewInquiresHistoryRoute
-  '/admin/resident/$residentId/notice-received': typeof AdminResidentResidentIdViewNoticeReceivedRoute
-  '/employee/resident/$residentId/inquires-history': typeof EmployeeResidentResidentIdViewInquiresHistoryRoute
-  '/employee/resident/$residentId/notice-received': typeof EmployeeResidentResidentIdViewNoticeReceivedRoute
-  '/admin/resident/$residentId/': typeof AdminResidentResidentIdViewIndexRoute
-  '/employee/resident/$residentId/': typeof EmployeeResidentResidentIdViewIndexRoute
+  '/admin': typeof ProtectedAdminRouteRouteWithChildren
+  '/employee': typeof ProtectedEmployeeRouteRouteWithChildren
+  '/resident': typeof ProtectedResidentRouteLazyRouteWithChildren
+  '/admin/employee': typeof ProtectedAdminEmployeeRouteRouteWithChildren
+  '/admin/financial': typeof ProtectedAdminFinancialFinancialRouteRouteWithChildren
+  '/admin/notifications': typeof ProtectedAdminNotificationsRouteRouteWithChildren
+  '/admin/resident': typeof ProtectedAdminResidentRouteRouteWithChildren
+  '/admin/unpaid-accounts': typeof ProtectedAdminUnpaidAccountsRouteRouteWithChildren
+  '/employee/inquiries': typeof ProtectedEmployeeInquiriesRouteRouteWithChildren
+  '/employee/notices': typeof ProtectedEmployeeNoticesRouteRouteWithChildren
+  '/employee/payments': typeof ProtectedEmployeePaymentsRouteRouteWithChildren
+  '/employee/resident': typeof ProtectedEmployeeResidentRouteRouteWithChildren
+  '/admin/account': typeof ProtectedAdminAccountRoute
+  '/admin/edit-profile': typeof ProtectedAdminEditProfileRoute
+  '/admin/profile': typeof ProtectedAdminProfileRoute
+  '/employee/account': typeof ProtectedEmployeeAccountRoute
+  '/employee/edit-profile': typeof ProtectedEmployeeEditProfileRoute
+  '/employee/profile': typeof ProtectedEmployeeProfileRoute
+  '/resident/contact': typeof ProtectedResidentContactRoute
+  '/resident/submit-request': typeof ProtectedResidentSubmitRequestRoute
+  '/resident/account': typeof ProtectedResidentAccountLazyRoute
+  '/resident/dashboard': typeof ProtectedResidentDashboardLazyRoute
+  '/resident/edit-profile': typeof ProtectedResidentEditProfileLazyRoute
+  '/resident/financial': typeof ProtectedResidentFinancialLazyRoute
+  '/resident/inquiries': typeof ProtectedResidentInquiriesLazyRoute
+  '/resident/notices': typeof ProtectedResidentNoticesLazyRoute
+  '/resident/paynow': typeof ProtectedResidentPaynowLazyRoute
+  '/resident/profile': typeof ProtectedResidentProfileLazyRoute
+  '/resident/upload-payment': typeof ProtectedResidentUploadPaymentLazyRoute
+  '/admin/': typeof ProtectedAdminIndexRoute
+  '/employee/': typeof ProtectedEmployeeIndexRoute
+  '/admin/resident/$residentId': typeof ProtectedAdminResidentResidentIdViewRouteRouteWithChildren
+  '/employee/resident/$residentId': typeof ProtectedEmployeeResidentResidentIdViewRouteRouteWithChildren
+  '/admin/employee/add-employee': typeof ProtectedAdminEmployeeAddEmployeeRoute
+  '/admin/financial/record-payment': typeof ProtectedAdminFinancialRecordPaymentRoute
+  '/admin/notifications/create': typeof ProtectedAdminNotificationsCreateRoute
+  '/admin/notifications/send-sms': typeof ProtectedAdminNotificationsSendSmsRoute
+  '/admin/resident/add-resident': typeof ProtectedAdminResidentAddResidentRoute
+  '/admin/unpaid-accounts/reminders': typeof ProtectedAdminUnpaidAccountsRemindersRoute
+  '/employee/open-inquiries': typeof ProtectedEmployeeTaskSummaryOpenInquiriesRoute
+  '/employee/over-due-accounts': typeof ProtectedEmployeeTaskSummaryOverDueAccountsRoute
+  '/employee/pending-notices': typeof ProtectedEmployeeTaskSummaryPendingNoticesRoute
+  '/employee/unverified-payments': typeof ProtectedEmployeeTaskSummaryUnverifiedPaymentsRoute
+  '/employee/inquiries/create': typeof ProtectedEmployeeInquiriesCreateRoute
+  '/employee/notices/create': typeof ProtectedEmployeeNoticesCreateRoute
+  '/employee/payments/record-payment': typeof ProtectedEmployeePaymentsRecordPaymentRoute
+  '/employee/resident/add-resident': typeof ProtectedEmployeeResidentAddResidentRoute
+  '/admin/employee/': typeof ProtectedAdminEmployeeIndexRoute
+  '/admin/notifications/': typeof ProtectedAdminNotificationsIndexRoute
+  '/admin/resident/': typeof ProtectedAdminResidentIndexRoute
+  '/admin/unpaid-accounts/': typeof ProtectedAdminUnpaidAccountsIndexRoute
+  '/employee/inquiries/': typeof ProtectedEmployeeInquiriesIndexRoute
+  '/employee/notices/': typeof ProtectedEmployeeNoticesIndexRoute
+  '/employee/payments/': typeof ProtectedEmployeePaymentsIndexRoute
+  '/employee/resident/': typeof ProtectedEmployeeResidentIndexRoute
+  '/admin/employee/$employeeId/edit': typeof ProtectedAdminEmployeeEmployeeIdEditRoute
+  '/admin/financial/monthly-due': typeof ProtectedAdminFinancialFinancialMonthlyDueRoute
+  '/admin/financial/edit/$residentId': typeof ProtectedAdminFinancialEditResidentIdRoute
+  '/admin/resident/$residentId/edit': typeof ProtectedAdminResidentResidentIdEditRoute
+  '/employee/resident/$residentId/edit': typeof ProtectedEmployeeResidentResidentIdEditRoute
+  '/admin/employee/$employeeId': typeof ProtectedAdminEmployeeEmployeeIdIndexRoute
+  '/admin/financial/': typeof ProtectedAdminFinancialFinancialIndexRoute
+  '/admin/financial/upload': typeof ProtectedAdminFinancialUploadIndexRoute
+  '/admin/resident/$residentId/inquires-history': typeof ProtectedAdminResidentResidentIdViewInquiresHistoryRoute
+  '/admin/resident/$residentId/notice-received': typeof ProtectedAdminResidentResidentIdViewNoticeReceivedRoute
+  '/employee/resident/$residentId/inquires-history': typeof ProtectedEmployeeResidentResidentIdViewInquiresHistoryRoute
+  '/employee/resident/$residentId/notice-received': typeof ProtectedEmployeeResidentResidentIdViewNoticeReceivedRoute
+  '/admin/resident/$residentId/': typeof ProtectedAdminResidentResidentIdViewIndexRoute
+  '/employee/resident/$residentId/': typeof ProtectedEmployeeResidentResidentIdViewIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '': typeof AuthRouteRouteWithChildren
+  '': typeof ProtectedRouteWithChildren
   '/login': typeof LoginRoute
-  '/resident': typeof ResidentRouteLazyRouteWithChildren
-  '/admin/financial': typeof AdminFinancialFinancialIndexRoute
-  '/dashboard': typeof AuthDashboardRoute
-  '/admin/account': typeof AdminAccountRoute
-  '/admin/edit-profile': typeof AdminEditProfileRoute
-  '/admin/profile': typeof AdminProfileRoute
-  '/employee/account': typeof EmployeeAccountRoute
-  '/employee/edit-profile': typeof EmployeeEditProfileRoute
-  '/employee/profile': typeof EmployeeProfileRoute
-  '/resident/contact': typeof ResidentContactRoute
-  '/resident/submit-request': typeof ResidentSubmitRequestRoute
-  '/resident/account': typeof ResidentAccountLazyRoute
-  '/resident/dashboard': typeof ResidentDashboardLazyRoute
-  '/resident/edit-profile': typeof ResidentEditProfileLazyRoute
-  '/resident/financial': typeof ResidentFinancialLazyRoute
-  '/resident/inquiries': typeof ResidentInquiriesLazyRoute
-  '/resident/notices': typeof ResidentNoticesLazyRoute
-  '/resident/paynow': typeof ResidentPaynowLazyRoute
-  '/resident/profile': typeof ResidentProfileLazyRoute
-  '/resident/upload-payment': typeof ResidentUploadPaymentLazyRoute
-  '/admin': typeof AdminIndexRoute
-  '/employee': typeof EmployeeIndexRoute
-  '/admin/resident/$residentId': typeof AdminResidentResidentIdViewIndexRoute
-  '/employee/resident/$residentId': typeof EmployeeResidentResidentIdViewIndexRoute
-  '/admin/employee/add-employee': typeof AdminEmployeeAddEmployeeRoute
-  '/admin/financial/record-payment': typeof AdminFinancialRecordPaymentRoute
-  '/admin/notifications/create': typeof AdminNotificationsCreateRoute
-  '/admin/notifications/send-sms': typeof AdminNotificationsSendSmsRoute
-  '/admin/resident/add-resident': typeof AdminResidentAddResidentRoute
-  '/admin/unpaid-accounts/reminders': typeof AdminUnpaidAccountsRemindersRoute
-  '/employee/open-inquiries': typeof EmployeeTaskSummaryOpenInquiriesRoute
-  '/employee/over-due-accounts': typeof EmployeeTaskSummaryOverDueAccountsRoute
-  '/employee/pending-notices': typeof EmployeeTaskSummaryPendingNoticesRoute
-  '/employee/unverified-payments': typeof EmployeeTaskSummaryUnverifiedPaymentsRoute
-  '/employee/inquiries/create': typeof EmployeeInquiriesCreateRoute
-  '/employee/notices/create': typeof EmployeeNoticesCreateRoute
-  '/employee/payments/record-payment': typeof EmployeePaymentsRecordPaymentRoute
-  '/employee/resident/add-resident': typeof EmployeeResidentAddResidentRoute
-  '/admin/employee': typeof AdminEmployeeIndexRoute
-  '/admin/notifications': typeof AdminNotificationsIndexRoute
-  '/admin/resident': typeof AdminResidentIndexRoute
-  '/admin/unpaid-accounts': typeof AdminUnpaidAccountsIndexRoute
-  '/employee/inquiries': typeof EmployeeInquiriesIndexRoute
-  '/employee/notices': typeof EmployeeNoticesIndexRoute
-  '/employee/payments': typeof EmployeePaymentsIndexRoute
-  '/employee/resident': typeof EmployeeResidentIndexRoute
-  '/admin/employee/$employeeId/edit': typeof AdminEmployeeEmployeeIdEditRoute
-  '/admin/financial/monthly-due': typeof AdminFinancialFinancialMonthlyDueRoute
-  '/admin/financial/edit/$residentId': typeof AdminFinancialEditResidentIdRoute
-  '/admin/resident/$residentId/edit': typeof AdminResidentResidentIdEditRoute
-  '/employee/resident/$residentId/edit': typeof EmployeeResidentResidentIdEditRoute
-  '/admin/employee/$employeeId': typeof AdminEmployeeEmployeeIdIndexRoute
-  '/admin/financial/upload': typeof AdminFinancialUploadIndexRoute
-  '/admin/resident/$residentId/inquires-history': typeof AdminResidentResidentIdViewInquiresHistoryRoute
-  '/admin/resident/$residentId/notice-received': typeof AdminResidentResidentIdViewNoticeReceivedRoute
-  '/employee/resident/$residentId/inquires-history': typeof EmployeeResidentResidentIdViewInquiresHistoryRoute
-  '/employee/resident/$residentId/notice-received': typeof EmployeeResidentResidentIdViewNoticeReceivedRoute
+  '/resident': typeof ProtectedResidentRouteLazyRouteWithChildren
+  '/admin/financial': typeof ProtectedAdminFinancialFinancialIndexRoute
+  '/admin/account': typeof ProtectedAdminAccountRoute
+  '/admin/edit-profile': typeof ProtectedAdminEditProfileRoute
+  '/admin/profile': typeof ProtectedAdminProfileRoute
+  '/employee/account': typeof ProtectedEmployeeAccountRoute
+  '/employee/edit-profile': typeof ProtectedEmployeeEditProfileRoute
+  '/employee/profile': typeof ProtectedEmployeeProfileRoute
+  '/resident/contact': typeof ProtectedResidentContactRoute
+  '/resident/submit-request': typeof ProtectedResidentSubmitRequestRoute
+  '/resident/account': typeof ProtectedResidentAccountLazyRoute
+  '/resident/dashboard': typeof ProtectedResidentDashboardLazyRoute
+  '/resident/edit-profile': typeof ProtectedResidentEditProfileLazyRoute
+  '/resident/financial': typeof ProtectedResidentFinancialLazyRoute
+  '/resident/inquiries': typeof ProtectedResidentInquiriesLazyRoute
+  '/resident/notices': typeof ProtectedResidentNoticesLazyRoute
+  '/resident/paynow': typeof ProtectedResidentPaynowLazyRoute
+  '/resident/profile': typeof ProtectedResidentProfileLazyRoute
+  '/resident/upload-payment': typeof ProtectedResidentUploadPaymentLazyRoute
+  '/admin': typeof ProtectedAdminIndexRoute
+  '/employee': typeof ProtectedEmployeeIndexRoute
+  '/admin/resident/$residentId': typeof ProtectedAdminResidentResidentIdViewIndexRoute
+  '/employee/resident/$residentId': typeof ProtectedEmployeeResidentResidentIdViewIndexRoute
+  '/admin/employee/add-employee': typeof ProtectedAdminEmployeeAddEmployeeRoute
+  '/admin/financial/record-payment': typeof ProtectedAdminFinancialRecordPaymentRoute
+  '/admin/notifications/create': typeof ProtectedAdminNotificationsCreateRoute
+  '/admin/notifications/send-sms': typeof ProtectedAdminNotificationsSendSmsRoute
+  '/admin/resident/add-resident': typeof ProtectedAdminResidentAddResidentRoute
+  '/admin/unpaid-accounts/reminders': typeof ProtectedAdminUnpaidAccountsRemindersRoute
+  '/employee/open-inquiries': typeof ProtectedEmployeeTaskSummaryOpenInquiriesRoute
+  '/employee/over-due-accounts': typeof ProtectedEmployeeTaskSummaryOverDueAccountsRoute
+  '/employee/pending-notices': typeof ProtectedEmployeeTaskSummaryPendingNoticesRoute
+  '/employee/unverified-payments': typeof ProtectedEmployeeTaskSummaryUnverifiedPaymentsRoute
+  '/employee/inquiries/create': typeof ProtectedEmployeeInquiriesCreateRoute
+  '/employee/notices/create': typeof ProtectedEmployeeNoticesCreateRoute
+  '/employee/payments/record-payment': typeof ProtectedEmployeePaymentsRecordPaymentRoute
+  '/employee/resident/add-resident': typeof ProtectedEmployeeResidentAddResidentRoute
+  '/admin/employee': typeof ProtectedAdminEmployeeIndexRoute
+  '/admin/notifications': typeof ProtectedAdminNotificationsIndexRoute
+  '/admin/resident': typeof ProtectedAdminResidentIndexRoute
+  '/admin/unpaid-accounts': typeof ProtectedAdminUnpaidAccountsIndexRoute
+  '/employee/inquiries': typeof ProtectedEmployeeInquiriesIndexRoute
+  '/employee/notices': typeof ProtectedEmployeeNoticesIndexRoute
+  '/employee/payments': typeof ProtectedEmployeePaymentsIndexRoute
+  '/employee/resident': typeof ProtectedEmployeeResidentIndexRoute
+  '/admin/employee/$employeeId/edit': typeof ProtectedAdminEmployeeEmployeeIdEditRoute
+  '/admin/financial/monthly-due': typeof ProtectedAdminFinancialFinancialMonthlyDueRoute
+  '/admin/financial/edit/$residentId': typeof ProtectedAdminFinancialEditResidentIdRoute
+  '/admin/resident/$residentId/edit': typeof ProtectedAdminResidentResidentIdEditRoute
+  '/employee/resident/$residentId/edit': typeof ProtectedEmployeeResidentResidentIdEditRoute
+  '/admin/employee/$employeeId': typeof ProtectedAdminEmployeeEmployeeIdIndexRoute
+  '/admin/financial/upload': typeof ProtectedAdminFinancialUploadIndexRoute
+  '/admin/resident/$residentId/inquires-history': typeof ProtectedAdminResidentResidentIdViewInquiresHistoryRoute
+  '/admin/resident/$residentId/notice-received': typeof ProtectedAdminResidentResidentIdViewNoticeReceivedRoute
+  '/employee/resident/$residentId/inquires-history': typeof ProtectedEmployeeResidentResidentIdViewInquiresHistoryRoute
+  '/employee/resident/$residentId/notice-received': typeof ProtectedEmployeeResidentResidentIdViewNoticeReceivedRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/_auth': typeof AuthRouteRouteWithChildren
-  '/admin': typeof AdminRouteRouteWithChildren
-  '/employee': typeof EmployeeRouteRouteWithChildren
+  '/_protected': typeof ProtectedRouteWithChildren
   '/login': typeof LoginRoute
-  '/resident': typeof ResidentRouteLazyRouteWithChildren
-  '/admin/employee': typeof AdminEmployeeRouteRouteWithChildren
-  '/admin/financial': typeof AdminFinancialRouteRouteWithChildren
-  '/admin/notifications': typeof AdminNotificationsRouteRouteWithChildren
-  '/admin/resident': typeof AdminResidentRouteRouteWithChildren
-  '/admin/unpaid-accounts': typeof AdminUnpaidAccountsRouteRouteWithChildren
-  '/employee/inquiries': typeof EmployeeInquiriesRouteRouteWithChildren
-  '/employee/notices': typeof EmployeeNoticesRouteRouteWithChildren
-  '/employee/payments': typeof EmployeePaymentsRouteRouteWithChildren
-  '/employee/resident': typeof EmployeeResidentRouteRouteWithChildren
-  '/_auth/dashboard': typeof AuthDashboardRoute
-  '/admin/account': typeof AdminAccountRoute
-  '/admin/edit-profile': typeof AdminEditProfileRoute
-  '/admin/profile': typeof AdminProfileRoute
-  '/employee/account': typeof EmployeeAccountRoute
-  '/employee/edit-profile': typeof EmployeeEditProfileRoute
-  '/employee/profile': typeof EmployeeProfileRoute
-  '/resident/contact': typeof ResidentContactRoute
-  '/resident/submit-request': typeof ResidentSubmitRequestRoute
-  '/resident/account': typeof ResidentAccountLazyRoute
-  '/resident/dashboard': typeof ResidentDashboardLazyRoute
-  '/resident/edit-profile': typeof ResidentEditProfileLazyRoute
-  '/resident/financial': typeof ResidentFinancialLazyRoute
-  '/resident/inquiries': typeof ResidentInquiriesLazyRoute
-  '/resident/notices': typeof ResidentNoticesLazyRoute
-  '/resident/paynow': typeof ResidentPaynowLazyRoute
-  '/resident/profile': typeof ResidentProfileLazyRoute
-  '/resident/upload-payment': typeof ResidentUploadPaymentLazyRoute
-  '/admin/': typeof AdminIndexRoute
-  '/employee/': typeof EmployeeIndexRoute
-  '/admin/financial/_financial': typeof AdminFinancialFinancialRouteRouteWithChildren
-  '/admin/resident/$residentId': typeof AdminResidentResidentIdRouteRouteWithChildren
-  '/employee/resident/$residentId': typeof EmployeeResidentResidentIdRouteRouteWithChildren
-  '/admin/employee/add-employee': typeof AdminEmployeeAddEmployeeRoute
-  '/admin/financial/record-payment': typeof AdminFinancialRecordPaymentRoute
-  '/admin/notifications/create': typeof AdminNotificationsCreateRoute
-  '/admin/notifications/send-sms': typeof AdminNotificationsSendSmsRoute
-  '/admin/resident/add-resident': typeof AdminResidentAddResidentRoute
-  '/admin/unpaid-accounts/reminders': typeof AdminUnpaidAccountsRemindersRoute
-  '/employee/_task-summary/open-inquiries': typeof EmployeeTaskSummaryOpenInquiriesRoute
-  '/employee/_task-summary/over-due-accounts': typeof EmployeeTaskSummaryOverDueAccountsRoute
-  '/employee/_task-summary/pending-notices': typeof EmployeeTaskSummaryPendingNoticesRoute
-  '/employee/_task-summary/unverified-payments': typeof EmployeeTaskSummaryUnverifiedPaymentsRoute
-  '/employee/inquiries/create': typeof EmployeeInquiriesCreateRoute
-  '/employee/notices/create': typeof EmployeeNoticesCreateRoute
-  '/employee/payments/record-payment': typeof EmployeePaymentsRecordPaymentRoute
-  '/employee/resident/add-resident': typeof EmployeeResidentAddResidentRoute
-  '/admin/employee/': typeof AdminEmployeeIndexRoute
-  '/admin/notifications/': typeof AdminNotificationsIndexRoute
-  '/admin/resident/': typeof AdminResidentIndexRoute
-  '/admin/unpaid-accounts/': typeof AdminUnpaidAccountsIndexRoute
-  '/employee/inquiries/': typeof EmployeeInquiriesIndexRoute
-  '/employee/notices/': typeof EmployeeNoticesIndexRoute
-  '/employee/payments/': typeof EmployeePaymentsIndexRoute
-  '/employee/resident/': typeof EmployeeResidentIndexRoute
-  '/admin/resident/$residentId/_view': typeof AdminResidentResidentIdViewRouteRouteWithChildren
-  '/employee/resident/$residentId/_view': typeof EmployeeResidentResidentIdViewRouteRouteWithChildren
-  '/admin/employee/$employeeId/edit': typeof AdminEmployeeEmployeeIdEditRoute
-  '/admin/financial/_financial/monthly-due': typeof AdminFinancialFinancialMonthlyDueRoute
-  '/admin/financial/edit/$residentId': typeof AdminFinancialEditResidentIdRoute
-  '/admin/resident/$residentId/edit': typeof AdminResidentResidentIdEditRoute
-  '/employee/resident/$residentId/edit': typeof EmployeeResidentResidentIdEditRoute
-  '/admin/employee/$employeeId/': typeof AdminEmployeeEmployeeIdIndexRoute
-  '/admin/financial/_financial/': typeof AdminFinancialFinancialIndexRoute
-  '/admin/financial/upload/': typeof AdminFinancialUploadIndexRoute
-  '/admin/resident/$residentId/_view/inquires-history': typeof AdminResidentResidentIdViewInquiresHistoryRoute
-  '/admin/resident/$residentId/_view/notice-received': typeof AdminResidentResidentIdViewNoticeReceivedRoute
-  '/employee/resident/$residentId/_view/inquires-history': typeof EmployeeResidentResidentIdViewInquiresHistoryRoute
-  '/employee/resident/$residentId/_view/notice-received': typeof EmployeeResidentResidentIdViewNoticeReceivedRoute
-  '/admin/resident/$residentId/_view/': typeof AdminResidentResidentIdViewIndexRoute
-  '/employee/resident/$residentId/_view/': typeof EmployeeResidentResidentIdViewIndexRoute
+  '/_protected/admin': typeof ProtectedAdminRouteRouteWithChildren
+  '/_protected/employee': typeof ProtectedEmployeeRouteRouteWithChildren
+  '/_protected/resident': typeof ProtectedResidentRouteLazyRouteWithChildren
+  '/_protected/admin/employee': typeof ProtectedAdminEmployeeRouteRouteWithChildren
+  '/_protected/admin/financial': typeof ProtectedAdminFinancialRouteRouteWithChildren
+  '/_protected/admin/notifications': typeof ProtectedAdminNotificationsRouteRouteWithChildren
+  '/_protected/admin/resident': typeof ProtectedAdminResidentRouteRouteWithChildren
+  '/_protected/admin/unpaid-accounts': typeof ProtectedAdminUnpaidAccountsRouteRouteWithChildren
+  '/_protected/employee/inquiries': typeof ProtectedEmployeeInquiriesRouteRouteWithChildren
+  '/_protected/employee/notices': typeof ProtectedEmployeeNoticesRouteRouteWithChildren
+  '/_protected/employee/payments': typeof ProtectedEmployeePaymentsRouteRouteWithChildren
+  '/_protected/employee/resident': typeof ProtectedEmployeeResidentRouteRouteWithChildren
+  '/_protected/admin/account': typeof ProtectedAdminAccountRoute
+  '/_protected/admin/edit-profile': typeof ProtectedAdminEditProfileRoute
+  '/_protected/admin/profile': typeof ProtectedAdminProfileRoute
+  '/_protected/employee/account': typeof ProtectedEmployeeAccountRoute
+  '/_protected/employee/edit-profile': typeof ProtectedEmployeeEditProfileRoute
+  '/_protected/employee/profile': typeof ProtectedEmployeeProfileRoute
+  '/_protected/resident/contact': typeof ProtectedResidentContactRoute
+  '/_protected/resident/submit-request': typeof ProtectedResidentSubmitRequestRoute
+  '/_protected/resident/account': typeof ProtectedResidentAccountLazyRoute
+  '/_protected/resident/dashboard': typeof ProtectedResidentDashboardLazyRoute
+  '/_protected/resident/edit-profile': typeof ProtectedResidentEditProfileLazyRoute
+  '/_protected/resident/financial': typeof ProtectedResidentFinancialLazyRoute
+  '/_protected/resident/inquiries': typeof ProtectedResidentInquiriesLazyRoute
+  '/_protected/resident/notices': typeof ProtectedResidentNoticesLazyRoute
+  '/_protected/resident/paynow': typeof ProtectedResidentPaynowLazyRoute
+  '/_protected/resident/profile': typeof ProtectedResidentProfileLazyRoute
+  '/_protected/resident/upload-payment': typeof ProtectedResidentUploadPaymentLazyRoute
+  '/_protected/admin/': typeof ProtectedAdminIndexRoute
+  '/_protected/employee/': typeof ProtectedEmployeeIndexRoute
+  '/_protected/admin/financial/_financial': typeof ProtectedAdminFinancialFinancialRouteRouteWithChildren
+  '/_protected/admin/resident/$residentId': typeof ProtectedAdminResidentResidentIdRouteRouteWithChildren
+  '/_protected/employee/resident/$residentId': typeof ProtectedEmployeeResidentResidentIdRouteRouteWithChildren
+  '/_protected/admin/employee/add-employee': typeof ProtectedAdminEmployeeAddEmployeeRoute
+  '/_protected/admin/financial/record-payment': typeof ProtectedAdminFinancialRecordPaymentRoute
+  '/_protected/admin/notifications/create': typeof ProtectedAdminNotificationsCreateRoute
+  '/_protected/admin/notifications/send-sms': typeof ProtectedAdminNotificationsSendSmsRoute
+  '/_protected/admin/resident/add-resident': typeof ProtectedAdminResidentAddResidentRoute
+  '/_protected/admin/unpaid-accounts/reminders': typeof ProtectedAdminUnpaidAccountsRemindersRoute
+  '/_protected/employee/_task-summary/open-inquiries': typeof ProtectedEmployeeTaskSummaryOpenInquiriesRoute
+  '/_protected/employee/_task-summary/over-due-accounts': typeof ProtectedEmployeeTaskSummaryOverDueAccountsRoute
+  '/_protected/employee/_task-summary/pending-notices': typeof ProtectedEmployeeTaskSummaryPendingNoticesRoute
+  '/_protected/employee/_task-summary/unverified-payments': typeof ProtectedEmployeeTaskSummaryUnverifiedPaymentsRoute
+  '/_protected/employee/inquiries/create': typeof ProtectedEmployeeInquiriesCreateRoute
+  '/_protected/employee/notices/create': typeof ProtectedEmployeeNoticesCreateRoute
+  '/_protected/employee/payments/record-payment': typeof ProtectedEmployeePaymentsRecordPaymentRoute
+  '/_protected/employee/resident/add-resident': typeof ProtectedEmployeeResidentAddResidentRoute
+  '/_protected/admin/employee/': typeof ProtectedAdminEmployeeIndexRoute
+  '/_protected/admin/notifications/': typeof ProtectedAdminNotificationsIndexRoute
+  '/_protected/admin/resident/': typeof ProtectedAdminResidentIndexRoute
+  '/_protected/admin/unpaid-accounts/': typeof ProtectedAdminUnpaidAccountsIndexRoute
+  '/_protected/employee/inquiries/': typeof ProtectedEmployeeInquiriesIndexRoute
+  '/_protected/employee/notices/': typeof ProtectedEmployeeNoticesIndexRoute
+  '/_protected/employee/payments/': typeof ProtectedEmployeePaymentsIndexRoute
+  '/_protected/employee/resident/': typeof ProtectedEmployeeResidentIndexRoute
+  '/_protected/admin/resident/$residentId/_view': typeof ProtectedAdminResidentResidentIdViewRouteRouteWithChildren
+  '/_protected/employee/resident/$residentId/_view': typeof ProtectedEmployeeResidentResidentIdViewRouteRouteWithChildren
+  '/_protected/admin/employee/$employeeId/edit': typeof ProtectedAdminEmployeeEmployeeIdEditRoute
+  '/_protected/admin/financial/_financial/monthly-due': typeof ProtectedAdminFinancialFinancialMonthlyDueRoute
+  '/_protected/admin/financial/edit/$residentId': typeof ProtectedAdminFinancialEditResidentIdRoute
+  '/_protected/admin/resident/$residentId/edit': typeof ProtectedAdminResidentResidentIdEditRoute
+  '/_protected/employee/resident/$residentId/edit': typeof ProtectedEmployeeResidentResidentIdEditRoute
+  '/_protected/admin/employee/$employeeId/': typeof ProtectedAdminEmployeeEmployeeIdIndexRoute
+  '/_protected/admin/financial/_financial/': typeof ProtectedAdminFinancialFinancialIndexRoute
+  '/_protected/admin/financial/upload/': typeof ProtectedAdminFinancialUploadIndexRoute
+  '/_protected/admin/resident/$residentId/_view/inquires-history': typeof ProtectedAdminResidentResidentIdViewInquiresHistoryRoute
+  '/_protected/admin/resident/$residentId/_view/notice-received': typeof ProtectedAdminResidentResidentIdViewNoticeReceivedRoute
+  '/_protected/employee/resident/$residentId/_view/inquires-history': typeof ProtectedEmployeeResidentResidentIdViewInquiresHistoryRoute
+  '/_protected/employee/resident/$residentId/_view/notice-received': typeof ProtectedEmployeeResidentResidentIdViewNoticeReceivedRoute
+  '/_protected/admin/resident/$residentId/_view/': typeof ProtectedAdminResidentResidentIdViewIndexRoute
+  '/_protected/employee/resident/$residentId/_view/': typeof ProtectedEmployeeResidentResidentIdViewIndexRoute
 }
 
 export interface FileRouteTypes {
@@ -1710,9 +1802,9 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | ''
+    | '/login'
     | '/admin'
     | '/employee'
-    | '/login'
     | '/resident'
     | '/admin/employee'
     | '/admin/financial'
@@ -1723,7 +1815,6 @@ export interface FileRouteTypes {
     | '/employee/notices'
     | '/employee/payments'
     | '/employee/resident'
-    | '/dashboard'
     | '/admin/account'
     | '/admin/edit-profile'
     | '/admin/profile'
@@ -1788,7 +1879,6 @@ export interface FileRouteTypes {
     | '/login'
     | '/resident'
     | '/admin/financial'
-    | '/dashboard'
     | '/admin/account'
     | '/admin/edit-profile'
     | '/admin/profile'
@@ -1846,100 +1936,93 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/_auth'
-    | '/admin'
-    | '/employee'
+    | '/_protected'
     | '/login'
-    | '/resident'
-    | '/admin/employee'
-    | '/admin/financial'
-    | '/admin/notifications'
-    | '/admin/resident'
-    | '/admin/unpaid-accounts'
-    | '/employee/inquiries'
-    | '/employee/notices'
-    | '/employee/payments'
-    | '/employee/resident'
-    | '/_auth/dashboard'
-    | '/admin/account'
-    | '/admin/edit-profile'
-    | '/admin/profile'
-    | '/employee/account'
-    | '/employee/edit-profile'
-    | '/employee/profile'
-    | '/resident/contact'
-    | '/resident/submit-request'
-    | '/resident/account'
-    | '/resident/dashboard'
-    | '/resident/edit-profile'
-    | '/resident/financial'
-    | '/resident/inquiries'
-    | '/resident/notices'
-    | '/resident/paynow'
-    | '/resident/profile'
-    | '/resident/upload-payment'
-    | '/admin/'
-    | '/employee/'
-    | '/admin/financial/_financial'
-    | '/admin/resident/$residentId'
-    | '/employee/resident/$residentId'
-    | '/admin/employee/add-employee'
-    | '/admin/financial/record-payment'
-    | '/admin/notifications/create'
-    | '/admin/notifications/send-sms'
-    | '/admin/resident/add-resident'
-    | '/admin/unpaid-accounts/reminders'
-    | '/employee/_task-summary/open-inquiries'
-    | '/employee/_task-summary/over-due-accounts'
-    | '/employee/_task-summary/pending-notices'
-    | '/employee/_task-summary/unverified-payments'
-    | '/employee/inquiries/create'
-    | '/employee/notices/create'
-    | '/employee/payments/record-payment'
-    | '/employee/resident/add-resident'
-    | '/admin/employee/'
-    | '/admin/notifications/'
-    | '/admin/resident/'
-    | '/admin/unpaid-accounts/'
-    | '/employee/inquiries/'
-    | '/employee/notices/'
-    | '/employee/payments/'
-    | '/employee/resident/'
-    | '/admin/resident/$residentId/_view'
-    | '/employee/resident/$residentId/_view'
-    | '/admin/employee/$employeeId/edit'
-    | '/admin/financial/_financial/monthly-due'
-    | '/admin/financial/edit/$residentId'
-    | '/admin/resident/$residentId/edit'
-    | '/employee/resident/$residentId/edit'
-    | '/admin/employee/$employeeId/'
-    | '/admin/financial/_financial/'
-    | '/admin/financial/upload/'
-    | '/admin/resident/$residentId/_view/inquires-history'
-    | '/admin/resident/$residentId/_view/notice-received'
-    | '/employee/resident/$residentId/_view/inquires-history'
-    | '/employee/resident/$residentId/_view/notice-received'
-    | '/admin/resident/$residentId/_view/'
-    | '/employee/resident/$residentId/_view/'
+    | '/_protected/admin'
+    | '/_protected/employee'
+    | '/_protected/resident'
+    | '/_protected/admin/employee'
+    | '/_protected/admin/financial'
+    | '/_protected/admin/notifications'
+    | '/_protected/admin/resident'
+    | '/_protected/admin/unpaid-accounts'
+    | '/_protected/employee/inquiries'
+    | '/_protected/employee/notices'
+    | '/_protected/employee/payments'
+    | '/_protected/employee/resident'
+    | '/_protected/admin/account'
+    | '/_protected/admin/edit-profile'
+    | '/_protected/admin/profile'
+    | '/_protected/employee/account'
+    | '/_protected/employee/edit-profile'
+    | '/_protected/employee/profile'
+    | '/_protected/resident/contact'
+    | '/_protected/resident/submit-request'
+    | '/_protected/resident/account'
+    | '/_protected/resident/dashboard'
+    | '/_protected/resident/edit-profile'
+    | '/_protected/resident/financial'
+    | '/_protected/resident/inquiries'
+    | '/_protected/resident/notices'
+    | '/_protected/resident/paynow'
+    | '/_protected/resident/profile'
+    | '/_protected/resident/upload-payment'
+    | '/_protected/admin/'
+    | '/_protected/employee/'
+    | '/_protected/admin/financial/_financial'
+    | '/_protected/admin/resident/$residentId'
+    | '/_protected/employee/resident/$residentId'
+    | '/_protected/admin/employee/add-employee'
+    | '/_protected/admin/financial/record-payment'
+    | '/_protected/admin/notifications/create'
+    | '/_protected/admin/notifications/send-sms'
+    | '/_protected/admin/resident/add-resident'
+    | '/_protected/admin/unpaid-accounts/reminders'
+    | '/_protected/employee/_task-summary/open-inquiries'
+    | '/_protected/employee/_task-summary/over-due-accounts'
+    | '/_protected/employee/_task-summary/pending-notices'
+    | '/_protected/employee/_task-summary/unverified-payments'
+    | '/_protected/employee/inquiries/create'
+    | '/_protected/employee/notices/create'
+    | '/_protected/employee/payments/record-payment'
+    | '/_protected/employee/resident/add-resident'
+    | '/_protected/admin/employee/'
+    | '/_protected/admin/notifications/'
+    | '/_protected/admin/resident/'
+    | '/_protected/admin/unpaid-accounts/'
+    | '/_protected/employee/inquiries/'
+    | '/_protected/employee/notices/'
+    | '/_protected/employee/payments/'
+    | '/_protected/employee/resident/'
+    | '/_protected/admin/resident/$residentId/_view'
+    | '/_protected/employee/resident/$residentId/_view'
+    | '/_protected/admin/employee/$employeeId/edit'
+    | '/_protected/admin/financial/_financial/monthly-due'
+    | '/_protected/admin/financial/edit/$residentId'
+    | '/_protected/admin/resident/$residentId/edit'
+    | '/_protected/employee/resident/$residentId/edit'
+    | '/_protected/admin/employee/$employeeId/'
+    | '/_protected/admin/financial/_financial/'
+    | '/_protected/admin/financial/upload/'
+    | '/_protected/admin/resident/$residentId/_view/inquires-history'
+    | '/_protected/admin/resident/$residentId/_view/notice-received'
+    | '/_protected/employee/resident/$residentId/_view/inquires-history'
+    | '/_protected/employee/resident/$residentId/_view/notice-received'
+    | '/_protected/admin/resident/$residentId/_view/'
+    | '/_protected/employee/resident/$residentId/_view/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AuthRouteRoute: typeof AuthRouteRouteWithChildren
-  AdminRouteRoute: typeof AdminRouteRouteWithChildren
-  EmployeeRouteRoute: typeof EmployeeRouteRouteWithChildren
+  ProtectedRoute: typeof ProtectedRouteWithChildren
   LoginRoute: typeof LoginRoute
-  ResidentRouteLazyRoute: typeof ResidentRouteLazyRouteWithChildren
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AuthRouteRoute: AuthRouteRouteWithChildren,
-  AdminRouteRoute: AdminRouteRouteWithChildren,
-  EmployeeRouteRoute: EmployeeRouteRouteWithChildren,
+  ProtectedRoute: ProtectedRouteWithChildren,
   LoginRoute: LoginRoute,
-  ResidentRouteLazyRoute: ResidentRouteLazyRouteWithChildren,
 }
 
 export const routeTree = rootRoute
@@ -1953,416 +2036,414 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/_auth",
-        "/admin",
-        "/employee",
-        "/login",
-        "/resident"
+        "/_protected",
+        "/login"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/_auth": {
-      "filePath": "_auth/route.tsx",
+    "/_protected": {
+      "filePath": "_protected.tsx",
       "children": [
-        "/_auth/dashboard"
-      ]
-    },
-    "/admin": {
-      "filePath": "admin/route.tsx",
-      "children": [
-        "/admin/employee",
-        "/admin/financial",
-        "/admin/notifications",
-        "/admin/resident",
-        "/admin/unpaid-accounts",
-        "/admin/account",
-        "/admin/edit-profile",
-        "/admin/profile",
-        "/admin/"
-      ]
-    },
-    "/employee": {
-      "filePath": "employee/route.tsx",
-      "children": [
-        "/employee/inquiries",
-        "/employee/notices",
-        "/employee/payments",
-        "/employee/resident",
-        "/employee/account",
-        "/employee/edit-profile",
-        "/employee/profile",
-        "/employee/",
-        "/employee/_task-summary/open-inquiries",
-        "/employee/_task-summary/over-due-accounts",
-        "/employee/_task-summary/pending-notices",
-        "/employee/_task-summary/unverified-payments"
+        "/_protected/admin",
+        "/_protected/employee",
+        "/_protected/resident"
       ]
     },
     "/login": {
       "filePath": "login.tsx"
     },
-    "/resident": {
-      "filePath": "resident/route.lazy.tsx",
+    "/_protected/admin": {
+      "filePath": "_protected/admin/route.tsx",
+      "parent": "/_protected",
       "children": [
-        "/resident/contact",
-        "/resident/submit-request",
-        "/resident/account",
-        "/resident/dashboard",
-        "/resident/edit-profile",
-        "/resident/financial",
-        "/resident/inquiries",
-        "/resident/notices",
-        "/resident/paynow",
-        "/resident/profile",
-        "/resident/upload-payment"
+        "/_protected/admin/employee",
+        "/_protected/admin/financial",
+        "/_protected/admin/notifications",
+        "/_protected/admin/resident",
+        "/_protected/admin/unpaid-accounts",
+        "/_protected/admin/account",
+        "/_protected/admin/edit-profile",
+        "/_protected/admin/profile",
+        "/_protected/admin/"
       ]
     },
-    "/admin/employee": {
-      "filePath": "admin/employee/route.tsx",
-      "parent": "/admin",
+    "/_protected/employee": {
+      "filePath": "_protected/employee/route.tsx",
+      "parent": "/_protected",
       "children": [
-        "/admin/employee/add-employee",
-        "/admin/employee/",
-        "/admin/employee/$employeeId/edit",
-        "/admin/employee/$employeeId/"
+        "/_protected/employee/inquiries",
+        "/_protected/employee/notices",
+        "/_protected/employee/payments",
+        "/_protected/employee/resident",
+        "/_protected/employee/account",
+        "/_protected/employee/edit-profile",
+        "/_protected/employee/profile",
+        "/_protected/employee/",
+        "/_protected/employee/_task-summary/open-inquiries",
+        "/_protected/employee/_task-summary/over-due-accounts",
+        "/_protected/employee/_task-summary/pending-notices",
+        "/_protected/employee/_task-summary/unverified-payments"
       ]
     },
-    "/admin/financial": {
-      "filePath": "admin/financial/route.tsx",
-      "parent": "/admin",
+    "/_protected/resident": {
+      "filePath": "_protected/resident/route.lazy.tsx",
+      "parent": "/_protected",
       "children": [
-        "/admin/financial/_financial",
-        "/admin/financial/record-payment",
-        "/admin/financial/edit/$residentId",
-        "/admin/financial/upload/"
+        "/_protected/resident/contact",
+        "/_protected/resident/submit-request",
+        "/_protected/resident/account",
+        "/_protected/resident/dashboard",
+        "/_protected/resident/edit-profile",
+        "/_protected/resident/financial",
+        "/_protected/resident/inquiries",
+        "/_protected/resident/notices",
+        "/_protected/resident/paynow",
+        "/_protected/resident/profile",
+        "/_protected/resident/upload-payment"
       ]
     },
-    "/admin/notifications": {
-      "filePath": "admin/notifications/route.tsx",
-      "parent": "/admin",
+    "/_protected/admin/employee": {
+      "filePath": "_protected/admin/employee/route.tsx",
+      "parent": "/_protected/admin",
       "children": [
-        "/admin/notifications/create",
-        "/admin/notifications/send-sms",
-        "/admin/notifications/"
+        "/_protected/admin/employee/add-employee",
+        "/_protected/admin/employee/",
+        "/_protected/admin/employee/$employeeId/edit",
+        "/_protected/admin/employee/$employeeId/"
       ]
     },
-    "/admin/resident": {
-      "filePath": "admin/resident/route.tsx",
-      "parent": "/admin",
+    "/_protected/admin/financial": {
+      "filePath": "_protected/admin/financial/route.tsx",
+      "parent": "/_protected/admin",
       "children": [
-        "/admin/resident/$residentId",
-        "/admin/resident/add-resident",
-        "/admin/resident/"
+        "/_protected/admin/financial/_financial",
+        "/_protected/admin/financial/record-payment",
+        "/_protected/admin/financial/edit/$residentId",
+        "/_protected/admin/financial/upload/"
       ]
     },
-    "/admin/unpaid-accounts": {
-      "filePath": "admin/unpaid-accounts/route.tsx",
-      "parent": "/admin",
+    "/_protected/admin/notifications": {
+      "filePath": "_protected/admin/notifications/route.tsx",
+      "parent": "/_protected/admin",
       "children": [
-        "/admin/unpaid-accounts/reminders",
-        "/admin/unpaid-accounts/"
+        "/_protected/admin/notifications/create",
+        "/_protected/admin/notifications/send-sms",
+        "/_protected/admin/notifications/"
       ]
     },
-    "/employee/inquiries": {
-      "filePath": "employee/inquiries/route.tsx",
-      "parent": "/employee",
+    "/_protected/admin/resident": {
+      "filePath": "_protected/admin/resident/route.tsx",
+      "parent": "/_protected/admin",
       "children": [
-        "/employee/inquiries/create",
-        "/employee/inquiries/"
+        "/_protected/admin/resident/$residentId",
+        "/_protected/admin/resident/add-resident",
+        "/_protected/admin/resident/"
       ]
     },
-    "/employee/notices": {
-      "filePath": "employee/notices/route.tsx",
-      "parent": "/employee",
+    "/_protected/admin/unpaid-accounts": {
+      "filePath": "_protected/admin/unpaid-accounts/route.tsx",
+      "parent": "/_protected/admin",
       "children": [
-        "/employee/notices/create",
-        "/employee/notices/"
+        "/_protected/admin/unpaid-accounts/reminders",
+        "/_protected/admin/unpaid-accounts/"
       ]
     },
-    "/employee/payments": {
-      "filePath": "employee/payments/route.tsx",
-      "parent": "/employee",
+    "/_protected/employee/inquiries": {
+      "filePath": "_protected/employee/inquiries/route.tsx",
+      "parent": "/_protected/employee",
       "children": [
-        "/employee/payments/record-payment",
-        "/employee/payments/"
+        "/_protected/employee/inquiries/create",
+        "/_protected/employee/inquiries/"
       ]
     },
-    "/employee/resident": {
-      "filePath": "employee/resident/route.tsx",
-      "parent": "/employee",
+    "/_protected/employee/notices": {
+      "filePath": "_protected/employee/notices/route.tsx",
+      "parent": "/_protected/employee",
       "children": [
-        "/employee/resident/$residentId",
-        "/employee/resident/add-resident",
-        "/employee/resident/"
+        "/_protected/employee/notices/create",
+        "/_protected/employee/notices/"
       ]
     },
-    "/_auth/dashboard": {
-      "filePath": "_auth/dashboard.tsx",
-      "parent": "/_auth"
-    },
-    "/admin/account": {
-      "filePath": "admin/account.tsx",
-      "parent": "/admin"
-    },
-    "/admin/edit-profile": {
-      "filePath": "admin/edit-profile.tsx",
-      "parent": "/admin"
-    },
-    "/admin/profile": {
-      "filePath": "admin/profile.tsx",
-      "parent": "/admin"
-    },
-    "/employee/account": {
-      "filePath": "employee/account.tsx",
-      "parent": "/employee"
-    },
-    "/employee/edit-profile": {
-      "filePath": "employee/edit-profile.tsx",
-      "parent": "/employee"
-    },
-    "/employee/profile": {
-      "filePath": "employee/profile.tsx",
-      "parent": "/employee"
-    },
-    "/resident/contact": {
-      "filePath": "resident/contact.tsx",
-      "parent": "/resident"
-    },
-    "/resident/submit-request": {
-      "filePath": "resident/submit-request.tsx",
-      "parent": "/resident"
-    },
-    "/resident/account": {
-      "filePath": "resident/account.lazy.tsx",
-      "parent": "/resident"
-    },
-    "/resident/dashboard": {
-      "filePath": "resident/dashboard.lazy.tsx",
-      "parent": "/resident"
-    },
-    "/resident/edit-profile": {
-      "filePath": "resident/edit-profile.lazy.tsx",
-      "parent": "/resident"
-    },
-    "/resident/financial": {
-      "filePath": "resident/financial.lazy.tsx",
-      "parent": "/resident"
-    },
-    "/resident/inquiries": {
-      "filePath": "resident/inquiries.lazy.tsx",
-      "parent": "/resident"
-    },
-    "/resident/notices": {
-      "filePath": "resident/notices.lazy.tsx",
-      "parent": "/resident"
-    },
-    "/resident/paynow": {
-      "filePath": "resident/paynow.lazy.tsx",
-      "parent": "/resident"
-    },
-    "/resident/profile": {
-      "filePath": "resident/profile.lazy.tsx",
-      "parent": "/resident"
-    },
-    "/resident/upload-payment": {
-      "filePath": "resident/upload-payment.lazy.tsx",
-      "parent": "/resident"
-    },
-    "/admin/": {
-      "filePath": "admin/index.tsx",
-      "parent": "/admin"
-    },
-    "/employee/": {
-      "filePath": "employee/index.tsx",
-      "parent": "/employee"
-    },
-    "/admin/financial/_financial": {
-      "filePath": "admin/financial/_financial/route.tsx",
-      "parent": "/admin/financial",
+    "/_protected/employee/payments": {
+      "filePath": "_protected/employee/payments/route.tsx",
+      "parent": "/_protected/employee",
       "children": [
-        "/admin/financial/_financial/monthly-due",
-        "/admin/financial/_financial/"
+        "/_protected/employee/payments/record-payment",
+        "/_protected/employee/payments/"
       ]
     },
-    "/admin/resident/$residentId": {
-      "filePath": "admin/resident/$residentId/route.tsx",
-      "parent": "/admin/resident",
+    "/_protected/employee/resident": {
+      "filePath": "_protected/employee/resident/route.tsx",
+      "parent": "/_protected/employee",
       "children": [
-        "/admin/resident/$residentId/_view",
-        "/admin/resident/$residentId/edit"
+        "/_protected/employee/resident/$residentId",
+        "/_protected/employee/resident/add-resident",
+        "/_protected/employee/resident/"
       ]
     },
-    "/employee/resident/$residentId": {
-      "filePath": "employee/resident/$residentId/route.tsx",
-      "parent": "/employee/resident",
+    "/_protected/admin/account": {
+      "filePath": "_protected/admin/account.tsx",
+      "parent": "/_protected/admin"
+    },
+    "/_protected/admin/edit-profile": {
+      "filePath": "_protected/admin/edit-profile.tsx",
+      "parent": "/_protected/admin"
+    },
+    "/_protected/admin/profile": {
+      "filePath": "_protected/admin/profile.tsx",
+      "parent": "/_protected/admin"
+    },
+    "/_protected/employee/account": {
+      "filePath": "_protected/employee/account.tsx",
+      "parent": "/_protected/employee"
+    },
+    "/_protected/employee/edit-profile": {
+      "filePath": "_protected/employee/edit-profile.tsx",
+      "parent": "/_protected/employee"
+    },
+    "/_protected/employee/profile": {
+      "filePath": "_protected/employee/profile.tsx",
+      "parent": "/_protected/employee"
+    },
+    "/_protected/resident/contact": {
+      "filePath": "_protected/resident/contact.tsx",
+      "parent": "/_protected/resident"
+    },
+    "/_protected/resident/submit-request": {
+      "filePath": "_protected/resident/submit-request.tsx",
+      "parent": "/_protected/resident"
+    },
+    "/_protected/resident/account": {
+      "filePath": "_protected/resident/account.lazy.tsx",
+      "parent": "/_protected/resident"
+    },
+    "/_protected/resident/dashboard": {
+      "filePath": "_protected/resident/dashboard.lazy.tsx",
+      "parent": "/_protected/resident"
+    },
+    "/_protected/resident/edit-profile": {
+      "filePath": "_protected/resident/edit-profile.lazy.tsx",
+      "parent": "/_protected/resident"
+    },
+    "/_protected/resident/financial": {
+      "filePath": "_protected/resident/financial.lazy.tsx",
+      "parent": "/_protected/resident"
+    },
+    "/_protected/resident/inquiries": {
+      "filePath": "_protected/resident/inquiries.lazy.tsx",
+      "parent": "/_protected/resident"
+    },
+    "/_protected/resident/notices": {
+      "filePath": "_protected/resident/notices.lazy.tsx",
+      "parent": "/_protected/resident"
+    },
+    "/_protected/resident/paynow": {
+      "filePath": "_protected/resident/paynow.lazy.tsx",
+      "parent": "/_protected/resident"
+    },
+    "/_protected/resident/profile": {
+      "filePath": "_protected/resident/profile.lazy.tsx",
+      "parent": "/_protected/resident"
+    },
+    "/_protected/resident/upload-payment": {
+      "filePath": "_protected/resident/upload-payment.lazy.tsx",
+      "parent": "/_protected/resident"
+    },
+    "/_protected/admin/": {
+      "filePath": "_protected/admin/index.tsx",
+      "parent": "/_protected/admin"
+    },
+    "/_protected/employee/": {
+      "filePath": "_protected/employee/index.tsx",
+      "parent": "/_protected/employee"
+    },
+    "/_protected/admin/financial/_financial": {
+      "filePath": "_protected/admin/financial/_financial/route.tsx",
+      "parent": "/_protected/admin/financial",
       "children": [
-        "/employee/resident/$residentId/_view",
-        "/employee/resident/$residentId/edit"
+        "/_protected/admin/financial/_financial/monthly-due",
+        "/_protected/admin/financial/_financial/"
       ]
     },
-    "/admin/employee/add-employee": {
-      "filePath": "admin/employee/add-employee.tsx",
-      "parent": "/admin/employee"
-    },
-    "/admin/financial/record-payment": {
-      "filePath": "admin/financial/record-payment.tsx",
-      "parent": "/admin/financial"
-    },
-    "/admin/notifications/create": {
-      "filePath": "admin/notifications/create.tsx",
-      "parent": "/admin/notifications"
-    },
-    "/admin/notifications/send-sms": {
-      "filePath": "admin/notifications/send-sms.tsx",
-      "parent": "/admin/notifications"
-    },
-    "/admin/resident/add-resident": {
-      "filePath": "admin/resident/add-resident.tsx",
-      "parent": "/admin/resident"
-    },
-    "/admin/unpaid-accounts/reminders": {
-      "filePath": "admin/unpaid-accounts/reminders.tsx",
-      "parent": "/admin/unpaid-accounts"
-    },
-    "/employee/_task-summary/open-inquiries": {
-      "filePath": "employee/_task-summary/open-inquiries.tsx",
-      "parent": "/employee"
-    },
-    "/employee/_task-summary/over-due-accounts": {
-      "filePath": "employee/_task-summary/over-due-accounts.tsx",
-      "parent": "/employee"
-    },
-    "/employee/_task-summary/pending-notices": {
-      "filePath": "employee/_task-summary/pending-notices.tsx",
-      "parent": "/employee"
-    },
-    "/employee/_task-summary/unverified-payments": {
-      "filePath": "employee/_task-summary/unverified-payments.tsx",
-      "parent": "/employee"
-    },
-    "/employee/inquiries/create": {
-      "filePath": "employee/inquiries/create.tsx",
-      "parent": "/employee/inquiries"
-    },
-    "/employee/notices/create": {
-      "filePath": "employee/notices/create.tsx",
-      "parent": "/employee/notices"
-    },
-    "/employee/payments/record-payment": {
-      "filePath": "employee/payments/record-payment.tsx",
-      "parent": "/employee/payments"
-    },
-    "/employee/resident/add-resident": {
-      "filePath": "employee/resident/add-resident.tsx",
-      "parent": "/employee/resident"
-    },
-    "/admin/employee/": {
-      "filePath": "admin/employee/index.tsx",
-      "parent": "/admin/employee"
-    },
-    "/admin/notifications/": {
-      "filePath": "admin/notifications/index.tsx",
-      "parent": "/admin/notifications"
-    },
-    "/admin/resident/": {
-      "filePath": "admin/resident/index.tsx",
-      "parent": "/admin/resident"
-    },
-    "/admin/unpaid-accounts/": {
-      "filePath": "admin/unpaid-accounts/index.tsx",
-      "parent": "/admin/unpaid-accounts"
-    },
-    "/employee/inquiries/": {
-      "filePath": "employee/inquiries/index.tsx",
-      "parent": "/employee/inquiries"
-    },
-    "/employee/notices/": {
-      "filePath": "employee/notices/index.tsx",
-      "parent": "/employee/notices"
-    },
-    "/employee/payments/": {
-      "filePath": "employee/payments/index.tsx",
-      "parent": "/employee/payments"
-    },
-    "/employee/resident/": {
-      "filePath": "employee/resident/index.tsx",
-      "parent": "/employee/resident"
-    },
-    "/admin/resident/$residentId/_view": {
-      "filePath": "admin/resident/$residentId/_view/route.tsx",
-      "parent": "/admin/resident/$residentId",
+    "/_protected/admin/resident/$residentId": {
+      "filePath": "_protected/admin/resident/$residentId/route.tsx",
+      "parent": "/_protected/admin/resident",
       "children": [
-        "/admin/resident/$residentId/_view/inquires-history",
-        "/admin/resident/$residentId/_view/notice-received",
-        "/admin/resident/$residentId/_view/"
+        "/_protected/admin/resident/$residentId/_view",
+        "/_protected/admin/resident/$residentId/edit"
       ]
     },
-    "/employee/resident/$residentId/_view": {
-      "filePath": "employee/resident/$residentId/_view/route.tsx",
-      "parent": "/employee/resident/$residentId",
+    "/_protected/employee/resident/$residentId": {
+      "filePath": "_protected/employee/resident/$residentId/route.tsx",
+      "parent": "/_protected/employee/resident",
       "children": [
-        "/employee/resident/$residentId/_view/inquires-history",
-        "/employee/resident/$residentId/_view/notice-received",
-        "/employee/resident/$residentId/_view/"
+        "/_protected/employee/resident/$residentId/_view",
+        "/_protected/employee/resident/$residentId/edit"
       ]
     },
-    "/admin/employee/$employeeId/edit": {
-      "filePath": "admin/employee/$employeeId/edit.tsx",
-      "parent": "/admin/employee"
+    "/_protected/admin/employee/add-employee": {
+      "filePath": "_protected/admin/employee/add-employee.tsx",
+      "parent": "/_protected/admin/employee"
     },
-    "/admin/financial/_financial/monthly-due": {
-      "filePath": "admin/financial/_financial/monthly-due.tsx",
-      "parent": "/admin/financial/_financial"
+    "/_protected/admin/financial/record-payment": {
+      "filePath": "_protected/admin/financial/record-payment.tsx",
+      "parent": "/_protected/admin/financial"
     },
-    "/admin/financial/edit/$residentId": {
-      "filePath": "admin/financial/edit/$residentId.tsx",
-      "parent": "/admin/financial"
+    "/_protected/admin/notifications/create": {
+      "filePath": "_protected/admin/notifications/create.tsx",
+      "parent": "/_protected/admin/notifications"
     },
-    "/admin/resident/$residentId/edit": {
-      "filePath": "admin/resident/$residentId/edit.tsx",
-      "parent": "/admin/resident/$residentId"
+    "/_protected/admin/notifications/send-sms": {
+      "filePath": "_protected/admin/notifications/send-sms.tsx",
+      "parent": "/_protected/admin/notifications"
     },
-    "/employee/resident/$residentId/edit": {
-      "filePath": "employee/resident/$residentId/edit.tsx",
-      "parent": "/employee/resident/$residentId"
+    "/_protected/admin/resident/add-resident": {
+      "filePath": "_protected/admin/resident/add-resident.tsx",
+      "parent": "/_protected/admin/resident"
     },
-    "/admin/employee/$employeeId/": {
-      "filePath": "admin/employee/$employeeId/index.tsx",
-      "parent": "/admin/employee"
+    "/_protected/admin/unpaid-accounts/reminders": {
+      "filePath": "_protected/admin/unpaid-accounts/reminders.tsx",
+      "parent": "/_protected/admin/unpaid-accounts"
     },
-    "/admin/financial/_financial/": {
-      "filePath": "admin/financial/_financial/index.tsx",
-      "parent": "/admin/financial/_financial"
+    "/_protected/employee/_task-summary/open-inquiries": {
+      "filePath": "_protected/employee/_task-summary/open-inquiries.tsx",
+      "parent": "/_protected/employee"
     },
-    "/admin/financial/upload/": {
-      "filePath": "admin/financial/upload/index.tsx",
-      "parent": "/admin/financial"
+    "/_protected/employee/_task-summary/over-due-accounts": {
+      "filePath": "_protected/employee/_task-summary/over-due-accounts.tsx",
+      "parent": "/_protected/employee"
     },
-    "/admin/resident/$residentId/_view/inquires-history": {
-      "filePath": "admin/resident/$residentId/_view/inquires-history.tsx",
-      "parent": "/admin/resident/$residentId/_view"
+    "/_protected/employee/_task-summary/pending-notices": {
+      "filePath": "_protected/employee/_task-summary/pending-notices.tsx",
+      "parent": "/_protected/employee"
     },
-    "/admin/resident/$residentId/_view/notice-received": {
-      "filePath": "admin/resident/$residentId/_view/notice-received.tsx",
-      "parent": "/admin/resident/$residentId/_view"
+    "/_protected/employee/_task-summary/unverified-payments": {
+      "filePath": "_protected/employee/_task-summary/unverified-payments.tsx",
+      "parent": "/_protected/employee"
     },
-    "/employee/resident/$residentId/_view/inquires-history": {
-      "filePath": "employee/resident/$residentId/_view/inquires-history.tsx",
-      "parent": "/employee/resident/$residentId/_view"
+    "/_protected/employee/inquiries/create": {
+      "filePath": "_protected/employee/inquiries/create.tsx",
+      "parent": "/_protected/employee/inquiries"
     },
-    "/employee/resident/$residentId/_view/notice-received": {
-      "filePath": "employee/resident/$residentId/_view/notice-received.tsx",
-      "parent": "/employee/resident/$residentId/_view"
+    "/_protected/employee/notices/create": {
+      "filePath": "_protected/employee/notices/create.tsx",
+      "parent": "/_protected/employee/notices"
     },
-    "/admin/resident/$residentId/_view/": {
-      "filePath": "admin/resident/$residentId/_view/index.tsx",
-      "parent": "/admin/resident/$residentId/_view"
+    "/_protected/employee/payments/record-payment": {
+      "filePath": "_protected/employee/payments/record-payment.tsx",
+      "parent": "/_protected/employee/payments"
     },
-    "/employee/resident/$residentId/_view/": {
-      "filePath": "employee/resident/$residentId/_view/index.tsx",
-      "parent": "/employee/resident/$residentId/_view"
+    "/_protected/employee/resident/add-resident": {
+      "filePath": "_protected/employee/resident/add-resident.tsx",
+      "parent": "/_protected/employee/resident"
+    },
+    "/_protected/admin/employee/": {
+      "filePath": "_protected/admin/employee/index.tsx",
+      "parent": "/_protected/admin/employee"
+    },
+    "/_protected/admin/notifications/": {
+      "filePath": "_protected/admin/notifications/index.tsx",
+      "parent": "/_protected/admin/notifications"
+    },
+    "/_protected/admin/resident/": {
+      "filePath": "_protected/admin/resident/index.tsx",
+      "parent": "/_protected/admin/resident"
+    },
+    "/_protected/admin/unpaid-accounts/": {
+      "filePath": "_protected/admin/unpaid-accounts/index.tsx",
+      "parent": "/_protected/admin/unpaid-accounts"
+    },
+    "/_protected/employee/inquiries/": {
+      "filePath": "_protected/employee/inquiries/index.tsx",
+      "parent": "/_protected/employee/inquiries"
+    },
+    "/_protected/employee/notices/": {
+      "filePath": "_protected/employee/notices/index.tsx",
+      "parent": "/_protected/employee/notices"
+    },
+    "/_protected/employee/payments/": {
+      "filePath": "_protected/employee/payments/index.tsx",
+      "parent": "/_protected/employee/payments"
+    },
+    "/_protected/employee/resident/": {
+      "filePath": "_protected/employee/resident/index.tsx",
+      "parent": "/_protected/employee/resident"
+    },
+    "/_protected/admin/resident/$residentId/_view": {
+      "filePath": "_protected/admin/resident/$residentId/_view/route.tsx",
+      "parent": "/_protected/admin/resident/$residentId",
+      "children": [
+        "/_protected/admin/resident/$residentId/_view/inquires-history",
+        "/_protected/admin/resident/$residentId/_view/notice-received",
+        "/_protected/admin/resident/$residentId/_view/"
+      ]
+    },
+    "/_protected/employee/resident/$residentId/_view": {
+      "filePath": "_protected/employee/resident/$residentId/_view/route.tsx",
+      "parent": "/_protected/employee/resident/$residentId",
+      "children": [
+        "/_protected/employee/resident/$residentId/_view/inquires-history",
+        "/_protected/employee/resident/$residentId/_view/notice-received",
+        "/_protected/employee/resident/$residentId/_view/"
+      ]
+    },
+    "/_protected/admin/employee/$employeeId/edit": {
+      "filePath": "_protected/admin/employee/$employeeId/edit.tsx",
+      "parent": "/_protected/admin/employee"
+    },
+    "/_protected/admin/financial/_financial/monthly-due": {
+      "filePath": "_protected/admin/financial/_financial/monthly-due.tsx",
+      "parent": "/_protected/admin/financial/_financial"
+    },
+    "/_protected/admin/financial/edit/$residentId": {
+      "filePath": "_protected/admin/financial/edit/$residentId.tsx",
+      "parent": "/_protected/admin/financial"
+    },
+    "/_protected/admin/resident/$residentId/edit": {
+      "filePath": "_protected/admin/resident/$residentId/edit.tsx",
+      "parent": "/_protected/admin/resident/$residentId"
+    },
+    "/_protected/employee/resident/$residentId/edit": {
+      "filePath": "_protected/employee/resident/$residentId/edit.tsx",
+      "parent": "/_protected/employee/resident/$residentId"
+    },
+    "/_protected/admin/employee/$employeeId/": {
+      "filePath": "_protected/admin/employee/$employeeId/index.tsx",
+      "parent": "/_protected/admin/employee"
+    },
+    "/_protected/admin/financial/_financial/": {
+      "filePath": "_protected/admin/financial/_financial/index.tsx",
+      "parent": "/_protected/admin/financial/_financial"
+    },
+    "/_protected/admin/financial/upload/": {
+      "filePath": "_protected/admin/financial/upload/index.tsx",
+      "parent": "/_protected/admin/financial"
+    },
+    "/_protected/admin/resident/$residentId/_view/inquires-history": {
+      "filePath": "_protected/admin/resident/$residentId/_view/inquires-history.tsx",
+      "parent": "/_protected/admin/resident/$residentId/_view"
+    },
+    "/_protected/admin/resident/$residentId/_view/notice-received": {
+      "filePath": "_protected/admin/resident/$residentId/_view/notice-received.tsx",
+      "parent": "/_protected/admin/resident/$residentId/_view"
+    },
+    "/_protected/employee/resident/$residentId/_view/inquires-history": {
+      "filePath": "_protected/employee/resident/$residentId/_view/inquires-history.tsx",
+      "parent": "/_protected/employee/resident/$residentId/_view"
+    },
+    "/_protected/employee/resident/$residentId/_view/notice-received": {
+      "filePath": "_protected/employee/resident/$residentId/_view/notice-received.tsx",
+      "parent": "/_protected/employee/resident/$residentId/_view"
+    },
+    "/_protected/admin/resident/$residentId/_view/": {
+      "filePath": "_protected/admin/resident/$residentId/_view/index.tsx",
+      "parent": "/_protected/admin/resident/$residentId/_view"
+    },
+    "/_protected/employee/resident/$residentId/_view/": {
+      "filePath": "_protected/employee/resident/$residentId/_view/index.tsx",
+      "parent": "/_protected/employee/resident/$residentId/_view"
     }
   }
 }

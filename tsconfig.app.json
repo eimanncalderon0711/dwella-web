@@ -23,5 +23,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "src/routes/admin/financial/.tsx"]
+  "include": ["src", "src/routes/_protected/admin/financial/.tsx"]
 }
