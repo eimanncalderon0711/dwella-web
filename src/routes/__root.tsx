@@ -9,6 +9,7 @@ export const Route = createRootRouteWithContext<{
 });
 
 function __root() {
+  
    const {isLoading } = useAuth();
 
   if (isLoading) return <div>Loading...</div>;

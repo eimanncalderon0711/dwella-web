@@ -1,8 +1,9 @@
 import { createRouter, RouterProvider } from '@tanstack/react-router'
 import { routeTree } from './routeTree.gen'
 import { AuthProvider, useAuth } from './contexts/auth/AuthContext';
+import { AxiosSetup } from './helpers/authHelper/AxiosSetup';
 
-const router = createRouter({
+export const router = createRouter({
   routeTree,
   context:{
     auth: undefined!,
@@ -16,8 +17,14 @@ declare module '@tanstack/react-router' {
 }
 export const InnerApp = () => {
   const auth = useAuth();
+  AxiosSetup();
   
-  return <RouterProvider router={router} context={{auth}}/>
+  return (
+    <>
+      {/* <AxiosSetup/> */}
+      <RouterProvider router={router} context={{auth}}/>
+    </>
+  )
 }
 
 function App() {

@@ -33,7 +33,7 @@ function Profile() {
       {/* Top profile */}
       <Row className="rounded-3" style={{ backgroundColor: "#F2F2F7" }}>
         <Col xs={12} className="d-flex align-items-center flex-wrap justify-content-between m-auto" style={{width:"95%"}}>
-          <ProfileAvatar name={"Trexy Sandigan"} position={"President"} address={"Cagayan De Oro City"}/> {/* Avatar photo */}
+          <ProfileAvatar/> {/* Avatar photo */}
           <ProfileStatus/>  {/* Online/Offline status */}
         </Col>
       </Row>

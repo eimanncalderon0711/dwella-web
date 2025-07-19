@@ -1,5 +1,5 @@
 import { createFileRoute, Link, Outlet, useLocation, useNavigate } from '@tanstack/react-router'
-import { Container, Stack } from 'react-bootstrap';
+import { Button, Container, Stack } from 'react-bootstrap';
 import Header from '../../../../../components/Header';
 import { IoMdAdd, IoMdDownload } from 'react-icons/io';
 import Search from '../../../../../components/Search';
@@ -41,28 +41,30 @@ function RouteComponent() {
         </Search>
 
         <Stack direction="horizontal" gap={3}>
-          <Link
-            to="/admin/financial"
-            className="text-decoration-none fw-bold text-black"
+          <Button
+            onClick={() => navigate({to:'/admin/financial'})}
+            className="text-decoration-none fw-bold text-black rounded-0 border-primary border-end-0 border-start-0 border-top-0"
             style={{
+              background:'white',
               borderBottom: location.pathname.endsWith("/financial")
                 ? "#344CB7 5px solid"
-                : "",
+                : "none",
             }}
           >
             Payment Records
-          </Link>
-          <Link
-            to="/admin/financial/monthly-due"
-            className="text-decoration-none fw-bold text-black"
+          </Button>
+          <Button
+            onClick={() => navigate({to:'/admin/financial/monthly-due'})}
+            className="text-decoration-none fw-bold text-black rounded-0 border-primary border-end-0 border-start-0 border-top-0"
             style={{
+              background:'white',
               borderBottom: location.pathname.endsWith("/financial/monthly-due")
                 ? "#344CB7 5px solid"
-                : "",
+                : "none",
             }}
           >
             Monthly Dues
-          </Link>
+          </Button>
 
           {location.pathname.endsWith("/financial/monthly-due") && <Link to='/admin/financial/upload' className='ms-auto text-decoration-none border border-primary px-3 py-2 rounded-3 fw-bold'>+ Upload</Link>}
         </Stack>

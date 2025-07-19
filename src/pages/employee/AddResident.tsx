@@ -3,6 +3,8 @@ import Header from '../../components/Header'
 import { FaAngleRight } from 'react-icons/fa6'
 
 function AddResident() {
+
+
   return (
     <Container className="pt-5 d-flex flex-column w-100" style={{maxWidth:"70rem"}}>
         {/* Header component*/}

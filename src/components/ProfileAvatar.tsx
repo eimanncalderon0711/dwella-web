@@ -1,15 +1,15 @@
 import { FaCamera } from "react-icons/fa6"
 import profile from "../assets/_ 1.png"
 import { Image } from "react-bootstrap"
+import { useAuth } from "../contexts/auth/AuthContext"
 
 
-interface ProfileProps{
-  name:string;
-  position:string;
-  address:string;
-}
 
-function ProfileAvatar(props: ProfileProps) {
+function ProfileAvatar() {
+  const {user} = useAuth();
+
+  let fullName = user ? `${user.first_name} ${user.middle_name} ${user.last_name}` : null;
+
   return (
     <div className="p-3 d-flex align-items-center gap-2">
 
@@ -23,9 +23,9 @@ function ProfileAvatar(props: ProfileProps) {
       
       {/* Side profile info */}
         <div className="d-flex flex-column">
-            <h3 className="fw-bold fs-5">{props.name}</h3>
-            <span className="text-muted">{props.position}</span>
-            <span className="text-muted">{props.address}</span>
+            <h3 className="fw-bold fs-5">{fullName}</h3>
+            <span className="text-muted">Employee</span>
+            <span className="text-muted">Cagayan De Oro City</span>
         </div>
     </div>
   )

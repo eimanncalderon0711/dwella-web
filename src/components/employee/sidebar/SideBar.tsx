@@ -10,17 +10,12 @@ import { Link, useLocation } from "@tanstack/react-router";
 import { CiMenuFries } from "react-icons/ci";
 import { IoCloseSharp } from "react-icons/io5";
 import { ImCreditCard } from "react-icons/im";
-import { useAuth } from "../../../contexts/auth/AuthContext";
 
 
 function SideBar() {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-
-  const { token } = useAuth();  // Check if the user is authenticated
-
-  if (!token) return <h1>Not Authenticated</h1>;
   
   return (
           <Nav variant="pills" className={`flex-sm-column justify-content-center justify-content-sm-start gap-3 shadow show-sidebar`}>

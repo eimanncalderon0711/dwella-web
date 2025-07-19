@@ -6,12 +6,10 @@ import { jwtDecode } from 'jwt-decode';
 
 export const Route = createFileRoute('/login')({
   beforeLoad: ({context}) => {
-    const { token, isLoading } = context.auth;
-
-    if (isLoading) return;
+    const { token } = context.auth;
 
     if(token) {
-      const decoded = jwtDecode<ITokenPayload>(token);
+      const decoded = jwtDecode<ITokenPayload>(token.access);
 
       switch (decoded.role) {
         case 'admin':

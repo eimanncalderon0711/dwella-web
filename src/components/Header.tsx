@@ -1,7 +1,7 @@
 import { Dropdown } from 'react-bootstrap'
 import  logo from "../assets/_ 1.png"
-import { useEffect, type ReactNode } from 'react'
-import { redirect, useNavigate } from '@tanstack/react-router';
+import { type ReactNode } from 'react'
+import {  useNavigate } from '@tanstack/react-router';
 import { useAuth } from '../contexts/auth/AuthContext';
 
 
@@ -13,11 +13,10 @@ interface HeaderProps {
 function Header({children, path} : HeaderProps) {
   const navigate = useNavigate();
 
-  const {logout} = useAuth();
-
+  const {logout, user, role} = useAuth();
   const logOutHandler = () => {
     logout();
-    navigate({to:'/login'})
+    window.location.href = '/login'
   }
 
   return (
@@ -33,11 +32,10 @@ function Header({children, path} : HeaderProps) {
             >
             <img src={logo} alt="Profile" width={50} height={50} style={{ borderRadius: "50%" }} />
             <div className="d-flex flex-column text-start">
-                <span className="fw-semibold">Julia Barrets</span>
-                <span className="text-muted" style={{ fontSize: "0.85rem" }}>Project Manager</span>
+                <span className="fw-semibold">{user?.first_name + " " + user?.last_name}</span>
+                <span className="text-muted" style={{ fontSize: "0.85rem" }}>{role && role.charAt(0).toUpperCase() + role.slice(1)}</span>
             </div>
             </Dropdown.Toggle>
-
             <Dropdown.Menu>
             <Dropdown.Item onClick={() => navigate({to: `/${path}/profile`})}>View Profile</Dropdown.Item>
             <Dropdown.Item onClick={() => navigate({to: `/${path}/account`})}>Account Settings</Dropdown.Item>

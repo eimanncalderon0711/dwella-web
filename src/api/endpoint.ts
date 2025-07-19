@@ -17,11 +17,11 @@ export const AUTH_URLS: IAuthUrls = {
 
 // Url endpoints for users. Create user, Retrieve user, Retrieve users, Update user, Delete user  
 export const USER_URLS: IUserUrls = {
-  GET_USERS: `${API_BASE_URL}/users`,
-  CREATE_USER: `${API_BASE_URL}/user/`,
-  GET_USER_BY_ID: (id:string) => `${API_BASE_URL}/user/${id}/`,
-  UPDATE_USER_BY_ID: (id: string) => `${API_BASE_URL}/user/${id}/update/`,
-  DELETE_USER_BY_ID: (id: string) => `${API_BASE_URL}/user/${id}/delete/`,
+  GET_USERS: `users`,
+  CREATE_USER: `user/`,
+  GET_USER_BY_ID: (id:number | string) => `/user/${id}/`,
+  UPDATE_USER_BY_ID: (id: number | string) => `/user/update/${id}/`,
+  DELETE_USER_BY_ID: (id: number | string) => `/user/${id}/delete/`,
 }
 
 

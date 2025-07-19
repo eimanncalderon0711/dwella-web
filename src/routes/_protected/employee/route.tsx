@@ -6,9 +6,9 @@ import { jwtDecode } from 'jwt-decode';
 export const Route = createFileRoute('/_protected/employee')({
   beforeLoad: ({ context }) => {
       const { token } = context.auth;
-  
+
       if (token) {
-        const decoded = jwtDecode<ITokenPayload>(token);
+        const decoded = jwtDecode<ITokenPayload>(token.access);
         switch(decoded.role){
           case 'resident':
             return redirect({to: '/resident/dashboard'})

@@ -16,6 +16,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as LoginImport } from './routes/login'
 import { Route as ProtectedImport } from './routes/_protected'
 import { Route as IndexImport } from './routes/index'
+import { Route as ProtectedResidentRouteImport } from './routes/_protected/resident/route'
 import { Route as ProtectedEmployeeRouteImport } from './routes/_protected/employee/route'
 import { Route as ProtectedAdminRouteImport } from './routes/_protected/admin/route'
 import { Route as ProtectedEmployeeIndexImport } from './routes/_protected/employee/index'
@@ -81,9 +82,6 @@ import { Route as ProtectedAdminResidentResidentIdViewInquiresHistoryImport } fr
 
 // Create Virtual Routes
 
-const ProtectedResidentRouteLazyImport = createFileRoute(
-  '/_protected/resident',
-)()
 const ProtectedResidentUploadPaymentLazyImport = createFileRoute(
   '/_protected/resident/upload-payment',
 )()
@@ -131,15 +129,11 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const ProtectedResidentRouteLazyRoute = ProtectedResidentRouteLazyImport.update(
-  {
-    id: '/resident',
-    path: '/resident',
-    getParentRoute: () => ProtectedRoute,
-  } as any,
-).lazy(() =>
-  import('./routes/_protected/resident/route.lazy').then((d) => d.Route),
-)
+const ProtectedResidentRouteRoute = ProtectedResidentRouteImport.update({
+  id: '/resident',
+  path: '/resident',
+  getParentRoute: () => ProtectedRoute,
+} as any)
 
 const ProtectedEmployeeRouteRoute = ProtectedEmployeeRouteImport.update({
   id: '/employee',
@@ -169,7 +163,7 @@ const ProtectedResidentUploadPaymentLazyRoute =
   ProtectedResidentUploadPaymentLazyImport.update({
     id: '/upload-payment',
     path: '/upload-payment',
-    getParentRoute: () => ProtectedResidentRouteLazyRoute,
+    getParentRoute: () => ProtectedResidentRouteRoute,
   } as any).lazy(() =>
     import('./routes/_protected/resident/upload-payment.lazy').then(
       (d) => d.Route,
@@ -180,7 +174,7 @@ const ProtectedResidentProfileLazyRoute =
   ProtectedResidentProfileLazyImport.update({
     id: '/profile',
     path: '/profile',
-    getParentRoute: () => ProtectedResidentRouteLazyRoute,
+    getParentRoute: () => ProtectedResidentRouteRoute,
   } as any).lazy(() =>
     import('./routes/_protected/resident/profile.lazy').then((d) => d.Route),
   )
@@ -189,7 +183,7 @@ const ProtectedResidentPaynowLazyRoute =
   ProtectedResidentPaynowLazyImport.update({
     id: '/paynow',
     path: '/paynow',
-    getParentRoute: () => ProtectedResidentRouteLazyRoute,
+    getParentRoute: () => ProtectedResidentRouteRoute,
   } as any).lazy(() =>
     import('./routes/_protected/resident/paynow.lazy').then((d) => d.Route),
   )
@@ -198,7 +192,7 @@ const ProtectedResidentNoticesLazyRoute =
   ProtectedResidentNoticesLazyImport.update({
     id: '/notices',
     path: '/notices',
-    getParentRoute: () => ProtectedResidentRouteLazyRoute,
+    getParentRoute: () => ProtectedResidentRouteRoute,
   } as any).lazy(() =>
     import('./routes/_protected/resident/notices.lazy').then((d) => d.Route),
   )
@@ -207,7 +201,7 @@ const ProtectedResidentInquiriesLazyRoute =
   ProtectedResidentInquiriesLazyImport.update({
     id: '/inquiries',
     path: '/inquiries',
-    getParentRoute: () => ProtectedResidentRouteLazyRoute,
+    getParentRoute: () => ProtectedResidentRouteRoute,
   } as any).lazy(() =>
     import('./routes/_protected/resident/inquiries.lazy').then((d) => d.Route),
   )
@@ -216,7 +210,7 @@ const ProtectedResidentFinancialLazyRoute =
   ProtectedResidentFinancialLazyImport.update({
     id: '/financial',
     path: '/financial',
-    getParentRoute: () => ProtectedResidentRouteLazyRoute,
+    getParentRoute: () => ProtectedResidentRouteRoute,
   } as any).lazy(() =>
     import('./routes/_protected/resident/financial.lazy').then((d) => d.Route),
   )
@@ -225,7 +219,7 @@ const ProtectedResidentEditProfileLazyRoute =
   ProtectedResidentEditProfileLazyImport.update({
     id: '/edit-profile',
     path: '/edit-profile',
-    getParentRoute: () => ProtectedResidentRouteLazyRoute,
+    getParentRoute: () => ProtectedResidentRouteRoute,
   } as any).lazy(() =>
     import('./routes/_protected/resident/edit-profile.lazy').then(
       (d) => d.Route,
@@ -236,7 +230,7 @@ const ProtectedResidentDashboardLazyRoute =
   ProtectedResidentDashboardLazyImport.update({
     id: '/dashboard',
     path: '/dashboard',
-    getParentRoute: () => ProtectedResidentRouteLazyRoute,
+    getParentRoute: () => ProtectedResidentRouteRoute,
   } as any).lazy(() =>
     import('./routes/_protected/resident/dashboard.lazy').then((d) => d.Route),
   )
@@ -245,7 +239,7 @@ const ProtectedResidentAccountLazyRoute =
   ProtectedResidentAccountLazyImport.update({
     id: '/account',
     path: '/account',
-    getParentRoute: () => ProtectedResidentRouteLazyRoute,
+    getParentRoute: () => ProtectedResidentRouteRoute,
   } as any).lazy(() =>
     import('./routes/_protected/resident/account.lazy').then((d) => d.Route),
   )
@@ -254,13 +248,13 @@ const ProtectedResidentSubmitRequestRoute =
   ProtectedResidentSubmitRequestImport.update({
     id: '/submit-request',
     path: '/submit-request',
-    getParentRoute: () => ProtectedResidentRouteLazyRoute,
+    getParentRoute: () => ProtectedResidentRouteRoute,
   } as any)
 
 const ProtectedResidentContactRoute = ProtectedResidentContactImport.update({
   id: '/contact',
   path: '/contact',
-  getParentRoute: () => ProtectedResidentRouteLazyRoute,
+  getParentRoute: () => ProtectedResidentRouteRoute,
 } as any)
 
 const ProtectedEmployeeProfileRoute = ProtectedEmployeeProfileImport.update({
@@ -690,7 +684,7 @@ declare module '@tanstack/react-router' {
       id: '/_protected/resident'
       path: '/resident'
       fullPath: '/resident'
-      preLoaderRoute: typeof ProtectedResidentRouteLazyImport
+      preLoaderRoute: typeof ProtectedResidentRouteImport
       parentRoute: typeof ProtectedImport
     }
     '/_protected/admin/employee': {
@@ -803,77 +797,77 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/resident/contact'
       preLoaderRoute: typeof ProtectedResidentContactImport
-      parentRoute: typeof ProtectedResidentRouteLazyImport
+      parentRoute: typeof ProtectedResidentRouteImport
     }
     '/_protected/resident/submit-request': {
       id: '/_protected/resident/submit-request'
       path: '/submit-request'
       fullPath: '/resident/submit-request'
       preLoaderRoute: typeof ProtectedResidentSubmitRequestImport
-      parentRoute: typeof ProtectedResidentRouteLazyImport
+      parentRoute: typeof ProtectedResidentRouteImport
     }
     '/_protected/resident/account': {
       id: '/_protected/resident/account'
       path: '/account'
       fullPath: '/resident/account'
       preLoaderRoute: typeof ProtectedResidentAccountLazyImport
-      parentRoute: typeof ProtectedResidentRouteLazyImport
+      parentRoute: typeof ProtectedResidentRouteImport
     }
     '/_protected/resident/dashboard': {
       id: '/_protected/resident/dashboard'
       path: '/dashboard'
       fullPath: '/resident/dashboard'
       preLoaderRoute: typeof ProtectedResidentDashboardLazyImport
-      parentRoute: typeof ProtectedResidentRouteLazyImport
+      parentRoute: typeof ProtectedResidentRouteImport
     }
     '/_protected/resident/edit-profile': {
       id: '/_protected/resident/edit-profile'
       path: '/edit-profile'
       fullPath: '/resident/edit-profile'
       preLoaderRoute: typeof ProtectedResidentEditProfileLazyImport
-      parentRoute: typeof ProtectedResidentRouteLazyImport
+      parentRoute: typeof ProtectedResidentRouteImport
     }
     '/_protected/resident/financial': {
       id: '/_protected/resident/financial'
       path: '/financial'
       fullPath: '/resident/financial'
       preLoaderRoute: typeof ProtectedResidentFinancialLazyImport
-      parentRoute: typeof ProtectedResidentRouteLazyImport
+      parentRoute: typeof ProtectedResidentRouteImport
     }
     '/_protected/resident/inquiries': {
       id: '/_protected/resident/inquiries'
       path: '/inquiries'
       fullPath: '/resident/inquiries'
       preLoaderRoute: typeof ProtectedResidentInquiriesLazyImport
-      parentRoute: typeof ProtectedResidentRouteLazyImport
+      parentRoute: typeof ProtectedResidentRouteImport
     }
     '/_protected/resident/notices': {
       id: '/_protected/resident/notices'
       path: '/notices'
       fullPath: '/resident/notices'
       preLoaderRoute: typeof ProtectedResidentNoticesLazyImport
-      parentRoute: typeof ProtectedResidentRouteLazyImport
+      parentRoute: typeof ProtectedResidentRouteImport
     }
     '/_protected/resident/paynow': {
       id: '/_protected/resident/paynow'
       path: '/paynow'
       fullPath: '/resident/paynow'
       preLoaderRoute: typeof ProtectedResidentPaynowLazyImport
-      parentRoute: typeof ProtectedResidentRouteLazyImport
+      parentRoute: typeof ProtectedResidentRouteImport
     }
     '/_protected/resident/profile': {
       id: '/_protected/resident/profile'
       path: '/profile'
       fullPath: '/resident/profile'
       preLoaderRoute: typeof ProtectedResidentProfileLazyImport
-      parentRoute: typeof ProtectedResidentRouteLazyImport
+      parentRoute: typeof ProtectedResidentRouteImport
     }
     '/_protected/resident/upload-payment': {
       id: '/_protected/resident/upload-payment'
       path: '/upload-payment'
       fullPath: '/resident/upload-payment'
       preLoaderRoute: typeof ProtectedResidentUploadPaymentLazyImport
-      parentRoute: typeof ProtectedResidentRouteLazyImport
+      parentRoute: typeof ProtectedResidentRouteImport
     }
     '/_protected/admin/': {
       id: '/_protected/admin/'
@@ -1529,7 +1523,7 @@ const ProtectedEmployeeRouteRouteWithChildren =
     ProtectedEmployeeRouteRouteChildren,
   )
 
-interface ProtectedResidentRouteLazyRouteChildren {
+interface ProtectedResidentRouteRouteChildren {
   ProtectedResidentContactRoute: typeof ProtectedResidentContactRoute
   ProtectedResidentSubmitRequestRoute: typeof ProtectedResidentSubmitRequestRoute
   ProtectedResidentAccountLazyRoute: typeof ProtectedResidentAccountLazyRoute
@@ -1543,7 +1537,7 @@ interface ProtectedResidentRouteLazyRouteChildren {
   ProtectedResidentUploadPaymentLazyRoute: typeof ProtectedResidentUploadPaymentLazyRoute
 }
 
-const ProtectedResidentRouteLazyRouteChildren: ProtectedResidentRouteLazyRouteChildren =
+const ProtectedResidentRouteRouteChildren: ProtectedResidentRouteRouteChildren =
   {
     ProtectedResidentContactRoute: ProtectedResidentContactRoute,
     ProtectedResidentSubmitRequestRoute: ProtectedResidentSubmitRequestRoute,
@@ -1560,21 +1554,21 @@ const ProtectedResidentRouteLazyRouteChildren: ProtectedResidentRouteLazyRouteCh
       ProtectedResidentUploadPaymentLazyRoute,
   }
 
-const ProtectedResidentRouteLazyRouteWithChildren =
-  ProtectedResidentRouteLazyRoute._addFileChildren(
-    ProtectedResidentRouteLazyRouteChildren,
+const ProtectedResidentRouteRouteWithChildren =
+  ProtectedResidentRouteRoute._addFileChildren(
+    ProtectedResidentRouteRouteChildren,
   )
 
 interface ProtectedRouteChildren {
   ProtectedAdminRouteRoute: typeof ProtectedAdminRouteRouteWithChildren
   ProtectedEmployeeRouteRoute: typeof ProtectedEmployeeRouteRouteWithChildren
-  ProtectedResidentRouteLazyRoute: typeof ProtectedResidentRouteLazyRouteWithChildren
+  ProtectedResidentRouteRoute: typeof ProtectedResidentRouteRouteWithChildren
 }
 
 const ProtectedRouteChildren: ProtectedRouteChildren = {
   ProtectedAdminRouteRoute: ProtectedAdminRouteRouteWithChildren,
   ProtectedEmployeeRouteRoute: ProtectedEmployeeRouteRouteWithChildren,
-  ProtectedResidentRouteLazyRoute: ProtectedResidentRouteLazyRouteWithChildren,
+  ProtectedResidentRouteRoute: ProtectedResidentRouteRouteWithChildren,
 }
 
 const ProtectedRouteWithChildren = ProtectedRoute._addFileChildren(
@@ -1587,7 +1581,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/admin': typeof ProtectedAdminRouteRouteWithChildren
   '/employee': typeof ProtectedEmployeeRouteRouteWithChildren
-  '/resident': typeof ProtectedResidentRouteLazyRouteWithChildren
+  '/resident': typeof ProtectedResidentRouteRouteWithChildren
   '/admin/employee': typeof ProtectedAdminEmployeeRouteRouteWithChildren
   '/admin/financial': typeof ProtectedAdminFinancialFinancialRouteRouteWithChildren
   '/admin/notifications': typeof ProtectedAdminNotificationsRouteRouteWithChildren
@@ -1660,7 +1654,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '': typeof ProtectedRouteWithChildren
   '/login': typeof LoginRoute
-  '/resident': typeof ProtectedResidentRouteLazyRouteWithChildren
+  '/resident': typeof ProtectedResidentRouteRouteWithChildren
   '/admin/financial': typeof ProtectedAdminFinancialFinancialIndexRoute
   '/admin/account': typeof ProtectedAdminAccountRoute
   '/admin/edit-profile': typeof ProtectedAdminEditProfileRoute
@@ -1725,7 +1719,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/_protected/admin': typeof ProtectedAdminRouteRouteWithChildren
   '/_protected/employee': typeof ProtectedEmployeeRouteRouteWithChildren
-  '/_protected/resident': typeof ProtectedResidentRouteLazyRouteWithChildren
+  '/_protected/resident': typeof ProtectedResidentRouteRouteWithChildren
   '/_protected/admin/employee': typeof ProtectedAdminEmployeeRouteRouteWithChildren
   '/_protected/admin/financial': typeof ProtectedAdminFinancialRouteRouteWithChildren
   '/_protected/admin/notifications': typeof ProtectedAdminNotificationsRouteRouteWithChildren
@@ -2088,7 +2082,7 @@ export const routeTree = rootRoute
       ]
     },
     "/_protected/resident": {
-      "filePath": "_protected/resident/route.lazy.tsx",
+      "filePath": "_protected/resident/route.tsx",
       "parent": "/_protected",
       "children": [
         "/_protected/resident/contact",
