@@ -18,7 +18,7 @@ export const AUTH_URLS: IAuthUrls = {
 // Url endpoints for users. Create user, Retrieve user, Retrieve users, Update user, Delete user  
 export const USER_URLS: IUserUrls = {
   GET_USERS: `users`,
-  CREATE_USER: `user/`,
+  CREATE_USER: `register/`,
   GET_USER_BY_ID: (id:number | string) => `/user/${id}/`,
   UPDATE_USER_BY_ID: (id: number | string) => `/user/update/${id}/`,
   DELETE_USER_BY_ID: (id: number | string) => `/user/${id}/delete/`,

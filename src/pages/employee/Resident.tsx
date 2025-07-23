@@ -2,9 +2,17 @@ import { Container } from "react-bootstrap"
 import Header from "../../components/Header"
 import Search from "../../components/Search"
 import { IoMdAdd } from "react-icons/io"
+import { useGetUsers } from "../../hooks/user/useGetUsers"
 import ResidentListTable from "../../components/admin/tables/ResidentListTable"
 
 function Resident() {
+  const {users, loading, error} = useGetUsers();
+
+  if (loading) return <p>Loading users...</p>;
+  if (error) return <p>Error: {error}</p>;
+
+  const residentUsers = users.filter((user) => user.role === 'resident');
+
   return (
     <Container className="pt-sm-5 d-flex overflow-auto flex-column">
 
@@ -26,7 +34,7 @@ function Resident() {
       </Search>
       
       {/* Resident Table list*/}
-      <ResidentListTable/>
+      <ResidentListTable users={residentUsers}/>
 
     </Container>
   )

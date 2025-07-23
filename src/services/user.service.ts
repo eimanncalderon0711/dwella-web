@@ -11,7 +11,7 @@ const UserService = () => {
 
         try {
             const response = await api.get(GET_USERS)
-            return response.data;   
+            return response;   
         } catch (error: any) {
              throw {
                 status: error?.response?.status ?? null,
@@ -23,8 +23,7 @@ const UserService = () => {
 
     const createUser = async (data: any) => {
         const response = await api.post(CREATE_USER, data);
-
-        return response.data;
+        return response;
     }
 
     const getUserById = async (id: number | string) => {
